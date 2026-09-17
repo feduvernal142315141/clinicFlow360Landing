@@ -1,7 +1,16 @@
+import dynamic from "next/dynamic"
 import { aiCapabilities } from "@/data/features"
 import { Check } from "lucide-react"
-import { AIChatDemo } from "./ai-chat-demo"
 import { SectionReveal } from "../section-reveal"
+
+const AIChatDemo = dynamic(() =>
+  import("./ai-chat-demo").then((m) => m.AIChatDemo),
+  {
+    loading: () => (
+      <div className="h-[420px] w-full max-w-[360px] animate-pulse rounded-[20px] bg-white/5" />
+    ),
+  }
+)
 
 export function AIReceptionist() {
   return (

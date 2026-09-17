@@ -1,6 +1,19 @@
+import dynamic from "next/dynamic"
 import { siteConfig } from "@/lib/config"
 import { SectionReveal } from "../section-reveal"
-import { DayTimelineSteps } from "./day-timeline-steps"
+
+const DayTimelineSteps = dynamic(() =>
+  import("./day-timeline-steps").then((m) => m.DayTimelineSteps),
+  {
+    loading: () => (
+      <div className="mx-auto max-w-[640px] space-y-6">
+        {Array.from({ length: 5 }).map((_, i) => (
+          <div key={i} className="h-20 animate-pulse rounded-[14px] bg-surface-soft" />
+        ))}
+      </div>
+    ),
+  }
+)
 
 export function DayTimeline() {
   return (

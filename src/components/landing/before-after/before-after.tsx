@@ -1,5 +1,14 @@
+import dynamic from "next/dynamic"
 import { SectionReveal } from "../section-reveal"
-import { BeforeAfterSlider } from "./before-after-slider"
+
+const BeforeAfterSlider = dynamic(() =>
+  import("./before-after-slider").then((m) => m.BeforeAfterSlider),
+  {
+    loading: () => (
+      <div className="aspect-[4/3] w-full animate-pulse rounded-[20px] bg-surface-soft" />
+    ),
+  }
+)
 
 export function BeforeAfter() {
   return (

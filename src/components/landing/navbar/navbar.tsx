@@ -7,7 +7,7 @@ import { MobileMenu } from "./mobile-menu"
 export function Navbar() {
   return (
     <NavbarScrollEffect>
-      <nav className="mx-auto flex h-16 max-w-[1280px] items-center justify-between px-6">
+      <nav aria-label="Navegación principal" className="mx-auto flex h-16 max-w-[1280px] items-center justify-between px-6">
         {/* Logo */}
         <Link href="/" className="text-lg font-bold tracking-tight text-ink">
           {siteConfig.name}

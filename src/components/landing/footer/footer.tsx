@@ -27,7 +27,7 @@ export function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="border-t border-border-light bg-surface-soft px-6 py-12 lg:py-16">
+    <footer aria-label="Pie de página" className="border-t border-border-light bg-surface-soft px-6 py-12 lg:py-16">
       <div className="mx-auto max-w-[1280px]">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
           {/* Brand */}

@@ -51,6 +51,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable}`}
     >
       <body>
+        {/* Skip to main content — accessibility */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:inline-flex focus:h-10 focus:items-center focus:rounded-[10px] focus:bg-brand-600 focus:px-4 focus:text-sm focus:font-medium focus:text-white focus:shadow-lg"
+        >
+          Ir al contenido principal
+        </a>
         <SmoothScrollProvider>{children}</SmoothScrollProvider>
       </body>
     </html>

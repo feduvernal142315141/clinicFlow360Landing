@@ -6,6 +6,7 @@ export function Hero() {
     <section
       id="hero"
       className="relative overflow-hidden px-6 pb-16 pt-24 sm:pb-24 sm:pt-32 lg:pb-32 lg:pt-40"
+      style={{ minHeight: "min(80dvh, 900px)" }}
     >
       {/* Subtle background glow */}
       <div
