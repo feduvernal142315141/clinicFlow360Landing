@@ -1,0 +1,152 @@
+"use client"
+
+import { useCallback, useRef, useState } from "react"
+
+/**
+ * Interactive before/after comparison slider.
+ * Built with Pointer Events + CSS clip-path. No external library.
+ * Supports mouse, touch, and keyboard (ArrowLeft/Right, Home, End).
+ *
+ * Uses placeholder colored panels until real clinical images exist (PEND-18).
+ */
+export function BeforeAfterSlider() {
+  const [position, setPosition] = useState(50)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const isDragging = useRef(false)
+
+  const updatePosition = useCallback((clientX: number) => {
+    const container = containerRef.current
+    if (!container) return
+    const rect = container.getBoundingClientRect()
+    const x = clientX - rect.left
+    const pct = Math.min(100, Math.max(0, (x / rect.width) * 100))
+    setPosition(pct)
+  }, [])
+
+  const onPointerDown = useCallback(
+    (e: React.PointerEvent) => {
+      isDragging.current = true
+      ;(e.target as HTMLElement).setPointerCapture(e.pointerId)
+      updatePosition(e.clientX)
+    },
+    [updatePosition]
+  )
+
+  const onPointerMove = useCallback(
+    (e: React.PointerEvent) => {
+      if (!isDragging.current) return
+      updatePosition(e.clientX)
+    },
+    [updatePosition]
+  )
+
+  const onPointerUp = useCallback(() => {
+    isDragging.current = false
+  }, [])
+
+  const onKeyDown = useCallback((e: React.KeyboardEvent) => {
+    const step = 2
+    switch (e.key) {
+      case "ArrowLeft":
+        e.preventDefault()
+        setPosition((p) => Math.max(0, p - step))
+        break
+      case "ArrowRight":
+        e.preventDefault()
+        setPosition((p) => Math.min(100, p + step))
+        break
+      case "Home":
+        e.preventDefault()
+        setPosition(0)
+        break
+      case "End":
+        e.preventDefault()
+        setPosition(100)
+        break
+    }
+  }, [])
+
+  return (
+    <div
+      ref={containerRef}
+      className="relative aspect-[4/3] w-full cursor-ew-resize select-none overflow-hidden rounded-[20px] border border-border-light"
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={onPointerUp}
+      onPointerCancel={onPointerUp}
+      role="slider"
+      aria-label="Comparador antes y después"
+      aria-valuemin={0}
+      aria-valuemax={100}
+      aria-valuenow={Math.round(position)}
+      tabIndex={0}
+      onKeyDown={onKeyDown}
+    >
+      {/* "After" layer — full width behind */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-brand-50 to-brand-100">
+        <div className="rounded-[14px] bg-white p-4 shadow-lg">
+          <div className="mb-2 flex items-center gap-2">
+            <div className="h-3 w-3 rounded-full bg-accent" />
+            <span className="text-xs font-semibold text-accent-dark">
+              Después
+            </span>
+          </div>
+          <div className="h-20 w-32 rounded-lg bg-gradient-to-r from-white to-accent/20 sm:h-24 sm:w-40" />
+          <p className="mt-2 text-center text-[10px] text-muted">
+            Tratamiento completado
+          </p>
+        </div>
+      </div>
+
+      {/* "Before" layer — clipped */}
+      <div
+        className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200"
+        style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
+      >
+        <div className="rounded-[14px] bg-white p-4 shadow-lg">
+          <div className="mb-2 flex items-center gap-2">
+            <div className="h-3 w-3 rounded-full bg-muted-light" />
+            <span className="text-xs font-semibold text-muted">Antes</span>
+          </div>
+          <div className="h-20 w-32 rounded-lg bg-gradient-to-r from-gray-200 to-gray-300 sm:h-24 sm:w-40" />
+          <p className="mt-2 text-center text-[10px] text-muted">
+            Diagnóstico inicial
+          </p>
+        </div>
+      </div>
+
+      {/* Divider line */}
+      <div
+        className="absolute top-0 bottom-0 z-10 w-0.5 bg-white shadow-sm"
+        style={{ left: `${position}%`, transform: "translateX(-50%)" }}
+      >
+        {/* Handle */}
+        <div className="absolute top-1/2 left-1/2 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-white bg-white/90 shadow-lg backdrop-blur-sm">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            className="text-ink"
+          >
+            <path
+              d="M5 3L2 8L5 13M11 3L14 8L11 13"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </div>
+      </div>
+
+      {/* Labels */}
+      <span className="absolute top-3 left-3 z-10 rounded-md bg-black/50 px-2 py-1 text-[10px] font-semibold uppercase tracking-wider text-white backdrop-blur-sm">
+        Antes
+      </span>
+      <span className="absolute top-3 right-3 z-10 rounded-md bg-black/50 px-2 py-1 text-[10px] font-semibold uppercase tracking-wider text-white backdrop-blur-sm">
+        Después
+      </span>
+    </div>
+  )
+}

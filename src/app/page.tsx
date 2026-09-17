@@ -5,6 +5,9 @@ import { SocialProof } from "@/components/landing/social-proof/social-proof"
 import { UnifiedPlatform } from "@/components/landing/unified-platform/unified-platform"
 import { AIReceptionist } from "@/components/landing/ai-receptionist/ai-receptionist"
 import { MobileApp } from "@/components/landing/mobile-app/mobile-app"
+import { BeforeAfter } from "@/components/landing/before-after/before-after"
+import { VoiceNotes } from "@/components/landing/voice-notes/voice-notes"
+import { PatientRecord } from "@/components/landing/patient-record/patient-record"
 
 export default function LandingPage() {
   return (
@@ -18,10 +21,10 @@ export default function LandingPage() {
         <UnifiedPlatform />
         <AIReceptionist />
         <MobileApp />
+        <BeforeAfter />
+        <VoiceNotes />
+        <PatientRecord />
 
-        {/* Before/After — Sprint 3 */}
-        {/* Voice Notes — Sprint 3 */}
-        {/* Patient Record — Sprint 3 */}
         {/* WhatsApp Automation — Sprint 4 */}
         {/* Day Timeline — Sprint 4 */}
         {/* Security — Sprint 5 */}
