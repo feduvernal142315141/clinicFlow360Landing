@@ -1,0 +1,168 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ── ClinicFlow360 Design Tokens ── */
+
+@theme inline {
+  /* Brand */
+  --color-brand-50: #eff8ff;
+  --color-brand-100: #dff1ff;
+  --color-brand-200: #b8e3ff;
+  --color-brand-300: #79cdff;
+  --color-brand-400: #32b4fe;
+  --color-brand-500: #079cfb;
+  --color-brand-600: #037ecc;
+  --color-brand-700: #025f9a;
+  --color-brand-800: #065180;
+  --color-brand-900: #0b446a;
+  --color-brand-950: #072b46;
+
+  /* Accent (teal) */
+  --color-accent: #2dd4bf;
+  --color-accent-light: #5eead4;
+  --color-accent-dark: #14b8a6;
+  --color-accent-foreground: var(--accent-foreground);
+
+  /* Ink / Text */
+  --color-ink: #0f172a;
+  --color-muted: #64748b;
+  --color-muted-light: #94a3b8;
+  --color-muted-foreground: var(--muted-foreground);
+
+  /* Surfaces */
+  --color-surface: #ffffff;
+  --color-surface-soft: #f8fafc;
+  --color-surface-dark: #061525;
+  --color-border: #e2e8f0;
+  --color-border-light: #f1f5f9;
+
+  /* Fonts */
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-geist-sans);
+
+  /* Border Radius — ClinicFlow360 scale */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-2xl: 36px;
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+  --radius-full: 9999px;
+
+  /* shadcn required mappings */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-destructive: var(--destructive);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+}
+
+/* ── shadcn Light Theme Variables ── */
+
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --radius: 0.625rem;
+}
+
+/* ── Base Styles ── */
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  html {
+    @apply font-sans;
+  }
+}
+
+/* ── Typography Utilities ── */
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}
+
+/* ── Premium Surfaces ── */
+
+.surface-elevated {
+  border: 1px solid rgba(226, 232, 240, 0.6);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 12px 40px rgba(0, 0, 0, 0.06),
+    0 40px 120px rgba(0, 0, 0, 0.04);
+}
+
+.surface-elevated-strong {
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.06),
+    0 20px 60px rgba(0, 0, 0, 0.1),
+    0 60px 160px rgba(0, 0, 0, 0.06);
+}
+
+/* ── Reduced Motion ── */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── Focus Visible ── */
+
+:focus-visible {
+  outline: 2px solid var(--color-brand-500);
+  outline-offset: 2px;
+  border-radius: var(--radius-xs);
+}
+
+/* ── Selection ── */
+
+::selection {
+  background: var(--color-brand-100);
+  color: var(--color-brand-900);
+}
