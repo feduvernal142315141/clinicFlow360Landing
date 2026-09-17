@@ -8,7 +8,7 @@ function subscribeScroll(callback: () => void) {
 }
 
 function getScrolled() {
-  return window.scrollY > 10
+  return window.scrollY > 24
 }
 
 function getScrolledServer() {
@@ -28,17 +28,27 @@ export function NavbarScrollEffect({
 
   return (
     <header
-      className="sticky top-0 z-50 w-full transition-all duration-200"
-      style={{
-        backgroundColor: scrolled
-          ? "rgba(255, 255, 255, 0.85)"
-          : "transparent",
-        backdropFilter: scrolled ? "blur(12px)" : "none",
-        WebkitBackdropFilter: scrolled ? "blur(12px)" : "none",
-        borderBottom: scrolled
-          ? "1px solid rgba(226, 232, 240, 0.6)"
-          : "1px solid transparent",
-      }}
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out"
+      style={
+        scrolled
+          ? {
+              top: 14,
+              left: "50%",
+              right: "auto",
+              transform: "translateX(-50%)",
+              width: "min(1180px, calc(100% - 32px))",
+              background: "rgba(255, 255, 255, 0.76)",
+              backdropFilter: "blur(18px)",
+              WebkitBackdropFilter: "blur(18px)",
+              border: "1px solid rgba(15, 23, 42, 0.06)",
+              boxShadow: "0 8px 30px rgba(15, 23, 42, 0.04)",
+              borderRadius: 20,
+            }
+          : {
+              background: "transparent",
+              border: "1px solid transparent",
+            }
+      }
     >
       {children}
     </header>

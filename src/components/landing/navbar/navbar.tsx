@@ -1,5 +1,4 @@
 import Link from "next/link"
-import { siteConfig } from "@/lib/config"
 import { navItems, navActions } from "@/data/navigation"
 import { NavbarScrollEffect } from "./navbar-scroll-effect"
 import { MobileMenu } from "./mobile-menu"
@@ -7,10 +6,24 @@ import { MobileMenu } from "./mobile-menu"
 export function Navbar() {
   return (
     <NavbarScrollEffect>
-      <nav aria-label="Navegación principal" className="mx-auto flex h-16 max-w-[1280px] items-center justify-between px-6">
+      <nav
+        aria-label="Navegación principal"
+        className="mx-auto flex h-[72px] max-w-[1240px] items-center justify-between px-6"
+      >
         {/* Logo */}
-        <Link href="/" className="text-lg font-bold tracking-tight text-ink">
-          {siteConfig.name}
+        <Link
+          href="/"
+          className="flex items-center gap-2 text-[17px] text-ink"
+          style={{ fontWeight: 680, letterSpacing: "-0.025em" }}
+        >
+          <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-brand-600">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M7 1L13 4.5V9.5L7 13L1 9.5V4.5L7 1Z" fill="white" fillOpacity="0.9" />
+            </svg>
+          </span>
+          <span>
+            ClinicFlow<span className="text-brand-600">360</span>
+          </span>
         </Link>
 
         {/* Desktop links */}
@@ -19,7 +32,7 @@ export function Navbar() {
             <li key={item.href}>
               <a
                 href={item.href}
-                className="text-sm font-medium text-muted transition-colors hover:text-ink"
+                className="relative text-[14px] font-medium text-muted transition-colors duration-150 hover:text-ink"
               >
                 {item.label}
               </a>
@@ -28,16 +41,16 @@ export function Navbar() {
         </ul>
 
         {/* Desktop actions */}
-        <div className="hidden items-center gap-3 md:flex">
+        <div className="hidden items-center gap-4 md:flex">
           <a
             href={navActions.login.href}
-            className="text-sm font-medium text-muted transition-colors hover:text-ink"
+            className="text-[14px] font-medium text-muted transition-colors duration-150 hover:text-ink"
           >
             {navActions.login.label}
           </a>
           <a
             href={navActions.cta.href}
-            className="inline-flex h-9 items-center rounded-[10px] bg-brand-600 px-4 text-sm font-medium text-white transition-all hover:-translate-y-px hover:bg-brand-700 hover:shadow-md"
+            className="btn-primary-gradient inline-flex h-[42px] items-center rounded-[12px] px-[18px] text-[14px] font-semibold text-white transition-all duration-200 hover:-translate-y-px active:scale-[0.985]"
           >
             {navActions.cta.label}
           </a>
