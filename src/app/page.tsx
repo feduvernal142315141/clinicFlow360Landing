@@ -8,6 +8,8 @@ import { MobileApp } from "@/components/landing/mobile-app/mobile-app"
 import { BeforeAfter } from "@/components/landing/before-after/before-after"
 import { VoiceNotes } from "@/components/landing/voice-notes/voice-notes"
 import { PatientRecord } from "@/components/landing/patient-record/patient-record"
+import { WhatsAppAutomation } from "@/components/landing/whatsapp-automation/whatsapp-automation"
+import { DayTimeline } from "@/components/landing/day-timeline/day-timeline"
 
 export default function LandingPage() {
   return (
@@ -24,9 +26,9 @@ export default function LandingPage() {
         <BeforeAfter />
         <VoiceNotes />
         <PatientRecord />
+        <WhatsAppAutomation />
+        <DayTimeline />
 
-        {/* WhatsApp Automation — Sprint 4 */}
-        {/* Day Timeline — Sprint 4 */}
         {/* Security — Sprint 5 */}
         {/* Pricing — Sprint 5 */}
         {/* Testimonials — Sprint 5 */}
