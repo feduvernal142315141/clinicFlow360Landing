@@ -1,5 +1,10 @@
 import { Navbar } from "@/components/landing/navbar/navbar"
 import { Hero } from "@/components/landing/hero/hero"
+import { ProductShowcase } from "@/components/landing/product-showcase/product-showcase"
+import { SocialProof } from "@/components/landing/social-proof/social-proof"
+import { UnifiedPlatform } from "@/components/landing/unified-platform/unified-platform"
+import { AIReceptionist } from "@/components/landing/ai-receptionist/ai-receptionist"
+import { MobileApp } from "@/components/landing/mobile-app/mobile-app"
 
 export default function LandingPage() {
   return (
@@ -8,12 +13,12 @@ export default function LandingPage() {
 
       <main>
         <Hero />
+        <ProductShowcase />
+        <SocialProof />
+        <UnifiedPlatform />
+        <AIReceptionist />
+        <MobileApp />
 
-        {/* Product Showcase — Sprint 2 */}
-        {/* Social Proof — Sprint 2 */}
-        {/* Unified Platform — Sprint 2 */}
-        {/* AI Receptionist — Sprint 2 */}
-        {/* Mobile App — Sprint 2 */}
         {/* Before/After — Sprint 3 */}
         {/* Voice Notes — Sprint 3 */}
         {/* Patient Record — Sprint 3 */}
