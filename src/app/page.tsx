@@ -1,8 +1,7 @@
 import { Navbar } from "@/components/landing/navbar/navbar"
 import { Hero } from "@/components/landing/hero/hero"
-import { ProductShowcase } from "@/components/landing/product-showcase/product-showcase"
 import { SocialProof } from "@/components/landing/social-proof/social-proof"
-import { UnifiedPlatform } from "@/components/landing/unified-platform/unified-platform"
+import { ProductShowcase } from "@/components/landing/product-showcase/product-showcase"
 import { AIReceptionist } from "@/components/landing/ai-receptionist/ai-receptionist"
 import { MobileApp } from "@/components/landing/mobile-app/mobile-app"
 import { BeforeAfter } from "@/components/landing/before-after/before-after"
@@ -31,9 +30,8 @@ export default function LandingPage() {
 
       <main id="main-content">
         <Hero />
-        <ProductShowcase />
         <SocialProof />
-        <UnifiedPlatform />
+        <ProductShowcase />
         <AIReceptionist />
         <MobileApp />
         <BeforeAfter />

@@ -4,94 +4,125 @@ import { SectionReveal } from "../section-reveal"
 
 export function Pricing() {
   return (
-    <section id="precios" className="px-6 py-24 lg:py-32">
+    <section id="precios" className="px-6 py-28 lg:py-36" style={{ background: "#F8FAFC" }}>
       <div className="mx-auto max-w-[1280px]">
         <SectionReveal>
-          <div className="mx-auto max-w-[720px] text-center">
+          <div className="mx-auto max-w-[850px] text-center">
             <h2
-              className="text-balance text-3xl font-bold text-ink sm:text-4xl lg:text-5xl"
-              style={{ letterSpacing: "-0.035em" }}
+              className="text-balance text-ink"
+              style={{ fontSize: "clamp(36px, 5vw, 60px)", fontWeight: 680, lineHeight: 1.04, letterSpacing: "-0.04em" }}
             >
               Un plan para cada clínica.
             </h2>
-            <p className="text-pretty mt-4 text-lg text-muted">
+            <p className="text-pretty mt-4 text-[18px] text-muted">
               Empieza con lo esencial y crece cuando estés listo.
             </p>
           </div>
         </SectionReveal>
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-3">
-          {plans.map((plan) => (
-            <SectionReveal key={plan.slug}>
-              <div
-                className={`relative flex flex-col rounded-[20px] border p-6 sm:p-7 ${
-                  plan.highlighted
-                    ? "border-brand-300 bg-white shadow-lg shadow-brand-100/40"
-                    : "border-border-light bg-white"
-                }`}
-              >
-                {/* Badge */}
-                {plan.badge && (
-                  <span className="absolute -top-3 left-6 inline-flex items-center rounded-full bg-brand-600 px-3 py-1 text-xs font-semibold text-white">
-                    {plan.badge}
-                  </span>
-                )}
+        <div className="mt-14 grid gap-6 lg:grid-cols-3">
+          {plans.map((plan) => {
+            const isDark = plan.highlighted
 
-                {/* Header */}
-                <div>
-                  <h3 className="text-lg font-bold text-ink">{plan.name}</h3>
-                  <p className="mt-1 text-sm text-muted">
+            return (
+              <SectionReveal key={plan.slug}>
+                <div
+                  className="relative flex flex-col rounded-[24px] p-7"
+                  style={{
+                    background: isDark ? "#071525" : "#FFFFFF",
+                    border: isDark
+                      ? "1px solid rgba(7,156,251,0.35)"
+                      : "1px solid rgba(15,23,42,0.07)",
+                    boxShadow: isDark
+                      ? "0 30px 80px rgba(3,126,204,0.15)"
+                      : "0 12px 40px rgba(15,23,42,0.06)",
+                    minHeight: 560,
+                  }}
+                >
+                  {plan.badge && (
+                    <span className="absolute -top-3 left-7 inline-flex items-center rounded-full bg-brand-500 px-3 py-1 text-[11px] font-semibold text-white">
+                      {plan.badge}
+                    </span>
+                  )}
+
+                  <h3
+                    className="text-[18px] font-bold"
+                    style={{ color: isDark ? "#FFFFFF" : "#0F172A" }}
+                  >
+                    {plan.name}
+                  </h3>
+                  <p
+                    className="mt-1 text-[14px]"
+                    style={{ color: isDark ? "#94A3B8" : "#64748B" }}
+                  >
                     {plan.description}
                   </p>
-                </div>
 
-                {/* Price */}
-                <div className="mt-5 border-b border-border-light pb-5">
-                  <span className="text-4xl font-bold tracking-tight text-ink">
-                    {plan.price !== null ? `$${plan.price}` : "$XX"}
-                  </span>
-                  <span className="ml-1 text-sm text-muted">/ mes</span>
-                </div>
-
-                {/* Features */}
-                <ul className="mt-5 flex-1 space-y-3">
-                  {plan.features.map((feature) => (
-                    <li
-                      key={feature.name}
-                      className="flex items-center gap-2.5"
+                  <div className="mt-6 border-b pb-6" style={{ borderColor: isDark ? "rgba(255,255,255,0.08)" : "#EEF2F6" }}>
+                    <span
+                      className="font-bold"
+                      style={{
+                        fontSize: 52,
+                        letterSpacing: "-0.04em",
+                        color: isDark ? "#FFFFFF" : "#0F172A",
+                      }}
                     >
-                      {feature.included ? (
-                        <Check className="h-4 w-4 shrink-0 text-brand-600" />
-                      ) : (
-                        <X className="h-4 w-4 shrink-0 text-muted-light" />
-                      )}
-                      <span
-                        className={`text-sm ${
-                          feature.included ? "text-ink" : "text-muted-light"
-                        }`}
-                      >
-                        {feature.name}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
+                      {plan.price !== null ? `$${plan.price}` : "$XX"}
+                    </span>
+                    <span className="ml-1 text-[15px]" style={{ color: isDark ? "#94A3B8" : "#64748B" }}>
+                      / mes
+                    </span>
+                  </div>
 
-                {/* CTA */}
-                <div className="mt-6">
-                  <a
-                    href="#"
-                    className={`inline-flex h-11 w-full items-center justify-center rounded-[12px] text-sm font-medium transition-all ${
-                      plan.highlighted
-                        ? "bg-brand-600 text-white hover:-translate-y-0.5 hover:bg-brand-700 hover:shadow-lg"
-                        : "border border-border bg-white text-ink hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-md"
-                    }`}
-                  >
-                    Probar gratis
-                  </a>
+                  <ul className="mt-6 flex-1 space-y-3">
+                    {plan.features.map((f) => (
+                      <li key={f.name} className="flex items-center gap-2.5">
+                        {f.included ? (
+                          <Check className="h-4 w-4 shrink-0" style={{ color: isDark ? "#2DD4BF" : "#037ECC" }} />
+                        ) : (
+                          <X className="h-4 w-4 shrink-0" style={{ color: isDark ? "rgba(255,255,255,0.2)" : "#CBD5E1" }} />
+                        )}
+                        <span
+                          className="text-[14px]"
+                          style={{
+                            color: f.included
+                              ? isDark ? "rgba(255,255,255,0.85)" : "#0F172A"
+                              : isDark ? "rgba(255,255,255,0.25)" : "#CBD5E1",
+                          }}
+                        >
+                          {f.name}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="mt-8">
+                    <a
+                      href="#"
+                      className="inline-flex h-[48px] w-full items-center justify-center rounded-[12px] text-[15px] font-semibold transition-all duration-200 hover:-translate-y-0.5"
+                      style={
+                        isDark
+                          ? {
+                              background: "linear-gradient(180deg, #079CFB 0%, #037ECC 100%)",
+                              color: "#FFFFFF",
+                              border: "1px solid rgba(255,255,255,0.15)",
+                              boxShadow: "0 8px 24px rgba(3,126,204,0.30)",
+                            }
+                          : {
+                              background: "#FFFFFF",
+                              color: "#0F172A",
+                              border: "1px solid #E2E8F0",
+                              boxShadow: "0 2px 8px rgba(15,23,42,0.06)",
+                            }
+                      }
+                    >
+                      Probar gratis
+                    </a>
+                  </div>
                 </div>
-              </div>
-            </SectionReveal>
-          ))}
+              </SectionReveal>
+            )
+          })}
         </div>
       </div>
     </section>

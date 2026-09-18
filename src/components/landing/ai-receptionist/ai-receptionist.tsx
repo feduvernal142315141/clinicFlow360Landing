@@ -1,71 +1,123 @@
 import dynamic from "next/dynamic"
-import { aiCapabilities } from "@/data/features"
-import { Check } from "lucide-react"
 import { SectionReveal } from "../section-reveal"
 
 const AIChatDemo = dynamic(() =>
   import("./ai-chat-demo").then((m) => m.AIChatDemo),
   {
     loading: () => (
-      <div className="h-[420px] w-full max-w-[360px] animate-pulse rounded-[20px] bg-white/5" />
+      <div className="mx-auto h-[520px] w-full max-w-[620px] animate-pulse rounded-[24px] bg-white/5" />
     ),
   }
 )
 
+const capabilities = [
+  "Consulta disponibilidad",
+  "Agenda",
+  "Cancela",
+  "Reagenda",
+  "Responde 24/7",
+] as const
+
 export function AIReceptionist() {
   return (
-    <section
-      id="recepcion-ia"
-      className="relative overflow-hidden px-6 py-24 lg:py-32"
-      style={{ backgroundColor: "#061525" }}
-    >
-      {/* Radial blue illumination */}
-      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-        <div className="absolute left-1/2 top-1/2 h-[700px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-600/10 blur-3xl" />
-      </div>
+    <>
+      <section
+        id="recepcion-ia"
+        className="relative overflow-hidden px-6"
+        style={{
+          background: "#061525",
+          paddingTop: 160,
+          paddingBottom: 160,
+        }}
+      >
+        {/* Radial illumination */}
+        <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+          <div
+            className="absolute h-[700px] w-[700px]"
+            style={{
+              left: "65%",
+              top: "45%",
+              transform: "translate(-50%,-50%)",
+              background: "radial-gradient(circle, rgba(7,156,251,0.18), transparent 35%)",
+            }}
+          />
+          <div
+            className="absolute h-[400px] w-[400px]"
+            style={{
+              left: "30%",
+              top: "60%",
+              transform: "translate(-50%,-50%)",
+              background: "radial-gradient(circle, rgba(45,212,191,0.07), transparent 40%)",
+            }}
+          />
+        </div>
 
-      <div className="relative mx-auto max-w-[1280px]">
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          {/* Copy */}
+        <div className="relative mx-auto max-w-[1280px]">
+          {/* Header */}
           <SectionReveal>
-            <div>
-              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-brand-400">
-                ClinicFlow AI
+            <div className="mx-auto max-w-[850px] text-center">
+              <p
+                className="mb-5 text-[12px] font-semibold uppercase"
+                style={{ letterSpacing: "0.08em", color: "#38BDF8" }}
+              >
+                ● ClinicFlow AI
               </p>
               <h2
-                className="text-balance text-3xl font-bold text-white sm:text-4xl lg:text-5xl"
-                style={{ letterSpacing: "-0.035em" }}
+                className="text-balance text-white"
+                style={{
+                  fontSize: "clamp(36px, 5vw, 64px)",
+                  fontWeight: 680,
+                  lineHeight: 1.04,
+                  letterSpacing: "-0.04em",
+                }}
               >
                 Una recepcionista que nunca deja a un paciente esperando.
               </h2>
-              <p className="text-pretty mt-5 text-lg leading-relaxed text-brand-100/70">
-                Atiende WhatsApp las 24 horas, conversa de forma natural y
-                consulta la disponibilidad real de tu clínica antes de
-                agendar.
+              <p
+                className="text-pretty mx-auto mt-5 max-w-[650px]"
+                style={{ fontSize: 18, lineHeight: 1.6, color: "#94A3B8" }}
+              >
+                Atiende WhatsApp las 24 horas, consulta disponibilidad real y
+                agenda, cancela o reprograma citas mientras tu equipo se enfoca
+                en atender.
               </p>
-
-              {/* Capabilities */}
-              <ul className="mt-8 grid gap-3 sm:grid-cols-2">
-                {aiCapabilities.map((cap) => (
-                  <li key={cap} className="flex items-center gap-2.5">
-                    <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent/20">
-                      <Check className="h-3 w-3 text-accent" />
-                    </div>
-                    <span className="text-sm text-brand-100/80">{cap}</span>
-                  </li>
-                ))}
-              </ul>
-
-              {/* CTA — hidden until WhatsApp demo number exists (PEND-06) */}
             </div>
           </SectionReveal>
 
-          {/* Animated chat demo */}
-          <div className="flex justify-center lg:justify-end">
+          {/* Central conversation + mini agenda */}
+          <div className="mt-16 flex justify-center">
             <AIChatDemo />
           </div>
+
+          {/* Capabilities strip */}
+          <SectionReveal>
+            <div className="mt-14 flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
+              {capabilities.map((cap, i) => (
+                <span key={cap} className="flex items-center gap-3">
+                  <span className="flex items-center gap-1.5">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <circle cx="7" cy="7" r="6" stroke="#2DD4BF" strokeWidth="1.5" />
+                      <path d="M4.5 7L6.5 9L9.5 5.5" stroke="#2DD4BF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                    <span style={{ fontSize: 14, color: "#CBD5E1" }}>{cap}</span>
+                  </span>
+                  {i < capabilities.length - 1 && (
+                    <span style={{ color: "rgba(255,255,255,0.15)" }}>·</span>
+                  )}
+                </span>
+              ))}
+            </div>
+          </SectionReveal>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Transition region dark → light */}
+      <div
+        style={{
+          height: 100,
+          background: "linear-gradient(to bottom, #061525, #F8FAFC)",
+        }}
+      />
+    </>
   )
 }

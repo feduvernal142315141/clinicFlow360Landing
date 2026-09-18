@@ -1,46 +1,59 @@
-import { mobileChips } from "@/data/features"
 import { SectionReveal } from "../section-reveal"
 import { MobilePhoneMockup } from "./mobile-phone-mockup"
+import { MobileStoryBlocks } from "./mobile-story-blocks"
 
 export function MobileApp() {
   return (
-    <section id="app-movil" className="px-6 py-24 lg:py-32">
-      <div className="mx-auto max-w-[1280px]">
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          {/* Phone mockup */}
-          <div className="flex justify-center lg:order-2">
+    <section
+      id="app-movil"
+      className="relative px-6 py-28 lg:py-36"
+      style={{ background: "#F8FAFC" }}
+    >
+      {/* Blue glow behind phone */}
+      <div
+        className="pointer-events-none absolute left-[30%] top-1/2 -z-0 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2"
+        aria-hidden="true"
+        style={{
+          background: "radial-gradient(circle, rgba(7,156,251,0.08), transparent 50%)",
+          filter: "blur(80px)",
+        }}
+      />
+
+      <div className="relative mx-auto max-w-[1280px]">
+        <SectionReveal>
+          <div className="mx-auto max-w-[850px] text-center lg:text-left">
+            <h2
+              className="text-balance text-ink"
+              style={{
+                fontSize: "clamp(36px, 5vw, 60px)",
+                fontWeight: 680,
+                lineHeight: 1.04,
+                letterSpacing: "-0.04em",
+              }}
+            >
+              Tu clínica también cabe en tu bolsillo.
+            </h2>
+            <p
+              className="text-pretty mt-5 max-w-[600px] text-muted lg:mx-0"
+              style={{ fontSize: 18, lineHeight: 1.6 }}
+            >
+              Todo lo que el doctor necesita antes, durante y después de una consulta.
+            </p>
+          </div>
+        </SectionReveal>
+
+        <div className="mt-16 flex flex-col items-center gap-12 lg:flex-row lg:items-start lg:gap-20">
+          {/* Phone */}
+          <div className="lg:sticky lg:top-32 lg:shrink-0">
             <SectionReveal>
               <MobilePhoneMockup />
             </SectionReveal>
           </div>
 
-          {/* Copy */}
-          <SectionReveal className="lg:order-1">
-            <div>
-              <h2
-                className="text-balance text-3xl font-bold text-ink sm:text-4xl lg:text-5xl"
-                style={{ letterSpacing: "-0.035em" }}
-              >
-                Tu clínica también cabe en tu bolsillo.
-              </h2>
-              <p className="text-pretty mt-5 text-lg leading-relaxed text-muted">
-                Consulta tu agenda, revisa pacientes, documenta tratamientos
-                y completa notas clínicas sin depender de una computadora.
-              </p>
-
-              {/* Feature chips */}
-              <div className="mt-8 flex flex-wrap gap-2.5">
-                {mobileChips.map((chip) => (
-                  <span
-                    key={chip}
-                    className="inline-flex items-center rounded-full border border-border-light bg-white px-4 py-2 text-sm font-medium text-ink shadow-sm"
-                  >
-                    {chip}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </SectionReveal>
+          {/* Story blocks */}
+          <div className="flex-1">
+            <MobileStoryBlocks />
+          </div>
         </div>
       </div>
     </section>

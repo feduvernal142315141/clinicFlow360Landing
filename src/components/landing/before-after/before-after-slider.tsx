@@ -69,7 +69,8 @@ export function BeforeAfterSlider() {
   return (
     <div
       ref={containerRef}
-      className="relative aspect-[4/3] w-full cursor-ew-resize select-none overflow-hidden rounded-[20px] border border-border-light"
+      className="relative aspect-[16/10] w-full max-w-[1100px] mx-auto cursor-ew-resize select-none overflow-hidden rounded-[28px]"
+      style={{ border: "1px solid rgba(15,23,42,0.07)", boxShadow: "0 30px 90px rgba(15,23,42,0.10)" }}
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}
@@ -121,7 +122,7 @@ export function BeforeAfterSlider() {
         style={{ left: `${position}%`, transform: "translateX(-50%)" }}
       >
         {/* Handle */}
-        <div className="absolute top-1/2 left-1/2 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-white bg-white/90 shadow-lg backdrop-blur-sm">
+        <div className="absolute top-1/2 left-1/2 flex h-[52px] w-[52px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-white bg-white/90 shadow-lg backdrop-blur-sm">
           <svg
             width="16"
             height="16"
@@ -141,10 +142,10 @@ export function BeforeAfterSlider() {
       </div>
 
       {/* Labels */}
-      <span className="absolute top-3 left-3 z-10 rounded-md bg-black/50 px-2 py-1 text-[10px] font-semibold uppercase tracking-wider text-white backdrop-blur-sm">
+      <span className="absolute top-4 left-4 z-10 rounded-full px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wider text-white" style={{ background: "rgba(255,255,255,0.15)", backdropFilter: "blur(8px)", border: "1px solid rgba(255,255,255,0.2)" }}>
         Antes
       </span>
-      <span className="absolute top-3 right-3 z-10 rounded-md bg-black/50 px-2 py-1 text-[10px] font-semibold uppercase tracking-wider text-white backdrop-blur-sm">
+      <span className="absolute top-4 right-4 z-10 rounded-full px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wider text-white" style={{ background: "rgba(255,255,255,0.15)", backdropFilter: "blur(8px)", border: "1px solid rgba(255,255,255,0.2)" }}>
         Después
       </span>
     </div>

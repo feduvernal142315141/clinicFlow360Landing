@@ -3,41 +3,55 @@ import { SectionReveal } from "../section-reveal"
 
 export function FinalCTA() {
   return (
-    <section className="px-6 py-24 lg:py-32">
-      <div className="mx-auto max-w-[1280px]">
+    <section
+      className="relative overflow-hidden px-6"
+      style={{
+        background: "#071525",
+        paddingTop: 120,
+        paddingBottom: 120,
+        borderTopLeftRadius: 48,
+        borderTopRightRadius: 48,
+      }}
+    >
+      {/* Subtle product hint bg */}
+      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+        <div className="absolute left-1/2 top-[40%] h-[400px] w-[600px] -translate-x-1/2" style={{ background: "radial-gradient(circle, rgba(7,156,251,0.12), transparent 50%)", filter: "blur(80px)" }} />
+      </div>
+
+      <div className="relative mx-auto max-w-[1280px]">
         <SectionReveal>
-          <div className="relative overflow-hidden rounded-[28px] bg-brand-600 px-8 py-16 text-center sm:px-16 sm:py-20">
-            {/* Background glow */}
-            <div
-              className="pointer-events-none absolute inset-0"
-              aria-hidden="true"
+          <div className="mx-auto max-w-[800px] text-center">
+            <h2
+              className="text-balance text-white"
+              style={{
+                fontSize: "clamp(36px, 5vw, 64px)",
+                fontWeight: 680,
+                lineHeight: 1.04,
+                letterSpacing: "-0.04em",
+              }}
             >
-              <div className="absolute -top-24 left-1/2 h-[400px] w-[600px] -translate-x-1/2 rounded-full bg-brand-400/30 blur-3xl" />
-            </div>
+              Menos tiempo administrando.
+              <br />
+              Más tiempo atendiendo.
+            </h2>
+            <p className="text-pretty mx-auto mt-5 max-w-[540px] text-[18px] leading-relaxed" style={{ color: "#94A3B8" }}>
+              Tu clínica, tus doctores y tus pacientes en un solo lugar.
+            </p>
 
-            <div className="relative">
-              <h2
-                className="text-balance text-3xl font-bold text-white sm:text-4xl lg:text-5xl"
-                style={{ letterSpacing: "-0.035em" }}
+            <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+              <a
+                href="#precios"
+                className="inline-flex h-[54px] items-center rounded-[14px] bg-white px-7 text-[16px] font-semibold text-brand-700 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg active:scale-[0.985]"
               >
-                Menos tiempo administrando.
-                <br />
-                Más tiempo atendiendo.
-              </h2>
-              <p className="text-pretty mx-auto mt-5 max-w-[540px] text-lg text-brand-100/80">
-                Lleva tu clínica, tus doctores y tus pacientes a un mismo
-                lugar.
-              </p>
-
-              <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-                <a
-                  href="#precios"
-                  className="inline-flex h-[52px] items-center rounded-[14px] bg-white px-7 text-base font-medium text-brand-700 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-lg active:scale-[0.985]"
-                >
-                  Probar {siteConfig.name} gratis →
-                </a>
-                {/* "Solicitar demostración" — enable when demo flow exists */}
-              </div>
+                Probar {siteConfig.name} gratis →
+              </a>
+              <a
+                href="#"
+                className="inline-flex h-[54px] items-center rounded-[14px] px-7 text-[16px] font-medium text-white/70 transition-colors hover:text-white"
+                style={{ border: "1px solid rgba(255,255,255,0.12)" }}
+              >
+                Solicitar demo
+              </a>
             </div>
           </div>
         </SectionReveal>

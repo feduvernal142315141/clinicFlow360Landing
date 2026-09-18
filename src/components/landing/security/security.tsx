@@ -1,63 +1,65 @@
-import {
-  Lock,
-  ShieldCheck,
-  Building2,
-  FileSearch,
-  DatabaseBackup,
-  KeyRound,
-} from "lucide-react"
-import { securityFeatures } from "@/data/features"
+import { Lock, ShieldCheck, Building2, FileSearch, DatabaseBackup, KeyRound } from "lucide-react"
+import { siteConfig } from "@/lib/config"
 import { SectionReveal } from "../section-reveal"
 
-const iconMap: Record<string, React.ReactNode> = {
-  Cifrado: <Lock className="h-5 w-5" />,
-  "Roles y permisos": <ShieldCheck className="h-5 w-5" />,
-  "Aislamiento por clínica": <Building2 className="h-5 w-5" />,
-  Auditoría: <FileSearch className="h-5 w-5" />,
-  Backups: <DatabaseBackup className="h-5 w-5" />,
-  "Propiedad de datos": <KeyRound className="h-5 w-5" />,
-}
+const items = [
+  { icon: ShieldCheck, title: "Roles y permisos", detail: "Control granular por módulo y acción." },
+  { icon: Lock, title: "Cifrado", detail: "Datos protegidos en tránsito y en reposo." },
+  { icon: DatabaseBackup, title: "Backups", detail: "Respaldos automáticos de tu información." },
+  { icon: Building2, title: "Aislamiento", detail: "Cada clínica opera en un entorno separado." },
+  { icon: FileSearch, title: "Auditoría", detail: "Registro de cambios con trazabilidad." },
+  { icon: KeyRound, title: "Propiedad", detail: "Tus datos son tuyos. Exporta cuando quieras." },
+] as const
 
 export function Security() {
   return (
-    <section className="bg-surface-soft px-6 py-24 lg:py-32">
-      <div className="mx-auto max-w-[1280px]">
-        <SectionReveal>
-          <div className="mx-auto max-w-[720px] text-center">
-            <h2
-              className="text-balance text-3xl font-bold text-ink sm:text-4xl lg:text-5xl"
-              style={{ letterSpacing: "-0.035em" }}
-            >
-              La información de tus pacientes merece el mismo cuidado que
-              ellos.
-            </h2>
-            <p className="text-pretty mt-4 text-lg text-muted">
-              Seguridad y privacidad integradas en cada capa de la
-              plataforma.
-            </p>
-          </div>
-        </SectionReveal>
+    <>
+      {/* Transition dark → light */}
+      <div style={{ height: 100, background: "linear-gradient(to bottom, #061525, #FFFFFF)" }} />
 
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {securityFeatures.map((feature) => (
-            <SectionReveal key={feature.title}>
-              <div className="flex gap-4 rounded-[16px] border border-border-light bg-white p-5">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[10px] bg-brand-50 text-brand-600">
-                  {iconMap[feature.title]}
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-ink">
-                    {feature.title}
-                  </p>
-                  <p className="mt-1 text-sm leading-relaxed text-muted">
-                    {feature.description}
-                  </p>
-                </div>
+      <section className="px-6 py-20 lg:py-28">
+        <div className="mx-auto max-w-[1280px]">
+          <SectionReveal>
+            <div className="mx-auto max-w-[850px] text-center">
+              <h2
+                className="text-balance text-ink"
+                style={{ fontSize: "clamp(32px, 4.5vw, 56px)", fontWeight: 680, lineHeight: 1.04, letterSpacing: "-0.04em" }}
+              >
+                Tus datos clínicos merecen una infraestructura seria.
+              </h2>
+            </div>
+          </SectionReveal>
+
+          {/* Diagram layout */}
+          <SectionReveal>
+            <div className="mx-auto mt-14 max-w-[900px]">
+              {/* Center node */}
+              <div className="flex justify-center">
+                <span className="inline-flex h-12 items-center rounded-full bg-brand-600 px-5 text-[14px] font-semibold text-white shadow-premium-sm">
+                  {siteConfig.name}
+                </span>
               </div>
-            </SectionReveal>
-          ))}
+
+              {/* Connector */}
+              <div className="mx-auto h-10 w-px bg-border" />
+
+              {/* Feature grid — 3 columns */}
+              <div className="grid gap-px rounded-[20px] bg-border sm:grid-cols-3" style={{ border: "1px solid rgba(15,23,42,0.07)" }}>
+                {items.map((item) => {
+                  const Icon = item.icon
+                  return (
+                    <div key={item.title} className="bg-white p-6 first:rounded-tl-[20px] last:rounded-br-[20px] sm:[&:nth-child(3)]:rounded-tr-[20px] sm:[&:nth-child(4)]:rounded-bl-[20px]">
+                      <Icon className="h-5 w-5 text-brand-500" />
+                      <p className="mt-3 text-[14px] font-semibold text-ink">{item.title}</p>
+                      <p className="mt-1 text-[13px] leading-relaxed text-muted">{item.detail}</p>
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
+          </SectionReveal>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   )
 }

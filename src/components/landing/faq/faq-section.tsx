@@ -5,26 +5,35 @@ import { FAQStructuredData } from "./faq-structured-data"
 
 export function FAQSection() {
   return (
-    <section id="faq" className="px-6 py-24 lg:py-32">
+    <section id="faq" className="px-6 py-28 lg:py-36">
       <FAQStructuredData items={faqItems} />
 
-      <div className="mx-auto max-w-[800px]">
-        <SectionReveal>
-          <div className="text-center">
-            <h2
-              className="text-balance text-3xl font-bold text-ink sm:text-4xl lg:text-5xl"
-              style={{ letterSpacing: "-0.035em" }}
-            >
-              Preguntas frecuentes
-            </h2>
-            <p className="mt-4 text-lg text-muted">
-              Respuestas breves a lo que más nos preguntan.
-            </p>
-          </div>
-        </SectionReveal>
+      <div className="mx-auto max-w-[1280px]">
+        <div className="grid gap-12 lg:grid-cols-[340px_1fr] lg:gap-20">
+          {/* Left — headline */}
+          <SectionReveal>
+            <div className="lg:sticky lg:top-32">
+              <h2
+                className="text-ink"
+                style={{
+                  fontSize: "clamp(32px, 4vw, 48px)",
+                  fontWeight: 680,
+                  lineHeight: 1.08,
+                  letterSpacing: "-0.04em",
+                }}
+              >
+                Preguntas frecuentes
+              </h2>
+              <p className="mt-3 max-w-[300px] text-[16px] leading-relaxed text-muted">
+                Respuestas breves a lo que más nos preguntan.
+              </p>
+            </div>
+          </SectionReveal>
 
-        <div className="mt-12">
-          <FAQAccordion items={faqItems} />
+          {/* Right — accordion */}
+          <div>
+            <FAQAccordion items={faqItems} />
+          </div>
         </div>
       </div>
     </section>

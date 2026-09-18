@@ -1,157 +1,77 @@
 "use client"
 
 import { motion } from "motion/react"
-import {
-  MessageSquare,
-  Bot,
-  CalendarPlus,
-  CalendarCheck,
-  Bell,
-  BellRing,
-  FolderOpen,
-  Camera,
-  Mic,
-  CheckCircle2,
-} from "lucide-react"
 import { easeOutPremium } from "@/lib/motion/easings"
 
 const steps = [
-  {
-    time: "7:10 AM",
-    title: "Paciente escribe por WhatsApp",
-    description: "\"Hola, quisiera agendar una limpieza.\"",
-    icon: MessageSquare,
-    accent: "bg-emerald-100 text-emerald-600",
-  },
-  {
-    time: "7:10 AM",
-    title: "ClinicFlow AI responde",
-    description: "Consulta disponibilidad real y ofrece horarios.",
-    icon: Bot,
-    accent: "bg-brand-100 text-brand-600",
-  },
-  {
-    time: "7:12 AM",
-    title: "Cita agendada para las 3:00 PM",
-    description: "La agenda se actualiza automáticamente.",
-    icon: CalendarPlus,
-    accent: "bg-brand-100 text-brand-600",
-  },
-  {
-    time: "1:00 PM",
-    title: "Recordatorio automático enviado",
-    description: "Paciente recibe WhatsApp de confirmación.",
-    icon: Bell,
-    accent: "bg-amber-100 text-amber-600",
-  },
-  {
-    time: "2:00 PM",
-    title: "Paciente confirma asistencia",
-    description: "Estado de la cita actualizado.",
-    icon: CalendarCheck,
-    accent: "bg-emerald-100 text-emerald-600",
-  },
-  {
-    time: "2:55 PM",
-    title: "Doctor recibe notificación",
-    description: "Push notification en la app móvil.",
-    icon: BellRing,
-    accent: "bg-violet-100 text-violet-600",
-  },
-  {
-    time: "3:00 PM",
-    title: "Doctor abre expediente",
-    description: "Historia clínica, odontograma e imágenes listos.",
-    icon: FolderOpen,
-    accent: "bg-brand-100 text-brand-600",
-  },
-  {
-    time: "3:35 PM",
-    title: "Toma fotografías clínicas",
-    description: "Documentación visual desde el teléfono.",
-    icon: Camera,
-    accent: "bg-pink-100 text-pink-600",
-  },
-  {
-    time: "3:38 PM",
-    title: "Dicta nota clínica",
-    description: "Voz convertida en nota lista para revisar.",
-    icon: Mic,
-    accent: "bg-red-100 text-red-600",
-  },
-  {
-    time: "3:40 PM",
-    title: "Consulta terminada",
-    description: "Expediente actualizado. Todo conectado.",
-    icon: CheckCircle2,
-    accent: "bg-accent/15 text-accent-dark",
-  },
+  { time: "07:10", event: "Paciente escribe.", detail: "WhatsApp con consulta de disponibilidad." },
+  { time: "07:11", event: "ClinicFlow AI responde.", detail: "Consulta horarios y ofrece opciones." },
+  { time: "07:12", event: "La cita queda agendada.", detail: "Agenda actualizada automáticamente." },
+  { time: "14:00", event: "Paciente recibe recordatorio.", detail: "WhatsApp automático de confirmación." },
+  { time: "14:55", event: "Doctor recibe push.", detail: "Notificación en la app móvil." },
+  { time: "15:00", event: "Abre expediente.", detail: "Historia, odontograma e imágenes listos." },
+  { time: "15:35", event: "Captura fotografías.", detail: "Documentación visual desde el teléfono." },
+  { time: "15:38", event: "Dicta la nota.", detail: "Voz convertida en nota clínica." },
+  { time: "15:40", event: "Expediente actualizado.", detail: "Todo conectado. Consulta completa." },
 ] as const
 
-const cardVariant = {
+const itemVariant = {
   hidden: { opacity: 0, y: 16 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.45, ease: easeOutPremium },
-  },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: easeOutPremium } },
 }
 
-/**
- * Day timeline using Motion inView reveals.
- * Future: GSAP ScrollTrigger pinned version for desktop (PEND-10 / Sprint 6+).
- */
 export function DayTimelineSteps() {
   return (
     <div className="relative mx-auto max-w-[640px]">
-      {/* Vertical line */}
+      {/* Growing vertical line */}
       <div
-        className="absolute left-5 top-0 bottom-0 w-px bg-border-light sm:left-1/2 sm:-translate-x-px"
+        className="absolute left-[60px] top-0 bottom-0 w-px sm:left-[72px]"
+        style={{ background: "linear-gradient(to bottom, rgba(45,212,191,0.4), rgba(7,156,251,0.2), transparent)" }}
         aria-hidden="true"
       />
 
-      <div className="space-y-6 sm:space-y-8">
-        {steps.map((step, i) => {
-          const Icon = step.icon
-          const isEven = i % 2 === 0
-
-          return (
-            <motion.div
-              key={i}
-              variants={cardVariant}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-60px" }}
-              className={`relative flex items-start gap-4 pl-12 sm:pl-0 ${
-                isEven
-                  ? "sm:flex-row sm:pr-[calc(50%+24px)]"
-                  : "sm:flex-row-reverse sm:pl-[calc(50%+24px)]"
-              }`}
+      <div className="space-y-10">
+        {steps.map((step, i) => (
+          <motion.div
+            key={i}
+            variants={itemVariant}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-40px" }}
+            className="flex items-start gap-5 sm:gap-6"
+          >
+            {/* Time */}
+            <span
+              className="w-[48px] shrink-0 pt-1 text-right font-mono text-[14px] tabular-nums sm:w-[56px]"
+              style={{ color: "rgba(255,255,255,0.4)" }}
             >
-              {/* Icon dot — mobile: absolute left, desktop: absolute center */}
-              <div
-                className={`absolute left-2.5 top-0 z-10 flex h-5 w-5 items-center justify-center sm:left-1/2 sm:-translate-x-1/2`}
-              >
-                <div
-                  className={`flex h-10 w-10 items-center justify-center rounded-full ${step.accent}`}
-                >
-                  <Icon className="h-4 w-4" />
-                </div>
-              </div>
+              {step.time}
+            </span>
 
-              {/* Card */}
-              <div className="w-full rounded-[14px] border border-border-light bg-white p-4 shadow-sm">
-                <p className="mb-1 text-xs font-semibold tabular-nums text-muted">
-                  {step.time}
-                </p>
-                <p className="text-sm font-semibold text-ink">{step.title}</p>
-                <p className="mt-0.5 text-sm text-muted">
-                  {step.description}
-                </p>
-              </div>
-            </motion.div>
-          )
-        })}
+            {/* Dot */}
+            <div className="relative mt-2 flex shrink-0">
+              <span className="h-3 w-3 rounded-full" style={{ background: i === steps.length - 1 ? "#2DD4BF" : "rgba(7,156,251,0.5)", boxShadow: i === steps.length - 1 ? "0 0 12px rgba(45,212,191,0.4)" : "none" }} />
+            </div>
+
+            {/* Content */}
+            <div>
+              <p
+                className="text-white"
+                style={{
+                  fontSize: "clamp(22px, 3.5vw, 36px)",
+                  fontWeight: 650,
+                  lineHeight: 1.15,
+                  letterSpacing: "-0.03em",
+                }}
+              >
+                {step.event}
+              </p>
+              <p className="mt-1 text-[14px]" style={{ color: "rgba(255,255,255,0.4)" }}>
+                {step.detail}
+              </p>
+            </div>
+          </motion.div>
+        ))}
       </div>
     </div>
   )
