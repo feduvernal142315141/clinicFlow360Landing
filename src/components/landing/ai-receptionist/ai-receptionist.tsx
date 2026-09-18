@@ -26,8 +26,8 @@ export function AIReceptionist() {
         className="relative overflow-hidden px-6"
         style={{
           background: "#061525",
-          paddingTop: 160,
-          paddingBottom: 160,
+          paddingTop: 120,
+          paddingBottom: 100,
         }}
       >
         {/* Radial illumination */}
@@ -111,13 +111,8 @@ export function AIReceptionist() {
         </div>
       </section>
 
-      {/* Transition region dark → light */}
-      <div
-        style={{
-          height: 100,
-          background: "linear-gradient(to bottom, #061525, #F8FAFC)",
-        }}
-      />
+      {/* Transition dark → light */}
+      <div style={{ height: 80, background: "linear-gradient(to bottom, #061525, #0a1e30 40%, #F8FAFC)" }} />
     </>
   )
 }

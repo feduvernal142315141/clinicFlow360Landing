@@ -20,9 +20,9 @@ export function BrowserMockup() {
       {/* Browser chrome */}
       <div className="flex h-[44px] items-center gap-2 border-b px-4" style={{ background: "#FBFCFE", borderColor: "#EEF2F6" }}>
         <div className="flex gap-1.5">
-          <div className="h-[10px] w-[10px] rounded-full" style={{ background: "#CBD5E1" }} />
-          <div className="h-[10px] w-[10px] rounded-full" style={{ background: "#CBD5E1" }} />
-          <div className="h-[10px] w-[10px] rounded-full" style={{ background: "#CBD5E1" }} />
+          <div className="h-[10px] w-[10px] rounded-full" style={{ background: "#D4DAE3" }} />
+          <div className="h-[10px] w-[10px] rounded-full" style={{ background: "#D4DAE3" }} />
+          <div className="h-[10px] w-[10px] rounded-full" style={{ background: "#D4DAE3" }} />
         </div>
         <div className="ml-4 flex-1 rounded-md bg-white px-3 py-1.5 text-[12px] text-muted" style={{ border: "1px solid #EEF2F6" }}>
           app.clinicflow360.com/agenda

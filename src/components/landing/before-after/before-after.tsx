@@ -12,7 +12,7 @@ const BeforeAfterSlider = dynamic(() =>
 
 export function BeforeAfter() {
   return (
-    <section className="px-6 py-28 lg:py-36">
+    <section className="px-6 py-20 lg:py-28">
       <div className="mx-auto max-w-[1280px]">
         <SectionReveal>
           <div className="mx-auto max-w-[850px] text-center">

@@ -19,7 +19,7 @@ export function DayTimeline() {
   return (
     <>
       {/* Transition light → dark */}
-      <div style={{ height: 100, background: "linear-gradient(to bottom, #FFFFFF, #061525)" }} />
+      <div style={{ height: 80, background: "linear-gradient(to bottom, #FFFFFF, #0a1e30 60%, #061525)" }} />
 
       <section
         className="relative overflow-hidden px-6"

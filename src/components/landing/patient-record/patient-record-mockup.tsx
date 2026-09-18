@@ -25,9 +25,9 @@ export function PatientRecordMockup() {
       {/* Browser chrome */}
       <div className="flex items-center gap-2 border-b border-border-light bg-surface-soft px-4 py-3">
         <div className="flex gap-1.5">
-          <div className="h-3 w-3 rounded-full bg-red-400/60" />
-          <div className="h-3 w-3 rounded-full bg-yellow-400/60" />
-          <div className="h-3 w-3 rounded-full bg-green-400/60" />
+          <div className="h-[10px] w-[10px] rounded-full" style={{ background: "#D4DAE3" }} />
+          <div className="h-[10px] w-[10px] rounded-full" style={{ background: "#D4DAE3" }} />
+          <div className="h-[10px] w-[10px] rounded-full" style={{ background: "#D4DAE3" }} />
         </div>
         <div className="ml-4 flex-1 rounded-md bg-surface px-3 py-1 text-xs text-muted">
           app.clinicflow360.com/pacientes/andrea-martinez

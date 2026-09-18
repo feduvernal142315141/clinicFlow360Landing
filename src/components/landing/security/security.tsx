@@ -15,7 +15,7 @@ export function Security() {
   return (
     <>
       {/* Transition dark → light */}
-      <div style={{ height: 100, background: "linear-gradient(to bottom, #061525, #FFFFFF)" }} />
+      <div style={{ height: 80, background: "linear-gradient(to bottom, #061525, #0a1e30 40%, #FFFFFF)" }} />
 
       <section className="px-6 py-20 lg:py-28">
         <div className="mx-auto max-w-[1280px]">

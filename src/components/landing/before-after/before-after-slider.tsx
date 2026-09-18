@@ -84,35 +84,48 @@ export function BeforeAfterSlider() {
       onKeyDown={onKeyDown}
     >
       {/* "After" layer — full width behind */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-brand-50 to-brand-100">
-        <div className="rounded-[14px] bg-white p-4 shadow-lg">
-          <div className="mb-2 flex items-center gap-2">
-            <div className="h-3 w-3 rounded-full bg-accent" />
-            <span className="text-xs font-semibold text-accent-dark">
-              Después
-            </span>
+      <div className="absolute inset-0 bg-gradient-to-br from-emerald-50 via-white to-brand-50">
+        {/* Simulated clinical photo result */}
+        <div className="flex h-full items-center justify-center p-8">
+          <div className="w-full max-w-[400px] rounded-[18px] bg-white p-6 shadow-lg sm:max-w-[480px]" style={{ border: "1px solid rgba(15,23,42,0.06)" }}>
+            <div className="mb-3 flex items-center gap-2">
+              <div className="h-3 w-3 rounded-full bg-accent" />
+              <span className="text-[13px] font-semibold text-accent-dark">Después — Tratamiento completado</span>
+            </div>
+            <div className="grid grid-cols-3 gap-2">
+              <div className="aspect-square rounded-xl bg-gradient-to-br from-emerald-100 to-emerald-50" />
+              <div className="aspect-square rounded-xl bg-gradient-to-br from-accent/15 to-brand-50" />
+              <div className="aspect-square rounded-xl bg-gradient-to-br from-brand-50 to-emerald-50" />
+            </div>
+            <div className="mt-3 flex items-center justify-between">
+              <span className="text-[11px] text-muted">Sofía López · Ortodoncia</span>
+              <span className="rounded-md bg-emerald-50 px-2 py-0.5 text-[10px] font-semibold text-emerald-600">Completado</span>
+            </div>
           </div>
-          <div className="h-20 w-32 rounded-lg bg-gradient-to-r from-white to-accent/20 sm:h-24 sm:w-40" />
-          <p className="mt-2 text-center text-[10px] text-muted">
-            Tratamiento completado
-          </p>
         </div>
       </div>
 
       {/* "Before" layer — clipped */}
       <div
-        className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200"
+        className="absolute inset-0 bg-gradient-to-br from-gray-100 via-gray-50 to-slate-100"
         style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
       >
-        <div className="rounded-[14px] bg-white p-4 shadow-lg">
-          <div className="mb-2 flex items-center gap-2">
-            <div className="h-3 w-3 rounded-full bg-muted-light" />
-            <span className="text-xs font-semibold text-muted">Antes</span>
+        <div className="flex h-full items-center justify-center p-8">
+          <div className="w-full max-w-[400px] rounded-[18px] bg-white p-6 shadow-lg sm:max-w-[480px]" style={{ border: "1px solid rgba(15,23,42,0.06)" }}>
+            <div className="mb-3 flex items-center gap-2">
+              <div className="h-3 w-3 rounded-full bg-muted-light" />
+              <span className="text-[13px] font-semibold text-muted">Antes — Diagnóstico inicial</span>
+            </div>
+            <div className="grid grid-cols-3 gap-2">
+              <div className="aspect-square rounded-xl bg-gradient-to-br from-gray-200 to-gray-100" />
+              <div className="aspect-square rounded-xl bg-gradient-to-br from-gray-150 to-slate-100" />
+              <div className="aspect-square rounded-xl bg-gradient-to-br from-slate-200 to-gray-100" />
+            </div>
+            <div className="mt-3 flex items-center justify-between">
+              <span className="text-[11px] text-muted">Sofía López · Ortodoncia</span>
+              <span className="rounded-md bg-amber-50 px-2 py-0.5 text-[10px] font-semibold text-amber-600">En tratamiento</span>
+            </div>
           </div>
-          <div className="h-20 w-32 rounded-lg bg-gradient-to-r from-gray-200 to-gray-300 sm:h-24 sm:w-40" />
-          <p className="mt-2 text-center text-[10px] text-muted">
-            Diagnóstico inicial
-          </p>
         </div>
       </div>
 
