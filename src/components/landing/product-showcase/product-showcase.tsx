@@ -18,7 +18,7 @@ export function ProductShowcase() {
             <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.12em] text-brand-600 sm:text-xs">
               Plataforma Todo en Uno
             </p>
-            <h2 className="headline-section text-balance text-[28px] sm:text-[36px] lg:text-[42px]">
+            <h2 className="headline-section text-balance text-ink text-[28px] sm:text-[36px] lg:text-[42px]">
               Todo lo que ocurre en tu clínica, conectado en tiempo real.
             </h2>
             <p className="mt-4 text-[15px] text-muted sm:text-base">

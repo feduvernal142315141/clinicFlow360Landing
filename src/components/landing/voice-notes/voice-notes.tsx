@@ -12,7 +12,7 @@ export function VoiceNotes() {
                 <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-50 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.1em] text-brand-700">
                   Dictado Inteligente Clínico
                 </div>
-                <h2 className="headline-section text-balance text-[26px] sm:text-[32px] lg:text-[38px]">
+                <h2 className="headline-section text-balance text-ink text-[26px] sm:text-[32px] lg:text-[38px]">
                   Termina la consulta sin terminar haciendo papeleo.
                 </h2>
                 <p className="mt-4 text-[14px] leading-relaxed text-muted sm:text-[15px]">

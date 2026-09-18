@@ -16,7 +16,7 @@ export function Security() {
             <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.12em] text-brand-600 sm:text-xs">
               Seguridad &amp; Cumplimiento Clínico
             </p>
-            <h2 className="headline-section text-balance text-[26px] sm:text-[34px] lg:text-[40px]">
+            <h2 className="headline-section text-balance text-ink text-[26px] sm:text-[34px] lg:text-[40px]">
               La información de tus pacientes merece el mismo cuidado que ellos.
             </h2>
           </div>

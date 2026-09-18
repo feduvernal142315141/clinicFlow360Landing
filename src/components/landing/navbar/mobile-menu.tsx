@@ -68,7 +68,7 @@ export function MobileMenu() {
           <a
             href={navActions.cta.href}
             onClick={() => setOpen(false)}
-            className="inline-flex h-11 items-center justify-center rounded-[10px] bg-brand-600 px-5 text-base font-medium text-white transition-all hover:bg-brand-700"
+            className="btn-primary inline-flex h-11 items-center justify-center rounded-full px-5 text-base font-semibold"
           >
             {navActions.cta.label}
           </a>

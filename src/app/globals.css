@@ -138,12 +138,11 @@
   color: var(--color-ink);
 }
 
-/* Headline — section level */
+/* Headline — section level (color set per component) */
 .headline-section {
   font-weight: 700;
   letter-spacing: -0.045em;
   line-height: 1.04;
-  color: var(--color-ink);
 }
 
 /* ═══════════════════════════════════════════════════

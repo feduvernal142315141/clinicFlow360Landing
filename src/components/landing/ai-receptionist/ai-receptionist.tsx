@@ -23,7 +23,7 @@ export function AIReceptionist() {
                 <span className="h-2 w-2 rounded-full bg-brand-400" />
                 ClinicFlow AI Receptionist
               </div>
-              <h2 className="headline-section text-balance mt-4 text-[28px] leading-tight text-white sm:text-[36px] lg:text-[44px]">
+              <h2 className="text-balance mt-4 text-[28px] font-black leading-tight tracking-tight text-white sm:text-[36px] lg:text-[44px]">
                 Una recepcionista que nunca deja a un paciente esperando.
               </h2>
               <p className="mt-4 text-[15px] leading-relaxed text-slate-300 sm:text-base">

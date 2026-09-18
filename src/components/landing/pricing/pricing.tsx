@@ -10,7 +10,7 @@ export function Pricing() {
             <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.12em] text-brand-600 sm:text-xs">
               Planes Transparentes
             </p>
-            <h2 className="headline-section text-balance text-[28px] sm:text-[36px] lg:text-[42px]">
+            <h2 className="headline-section text-balance text-ink text-[28px] sm:text-[36px] lg:text-[42px]">
               Comienza hoy con 14 días gratis. Sin tarjeta.
             </h2>
             <p className="mt-4 text-[15px] text-muted sm:text-base">
