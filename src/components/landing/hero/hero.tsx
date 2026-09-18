@@ -5,47 +5,32 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="bg-noise relative overflow-hidden pt-[72px]"
+      className="bg-noise relative overflow-hidden"
       style={{
+        paddingTop: 76, /* navbar height */
         background: `
-          radial-gradient(circle at 50% 25%, rgba(7,156,251,0.10), transparent 35%),
-          radial-gradient(circle at 75% 60%, rgba(45,212,191,0.05), transparent 30%),
+          radial-gradient(ellipse 70% 50% at 50% 30%, rgba(7,156,251,0.12), transparent),
+          radial-gradient(ellipse 40% 40% at 72% 60%, rgba(45,212,191,0.06), transparent),
           #FAFCFF
         `,
       }}
     >
-      {/* Grid pattern behind product stage */}
-      <div
-        className="pointer-events-none absolute inset-0"
-        aria-hidden="true"
-        style={{
-          backgroundImage: `
-            linear-gradient(rgba(3,126,204,0.035) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(3,126,204,0.035) 1px, transparent 1px)
-          `,
-          backgroundSize: "56px 56px",
-          maskImage: "linear-gradient(to bottom, transparent 10%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0.4) 70%, transparent 100%)",
-          WebkitMaskImage: "linear-gradient(to bottom, transparent 10%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0.4) 70%, transparent 100%)",
-        }}
-      />
+      {/* Grid pattern — centered, faded */}
+      <div className="bg-grid bg-grid-fade pointer-events-none absolute inset-0 hidden sm:block" aria-hidden="true" />
 
-      <div className="relative mx-auto max-w-[1280px] px-6 pb-0 pt-16 sm:pt-20 lg:pt-24">
+      {/* Content */}
+      <div className="relative z-10 px-5 pt-8 sm:px-6 sm:pt-12 lg:pt-16">
         <HeroCopy />
 
-        {/* Product Stage */}
-        <div className="mt-16 sm:mt-20 lg:mt-[72px]">
+        {/* Product stage — compact gap */}
+        <div className="mt-10 pb-8 sm:mt-12 sm:pb-12 lg:mt-14 lg:pb-0">
           <HeroProductDemo />
         </div>
       </div>
 
-      {/* Bottom glow behind product stage */}
-      <div
-        className="pointer-events-none absolute bottom-0 left-1/2 h-[400px] w-[800px] -translate-x-1/2"
-        aria-hidden="true"
-        style={{
-          background: "radial-gradient(circle, rgba(7,156,251,0.13), transparent 60%)",
-          filter: "blur(100px)",
-        }}
+      {/* Bottom glow */}
+      <div className="pointer-events-none absolute bottom-0 left-1/2 h-[250px] w-[600px] -translate-x-1/2 sm:h-[350px] sm:w-[800px]" aria-hidden="true"
+        style={{ background: "radial-gradient(circle, rgba(7,156,251,0.12), transparent 55%)", filter: "blur(80px)" }}
       />
     </section>
   )
