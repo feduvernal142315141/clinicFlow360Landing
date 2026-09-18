@@ -1,128 +1,69 @@
-import { Check, X } from "lucide-react"
 import { plans } from "@/data/pricing"
 import { SectionReveal } from "../section-reveal"
 
 export function Pricing() {
   return (
-    <section id="precios" className="px-6 py-28 lg:py-36" style={{ background: "#F8FAFC" }}>
-      <div className="mx-auto max-w-[1280px]">
+    <section id="precios" className="border-t border-slate-200 bg-white px-4 py-20 sm:px-6 lg:py-24">
+      <div className="mx-auto max-w-7xl">
         <SectionReveal>
-          <div className="mx-auto max-w-[850px] text-center">
-            <h2
-              className="text-balance text-ink"
-              style={{ fontSize: "clamp(36px, 5vw, 60px)", fontWeight: 680, lineHeight: 1.04, letterSpacing: "-0.04em" }}
-            >
-              Un plan para cada clínica.
-            </h2>
-            <p className="text-pretty mt-4 text-[18px] text-muted">
-              Empieza con lo esencial y crece cuando estés listo.
+          <div className="mx-auto mb-10 max-w-3xl text-center lg:mb-12">
+            <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.12em] text-brand-600 sm:text-xs">
+              Planes Transparentes
             </p>
+            <h2 className="headline-section text-balance text-[28px] sm:text-[36px] lg:text-[42px]">
+              Comienza hoy con 14 días gratis. Sin tarjeta.
+            </h2>
+            <p className="mt-4 text-[15px] text-muted sm:text-base">
+              Elige el plan que se adapte al tamaño actual de tu consulta y escala cuando lo necesites.
+            </p>
+            {/* Billing toggle */}
+            <div className="mt-6 inline-flex items-center gap-3 rounded-full border border-slate-200 bg-slate-100 p-1 text-[12px] font-semibold">
+              <span className="rounded-full bg-white px-3 py-1.5 font-bold text-ink shadow-sm">Facturación Mensual</span>
+              <span className="cursor-pointer px-3 py-1.5 text-muted hover:text-ink">
+                Anual <strong className="font-bold text-emerald-600">(Ahorra 20%)</strong>
+              </span>
+            </div>
           </div>
         </SectionReveal>
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-3">
-          {plans.map((plan) => {
-            const isDark = plan.highlighted
-
-            return (
-              <SectionReveal key={plan.slug}>
-                <div
-                  className="relative flex flex-col rounded-[24px] p-7"
-                  style={{
-                    background: isDark ? "#071525" : "#FFFFFF",
-                    border: isDark
-                      ? "1px solid rgba(7,156,251,0.35)"
-                      : "1px solid rgba(15,23,42,0.07)",
-                    boxShadow: isDark
-                      ? "0 30px 80px rgba(3,126,204,0.15)"
-                      : "0 12px 40px rgba(15,23,42,0.06)",
-                    minHeight: 560,
-                  }}
-                >
-                  {plan.badge && (
-                    <span className="absolute -top-3 left-7 inline-flex items-center rounded-full bg-brand-500 px-3 py-1 text-[11px] font-semibold text-white">
-                      {plan.badge}
-                    </span>
-                  )}
-
-                  <h3
-                    className="text-[18px] font-bold"
-                    style={{ color: isDark ? "#FFFFFF" : "#0F172A" }}
-                  >
-                    {plan.name}
-                  </h3>
-                  <p
-                    className="mt-1 text-[14px]"
-                    style={{ color: isDark ? "#94A3B8" : "#64748B" }}
-                  >
-                    {plan.description}
-                  </p>
-
-                  <div className="mt-6 border-b pb-6" style={{ borderColor: isDark ? "rgba(255,255,255,0.08)" : "#EEF2F6" }}>
-                    <span
-                      className="font-bold"
-                      style={{
-                        fontSize: 52,
-                        letterSpacing: "-0.04em",
-                        color: isDark ? "#FFFFFF" : "#0F172A",
-                      }}
-                    >
-                      {plan.price !== null ? `$${plan.price}` : "$XX"}
-                    </span>
-                    <span className="ml-1 text-[15px]" style={{ color: isDark ? "#94A3B8" : "#64748B" }}>
-                      / mes
-                    </span>
+        <div className="grid gap-6 lg:grid-cols-3 lg:gap-8">
+          {plans.map((plan) => (
+            <SectionReveal key={plan.slug}>
+              <div className={`relative flex flex-col justify-between rounded-3xl p-7 sm:p-8 ${
+                plan.highlighted
+                  ? "border-2 border-brand-600 bg-brand-50/40 shadow-xl"
+                  : "border border-slate-200 bg-white"
+              }`}>
+                {plan.badge && (
+                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-brand-600 px-3 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white">
+                    {plan.badge}
                   </div>
-
-                  <ul className="mt-6 flex-1 space-y-3">
+                )}
+                <div>
+                  <div className="text-[17px] font-bold text-ink">{plan.name}</div>
+                  <div className="mt-1 text-[12px] text-muted">{plan.description}</div>
+                  <div className="my-6">
+                    <span className="text-[36px] font-black text-ink">${plan.price}</span>
+                    <span className="text-[14px] font-medium text-muted">/mes</span>
+                  </div>
+                  <ul className="space-y-3 text-[12px] text-slate-700 sm:text-[13px]">
                     {plan.features.map((f) => (
-                      <li key={f.name} className="flex items-center gap-2.5">
-                        {f.included ? (
-                          <Check className="h-4 w-4 shrink-0" style={{ color: isDark ? "#2DD4BF" : "#037ECC" }} />
-                        ) : (
-                          <X className="h-4 w-4 shrink-0" style={{ color: isDark ? "rgba(255,255,255,0.2)" : "#CBD5E1" }} />
-                        )}
-                        <span
-                          className="text-[14px]"
-                          style={{
-                            color: f.included
-                              ? isDark ? "rgba(255,255,255,0.85)" : "#0F172A"
-                              : isDark ? "rgba(255,255,255,0.25)" : "#CBD5E1",
-                          }}
-                        >
-                          {f.name}
-                        </span>
+                      <li key={f.name} className={`flex items-center gap-2.5 ${!f.included ? "text-muted-light" : ""}`}>
+                        {f.included ? "✓" : "✕"} {f.name}
                       </li>
                     ))}
                   </ul>
-
-                  <div className="mt-8">
-                    <a
-                      href="#"
-                      className="inline-flex h-[48px] w-full items-center justify-center rounded-[12px] text-[15px] font-semibold transition-all duration-200 hover:-translate-y-0.5"
-                      style={
-                        isDark
-                          ? {
-                              background: "linear-gradient(180deg, #079CFB 0%, #037ECC 100%)",
-                              color: "#FFFFFF",
-                              border: "1px solid rgba(255,255,255,0.15)",
-                              boxShadow: "0 8px 24px rgba(3,126,204,0.30)",
-                            }
-                          : {
-                              background: "#FFFFFF",
-                              color: "#0F172A",
-                              border: "1px solid #E2E8F0",
-                              boxShadow: "0 2px 8px rgba(15,23,42,0.06)",
-                            }
-                      }
-                    >
-                      Probar gratis
-                    </a>
-                  </div>
                 </div>
-              </SectionReveal>
-            )
-          })}
+                <button className={`mt-8 w-full rounded-full py-3 text-[13px] font-semibold transition sm:text-[14px] ${
+                  plan.highlighted
+                    ? "bg-brand-600 text-white shadow-md shadow-brand-600/30 hover:bg-brand-700"
+                    : "border border-slate-300 text-slate-800 hover:bg-slate-50"
+                }`}>
+                  {plan.ctaLabel}
+                </button>
+              </div>
+            </SectionReveal>
+          ))}
         </div>
       </div>
     </section>

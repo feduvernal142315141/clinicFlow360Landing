@@ -5,63 +5,35 @@ export interface FAQItem {
 
 export const faqItems: FAQItem[] = [
   {
+    question: "¿Cómo se conecta la recepcionista IA a nuestro WhatsApp?",
+    answer: "Utilizamos la API Oficial de WhatsApp Cloud (Meta). Puedes conservar el mismo número de teléfono de tu clínica. El asistente responde al instante y cuando tu equipo desee intervenir, puede tomar el control de la conversación con un solo clic.",
+  },
+  {
+    question: "¿Puedo migrar mis pacientes desde otro software dental o Excel?",
+    answer: "Sí. ClinicFlow360 incluye una herramienta de importación rápida de archivos CSV y Excel. Además, nuestro equipo de soporte técnico te asiste sin costo adicional en el plan Pro y Clínica AI.",
+  },
+  {
+    question: "¿Los doctores pueden usarlo en sus teléfonos personales de forma segura?",
+    answer: "Totalmente. La aplicación móvil de ClinicFlow360 no almacena fotografías en la galería personal del teléfono. Todas las capturas van encriptadas directo a la nube clínica.",
+  },
+  {
+    question: "¿Qué necesito para empezar los 14 días de prueba?",
+    answer: "Solo tu correo electrónico y el nombre de tu clínica. No solicitamos tarjetas de crédito ni compromisos de permanencia.",
+  },
+  {
     question: "¿ClinicFlow360 funciona con un solo doctor?",
-    answer:
-      "Sí. Funciona para consultorios de un solo profesional y también para clínicas con múltiples doctores.",
+    answer: "Sí. El plan Esencial está diseñado para consultorios de un solo profesional. Cuando crezcas puedes escalar sin perder datos.",
   },
   {
-    question: "¿Puedo administrar varios doctores?",
-    answer:
-      "Sí. Puedes registrar múltiples doctores, asignarles roles y permisos, y gestionar sus agendas de forma independiente.",
+    question: "¿La recepcionista IA puede agendar, cancelar y reagendar citas?",
+    answer: "Sí. Consulta la disponibilidad real de tus doctores y sillones, agenda citas directamente, y permite al paciente cancelar o cambiar su cita sin intervención humana.",
   },
   {
-    question: "¿Existe app móvil?",
-    answer:
-      "Sí. La app móvil está disponible para iOS y Android, diseñada para que los doctores consulten su agenda, accedan a pacientes y documenten tratamientos desde cualquier lugar.",
+    question: "¿Cómo funciona el dictado por voz para notas clínicas?",
+    answer: "El doctor dicta con su voz desde la app. La IA transcribe, estructura la nota con nomenclatura médica y la archiva en el expediente del paciente lista para revisión y firma.",
   },
   {
-    question: "¿Qué puede hacer la recepcionista IA?",
-    answer:
-      "Conversa de forma natural por WhatsApp, consulta disponibilidad real, agenda, cancela y reagenda citas, responde preguntas frecuentes y opera 24/7.",
-  },
-  {
-    question: "¿Puede agendar citas?",
-    answer:
-      "Sí. Tanto la recepcionista IA como la plataforma web y la app móvil permiten agendar citas consultando disponibilidad en tiempo real.",
-  },
-  {
-    question: "¿Puede cancelar y reagendar?",
-    answer:
-      "Sí. La recepcionista IA y la plataforma permiten cancelar y reagendar citas respetando las políticas configuradas por la clínica.",
-  },
-  {
-    question: "¿Cómo funcionan los recordatorios?",
-    answer:
-      "Se envían automáticamente por WhatsApp según los tiempos que configures. Por ejemplo, 24 horas y 2 horas antes de la cita.",
-  },
-  {
-    question: "¿Puedo importar pacientes?",
-    answer:
-      "Puedes registrar pacientes manualmente desde la plataforma. La importación masiva desde archivos está en el roadmap.",
-  },
-  {
-    question: "¿Mis datos están seguros?",
-    answer:
-      "Sí. Usamos cifrado en tránsito y en reposo, control de acceso por roles, aislamiento por clínica y registros de auditoría.",
-  },
-  {
-    question: "¿Necesito instalar algo?",
-    answer:
-      "La plataforma web funciona directamente en el navegador. Solo la app móvil para doctores requiere instalación.",
-  },
-  {
-    question: "¿Puedo cancelar la suscripción?",
-    answer:
-      "Sí. Puedes cancelar en cualquier momento desde la configuración de tu cuenta.",
-  },
-  {
-    question: "¿Puedo probar antes de pagar?",
-    answer:
-      "Sí. Ofrecemos un período de prueba para que conozcas la plataforma antes de comprometerte.",
+    question: "¿Puedo cancelar la suscripción en cualquier momento?",
+    answer: "Sí. No hay contratos de permanencia. Puedes cancelar desde la configuración de tu cuenta cuando lo desees.",
   },
 ]

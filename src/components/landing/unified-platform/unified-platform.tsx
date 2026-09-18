@@ -1,117 +1,72 @@
-import {
-  Calendar,
-  Smartphone,
-  Users,
-  ImageIcon,
-  FileText,
-  Bell,
-  ArrowRight,
-} from "lucide-react"
-import { siteConfig } from "@/lib/config"
 import { SectionReveal } from "../section-reveal"
 
 const beforeItems = [
-  { label: "Agenda", tool: "Herramienta 1", icon: Calendar },
-  { label: "WhatsApp", tool: "Teléfono personal", icon: Smartphone },
-  { label: "Pacientes", tool: "Otro software", icon: Users },
-  { label: "Fotos", tool: "Galería del celular", icon: ImageIcon },
-  { label: "Notas", tool: "Papel / teclado", icon: FileText },
-  { label: "Recordatorios", tool: "Recepción manual", icon: Bell },
+  { title: "Agenda en papel o Google Calendar aislado", detail: "Citas encimadas, cancelaciones sin previo aviso y huecos vacíos en horas pico." },
+  { title: "WhatsApp en un único celular de recepción", detail: "Mensajes de pacientes acumulados por horas, fines de semana desatendidos." },
+  { title: "Fotos clínicas perdidas en el teléfono de los doctores", detail: "Riesgo de privacidad y dificultad para mostrar avances reales a los pacientes." },
+  { title: "Papeleo manual al final de una jornada agotadora", detail: "Doctores perdiendo 1 a 2 horas escribiendo notas de evolución manualmente." },
 ] as const
 
-const afterGroups = [
-  {
-    title: "Clínica",
-    items: ["Agenda", "Pacientes", "Odontograma"],
-  },
-  {
-    title: "Doctor móvil",
-    items: ["Citas", "Fotos", "Voz"],
-  },
-  {
-    title: "Paciente",
-    items: ["WhatsApp", "Reservas", "Recordatorios"],
-  },
+const afterItems = [
+  { title: "Agenda inteligente que se auto-gestiona", detail: "Sincronizada por doctor, gabinete y duración de procedimiento en tiempo real." },
+  { title: "Recepción IA activa 24 horas por WhatsApp oficial", detail: "Responde en 5 segundos, agenda citas directamente y envía recordatorios automáticos." },
+  { title: "App para doctores con odontograma y fotos seguras", detail: "Captura fotos desde el gabinete y se asocian directo a la historia clínica del paciente." },
+  { title: "Dictado por voz IA estructurado automáticamente", detail: "El doctor dicta el procedimiento en 20 segundos y la nota queda redactada y archivada." },
 ] as const
 
 export function UnifiedPlatform() {
   return (
-    <section className="px-6 py-24 lg:py-32">
-      <div className="mx-auto max-w-[1280px]">
+    <section className="border-b border-slate-200 bg-white px-4 py-20 sm:px-6 lg:py-24">
+      <div className="mx-auto max-w-7xl">
         <SectionReveal>
-          <div className="mx-auto max-w-[720px] text-center">
-            <h2
-              className="text-balance text-3xl font-bold text-ink sm:text-4xl lg:text-5xl"
-              style={{ letterSpacing: "-0.035em" }}
-            >
-              Administrar una clínica no debería requerir cinco herramientas.
-            </h2>
-            <p className="text-pretty mt-4 text-lg text-muted">
-              Agenda, mensajes, expedientes, imágenes y seguimiento deberían
-              trabajar juntos, no vivir en sistemas separados.
+          <div className="mx-auto mb-12 max-w-3xl text-center lg:mb-16">
+            <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.12em] text-brand-600 sm:text-xs">
+              Evolución Clínica
             </p>
+            <h2 className="headline-section text-balance text-[26px] sm:text-[34px] lg:text-[40px]">
+              Administrar una clínica no debería requerir cinco herramientas desconectadas.
+            </h2>
           </div>
         </SectionReveal>
 
-        {/* Before / After comparison */}
-        <div className="mt-16 grid gap-8 lg:grid-cols-2">
+        <div className="grid gap-6 md:grid-cols-2 lg:gap-10">
           {/* BEFORE */}
           <SectionReveal>
-            <div className="rounded-[20px] border border-border-light bg-white p-6 sm:p-8">
-              <p className="mb-6 text-xs font-semibold uppercase tracking-widest text-muted">
-                Antes
-              </p>
-              <div className="space-y-3">
-                {beforeItems.map((item) => (
-                  <div
-                    key={item.label}
-                    className="flex items-center gap-3 rounded-[10px] bg-red-50/60 px-4 py-3"
-                  >
-                    <item.icon className="h-4 w-4 shrink-0 text-red-400" />
-                    <span className="flex-1 text-sm font-medium text-ink">
-                      {item.label}
-                    </span>
-                    <ArrowRight className="h-3.5 w-3.5 shrink-0 text-muted-light" />
-                    <span className="text-sm text-muted">{item.tool}</span>
-                  </div>
-                ))}
+            <div className="rounded-3xl border border-slate-200 bg-slate-50 p-7 sm:p-8">
+              <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-red-100 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.1em] text-red-700">
+                El modelo fragmentado tradicional
               </div>
+              <ul className="space-y-5">
+                {beforeItems.map((item) => (
+                  <li key={item.title} className="flex items-start gap-3.5">
+                    <div className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-200 text-[11px] font-bold text-red-700">✕</div>
+                    <div>
+                      <h4 className="text-[14px] font-bold text-ink">{item.title}</h4>
+                      <p className="mt-0.5 text-[12px] text-muted sm:text-[13px]">{item.detail}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
             </div>
           </SectionReveal>
 
           {/* AFTER */}
           <SectionReveal>
-            <div className="rounded-[20px] border border-brand-200 bg-brand-50/30 p-6 sm:p-8">
-              <p className="mb-6 text-xs font-semibold uppercase tracking-widest text-brand-600">
-                Con {siteConfig.name}
-              </p>
-              <div className="mb-6 text-center">
-                <span className="inline-flex items-center rounded-full bg-brand-600 px-4 py-1.5 text-sm font-semibold text-white">
-                  {siteConfig.name}
-                </span>
+            <div className="rounded-3xl border-2 border-brand-500 bg-brand-50/50 p-7 shadow-xl shadow-brand-500/10 sm:p-8">
+              <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-brand-600 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.1em] text-white">
+                Con ClinicFlow360
               </div>
-              <div className="grid grid-cols-3 gap-4">
-                {afterGroups.map((group) => (
-                  <div key={group.title} className="text-center">
-                    <p className="mb-2 text-sm font-semibold text-ink">
-                      {group.title}
-                    </p>
-                    <div className="space-y-1.5">
-                      {group.items.map((item) => (
-                        <p
-                          key={item}
-                          className="rounded-md bg-white px-2 py-1.5 text-xs font-medium text-brand-700 shadow-sm"
-                        >
-                          {item}
-                        </p>
-                      ))}
+              <ul className="space-y-5">
+                {afterItems.map((item) => (
+                  <li key={item.title} className="flex items-start gap-3.5">
+                    <div className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-600 text-[11px] font-bold text-white">✓</div>
+                    <div>
+                      <h4 className="text-[14px] font-bold text-ink">{item.title}</h4>
+                      <p className="mt-0.5 text-[12px] text-slate-600 sm:text-[13px]">{item.detail}</p>
                     </div>
-                  </div>
+                  </li>
                 ))}
-              </div>
-              <p className="mt-6 text-center text-sm font-semibold text-brand-700">
-                Una clínica. Un sistema. Todo conectado.
-              </p>
+              </ul>
             </div>
           </SectionReveal>
         </div>

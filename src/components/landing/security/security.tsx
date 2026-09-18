@@ -1,65 +1,41 @@
-import { Lock, ShieldCheck, Building2, FileSearch, DatabaseBackup, KeyRound } from "lucide-react"
-import { siteConfig } from "@/lib/config"
 import { SectionReveal } from "../section-reveal"
 
 const items = [
-  { icon: ShieldCheck, title: "Roles y permisos", detail: "Control granular por módulo y acción." },
-  { icon: Lock, title: "Cifrado", detail: "Datos protegidos en tránsito y en reposo." },
-  { icon: DatabaseBackup, title: "Backups", detail: "Respaldos automáticos de tu información." },
-  { icon: Building2, title: "Aislamiento", detail: "Cada clínica opera en un entorno separado." },
-  { icon: FileSearch, title: "Auditoría", detail: "Registro de cambios con trazabilidad." },
-  { icon: KeyRound, title: "Propiedad", detail: "Tus datos son tuyos. Exporta cuando quieras." },
+  { icon: "🔐", title: "Cifrado de grado médico", detail: "Encriptación AES-256 en reposo y en tránsito. Protocolos compatibles con normativas sanitarias." },
+  { icon: "💾", title: "Copias de seguridad cada hora", detail: "Tus historias clínicas, radiografías y odontogramas nunca se extraviarán ante fallos de hardware." },
+  { icon: "👥", title: "Permisos por roles", detail: "Recepción, especialistas y administradores solo acceden a la información correspondiente." },
+  { icon: "⚡", title: "Disponibilidad 99.98%", detail: "Infraestructura en la nube con redundancia para que tu clínica nunca se detenga." },
 ] as const
 
 export function Security() {
   return (
-    <>
-      {/* Transition dark → light */}
-      <div style={{ height: 80, background: "linear-gradient(to bottom, #061525, #0a1e30 40%, #FFFFFF)" }} />
+    <section className="bg-[#F8FAFC] px-4 py-20 sm:px-6 lg:py-24">
+      <div className="mx-auto max-w-7xl">
+        <SectionReveal>
+          <div className="mx-auto mb-12 max-w-2xl text-center lg:mb-14">
+            <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.12em] text-brand-600 sm:text-xs">
+              Seguridad &amp; Cumplimiento Clínico
+            </p>
+            <h2 className="headline-section text-balance text-[26px] sm:text-[34px] lg:text-[40px]">
+              La información de tus pacientes merece el mismo cuidado que ellos.
+            </h2>
+          </div>
+        </SectionReveal>
 
-      <section className="px-6 py-20 lg:py-28">
-        <div className="mx-auto max-w-[1280px]">
-          <SectionReveal>
-            <div className="mx-auto max-w-[850px] text-center">
-              <h2
-                className="text-balance text-ink"
-                style={{ fontSize: "clamp(32px, 4.5vw, 56px)", fontWeight: 680, lineHeight: 1.04, letterSpacing: "-0.04em" }}
-              >
-                Tus datos clínicos merecen una infraestructura seria.
-              </h2>
-            </div>
-          </SectionReveal>
-
-          {/* Diagram layout */}
-          <SectionReveal>
-            <div className="mx-auto mt-14 max-w-[900px]">
-              {/* Center node */}
-              <div className="flex justify-center">
-                <span className="inline-flex h-12 items-center rounded-full bg-brand-600 px-5 text-[14px] font-semibold text-white shadow-premium-sm">
-                  {siteConfig.name}
-                </span>
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {items.map((item) => (
+            <SectionReveal key={item.title}>
+              <div className="rounded-2xl border border-slate-200 bg-white p-6">
+                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-slate-100 text-lg font-bold text-slate-800">
+                  {item.icon}
+                </div>
+                <h4 className="text-[14px] font-bold text-ink sm:text-[15px]">{item.title}</h4>
+                <p className="mt-1 text-[12px] leading-relaxed text-muted">{item.detail}</p>
               </div>
-
-              {/* Connector */}
-              <div className="mx-auto h-10 w-px bg-border" />
-
-              {/* Feature grid — 3 columns */}
-              <div className="grid gap-px rounded-[20px] bg-border sm:grid-cols-3" style={{ border: "1px solid rgba(15,23,42,0.07)" }}>
-                {items.map((item) => {
-                  const Icon = item.icon
-                  return (
-                    <div key={item.title} className="bg-white p-6 first:rounded-tl-[20px] last:rounded-br-[20px] sm:[&:nth-child(3)]:rounded-tr-[20px] sm:[&:nth-child(4)]:rounded-bl-[20px]">
-                      <Icon className="h-5 w-5 text-brand-500" />
-                      <p className="mt-3 text-[14px] font-semibold text-ink">{item.title}</p>
-                      <p className="mt-1 text-[13px] leading-relaxed text-muted">{item.detail}</p>
-                    </div>
-                  )
-                })}
-              </div>
-            </div>
-          </SectionReveal>
+            </SectionReveal>
+          ))}
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   )
 }
