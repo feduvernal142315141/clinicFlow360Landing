@@ -1,14 +1,31 @@
 import { SectionReveal } from "../section-reveal"
 
+const keywords = [
+  "Agenda",
+  "Pacientes",
+  "Odontograma",
+  "WhatsApp",
+  "App móvil",
+] as const
+
 export function SocialProof() {
   return (
-    <section className="border-y border-border-light bg-surface-soft px-6 py-12">
+    <section className="px-6 py-14">
       <div className="mx-auto max-w-[1280px]">
         <SectionReveal>
-          <p className="text-center text-sm font-medium tracking-wide text-muted">
-            Diseñado junto a profesionales de la salud dental
+          <p className="text-center text-[15px] text-muted">
+            Diseñado para clínicas que quieren dedicar menos tiempo a administrar.
           </p>
-          {/* Logos and metrics will be added when real data exists — PEND-08, PEND-09 */}
+          <div className="mt-5 flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
+            {keywords.map((kw, i) => (
+              <span key={kw} className="flex items-center gap-2">
+                <span className="text-[14px] font-medium text-ink/60">{kw}</span>
+                {i < keywords.length - 1 && (
+                  <span className="text-[14px] text-muted-light/50">·</span>
+                )}
+              </span>
+            ))}
+          </div>
         </SectionReveal>
       </div>
     </section>

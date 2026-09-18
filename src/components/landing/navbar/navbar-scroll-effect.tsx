@@ -8,7 +8,7 @@ function subscribeScroll(callback: () => void) {
 }
 
 function getScrolled() {
-  return window.scrollY > 24
+  return window.scrollY > 60
 }
 
 function getScrolledServer() {
@@ -28,29 +28,29 @@ export function NavbarScrollEffect({
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out"
-      style={
-        scrolled
-          ? {
-              top: 14,
-              left: "50%",
-              right: "auto",
-              transform: "translateX(-50%)",
-              width: "min(1180px, calc(100% - 32px))",
-              background: "rgba(255, 255, 255, 0.76)",
-              backdropFilter: "blur(18px)",
-              WebkitBackdropFilter: "blur(18px)",
-              border: "1px solid rgba(15, 23, 42, 0.06)",
-              boxShadow: "0 8px 30px rgba(15, 23, 42, 0.04)",
-              borderRadius: 20,
-            }
-          : {
-              background: "transparent",
-              border: "1px solid transparent",
-            }
-      }
+      className="fixed top-0 left-0 right-0 z-50"
+      style={{
+        transition: "background 300ms ease, border-color 300ms ease, box-shadow 300ms ease, height 250ms ease",
+        background: scrolled ? "rgba(250,252,255,0.82)" : "transparent",
+        backdropFilter: scrolled ? "blur(18px)" : "none",
+        WebkitBackdropFilter: scrolled ? "blur(18px)" : "none",
+        borderBottom: scrolled
+          ? "1px solid rgba(15,23,42,0.06)"
+          : "1px solid transparent",
+        boxShadow: scrolled
+          ? "0 8px 30px rgba(15,23,42,0.035)"
+          : "none",
+      }}
     >
-      {children}
+      <div
+        className="mx-auto flex items-center justify-between px-6 transition-all duration-250"
+        style={{
+          maxWidth: 1240,
+          height: scrolled ? 64 : 76,
+        }}
+      >
+        {children}
+      </div>
     </header>
   )
 }
