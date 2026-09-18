@@ -1,0 +1,1121 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="es" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>ClinicFlow360 | Software Odontológico Integral &amp; Recepcionista IA</title>
+<!-- Tailwind CSS v3 with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#F0F9FF',
+              100: '#E0F2FE',
+              500: '#0284C7',
+              600: '#037ECC',
+              700: '#0369A1',
+              800: '#075985',
+              900: '#0C4A6E',
+            },
+            slateDark: '#0B1329',
+            clinical: {
+              surface: '#F8FAFC',
+              border: '#E2E8F0',
+              text: '#0F172A',
+              muted: '#64748B'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+          },
+          boxShadow: {
+            'subtle': '0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.03)',
+            'premium': '0 20px 40px -15px rgba(2, 132, 199, 0.08), 0 0 1px 1px rgba(226, 232, 240, 0.8)',
+            'card-hover': '0 20px 30px -10px rgba(15, 23, 42, 0.08), 0 0 1px 1px rgba(226, 232, 240, 1)',
+            'phone': '0 25px 50px -12px rgba(15, 23, 42, 0.35)'
+          }
+        }
+      }
+    }
+  </script>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style data-purpose="custom-layout">
+    /* Subtle geometric grid background for hero */
+    .bg-grid-pattern {
+      background-size: 32px 32px;
+      background-image: 
+        linear-gradient(to right, rgba(2, 132, 199, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(2, 132, 199, 0.04) 1px, transparent 1px);
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 4px;
+      height: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 9999px;
+    }
+    /* Comparison slider clip-path */
+    .clip-half {
+      clip-path: inset(0 50% 0 0);
+    }
+  </style>
+</head>
+<body class="bg-[#F8FAFC] text-slate-900 font-sans antialiased selection:bg-brand-500 selection:text-white">
+<!-- BEGIN: StickyNavBar -->
+<header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/80 transition-all">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+<!-- Brand Logo -->
+<a class="flex items-center gap-3 focus:outline-none focus:ring-2 focus:ring-brand-600 rounded-lg p-1" href="#">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-700 via-brand-600 to-sky-400 flex items-center justify-center shadow-md shadow-brand-500/20 text-white font-bold">
+<!-- Dental Flow Emblem SVG -->
+<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewBox="0 0 24 24">
+<path d="M12 2C8.5 2 6 4.5 6 8c0 3.5 1.5 6 3 9 1 2 1.5 5 3 5s2-3 3-5c1.5-3 3-5.5 3-9 0-3.5-2.5-6-6-6z"></path>
+<path d="M9 9c1.5 1 4.5 1 6 0"></path>
+</svg>
+</div>
+<div class="flex items-baseline">
+<span class="text-2xl font-black tracking-tight text-slate-900">ClinicFlow</span>
+<span class="text-2xl font-extrabold text-brand-600 tracking-tight">360</span>
+</div>
+</a>
+<!-- Desktop Navigation Links -->
+<nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-600">
+<a class="hover:text-brand-600 transition-colors" href="#producto">Producto</a>
+<a class="hover:text-brand-600 transition-colors flex items-center gap-1.5" href="#recepcion-ia">
+<span class="">Recepción IA</span>
+<span class="px-1.5 py-0.5 text-[10px] font-bold uppercase bg-brand-50 text-brand-700 border border-brand-200 rounded">24/7</span>
+</a>
+<a class="hover:text-brand-600 transition-colors" href="#app-movil">App móvil</a>
+<a class="hover:text-brand-600 transition-colors" href="#precios">Precios</a>
+<a class="hover:text-brand-600 transition-colors" href="#faq">Recursos</a>
+</nav>
+<!-- Nav Call To Actions -->
+<div class="flex items-center gap-4">
+<a class="text-sm font-semibold text-slate-700 hover:text-slate-900 px-3 py-2 transition-colors" href="#login">
+          Iniciar sesión
+        </a>
+<a class="inline-flex items-center justify-center px-5 py-2.5 rounded-full text-sm font-semibold text-white bg-brand-600 hover:bg-brand-700 shadow-sm hover:shadow-brand-500/25 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-600 active:scale-[0.98]" href="#probar-gratis">
+          Probar gratis
+        </a>
+</div>
+</div>
+</header>
+<!-- END: StickyNavBar -->
+<main>
+<!-- BEGIN: HeroSection -->
+<section class="relative pt-12 pb-24 lg:pt-16 lg:pb-32 overflow-hidden bg-grid-pattern border-b border-slate-200">
+<!-- Radial ambient glow -->
+<div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[680px] h-[360px] bg-sky-200/40 blur-[130px] rounded-full pointer-events-none -z-10"></div><div class="absolute top-12 -left-12 w-80 h-80 pointer-events-none -z-10 text-brand-500/10"><svg class="w-full h-full transform -rotate-12" viewBox="0 0 100 100" fill="none" stroke="currentColor"><path d="M28 20 C20 20 15 32 16 48 C17 62 23 85 34 85 C39 85 43 72 50 72 C57 72 61 85 66 85 C77 85 83 62 84 48 C85 32 80 20 72 20 C64 20 58 28 50 28 C42 28 36 20 28 20 Z" stroke-width="1.5" stroke-dasharray="3 3"></path><path d="M35 32 C35 26 42 25 50 25 C58 25 65 26 65 32 C65 42 58 48 50 48 C42 48 35 42 35 32 Z" stroke-width="1"></path><circle cx="50" cy="50" r="28" stroke-width="0.75" stroke-dasharray="2 4"></circle></svg></div><div class="absolute top-28 -right-16 w-96 h-96 pointer-events-none -z-10 text-sky-500/10"><svg class="w-full h-full transform rotate-12" viewBox="0 0 100 100" fill="none" stroke="currentColor"><path d="M28 20 C20 20 15 32 16 48 C17 62 23 85 34 85 C39 85 43 72 50 72 C57 72 61 85 66 85 C77 85 83 62 84 48 C85 32 80 20 72 20 C64 20 58 28 50 28 C42 28 36 20 28 20 Z" stroke-width="1.8"></path><path d="M32 38 C32 46 40 50 50 50 C60 50 68 46 68 38" stroke-width="1.2"></path><path d="M50 28 L50 68" stroke-width="0.8" stroke-dasharray="4 2"></path></svg></div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- Hero Header Content (Matches Image 1) -->
+<div class="text-center max-w-4xl mx-auto flex flex-col items-center">
+<!-- Pill Tag -->
+<div class="inline-flex flex-wrap items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-brand-200 shadow-sm mb-8 hover:border-brand-500 transition-colors"><span class="flex items-center gap-1.5 text-xs font-bold text-brand-700"><span class="text-sm">🦷</span> SOFTWARE CLÍNICO DENTAL TODO-EN-UNO &amp; RECEPCIONISTA IA 24/7</span><span class="hidden sm:inline-block w-1 h-1 rounded-full bg-slate-300"></span><span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-50 border border-emerald-100 text-[11px] font-bold text-emerald-700"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>Especializado para Odontólogos</span></div>
+<!-- Master Headline -->
+<h1 class="text-4xl sm:text-6xl lg:text-[68px] font-black text-slate-900 tracking-tight leading-[1.08] mb-6">Tu <span class="text-brand-600">clínica dental</span> en <span class="bg-gradient-to-tr from-brand-700 via-brand-600 to-sky-400 bg-clip-text text-transparent">piloto automático</span>,<br class="hidden sm:inline"> incluso cuando estás fuera de consulta.</h1>
+<!-- Subheadline -->
+<p class="text-lg sm:text-xl text-slate-600 font-normal leading-relaxed max-w-2xl mb-9">Despídete de la recepción saturada, llamadas perdidas y fichas en papel. <strong class="text-slate-900 font-semibold">ClinicFlow360</strong> une agenda inteligente, <strong class="text-brand-700 font-semibold">odontograma interactivo</strong>, app móvil para doctores y <strong class="text-brand-700 font-semibold">recepcionista WhatsApp con IA</strong> en un único ecosistema clínico.</p>
+<!-- Action Buttons -->
+<div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto mb-6">
+<a class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full text-base font-semibold text-white bg-brand-600 hover:bg-brand-700 shadow-md shadow-brand-600/30 transition-all focus:ring-2 focus:ring-brand-500" href="#demo">
+<span class="">Probar gratis 14 días</span>
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</a>
+<button class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full text-base font-semibold text-slate-700 bg-white hover:bg-slate-50 border border-slate-300 shadow-xs transition-colors" type="button">
+<svg class="w-5 h-5 text-brand-600" fill="currentColor" viewBox="0 0 24 24">
+<circle cx="12" cy="12" fill="none" r="10" stroke="currentColor" stroke-width="1.5"></circle>
+<polygon points="10 8 16 12 10 16 10 8"></polygon>
+</svg>
+<span class="">Ver cómo funciona</span>
+</button>
+</div>
+<!-- Trust Subtext -->
+<div class="grid grid-cols-2 sm:flex sm:flex-wrap items-center justify-center gap-2 sm:gap-2.5 max-w-3xl mx-auto mb-5 text-xs"><span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100/90 text-slate-700 font-medium border border-slate-200"><span class="text-emerald-600 font-bold">✓</span> Odontograma FDI 3D interactivo</span><span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100/90 text-slate-700 font-medium border border-slate-200"><span class="text-emerald-600 font-bold">✓</span> Recepcionista IA por WhatsApp 24/7</span><span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100/90 text-slate-700 font-medium border border-slate-200"><span class="text-emerald-600 font-bold">✓</span> App móvil y fotos de gabinete</span><span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100/90 text-slate-700 font-medium border border-slate-200"><span class="text-emerald-600 font-bold">✓</span> Cero no-shows con confirmación automática</span></div><div class="flex items-center gap-3 text-xs font-medium text-slate-500">
+<span class="">Sin tarjeta</span>
+<span class="w-1 h-1 rounded-full bg-slate-300"></span>
+<span class="">Configuración guiada</span>
+<span class="w-1 h-1 rounded-full bg-slate-300"></span>
+<span class="">Cancela cuando quieras</span>
+</div>
+</div>
+<!-- HERO VISUAL COMPOSITION (Matches Image 1 Composition: Web Browser + WhatsApp Chat Overlay + Mobile App Overlay) -->
+<div class="mt-16 lg:mt-20 relative max-w-5xl mx-auto"><div class="hidden md:flex items-center gap-2 absolute -top-5 left-8 z-30 px-3.5 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-brand-200 shadow-md text-xs font-bold text-brand-700"><span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span><span class="">🦷 Odontograma FDI + IA Activa</span></div><div class="hidden md:flex items-center gap-2 absolute -top-5 right-12 z-30 px-3.5 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-brand-200 shadow-md text-xs font-bold text-slate-800"><span class="">✨ Esmalte &amp; Estética Digital</span><span class="px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700 text-[10px]">HD</span></div>
+<!-- Main Web Dashboard Browser Frame -->
+<div class="rounded-2xl bg-white border border-slate-200/90 shadow-2xl shadow-slate-300/40 overflow-hidden">
+<!-- Browser Header Bar -->
+<div class="px-4 py-3 bg-slate-100/90 border-b border-slate-200 flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<span class="w-3 h-3 rounded-full bg-slate-300 inline-block"></span>
+<span class="w-3 h-3 rounded-full bg-slate-300 inline-block"></span>
+<span class="w-3 h-3 rounded-full bg-slate-300 inline-block"></span>
+</div>
+<!-- URL Bar -->
+<div class="text-xs text-slate-500 font-mono bg-white px-6 py-1 rounded-md border border-slate-200 shadow-xs">
+                app.clinicflow360.com/agenda
+              </div>
+<div class="w-10"></div>
+</div>
+<!-- Internal Agenda View -->
+<div class="p-6 md:p-8 bg-white min-h-[460px] grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Mini Sidebar within Dashboard -->
+<div class="hidden md:block md:col-span-3 border-r border-slate-100 pr-4 space-y-4">
+<div class="text-xs font-semibold uppercase tracking-wider text-slate-400">Navegación</div>
+<div class="space-y-1">
+<div class="p-2 rounded-lg bg-brand-50 text-brand-700 font-semibold text-sm flex items-center gap-2">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="">Agenda</span>
+</div>
+<div class="p-2 rounded-lg text-slate-600 hover:bg-slate-50 text-sm flex items-center gap-2">
+<svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="">Pacientes</span>
+</div>
+<div class="p-2 rounded-lg text-slate-600 hover:bg-slate-50 text-sm flex items-center gap-2">
+<svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="">Odontograma</span>
+</div>
+<div class="p-2 rounded-lg text-slate-600 hover:bg-slate-50 text-sm flex items-center gap-2">
+<svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="">Clínica</span>
+</div>
+</div>
+</div>
+<!-- Main Agenda Schedule Grid -->
+<div class="md:col-span-9 pl-0 md:pl-2">
+<div class="flex items-center justify-between pb-4 border-b border-slate-100"><div class="hidden lg:flex items-center gap-1.5 text-[10px] font-semibold text-slate-600 mr-2"><span class="px-2 py-0.5 rounded bg-brand-50 text-brand-700 border border-brand-100">🦷 Odontología General</span><span class="px-2 py-0.5 rounded bg-purple-50 text-purple-700 border border-purple-100">✨ Ortodoncia</span><span class="px-2 py-0.5 rounded bg-amber-50 text-amber-700 border border-amber-100">🔩 Implantes</span></div>
+<div>
+<span class="text-xs font-bold tracking-wider uppercase text-slate-400">AGENDA DEL DÍA</span>
+<h3 class="text-xl font-bold text-slate-900">Miércoles 18 Sep</h3>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full font-medium">5 citas</span>
+<span class="text-xs bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-full font-medium border border-emerald-100">1 completada</span>
+<span class="text-xs bg-sky-50 text-sky-700 px-2.5 py-1 rounded-full font-medium border border-sky-100">1 en curso</span>
+</div>
+</div>
+<!-- Day Schedule List -->
+<div class="divide-y divide-slate-100 mt-2">
+<!-- Row 1 -->
+<div class="py-3.5 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<span class="text-sm font-semibold text-slate-500 w-14">08:00</span>
+<div class="w-2.5 h-2.5 rounded-full bg-emerald-500"></div>
+<div>
+<div class="text-sm font-bold text-slate-900">María Pérez</div>
+<div class="text-xs text-slate-500">Limpieza dental profiláctica · Dra. Valeria</div>
+</div>
+</div>
+<span class="text-xs px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-600 font-medium">Completada</span>
+</div>
+<!-- Row 2 -->
+<div class="py-3.5 flex items-center justify-between bg-sky-50/50 -mx-3 px-3 rounded-lg">
+<div class="flex items-center gap-4">
+<span class="text-sm font-semibold text-brand-700 w-14">09:30</span>
+<div class="w-2.5 h-2.5 rounded-full bg-brand-600 animate-pulse"></div>
+<div>
+<div class="text-sm font-bold text-slate-900">Carlos Ruiz</div>
+<div class="text-xs text-slate-600">Endodoncia pieza #16 · Gabinete 2</div>
+</div>
+</div>
+<span class="text-xs px-2.5 py-0.5 rounded-full bg-brand-100 text-brand-800 font-semibold">En curso</span>
+</div>
+<!-- Row 3 -->
+<div class="py-3.5 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<span class="text-sm font-semibold text-slate-500 w-14">10:30</span>
+<div class="w-2.5 h-2.5 rounded-full bg-purple-500"></div>
+<div>
+<div class="text-sm font-bold text-slate-900">Sofía López</div>
+<div class="text-xs text-slate-500">Ortodoncia ajuste mensual</div>
+</div>
+</div>
+<span class="text-xs px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-700 font-medium border border-amber-100">En espera</span>
+</div>
+<!-- Row 4 -->
+<div class="py-3.5 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<span class="text-sm font-semibold text-slate-500 w-14">14:00</span>
+<div class="w-2.5 h-2.5 rounded-full bg-amber-500"></div>
+<div>
+<div class="text-sm font-bold text-slate-900">Ana Martínez</div>
+<div class="text-xs text-slate-500">Valoración implante · Confirmado vía WhatsApp</div>
+</div>
+</div>
+<span class="text-xs px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-600 font-medium">Confirmada</span>
+</div>
+<!-- Row 5 -->
+<div class="py-3.5 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<span class="text-sm font-semibold text-slate-500 w-14">15:30</span>
+<div class="w-2.5 h-2.5 rounded-full bg-slate-400"></div>
+<div>
+<div class="text-sm font-bold text-slate-900">Diego Torres</div>
+<div class="text-xs text-slate-500">Revisión de ortodoncia invisible</div>
+</div>
+</div>
+<span class="text-xs px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-600 font-medium">Confirmada</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- FLOATING ELEMENT 1: WhatsApp AI Card Overlay (Bottom-Left from Image 1) -->
+<div class="absolute -bottom-8 -left-4 sm:-left-8 w-[92%] sm:w-[380px] bg-white rounded-2xl p-4 shadow-2xl border border-slate-200/90 z-20">
+<!-- Header WhatsApp AI -->
+<div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+<div class="w-9 h-9 rounded-full bg-brand-600 flex items-center justify-center text-white">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<div>
+<div class="text-sm font-bold text-slate-900 flex items-center gap-1.5">
+                  ClinicFlow AI
+                  <span class="inline-flex items-center px-1.5 py-0.2 rounded text-[10px] font-bold bg-emerald-100 text-emerald-700">24/7</span>
+</div>
+<div class="text-xs text-slate-500">Recepción dental automatizada</div>
+</div>
+</div>
+<!-- Realistic Chat Conversation -->
+<div class="space-y-3 pt-3 text-xs leading-relaxed">
+<!-- User Message -->
+<div class="flex justify-end">
+<div class="bg-brand-600 text-white rounded-2xl rounded-tr-none px-3.5 py-2 max-w-[85%] shadow-xs">
+                  Hola, quisiera una limpieza mañana después de las 3.
+                </div>
+</div>
+<!-- AI Reply -->
+<div class="flex justify-start">
+<div class="bg-slate-100 text-slate-800 rounded-2xl rounded-tl-none px-3.5 py-2 max-w-[85%] border border-slate-200/60">
+                  Claro, Ana 😊 Tenemos disponible <strong class="text-slate-900">3:30 PM</strong> o <strong class="text-slate-900">4:15 PM</strong> con la Dra. Valeria.
+                </div>
+</div>
+<!-- User selection -->
+<div class="flex justify-end">
+<div class="bg-brand-600 text-white rounded-2xl rounded-tr-none px-3.5 py-2 max-w-[85%]">
+                  Las 3:30, por favor.
+                </div>
+</div>
+<!-- AI Confirmation -->
+<div class="flex justify-start">
+<div class="bg-slate-100 text-slate-800 rounded-2xl rounded-tl-none px-3.5 py-2 max-w-[90%] border border-slate-200/60">
+                  ¡Listo! Tu cita quedó agendada para mañana 3:30 PM. Te enviamos recordatorio con indicaciones de llegada. 🦷
+                </div>
+</div>
+</div>
+</div>
+<!-- FLOATING ELEMENT 2: Mobile App iPhone Mockup (Bottom-Right from Image 1) -->
+<div class="hidden lg:block absolute -bottom-10 -right-6 w-[280px] bg-slate-900 rounded-[44px] p-3 shadow-phone border-4 border-slate-800 z-20">
+<!-- Screen Area -->
+<div class="bg-white rounded-[36px] overflow-hidden p-4 text-slate-800 min-h-[380px] flex flex-col justify-between">
+<!-- Dynamic Island & Status -->
+<div>
+<div class="flex items-center justify-between text-[11px] font-semibold text-slate-500 mb-3 px-1">
+<span class="">9:41</span>
+<div class="w-16 h-4 bg-slate-900 rounded-full mx-auto"></div>
+<div class="flex items-center gap-1">
+<span class="w-3 h-2 bg-slate-800 rounded-xs"></span>
+</div>
+</div>
+<!-- Doctor Greeting -->
+<div class="mt-1">
+<span class="text-[11px] text-slate-400 font-medium">Buenos días,</span>
+<h4 class="text-sm font-bold text-slate-900">Dra. Valeria</h4>
+<p class="text-[11px] text-brand-600 font-semibold">5 citas hoy</p>
+</div>
+<!-- Next Appointment Card -->
+<div class="mt-4 p-3 bg-brand-50/70 border border-brand-100 rounded-2xl">
+<div class="text-[9px] uppercase tracking-wider font-extrabold text-brand-600">PRÓXIMA</div>
+<div class="text-2xl font-black text-slate-900 mt-0.5">10:30</div>
+<div class="text-xs font-bold text-slate-800 mt-1">Sofía López</div>
+<div class="text-[11px] text-slate-500">Ortodoncia · 45 min</div>
+</div>
+<!-- Alert Bubble -->
+<div class="mt-3 p-2.5 bg-slate-50 border border-slate-200 rounded-xl flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<div>
+<div class="text-[11px] font-bold text-slate-900">Nueva cita confirmada</div>
+<div class="text-[10px] text-slate-500">Ana Martínez · 3:30 PM</div>
+</div>
+</div>
+</div>
+<!-- Mini Nav bar at bottom of mobile -->
+<div class="pt-3 border-t border-slate-100 flex items-center justify-around text-slate-400">
+<span class="text-brand-600 text-xs font-bold">Agenda</span>
+<span class="text-xs font-medium">Pacientes</span>
+<span class="text-xs font-medium">Cámara</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: HeroSection -->
+<!-- BEGIN: TrustMetricsSection -->
+<section class="py-14 bg-white border-b border-slate-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<p class="text-center text-xs font-bold tracking-widest uppercase text-slate-400 mb-8">
+          Diseñado y perfeccionado junto a profesionales de la salud dental en Iberoamérica
+        </p>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+<div class="p-4">
+<div class="text-3xl lg:text-4xl font-black text-slate-900">+250,000</div>
+<div class="text-sm font-medium text-slate-500 mt-1">Citas gestionadas</div>
+</div>
+<div class="p-4">
+<div class="text-3xl lg:text-4xl font-black text-brand-600">94%</div>
+<div class="text-sm font-medium text-slate-500 mt-1">Confirmaciones automáticas sin llamadas</div>
+</div>
+<div class="p-4">
+<div class="text-3xl lg:text-4xl font-black text-slate-900">18 hrs</div>
+<div class="text-sm font-medium text-slate-500 mt-1">Ahorradas por semana en recepción</div>
+</div>
+<div class="p-4">
+<div class="text-3xl lg:text-4xl font-black text-emerald-600">0%</div>
+<div class="text-sm font-medium text-slate-500 mt-1">Mensajes de pacientes sin responder</div>
+</div>
+</div><div class="mt-10 pt-6 border-t border-slate-100 flex flex-wrap items-center justify-center gap-4 sm:gap-8 text-xs font-semibold text-slate-600"><div class="inline-flex items-center gap-2"><span class="w-5 h-5 rounded-full bg-brand-50 border border-brand-200 text-brand-600 flex items-center justify-center text-[11px]">✓</span><span class="">Avalado por directores médicos dentales</span></div><div class="hidden sm:inline-block w-1.5 h-1.5 rounded-full bg-slate-300"></div><div class="inline-flex items-center gap-2"><span class="w-5 h-5 rounded-full bg-brand-50 border border-brand-200 text-brand-600 flex items-center justify-center text-[11px]">✓</span><span class="">Protocolo FDI internacional</span></div><div class="hidden sm:inline-block w-1.5 h-1.5 rounded-full bg-slate-300"></div><div class="inline-flex items-center gap-2"><span class="w-5 h-5 rounded-full bg-brand-50 border border-brand-200 text-brand-600 flex items-center justify-center text-[11px]">✓</span><span class="">Seguridad radiográfica en la nube</span></div></div>
+</div>
+</section>
+<!-- END: TrustMetricsSection -->
+<!-- BEGIN: ProductShowcaseSection -->
+<section class="py-24 bg-[#F8FAFC] relative" id="producto"><div class="absolute top-10 right-4 w-72 h-72 pointer-events-none -z-10 text-brand-500/10 opacity-75 hidden lg:block"><svg class="w-full h-full" viewBox="0 0 100 100" fill="none" stroke="currentColor"><path d="M28 20 C20 20 15 32 16 48 C17 62 23 85 34 85 C39 85 43 72 50 72 C57 72 61 85 66 85 C77 85 83 62 84 48 C85 32 80 20 72 20 C64 20 58 28 50 28 C42 28 36 20 28 20 Z" stroke-width="1.5"></path><circle cx="50" cy="50" r="35" stroke-width="0.75" stroke-dasharray="3 3"></circle></svg></div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-3xl mx-auto mb-16">
+<h2 class="text-xs font-bold uppercase tracking-wider text-brand-600 mb-3">Plataforma Todo en Uno</h2>
+<p class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight mb-4">
+            Todo lo que ocurre en tu clínica, conectado en tiempo real.
+          </p>
+<p class="text-base text-slate-600">
+            Una visión unificada que sincroniza recepción, doctores en gabinete, odontograma y WhatsApp sin duplicar trabajo.
+          </p>
+</div>
+<!-- Interactive Tabs Grid Preview -->
+<div class="bg-white rounded-3xl border border-slate-200 shadow-xl overflow-hidden">
+<!-- Navigation header of the component -->
+<div class="grid grid-cols-2 sm:grid-cols-4 border-b border-slate-200 text-center text-sm font-semibold">
+<div class="p-4 border-b-2 border-brand-600 bg-brand-50/40 text-brand-700">
+              1. Odontograma 3D
+            </div>
+<div class="p-4 text-slate-600 hover:bg-slate-50 transition cursor-pointer">
+              2. Historia Clínica Digital
+            </div>
+<div class="p-4 text-slate-600 hover:bg-slate-50 transition cursor-pointer">
+              3. WhatsApp Sincronizado
+            </div>
+<div class="p-4 text-slate-600 hover:bg-slate-50 transition cursor-pointer">
+              4. Facturación &amp; Cobros
+            </div>
+</div>
+<!-- Tab Content Display: Dental Odontogram Detailed View -->
+<div class="p-6 sm:p-10">
+<div class="flex flex-col lg:flex-row items-center justify-between gap-8 mb-8 pb-6 border-b border-slate-100">
+<div>
+<span class="inline-block px-2.5 py-1 text-xs font-bold bg-slate-100 text-slate-700 rounded-md mb-2">Expediente Clínico #4092</span>
+<h3 class="text-2xl font-black text-slate-900">Odontograma Interactivo FDI</h3>
+<p class="text-sm text-slate-500">Paciente: Sofía Elena López | Última actualización: Hoy, 10:45 AM</p>
+</div>
+<!-- Odontogram Color Legend -->
+<div class="flex flex-wrap items-center gap-4 text-xs font-medium text-slate-600">
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-full bg-red-500 inline-block"></span> Caries diagnóstica
+                </div>
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-full bg-blue-600 inline-block"></span> Restauración realizada
+                </div>
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span> Tratamiento planificado
+                </div>
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span> Corona / Implante
+                </div>
+</div>
+</div>
+<!-- Simulated Visual Tooth Grid (Upper & Lower Quadrants) -->
+<div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+<div class="text-center text-xs font-bold text-slate-400 mb-2 uppercase tracking-widest">Maxilar Superior (Adulto)</div>
+<!-- Upper Teeth Row -->
+<div class="flex justify-center gap-1.5 sm:gap-3 overflow-x-auto pb-4 custom-scrollbar">
+<!-- Tooth item 18 -->
+<div class="flex flex-col items-center">
+<div class="w-9 h-11 sm:w-11 sm:h-13 bg-white border border-slate-300 rounded-lg flex flex-col justify-between p-1 shadow-xs hover:border-brand-500 cursor-pointer">
+<span class="text-[9px] text-slate-400 font-mono">18</span>
+<div class="w-3 h-3 bg-red-100 border border-red-400 rounded-xs mx-auto"></div>
+<span class="text-[9px] text-red-600 font-bold text-center">C</span>
+</div>
+</div>
+<!-- Tooth item 17 -->
+<div class="flex flex-col items-center">
+<div class="w-9 h-11 sm:w-11 sm:h-13 bg-white border border-slate-300 rounded-lg flex flex-col justify-between p-1 shadow-xs hover:border-brand-500 cursor-pointer">
+<span class="text-[9px] text-slate-400 font-mono">17</span>
+<div class="w-3 h-3 bg-blue-100 border border-blue-500 rounded-xs mx-auto"></div>
+<span class="text-[9px] text-blue-600 font-bold text-center">R</span>
+</div>
+</div>
+<!-- Tooth item 16 -->
+<div class="flex flex-col items-center">
+<div class="w-9 h-11 sm:w-11 sm:h-13 bg-white border-2 border-brand-500 rounded-lg flex flex-col justify-between p-1 shadow-xs cursor-pointer ring-2 ring-brand-200">
+<span class="text-[9px] text-brand-600 font-bold font-mono">16</span>
+<div class="w-3 h-3 bg-amber-400 rounded-xs mx-auto"></div>
+<span class="text-[9px] text-amber-700 font-bold text-center">COR</span>
+</div>
+</div>
+<!-- Tooth 15-11 -->
+<div class="flex flex-col items-center"><div class="w-9 h-11 sm:w-11 sm:h-13 bg-white border border-slate-300 rounded-lg flex flex-col justify-between p-1 shadow-xs"><span class="text-[9px] text-slate-400">15</span><div class="w-2 h-2 rounded-full bg-slate-200 mx-auto"></div><span class="text-[9px] text-slate-400 text-center">-</span></div></div>
+<div class="flex flex-col items-center"><div class="w-9 h-11 sm:w-11 sm:h-13 bg-white border border-slate-300 rounded-lg flex flex-col justify-between p-1 shadow-xs"><span class="text-[9px] text-slate-400">14</span><div class="w-2 h-2 rounded-full bg-slate-200 mx-auto"></div><span class="text-[9px] text-slate-400 text-center">-</span></div></div>
+<div class="flex flex-col items-center"><div class="w-9 h-11 sm:w-11 sm:h-13 bg-white border border-slate-300 rounded-lg flex flex-col justify-between p-1 shadow-xs"><span class="text-[9px] text-slate-400">13</span><div class="w-2 h-2 rounded-full bg-slate-200 mx-auto"></div><span class="text-[9px] text-slate-400 text-center">-</span></div></div>
+<div class="flex flex-col items-center"><div class="w-9 h-11 sm:w-11 sm:h-13 bg-white border border-slate-300 rounded-lg flex flex-col justify-between p-1 shadow-xs"><span class="text-[9px] text-slate-400">12</span><div class="w-2 h-2 rounded-full bg-slate-200 mx-auto"></div><span class="text-[9px] text-slate-400 text-center">-</span></div></div>
+<div class="flex flex-col items-center"><div class="w-9 h-11 sm:w-11 sm:h-13 bg-white border border-slate-300 rounded-lg flex flex-col justify-between p-1 shadow-xs"><span class="text-[9px] text-slate-400">11</span><div class="w-2 h-2 rounded-full bg-slate-200 mx-auto"></div><span class="text-[9px] text-slate-400 text-center">-</span></div></div>
+<!-- Midline divider -->
+<div class="w-px h-12 bg-slate-400 self-center mx-1"></div>
+<!-- Tooth 21-28 -->
+<div class="flex flex-col items-center"><div class="w-9 h-11 sm:w-11 sm:h-13 bg-white border border-slate-300 rounded-lg flex flex-col justify-between p-1 shadow-xs"><span class="text-[9px] text-slate-400">21</span><div class="w-2 h-2 rounded-full bg-slate-200 mx-auto"></div><span class="text-[9px] text-slate-400 text-center">-</span></div></div>
+<div class="flex flex-col items-center"><div class="w-9 h-11 sm:w-11 sm:h-13 bg-white border border-slate-300 rounded-lg flex flex-col justify-between p-1 shadow-xs"><span class="text-[9px] text-slate-400">22</span><div class="w-2 h-2 rounded-full bg-slate-200 mx-auto"></div><span class="text-[9px] text-slate-400 text-center">-</span></div></div>
+<div class="flex flex-col items-center"><div class="w-9 h-11 sm:w-11 sm:h-13 bg-white border border-slate-300 rounded-lg flex flex-col justify-between p-1 shadow-xs"><span class="text-[9px] text-slate-400">23</span><div class="w-2 h-2 rounded-full bg-slate-200 mx-auto"></div><span class="text-[9px] text-slate-400 text-center">-</span></div></div>
+<div class="flex flex-col items-center"><div class="w-9 h-11 sm:w-11 sm:h-13 bg-white border border-slate-300 rounded-lg flex flex-col justify-between p-1 shadow-xs"><span class="text-[9px] text-slate-400">24</span><div class="w-2 h-2 rounded-full bg-emerald-400 mx-auto"></div><span class="text-[9px] text-emerald-600 font-bold text-center">P</span></div></div>
+<div class="flex flex-col items-center"><div class="w-9 h-11 sm:w-11 sm:h-13 bg-white border border-slate-300 rounded-lg flex flex-col justify-between p-1 shadow-xs"><span class="text-[9px] text-slate-400">25</span><div class="w-2 h-2 rounded-full bg-slate-200 mx-auto"></div><span class="text-[9px] text-slate-400 text-center">-</span></div></div>
+<div class="flex flex-col items-center"><div class="w-9 h-11 sm:w-11 sm:h-13 bg-white border border-slate-300 rounded-lg flex flex-col justify-between p-1 shadow-xs"><span class="text-[9px] text-slate-400">26</span><div class="w-3 h-3 bg-red-100 border border-red-400 rounded-xs mx-auto"></div><span class="text-[9px] text-red-600 font-bold text-center">C</span></div></div>
+<div class="flex flex-col items-center"><div class="w-9 h-11 sm:w-11 sm:h-13 bg-white border border-slate-300 rounded-lg flex flex-col justify-between p-1 shadow-xs"><span class="text-[9px] text-slate-400">27</span><div class="w-2 h-2 rounded-full bg-slate-200 mx-auto"></div><span class="text-[9px] text-slate-400 text-center">-</span></div></div>
+<div class="flex flex-col items-center"><div class="w-9 h-11 sm:w-11 sm:h-13 bg-white border border-slate-300 rounded-lg flex flex-col justify-between p-1 shadow-xs"><span class="text-[9px] text-slate-400">28</span><div class="w-2 h-2 rounded-full bg-slate-200 mx-auto"></div><span class="text-[9px] text-slate-400 text-center">-</span></div></div>
+</div>
+<!-- Lower Teeth Row -->
+<div class="text-center text-xs font-bold text-slate-400 mt-4 mb-2 uppercase tracking-widest">Mandíbula Inferior</div>
+<div class="flex justify-center gap-1.5 sm:gap-3 overflow-x-auto pb-2 custom-scrollbar">
+<!-- 48 down to 38 -->
+<div class="w-9 h-11 sm:w-11 sm:h-13 bg-white border border-slate-300 rounded-lg flex flex-col justify-between p-1 shadow-xs"><span class="text-[9px] text-slate-400">48</span><div class="w-2 h-2 rounded-full bg-slate-200 mx-auto"></div><span class="text-[9px] text-slate-400 text-center">-</span></div>
+<div class="w-9 h-11 sm:w-11 sm:h-13 bg-white border border-slate-300 rounded-lg flex flex-col justify-between p-1 shadow-xs"><span class="text-[9px] text-slate-400">47</span><div class="w-2 h-2 rounded-full bg-blue-500 mx-auto"></div><span class="text-[9px] text-blue-600 font-bold text-center">R</span></div>
+<div class="w-9 h-11 sm:w-11 sm:h-13 bg-white border border-slate-300 rounded-lg flex flex-col justify-between p-1 shadow-xs"><span class="text-[9px] text-slate-400">46</span><div class="w-2 h-2 rounded-full bg-slate-200 mx-auto"></div><span class="text-[9px] text-slate-400 text-center">-</span></div>
+<div class="w-9 h-11 sm:w-11 sm:h-13 bg-white border border-slate-300 rounded-lg flex flex-col justify-between p-1 shadow-xs"><span class="text-[9px] text-slate-400">45</span><div class="w-2 h-2 rounded-full bg-slate-200 mx-auto"></div><span class="text-[9px] text-slate-400 text-center">-</span></div>
+<div class="w-9 h-11 sm:w-11 sm:h-13 bg-white border border-slate-300 rounded-lg flex flex-col justify-between p-1 shadow-xs"><span class="text-[9px] text-slate-400">44</span><div class="w-2 h-2 rounded-full bg-slate-200 mx-auto"></div><span class="text-[9px] text-slate-400 text-center">-</span></div>
+<div class="w-9 h-11 sm:w-11 sm:h-13 bg-white border border-slate-300 rounded-lg flex flex-col justify-between p-1 shadow-xs"><span class="text-[9px] text-slate-400">43</span><div class="w-2 h-2 rounded-full bg-slate-200 mx-auto"></div><span class="text-[9px] text-slate-400 text-center">-</span></div>
+<div class="w-9 h-11 sm:w-11 sm:h-13 bg-white border border-slate-300 rounded-lg flex flex-col justify-between p-1 shadow-xs"><span class="text-[9px] text-slate-400">42</span><div class="w-2 h-2 rounded-full bg-slate-200 mx-auto"></div><span class="text-[9px] text-slate-400 text-center">-</span></div>
+<div class="w-9 h-11 sm:w-11 sm:h-13 bg-white border border-slate-300 rounded-lg flex flex-col justify-between p-1 shadow-xs"><span class="text-[9px] text-slate-400">41</span><div class="w-2 h-2 rounded-full bg-slate-200 mx-auto"></div><span class="text-[9px] text-slate-400 text-center">-</span></div>
+<div class="w-px h-12 bg-slate-400 self-center mx-1"></div>
+<div class="w-9 h-11 sm:w-11 sm:h-13 bg-white border border-slate-300 rounded-lg flex flex-col justify-between p-1 shadow-xs"><span class="text-[9px] text-slate-400">31</span><div class="w-2 h-2 rounded-full bg-slate-200 mx-auto"></div><span class="text-[9px] text-slate-400 text-center">-</span></div>
+<div class="w-9 h-11 sm:w-11 sm:h-13 bg-white border border-slate-300 rounded-lg flex flex-col justify-between p-1 shadow-xs"><span class="text-[9px] text-slate-400">32</span><div class="w-2 h-2 rounded-full bg-slate-200 mx-auto"></div><span class="text-[9px] text-slate-400 text-center">-</span></div>
+<div class="w-9 h-11 sm:w-11 sm:h-13 bg-white border border-slate-300 rounded-lg flex flex-col justify-between p-1 shadow-xs"><span class="text-[9px] text-slate-400">33</span><div class="w-2 h-2 rounded-full bg-slate-200 mx-auto"></div><span class="text-[9px] text-slate-400 text-center">-</span></div>
+<div class="w-9 h-11 sm:w-11 sm:h-13 bg-white border border-slate-300 rounded-lg flex flex-col justify-between p-1 shadow-xs"><span class="text-[9px] text-slate-400">34</span><div class="w-2 h-2 rounded-full bg-slate-200 mx-auto"></div><span class="text-[9px] text-slate-400 text-center">-</span></div>
+<div class="w-9 h-11 sm:w-11 sm:h-13 bg-white border border-slate-300 rounded-lg flex flex-col justify-between p-1 shadow-xs"><span class="text-[9px] text-slate-400">35</span><div class="w-2 h-2 rounded-full bg-slate-200 mx-auto"></div><span class="text-[9px] text-slate-400 text-center">-</span></div>
+<div class="w-9 h-11 sm:w-11 sm:h-13 bg-white border border-slate-300 rounded-lg flex flex-col justify-between p-1 shadow-xs"><span class="text-[9px] text-slate-400">36</span><div class="w-2 h-2 rounded-full bg-emerald-500 mx-auto"></div><span class="text-[9px] text-emerald-600 font-bold text-center">P</span></div>
+<div class="w-9 h-11 sm:w-11 sm:h-13 bg-white border border-slate-300 rounded-lg flex flex-col justify-between p-1 shadow-xs"><span class="text-[9px] text-slate-400">37</span><div class="w-2 h-2 rounded-full bg-slate-200 mx-auto"></div><span class="text-[9px] text-slate-400 text-center">-</span></div>
+<div class="w-9 h-11 sm:w-11 sm:h-13 bg-white border border-slate-300 rounded-lg flex flex-col justify-between p-1 shadow-xs"><span class="text-[9px] text-slate-400">38</span><div class="w-2 h-2 rounded-full bg-slate-200 mx-auto"></div><span class="text-[9px] text-slate-400 text-center">-</span></div>
+</div>
+</div>
+<!-- Treatment Plan Summary Box -->
+<div class="mt-6 flex flex-col sm:flex-row items-center justify-between p-4 bg-slate-50 rounded-xl border border-slate-200 text-sm">
+<div class="flex items-center gap-3">
+<span class="w-2 h-2 rounded-full bg-brand-600"></span>
+<span class="font-medium text-slate-700">Tratamiento seleccionado: <strong>Pieza #16 Corona de zirconio</strong></span>
+</div>
+<div class="mt-3 sm:mt-0 flex gap-2">
+<button class="px-3 py-1.5 bg-white border border-slate-300 rounded-lg text-xs font-semibold text-slate-700 hover:bg-slate-100">Agregar diagnóstico</button>
+<button class="px-3 py-1.5 bg-brand-600 rounded-lg text-xs font-semibold text-white hover:bg-brand-700">Generar presupuesto</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: ProductShowcaseSection -->
+<!-- BEGIN: ComparisonSection -->
+<section class="py-24 bg-white border-b border-slate-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-3xl mx-auto mb-16">
+<h2 class="text-xs font-bold uppercase tracking-wider text-brand-600 mb-2">Evolución Clínica</h2>
+<p class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
+            Administrar una clínica no debería requerir cinco herramientas desconectadas.
+          </p>
+</div>
+<div class="grid md:grid-cols-2 gap-8 lg:gap-12">
+<!-- BEFORE CARD -->
+<div class="p-8 rounded-3xl bg-slate-50 border border-slate-200 relative">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-100 text-red-700 text-xs font-bold uppercase tracking-wider mb-6">
+              El modelo fragmentado tradicional
+            </div>
+<ul class="space-y-5">
+<li class="flex items-start gap-3.5">
+<div class="w-6 h-6 rounded-full bg-red-200 text-red-700 flex items-center justify-center shrink-0 mt-0.5">✕</div>
+<div>
+<h4 class="font-bold text-slate-900">Agenda en papel o Google Calendar aislado</h4>
+<p class="text-sm text-slate-500 mt-0.5">Citas encimadas, cancelaciones sin previo aviso y huecos vacíos en horas pico.</p>
+</div>
+</li>
+<li class="flex items-start gap-3.5">
+<div class="w-6 h-6 rounded-full bg-red-200 text-red-700 flex items-center justify-center shrink-0 mt-0.5">✕</div>
+<div>
+<h4 class="font-bold text-slate-900">WhatsApp en un único celular de recepción</h4>
+<p class="text-sm text-slate-500 mt-0.5">Mensajes de pacientes acumulados por horas, fines de semana desatendidos.</p>
+</div>
+</li>
+<li class="flex items-start gap-3.5">
+<div class="w-6 h-6 rounded-full bg-red-200 text-red-700 flex items-center justify-center shrink-0 mt-0.5">✕</div>
+<div>
+<h4 class="font-bold text-slate-900">Fotos clínicas perdidas en el teléfono de los doctores</h4>
+<p class="text-sm text-slate-500 mt-0.5">Riesgo de privacidad y dificultad para mostrar avances reales a los pacientes.</p>
+</div>
+</li>
+<li class="flex items-start gap-3.5">
+<div class="w-6 h-6 rounded-full bg-red-200 text-red-700 flex items-center justify-center shrink-0 mt-0.5">✕</div>
+<div>
+<h4 class="font-bold text-slate-900">Papeleo manual al final de una jornada agotadora</h4>
+<p class="text-sm text-slate-500 mt-0.5">Doctores perdiendo 1 a 2 horas escribiendo notas de evolución manualmente.</p>
+</div>
+</li>
+</ul>
+</div>
+<!-- AFTER CARD -->
+<div class="p-8 rounded-3xl bg-brand-50/50 border-2 border-brand-500 shadow-xl shadow-brand-500/10 relative">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-600 text-white text-xs font-bold uppercase tracking-wider mb-6">
+              Con ClinicFlow360
+            </div>
+<ul class="space-y-5">
+<li class="flex items-start gap-3.5">
+<div class="w-6 h-6 rounded-full bg-brand-600 text-white flex items-center justify-center shrink-0 mt-0.5">✓</div>
+<div>
+<h4 class="font-bold text-slate-900">Agenda inteligente que se auto-gestiona</h4>
+<p class="text-sm text-slate-600 mt-0.5">Sincronizada por doctor, gabinete y duración de procedimiento en tiempo real.</p>
+</div>
+</li>
+<li class="flex items-start gap-3.5">
+<div class="w-6 h-6 rounded-full bg-brand-600 text-white flex items-center justify-center shrink-0 mt-0.5">✓</div>
+<div>
+<h4 class="font-bold text-slate-900">Recepción IA activa 24 horas por WhatsApp oficial</h4>
+<p class="text-sm text-slate-600 mt-0.5">Responde en 5 segundos, agenda citas directamente y envía recordatorios automáticos.</p>
+</div>
+</li>
+<li class="flex items-start gap-3.5">
+<div class="w-6 h-6 rounded-full bg-brand-600 text-white flex items-center justify-center shrink-0 mt-0.5">✓</div>
+<div>
+<h4 class="font-bold text-slate-900">App para doctores con odontograma y fotos seguras</h4>
+<p class="text-sm text-slate-600 mt-0.5">Captura fotos desde el gabinete y se asocian directo a la historia clínica del paciente.</p>
+</div>
+</li>
+<li class="flex items-start gap-3.5">
+<div class="w-6 h-6 rounded-full bg-brand-600 text-white flex items-center justify-center shrink-0 mt-0.5">✓</div>
+<div>
+<h4 class="font-bold text-slate-900">Dictado por voz IA estructurado automáticamente</h4>
+<p class="text-sm text-slate-600 mt-0.5">El doctor dicta el procedimiento en 20 segundos y la nota queda redactada y archivada.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- END: ComparisonSection -->
+<!-- BEGIN: ReceptionAISection (High-Contrast Dark Theme) -->
+<section class="py-24 bg-[#0B1329] text-white relative overflow-hidden" id="recepcion-ia">
+<!-- Glow effect -->
+<div class="absolute -top-24 right-0 w-96 h-96 bg-brand-500/20 blur-[120px] rounded-full pointer-events-none"></div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid lg:grid-cols-12 gap-12 items-center">
+<!-- Text left -->
+<div class="lg:col-span-6 space-y-6">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-900/80 border border-brand-500/40 text-brand-300 text-xs font-bold uppercase tracking-wider">
+<span class="w-2 h-2 rounded-full bg-brand-400"></span>
+              ClinicFlow AI Receptionist
+            </div>
+<h2 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight">
+              Una recepcionista que nunca deja a un paciente esperando.
+            </h2>
+<p class="text-base sm:text-lg text-slate-300 font-normal leading-relaxed">
+              Atiende WhatsApp las 24 horas del día, conversa de manera cálida y natural, responde dudas sobre precios o tratamientos y consulta la disponibilidad exacta de tus sillones dentales antes de agendar.
+            </p>
+<div class="grid sm:grid-cols-2 gap-4 pt-2">
+<div class="p-4 rounded-xl bg-slate-800/60 border border-slate-700/60">
+<div class="text-brand-400 font-bold text-sm mb-1">Disponibilidad en tiempo real</div>
+<div class="text-xs text-slate-400">Verifica la agenda del doctor específico antes de ofrecer horarios.</div>
+</div>
+<div class="p-4 rounded-xl bg-slate-800/60 border border-slate-700/60">
+<div class="text-brand-400 font-bold text-sm mb-1">Reagendamiento autónomo</div>
+<div class="text-xs text-slate-400">Permite al paciente cambiar su cita sin intervención humana.</div>
+</div>
+<div class="p-4 rounded-xl bg-slate-800/60 border border-slate-700/60">
+<div class="text-brand-400 font-bold text-sm mb-1">Detección de urgencias</div>
+<div class="text-xs text-slate-400">Prioriza dolor agudo o fracturas y notifica al odontólogo de guardia.</div>
+</div>
+<div class="p-4 rounded-xl bg-slate-800/60 border border-slate-700/60">
+<div class="text-brand-400 font-bold text-sm mb-1">Políticas de tu clínica</div>
+<div class="text-xs text-slate-400">Se entrena con tus indicaciones, precios orientativos y recomendaciones.</div>
+</div>
+</div>
+</div>
+<!-- Live WhatsApp AI Simulator Interactive Card right -->
+<div class="lg:col-span-6">
+<div class="bg-slate-900 border border-slate-700 rounded-3xl p-6 shadow-2xl relative">
+<div class="flex items-center justify-between pb-4 border-b border-slate-800">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-emerald-600 flex items-center justify-center font-bold text-white">
+                    CF
+                  </div>
+<div>
+<div class="text-sm font-bold text-white flex items-center gap-2">
+                      WhatsApp Clínica Dental Norte
+                      <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+</div>
+<div class="text-xs text-emerald-400">En línea · ClinicFlow AI 24/7</div>
+</div>
+</div>
+<span class="text-xs bg-slate-800 text-slate-400 px-2.5 py-1 rounded-full">Automático</span>
+</div>
+<!-- Chat Stream -->
+<div class="py-6 space-y-4 text-xs sm:text-sm">
+<div class="text-center text-[10px] text-slate-500">HOY DOMINGO · 11:24 PM</div>
+<!-- Patient message at night -->
+<div class="flex justify-end">
+<div class="bg-[#005C4B] text-white p-3 rounded-2xl rounded-tr-none max-w-[85%] shadow-md">
+                    Hola buenas noches, tengo un dolor insoportable en una muela y se me inflamó la encía. ¿Tienen cita para mañana a primera hora?
+                    <div class="text-[9px] text-emerald-200 text-right mt-1">11:24 PM ✓✓</div>
+</div>
+</div>
+<!-- AI Instant Response -->
+<div class="flex justify-start">
+<div class="bg-slate-800 text-slate-200 p-3.5 rounded-2xl rounded-tl-none max-w-[90%] border border-slate-700">
+<p class="">Buenas noches. Lamento mucho el dolor 😔 Hemos registrado tu caso como prioridad de urgencia dental.</p>
+<p class="mt-2">El Dr. Roberto tiene un espacio para valoración de emergencia mañana lunes a las <strong>08:30 AM</strong> o a las <strong>09:15 AM</strong>. ¿Cuál te conviene?</p>
+<div class="text-[9px] text-slate-400 text-right mt-1">11:24 PM (Respondido en 4s)</div>
+</div>
+</div>
+<!-- Patient selection -->
+<div class="flex justify-end">
+<div class="bg-[#005C4B] text-white p-3 rounded-2xl rounded-tr-none max-w-[85%]">
+                    A las 8:30 AM por favor, muchas gracias por responder tan rápido.
+                    <div class="text-[9px] text-emerald-200 text-right mt-1">11:25 PM ✓✓</div>
+</div>
+</div>
+<!-- AI Confirmation Card -->
+<div class="flex justify-start">
+<div class="bg-slate-800 text-slate-200 p-3.5 rounded-2xl rounded-tl-none max-w-[90%] border border-slate-700">
+<p class="font-bold text-white">✅ Cita Confirmada:</p>
+<ul class="mt-1.5 space-y-0.5 text-xs text-slate-300">
+<li class="">• <strong>Doctor:</strong> Dr. Roberto Sánchez</li>
+<li class="">• <strong>Horario:</strong> Lunes 8:30 AM</li>
+<li class="">• <strong>Motivo:</strong> Dolor dental urgente</li>
+</ul>
+<p class="mt-2 text-xs text-brand-300 bg-brand-950/60 p-2 rounded-lg border border-brand-800/60">
+                      Indicación preventiva: Evita masticar sobre esa zona y no apliques calor directo. Te esperamos en Calle Médica 204.
+                    </p>
+</div>
+</div>
+</div>
+<!-- Input bar simulation -->
+<div class="pt-3 border-t border-slate-800 flex items-center justify-between text-slate-500 text-xs">
+<span class="">Escribe un mensaje...</span>
+<span class="px-2 py-1 bg-slate-800 text-slate-400 rounded">Presiona enter</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: ReceptionAISection -->
+<!-- BEGIN: DoctorMobileSection -->
+<section class="py-24 bg-white border-b border-slate-200" id="app-movil">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-3xl mx-auto mb-16">
+<h2 class="text-xs font-bold uppercase tracking-wider text-brand-600 mb-2">Movilidad Total</h2>
+<p class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight mb-4">
+            Tu clínica dental también cabe en tu bolsillo.
+          </p>
+<p class="text-base text-slate-600">
+            Diseñada especialmente para el flujo del odontólogo en gabinete: rápida, clara y sin clics innecesarios.
+          </p>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<!-- Feature 1 -->
+<div class="p-8 rounded-3xl bg-slate-50 border border-slate-200 hover:shadow-lg transition">
+<div class="w-12 h-12 rounded-2xl bg-brand-100 text-brand-700 flex items-center justify-center font-bold text-xl mb-6">
+              📅
+            </div>
+<h3 class="text-xl font-bold text-slate-900 mb-2">Agenda del día en tiempo real</h3>
+<p class="text-sm text-slate-600 leading-relaxed">
+              Consulta las citas del día por sillón dental, pacientes confirmados y cambios de última hora al instante.
+            </p>
+</div>
+<!-- Feature 2 -->
+<div class="p-8 rounded-3xl bg-slate-50 border border-slate-200 hover:shadow-lg transition">
+<div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xl mb-6">
+              📸
+            </div>
+<h3 class="text-xl font-bold text-slate-900 mb-2">Cámara clínica instantánea</h3>
+<p class="text-sm text-slate-600 leading-relaxed">
+              Toma fotografías intraorales o de sonrisa directamente desde la app. Se guardan encriptadas en el expediente del paciente.
+            </p>
+</div>
+<!-- Feature 3 -->
+<div class="p-8 rounded-3xl bg-slate-50 border border-slate-200 hover:shadow-lg transition">
+<div class="w-12 h-12 rounded-2xl bg-purple-100 text-purple-700 flex items-center justify-center font-bold text-xl mb-6">
+              🎙️
+            </div>
+<h3 class="text-xl font-bold text-slate-900 mb-2">Dictado de evolución por voz</h3>
+<p class="text-sm text-slate-600 leading-relaxed">
+              Dicta la nota mientras te quitas los guantes. La IA procesa y archiva la evolución clínica con nomenclatura médica precisa.
+            </p>
+</div>
+</div>
+</div>
+</section>
+<!-- END: DoctorMobileSection -->
+<!-- BEGIN: VoiceNoteAISection -->
+<section class="py-24 bg-[#F8FAFC]">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="bg-white rounded-3xl border border-slate-200 p-8 sm:p-12 shadow-xl">
+<div class="grid lg:grid-cols-2 gap-10 items-center">
+<div>
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 border border-brand-200 text-brand-700 text-xs font-bold uppercase tracking-wider mb-4">
+                Dictado Inteligente Clínico
+              </div>
+<h2 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight mb-4">
+                Termina la consulta sin terminar haciendo papeleo.
+              </h2>
+<p class="text-slate-600 text-sm sm:text-base leading-relaxed mb-6">
+                En lugar de escribir en el teclado durante 15 minutos entre pacientes, mantén pulsado el botón y habla con total naturalidad:
+              </p>
+<div class="p-4 rounded-xl bg-slate-100 border border-slate-200 text-slate-800 text-sm italic mb-6">
+                “Realizamos resina compuesta mesio-oclusal en pieza 36, grabado ácido por 15 segundos, adhesivo universal y fotocurado. Se indica no masticar sólidos por 2 horas.”
+              </div>
+<div class="flex items-center gap-2 text-xs font-semibold text-emerald-600">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<span class="">Clasificado automáticamente en Odontograma y Evolución</span>
+</div>
+</div>
+<!-- Voice to Structured Note Simulator -->
+<div class="bg-slate-50 rounded-2xl border border-slate-200 p-6">
+<!-- Audio waveform simulator -->
+<div class="flex items-center justify-between p-3 bg-white rounded-xl border border-slate-200 shadow-xs mb-4">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-red-500 animate-ping"></span>
+<span class="text-xs font-bold text-slate-700">Grabando dictado</span>
+</div>
+<!-- Mini visual bars -->
+<div class="flex items-center gap-1 h-5">
+<span class="w-1 bg-brand-600 h-3 rounded-full"></span>
+<span class="w-1 bg-brand-600 h-5 rounded-full"></span>
+<span class="w-1 bg-brand-600 h-2 rounded-full"></span>
+<span class="w-1 bg-brand-600 h-4 rounded-full"></span>
+<span class="w-1 bg-brand-600 h-5 rounded-full"></span>
+<span class="w-1 bg-brand-600 h-2 rounded-full"></span>
+</div>
+<span class="text-xs font-mono text-slate-500">00:18</span>
+</div>
+<!-- Output Card -->
+<div class="bg-white p-4 rounded-xl border border-slate-200">
+<div class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Nota generada por ClinicFlow AI</div>
+<div class="space-y-2 text-xs text-slate-700">
+<div class="p-2 bg-slate-50 rounded"><strong class="text-slate-900">Procedimiento:</strong> Restauración con resina compuesta (MO)</div>
+<div class="p-2 bg-slate-50 rounded"><strong class="text-slate-900">Pieza dental:</strong> #36 (Primer molar inferior izquierdo)</div>
+<div class="p-2 bg-slate-50 rounded"><strong class="text-slate-900">Detalles:</strong> Grabado 15s, adhesivo universal, fotocurado. Sin incidencias.</div>
+<div class="p-2 bg-slate-50 rounded"><strong class="text-slate-900">Indicaciones:</strong> Régimen blando por 2 horas.</div>
+</div>
+<div class="mt-4 flex gap-2">
+<button class="w-full py-2 bg-brand-600 text-white rounded-lg text-xs font-bold hover:bg-brand-700">Autorizar y Firmar</button>
+<button class="px-3 py-2 border border-slate-200 text-slate-700 rounded-lg text-xs font-semibold hover:bg-slate-50">Editar</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: VoiceNoteAISection -->
+<!-- BEGIN: DayInLifeTimelineSection -->
+<section class="py-24 bg-white border-b border-slate-200">
+<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-2xl mx-auto mb-16">
+<h2 class="text-xs font-bold uppercase tracking-wider text-brand-600 mb-2">Flujo Sin Fricción</h2>
+<p class="text-3xl font-black text-slate-900 tracking-tight">
+            Un día típico en una clínica que utiliza ClinicFlow360
+          </p>
+</div>
+<!-- Timeline steps -->
+<div class="relative border-l-2 border-brand-200 ml-4 sm:ml-32 space-y-10">
+<!-- Step 1 -->
+<div class="relative pl-8 sm:pl-10">
+<span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-brand-600 ring-4 ring-white"></span>
+<span class="text-xs font-mono font-bold text-brand-600 uppercase">07:15 AM</span>
+<h4 class="text-lg font-bold text-slate-900 mt-1">Cita solicitada mientras duermes</h4>
+<p class="text-sm text-slate-600 mt-1">Un paciente escribe por WhatsApp pidiendo valoración. El asistente IA consulta la agenda, valida disponibilidad y confirma la cita en 90 segundos.</p>
+</div>
+<!-- Step 2 -->
+<div class="relative pl-8 sm:pl-10">
+<span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-brand-600 ring-4 ring-white"></span>
+<span class="text-xs font-mono font-bold text-brand-600 uppercase">09:00 AM</span>
+<h4 class="text-lg font-bold text-slate-900 mt-1">Recepción inicia el día sin llamadas de confirmación</h4>
+<p class="text-sm text-slate-600 mt-1">El 94% de los pacientes de la jornada ya confirmaron su asistencia mediante botones interactivos de WhatsApp.</p>
+</div>
+<!-- Step 3 -->
+<div class="relative pl-8 sm:pl-10">
+<span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-brand-600 ring-4 ring-white"></span>
+<span class="text-xs font-mono font-bold text-brand-600 uppercase">11:30 AM</span>
+<h4 class="text-lg font-bold text-slate-900 mt-1">Atención en gabinete con fotos directas</h4>
+<p class="text-sm text-slate-600 mt-1">El doctor toma fotos intraorales desde el móvil del gabinete. Se anexan al expediente y se actualiza el odontograma digital en tiempo real.</p>
+</div>
+<!-- Step 4 -->
+<div class="relative pl-8 sm:pl-10">
+<span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-brand-600 ring-4 ring-white"></span>
+<span class="text-xs font-mono font-bold text-brand-600 uppercase">05:00 PM</span>
+<h4 class="text-lg font-bold text-slate-900 mt-1">Cobro y seguimiento postoperatorio automático</h4>
+<p class="text-sm text-slate-600 mt-1">Recepción cobra con recibo digital y a las 8:00 PM el paciente recibe indicaciones de cuidado por WhatsApp de manera autónoma.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- END: DayInLifeTimelineSection -->
+<!-- BEGIN: SecuritySection -->
+<section class="py-20 bg-[#F8FAFC]">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-2xl mx-auto mb-14">
+<h2 class="text-xs font-bold uppercase tracking-wider text-brand-600 mb-2">Seguridad &amp; Cumplimiento Clínico</h2>
+<p class="text-3xl font-black text-slate-900 tracking-tight">
+            La información de tus pacientes merece el mismo cuidado que ellos.
+          </p>
+</div>
+<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-white p-6 rounded-2xl border border-slate-200">
+<div class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-slate-800 font-bold mb-4">🔐</div>
+<h4 class="font-bold text-slate-900 text-base mb-1">Cifrado de grado médico</h4>
+<p class="text-xs text-slate-500 leading-relaxed">Encriptación AES-256 en reposo y en tránsito. Protocolos compatibles con normativas sanitarias.</p>
+</div>
+<div class="bg-white p-6 rounded-2xl border border-slate-200">
+<div class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-slate-800 font-bold mb-4">💾</div>
+<h4 class="font-bold text-slate-900 text-base mb-1">Copias de seguridad cada hora</h4>
+<p class="text-xs text-slate-500 leading-relaxed">Tus historias clínicas, radiografías y odontogramas nunca se extraviarán ante fallos de hardware.</p>
+</div>
+<div class="bg-white p-6 rounded-2xl border border-slate-200">
+<div class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-slate-800 font-bold mb-4">👥</div>
+<h4 class="font-bold text-slate-900 text-base mb-1">Permisos por roles</h4>
+<p class="text-xs text-slate-500 leading-relaxed">Recepción, especialistas y administradores solo acceden a la información correspondiente.</p>
+</div>
+<div class="bg-white p-6 rounded-2xl border border-slate-200">
+<div class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-slate-800 font-bold mb-4">⚡</div>
+<h4 class="font-bold text-slate-900 text-base mb-1">Disponibilidad 99.98%</h4>
+<p class="text-xs text-slate-500 leading-relaxed">Infraestructura en la nube con redundancia para que tu clínica nunca se detenga.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- END: SecuritySection -->
+<!-- BEGIN: PricingSection -->
+<section class="py-24 bg-white border-t border-slate-200" id="precios">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-3xl mx-auto mb-12">
+<h2 class="text-xs font-bold uppercase tracking-wider text-brand-600 mb-2">Planes Transparentes</h2>
+<p class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight mb-4">
+            Comienza hoy con 14 días gratis. Sin tarjeta.
+          </p>
+<p class="text-base text-slate-600">
+            Elige el plan que se adapte al tamaño actual de tu consulta y escala cuando lo necesites.
+          </p>
+<!-- Billing Toggle Badge -->
+<div class="mt-6 inline-flex items-center gap-3 p-1 rounded-full bg-slate-100 border border-slate-200 text-xs font-semibold">
+<span class="px-3 py-1.5 rounded-full bg-white shadow-xs text-slate-900 font-bold">Facturación Mensual</span>
+<span class="px-3 py-1.5 text-slate-600 hover:text-slate-900 cursor-pointer">Anual <strong class="text-emerald-600 font-bold">(Ahorra 20%)</strong></span>
+</div>
+</div>
+<div class="grid lg:grid-cols-3 gap-8">
+<!-- Plan 1: Esencial -->
+<div class="rounded-3xl p-8 bg-white border border-slate-200 flex flex-col justify-between">
+<div>
+<div class="text-lg font-bold text-slate-900">Esencial</div>
+<div class="text-xs text-slate-500 mt-1">Para consultorios independientes</div>
+<div class="my-6">
+<span class="text-4xl font-black text-slate-900">$49</span>
+<span class="text-sm font-medium text-slate-500">/mes</span>
+</div>
+<ul class="space-y-3 text-xs text-slate-700">
+<li class="flex items-center gap-2.5">✓ 1 Doctor titular + Asistente</li>
+<li class="flex items-center gap-2.5">✓ Agenda inteligente sin límite de citas</li>
+<li class="flex items-center gap-2.5">✓ Historia clínica y Odontograma digital</li>
+<li class="flex items-center gap-2.5">✓ Recordatorios automáticos por SMS/Email</li>
+<li class="flex items-center gap-2.5 text-slate-400">✕ Recepcionista WhatsApp con IA</li>
+<li class="flex items-center gap-2.5 text-slate-400">✕ Dictado clínico por voz</li>
+</ul>
+</div>
+<button class="mt-8 w-full py-3 rounded-full text-sm font-semibold border border-slate-300 text-slate-800 hover:bg-slate-50 transition">
+              Comenzar prueba gratis
+            </button>
+</div>
+<!-- Plan 2: Pro (Featured) -->
+<div class="rounded-3xl p-8 bg-brand-50/40 border-2 border-brand-600 shadow-xl relative flex flex-col justify-between">
+<div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-brand-600 text-white text-[11px] font-bold uppercase tracking-wider">
+              Más Popular en Clínicas
+            </div>
+<div>
+<div class="text-lg font-bold text-slate-900">Clínica Pro</div>
+<div class="text-xs text-slate-600 mt-1">Para clínicas con equipo multidisciplinario</div>
+<div class="my-6">
+<span class="text-4xl font-black text-slate-900">$89</span>
+<span class="text-sm font-medium text-slate-600">/mes</span>
+</div>
+<ul class="space-y-3 text-xs text-slate-700 font-medium">
+<li class="flex items-center gap-2.5">✓ Hasta 4 Doctores y especialistas</li>
+<li class="flex items-center gap-2.5">✓ Odontograma interactivo avanzado 3D</li>
+<li class="flex items-center gap-2.5">✓ App móvil iOS &amp; Android para doctores</li>
+<li class="flex items-center gap-2.5">✓ Confirmaciones automáticas por WhatsApp</li>
+<li class="flex items-center gap-2.5">✓ Galería clínica y comparador Antes/Después</li>
+<li class="flex items-center gap-2.5">✓ Dictado por voz IA (hasta 300 notas/mes)</li>
+</ul>
+</div>
+<button class="mt-8 w-full py-3 rounded-full text-sm font-semibold bg-brand-600 text-white hover:bg-brand-700 shadow-md shadow-brand-600/30 transition">
+              Probar Clínica Pro gratis
+            </button>
+</div>
+<!-- Plan 3: Clínica AI -->
+<div class="rounded-3xl p-8 bg-white border border-slate-200 flex flex-col justify-between">
+<div>
+<div class="text-lg font-bold text-slate-900">Clínica AI 24/7</div>
+<div class="text-xs text-slate-500 mt-1">Automatización total con Recepción Autónoma</div>
+<div class="my-6">
+<span class="text-4xl font-black text-slate-900">$149</span>
+<span class="text-sm font-medium text-slate-500">/mes</span>
+</div>
+<ul class="space-y-3 text-xs text-slate-700">
+<li class="flex items-center gap-2.5">✓ Doctores y sillones ilimitados</li>
+<li class="flex items-center gap-2.5">✓ <strong>Recepcionista IA 24/7 en WhatsApp oficial</strong></li>
+<li class="flex items-center gap-2.5">✓ Agendamiento y reagendamiento autónomo</li>
+<li class="flex items-center gap-2.5">✓ Dictado por voz con IA ilimitado</li>
+<li class="flex items-center gap-2.5">✓ Reportes de ingresos y comisiones médicas</li>
+<li class="flex items-center gap-2.5">✓ Onboarding guiado y migración de datos</li>
+</ul>
+</div>
+<button class="mt-8 w-full py-3 rounded-full text-sm font-semibold border border-slate-300 text-slate-800 hover:bg-slate-50 transition">
+              Contactar a un asesor
+            </button>
+</div>
+</div>
+</div>
+</section>
+<!-- END: PricingSection -->
+<!-- BEGIN: FAQSection -->
+<section class="py-24 bg-[#F8FAFC]" id="faq">
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-16">
+<h2 class="text-xs font-bold uppercase tracking-wider text-brand-600 mb-2">Preguntas Frecuentes</h2>
+<p class="text-3xl font-black text-slate-900">¿Tienes preguntas? Te ayudamos a resolverlas.</p>
+</div>
+<div class="space-y-4">
+<!-- Accordion 1 -->
+<div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs">
+<h3 class="text-base font-bold text-slate-900">¿Cómo se conecta la recepcionista IA a nuestro WhatsApp?</h3>
+<p class="mt-2 text-sm text-slate-600 leading-relaxed">
+              Utilizamos la API Oficial de WhatsApp Cloud (Meta). Puedes conservar el mismo número de teléfono de tu clínica. El asistente responde al instante y cuando tu equipo desee intervenir, puede tomar el control de la conversación con un solo clic.
+            </p>
+</div>
+<!-- Accordion 2 -->
+<div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs">
+<h3 class="text-base font-bold text-slate-900">¿Puedo migrar mis pacientes desde otro software dental o Excel?</h3>
+<p class="mt-2 text-sm text-slate-600 leading-relaxed">
+              Sí. ClinicFlow360 incluye una herramienta de importación rápida de archivos CSV y Excel. Además, nuestro equipo de soporte técnico te asiste sin costo adicional en el plan Pro y Clínica AI.
+            </p>
+</div>
+<!-- Accordion 3 -->
+<div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs">
+<h3 class="text-base font-bold text-slate-900">¿Los doctores pueden usarlo en sus teléfonos personales de forma segura?</h3>
+<p class="mt-2 text-sm text-slate-600 leading-relaxed">
+              Totalmente. La aplicación móvil de ClinicFlow360 no almacena fotografías en la galería personal del teléfono. Todas las capturas van encriptadas directo a la nube clínica.
+            </p>
+</div>
+<!-- Accordion 4 -->
+<div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs">
+<h3 class="text-base font-bold text-slate-900">¿Qué necesito para empezar los 14 días de prueba?</h3>
+<p class="mt-2 text-sm text-slate-600 leading-relaxed">
+              Solo tu correo electrónico y el nombre de tu clínica. No solicitamos tarjetas de crédito ni compromisos de permanencia.
+            </p>
+</div>
+</div>
+</div>
+</section>
+<!-- END: FAQSection -->
+<!-- BEGIN: ConversionCTASection -->
+<section class="py-24 bg-gradient-to-b from-brand-700 to-brand-900 text-white relative overflow-hidden"><div class="absolute -bottom-12 -left-12 w-96 h-96 pointer-events-none opacity-10 text-white"><svg class="w-full h-full transform -rotate-12" viewBox="0 0 100 100" fill="none" stroke="currentColor"><path d="M28 20 C20 20 15 32 16 48 C17 62 23 85 34 85 C39 85 43 72 50 72 C57 72 61 85 66 85 C77 85 83 62 84 48 C85 32 80 20 72 20 C64 20 58 28 50 28 C42 28 36 20 28 20 Z" stroke-width="2"></path><path d="M35 32 C35 26 42 25 50 25 C58 25 65 26 65 32 C65 42 58 48 50 48 C42 48 35 42 35 32 Z" stroke-width="1.5"></path></svg></div><div class="absolute -top-12 -right-12 w-96 h-96 pointer-events-none opacity-10 text-white"><svg class="w-full h-full transform rotate-12" viewBox="0 0 100 100" fill="none" stroke="currentColor"><path d="M28 20 C20 20 15 32 16 48 C17 62 23 85 34 85 C39 85 43 72 50 72 C57 72 61 85 66 85 C77 85 83 62 84 48 C85 32 80 20 72 20 C64 20 58 28 50 28 C42 28 36 20 28 20 Z" stroke-width="2"></path></svg></div>
+<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10"><div class="hidden md:flex items-center gap-2 absolute -top-5 left-8 z-30 px-3.5 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-brand-200 shadow-md text-xs font-bold text-brand-700"><span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span><span class="">🦷 Odontograma FDI + IA Activa</span></div><div class="hidden md:flex items-center gap-2 absolute -top-5 right-12 z-30 px-3.5 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-brand-200 shadow-md text-xs font-bold text-slate-800"><span class="">✨ Esmalte &amp; Estética Digital</span><span class="px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700 text-[10px]">HD</span></div>
+<h2 class="text-3xl sm:text-5xl font-black tracking-tight mb-6">
+          Menos tiempo administrando.<br>Más tiempo atendiendo sonrisas.
+        </h2>
+<p class="text-lg text-brand-100 max-w-2xl mx-auto mb-10 leading-relaxed">Despídete de la recepción saturada, llamadas perdidas y fichas en papel. <strong class="text-slate-900 font-semibold">ClinicFlow360</strong> une agenda inteligente, <strong class="text-brand-700 font-semibold">odontograma interactivo</strong>, app móvil para doctores y <strong class="text-brand-700 font-semibold">recepcionista WhatsApp con IA</strong> en un único ecosistema clínico.</p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+<a class="w-full sm:w-auto px-8 py-4 rounded-full text-base font-bold text-brand-900 bg-white hover:bg-slate-100 shadow-xl transition active:scale-95" href="#probar-gratis">
+            Probar ClinicFlow360 gratis 14 días
+          </a>
+<button class="w-full sm:w-auto px-8 py-4 rounded-full text-base font-bold text-white border border-white/30 hover:bg-white/10 transition">
+            Solicitar demostración personalizada
+          </button>
+</div>
+<p class="text-xs text-brand-200/80 mt-6 font-medium">Configuración en 5 minutos · Sin descargas complejas · Soporte en español</p>
+</div>
+</section>
+<!-- END: ConversionCTASection -->
+</main>
+<!-- BEGIN: MainFooter -->
+<footer class="bg-slate-950 text-slate-400 py-16 border-t border-slate-800 text-xs">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
+<!-- Col 1: Brand -->
+<div class="col-span-2 space-y-4">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-brand-600 flex items-center justify-center text-white font-bold">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2C8.5 2 6 4.5 6 8c0 3.5 1.5 6 3 9 1 2 1.5 5 3 5s2-3 3-5c1.5-3 3-5.5 3-9 0-3.5-2.5-6-6-6z"></path></svg>
+</div>
+<span class="text-lg font-black text-white">ClinicFlow360</span>
+</div>
+<p class="text-xs text-slate-400 leading-relaxed max-w-sm">
+            La plataforma clínica y de recepción autónoma que sincroniza agenda, odontograma digital, WhatsApp y flujo odontológico en una sola experiencia.
+          </p>
+<div class="text-[11px] text-slate-500">
+            Diseñado para clínicas en México, Colombia, Chile, España y toda Latinoamérica.
+          </div>
+</div>
+<!-- Col 2: Soluciones -->
+<div>
+<div class="font-bold text-white uppercase tracking-wider mb-3">Producto</div>
+<ul class="space-y-2">
+<li class=""><a class="hover:text-white transition" href="#">Agenda Dental</a></li>
+<li class=""><a class="hover:text-white transition" href="#">Recepción IA WhatsApp</a></li>
+<li class=""><a class="hover:text-white transition" href="#">Odontograma 3D</a></li>
+<li class=""><a class="hover:text-white transition" href="#">App para Doctores</a></li>
+<li class=""><a class="hover:text-white transition" href="#">Dictado Clínico IA</a></li>
+</ul>
+</div>
+<!-- Col 3: Especialidades -->
+<div>
+<div class="font-bold text-white uppercase tracking-wider mb-3">Especialidades</div>
+<ul class="space-y-2">
+<li class=""><a class="hover:text-white transition" href="#">Ortodoncia</a></li>
+<li class=""><a class="hover:text-white transition" href="#">Implantología</a></li>
+<li class=""><a class="hover:text-white transition" href="#">Odontopediatría</a></li>
+<li class=""><a class="hover:text-white transition" href="#">Endodoncia</a></li>
+<li class=""><a class="hover:text-white transition" href="#">Clínicas Multisede</a></li>
+</ul>
+</div>
+<!-- Col 4: Legal & Soporte -->
+<div>
+<div class="font-bold text-white uppercase tracking-wider mb-3">Seguridad &amp; Legal</div>
+<ul class="space-y-2">
+<li class=""><a class="hover:text-white transition" href="#">Privacidad de Datos</a></li>
+<li class=""><a class="hover:text-white transition" href="#">Términos de Servicio</a></li>
+<li class=""><a class="hover:text-white transition" href="#">Cumplimiento HIPAA / GDPR</a></li>
+<li class=""><a class="hover:text-white transition" href="#">Estado del Sistema</a></li>
+<li class=""><a class="hover:text-white transition" href="#">Centro de Ayuda</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-500 text-[11px]">
+<div class="">
+          © 2025 ClinicFlow360 Technologies Inc. Todos los derechos reservados.
+        </div>
+<div class="flex items-center space-x-6">
+<a class="hover:text-slate-400" href="#">Aviso de Privacidad</a>
+<a class="hover:text-slate-400" href="#">Políticas de Cookies</a>
+<a class="hover:text-slate-400" href="#">Seguridad Médica</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- END: MainFooter -->
+
+
+</body></html>

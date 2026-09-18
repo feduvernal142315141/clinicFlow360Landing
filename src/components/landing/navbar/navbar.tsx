@@ -6,55 +6,46 @@ import { MobileMenu } from "./mobile-menu"
 export function Navbar() {
   return (
     <NavbarScrollEffect>
-      {/* Logo */}
-      <Link
-        href="/"
-        className="flex items-center gap-2.5"
-      >
-        <span className="flex h-8 w-8 items-center justify-center rounded-[10px] bg-brand-600">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M8 1.5L14 5V11L8 14.5L2 11V5L8 1.5Z" fill="white" fillOpacity="0.9" />
+      {/* Logo — dental icon */}
+      <Link href="/" className="flex items-center gap-2.5">
+        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-brand-700 via-brand-600 to-sky-400 text-white shadow-md shadow-brand-500/20">
+          <svg className="h-6 w-6" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" viewBox="0 0 24 24">
+            <path d="M12 2C8.5 2 6 4.5 6 8c0 3.5 1.5 6 3 9 1 2 1.5 5 3 5s2-3 3-5c1.5-3 3-5.5 3-9 0-3.5-2.5-6-6-6z" />
+            <path d="M9 9c1.5 1 4.5 1 6 0" />
           </svg>
-        </span>
-        <span
-          className="text-[18px] text-ink"
-          style={{ fontWeight: 680, letterSpacing: "-0.03em" }}
-        >
-          ClinicFlow<span className="text-brand-600">360</span>
-        </span>
+        </div>
+        <div className="flex items-baseline">
+          <span className="text-2xl font-black tracking-tight text-ink">ClinicFlow</span>
+          <span className="text-2xl font-extrabold tracking-tight text-brand-600">360</span>
+        </div>
       </Link>
 
-      {/* Desktop nav — centered links + right actions */}
-      <nav aria-label="Navegación principal" className="hidden items-center gap-8 md:flex">
+      {/* Desktop nav */}
+      <nav aria-label="Navegación principal" className="hidden items-center gap-8 text-[14px] font-medium text-muted md:flex">
         {navItems.map((item) => (
-          <a
-            key={item.href}
-            href={item.href}
-            className="relative text-[14px] font-medium text-muted transition-colors duration-150 hover:text-ink"
-          >
-            {item.label}
+          <a key={item.href} href={item.href} className="transition-colors duration-150 hover:text-brand-600">
+            {item.label === "Recepción IA" ? (
+              <span className="flex items-center gap-1.5">
+                Recepción IA
+                <span className="rounded bg-brand-50 px-1.5 py-0.5 text-[10px] font-bold text-brand-700 border border-brand-200">24/7</span>
+              </span>
+            ) : (
+              item.label
+            )}
           </a>
         ))}
       </nav>
 
-      {/* Right actions */}
+      {/* Actions */}
       <div className="hidden items-center gap-4 md:flex">
-        <a
-          href={navActions.login.href}
-          className="text-[14px] font-medium text-muted transition-colors duration-150 hover:text-ink"
-        >
+        <a href={navActions.login.href} className="text-[14px] font-semibold text-ink-tertiary transition-colors hover:text-ink">
           {navActions.login.label}
         </a>
-        <a
-          href={navActions.cta.href}
-          className="inline-flex h-[42px] items-center rounded-[12px] bg-brand-600 px-[18px] text-[14px] font-semibold text-white transition-all duration-200 hover:-translate-y-px hover:bg-brand-700"
-          style={{ boxShadow: "0 8px 24px rgba(3,126,204,0.18)" }}
-        >
+        <a href={navActions.cta.href} className="btn-primary inline-flex h-[42px] items-center rounded-full px-5 text-[14px] font-semibold">
           {navActions.cta.label}
         </a>
       </div>
 
-      {/* Mobile */}
       <div className="md:hidden">
         <MobileMenu />
       </div>

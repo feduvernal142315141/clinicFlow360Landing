@@ -1,38 +1,41 @@
-import { MessageSquare } from "lucide-react"
-
 const msgs = [
   { from: "p" as const, text: "Hola, quisiera una limpieza mañana después de las 3." },
-  { from: "a" as const, text: "Claro, Ana 😊 Tenemos 3:30 PM o 4:15 PM con la Dra. Valeria." },
+  { from: "a" as const, text: "Claro, Ana 😊 Tenemos disponible 3:30 PM o 4:15 PM con la Dra. Valeria." },
   { from: "p" as const, text: "Las 3:30, por favor." },
-  { from: "a" as const, text: "Listo. Tu cita quedó agendada. ¡Te enviaremos un recordatorio!" },
+  { from: "a" as const, text: "¡Listo! Tu cita quedó agendada para mañana 3:30 PM. Te enviamos recordatorio con indicaciones de llegada. 🦷" },
 ] as const
 
 export function AIChatCard() {
   return (
-    <div className="surface-glass shadow-float w-[260px] overflow-hidden rounded-[18px] sm:w-[300px] lg:w-[340px]">
+    <div className="surface-card shadow-float w-[260px] overflow-hidden rounded-2xl sm:w-[300px] lg:w-[360px]">
       {/* Header */}
-      <div className="flex items-center gap-2 border-b border-black/[0.04] px-3.5 py-2.5 sm:px-4 sm:py-3">
-        <div className="flex h-7 w-7 items-center justify-center rounded-full bg-brand-600">
-          <MessageSquare className="h-3 w-3 text-white" />
+      <div className="flex items-center gap-3 border-b border-slate-100 px-4 py-3">
+        <div className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-600 text-white">
+          <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
+          </svg>
         </div>
         <div>
-          <p className="text-[12px] font-semibold text-ink sm:text-[13px]">ClinicFlow AI</p>
-          <div className="flex items-center gap-1">
-            <span className="h-[5px] w-[5px] rounded-full bg-accent" />
-            <span className="text-[10px] text-accent-dark">24/7</span>
+          <div className="flex items-center gap-1.5 text-[13px] font-bold text-ink">
+            ClinicFlow AI
+            <span className="inline-flex items-center rounded bg-emerald-100 px-1.5 py-px text-[10px] font-bold text-emerald-700">24/7</span>
           </div>
+          <div className="text-[11px] text-muted">Recepción dental automatizada</div>
         </div>
       </div>
       {/* Messages */}
-      <div className="flex flex-col gap-[6px] p-2.5 sm:gap-2 sm:p-3">
+      <div className="space-y-2.5 p-3 text-[12px] leading-relaxed sm:p-4 sm:text-[13px]">
         {msgs.map((m, i) => (
-          <div key={i}
-            className={`max-w-[88%] rounded-2xl px-3 py-2 sm:px-3.5 sm:py-2.5 ${
-              m.from === "p" ? "self-end text-white" : "self-start bg-[#f1f5f9] text-ink"
-            }`}
-            style={m.from === "p" ? { background: "linear-gradient(135deg,#079CFB,#037ECC)" } : undefined}
-          >
-            <p className="text-[12px] leading-[1.45] sm:text-[13px]">{m.text}</p>
+          <div key={i} className={`flex ${m.from === "p" ? "justify-end" : "justify-start"}`}>
+            <div
+              className={`max-w-[85%] rounded-2xl px-3.5 py-2 ${
+                m.from === "p"
+                  ? "rounded-tr-none bg-brand-600 text-white shadow-sm"
+                  : "rounded-tl-none border border-slate-200/60 bg-slate-100 text-slate-800"
+              }`}
+            >
+              {m.text}
+            </div>
           </div>
         ))}
       </div>

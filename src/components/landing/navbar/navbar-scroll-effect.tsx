@@ -45,8 +45,8 @@ export function NavbarScrollEffect({
       <div
         className="mx-auto flex items-center justify-between px-6 transition-all duration-250"
         style={{
-          maxWidth: 1240,
-          height: scrolled ? 64 : 76,
+          maxWidth: 1280,
+          height: scrolled ? 64 : 80,
         }}
       >
         {children}
