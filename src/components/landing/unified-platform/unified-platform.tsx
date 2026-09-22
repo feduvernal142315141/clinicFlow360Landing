@@ -1,25 +1,19 @@
+import Image from "next/image"
 import { SectionReveal } from "../section-reveal"
 
-const beforeItems = [
-  { title: "Agenda en papel o Google Calendar aislado", detail: "Citas encimadas, cancelaciones sin previo aviso y huecos vacíos en horas pico." },
-  { title: "WhatsApp en un único celular de recepción", detail: "Mensajes de pacientes acumulados por horas, fines de semana desatendidos." },
-  { title: "Fotos clínicas perdidas en el teléfono de los doctores", detail: "Riesgo de privacidad y dificultad para mostrar avances reales a los pacientes." },
-  { title: "Papeleo manual al final de una jornada agotadora", detail: "Doctores perdiendo 1 a 2 horas escribiendo notas de evolución manualmente." },
-] as const
-
-const afterItems = [
-  { title: "Agenda inteligente que se auto-gestiona", detail: "Sincronizada por doctor, gabinete y duración de procedimiento en tiempo real." },
-  { title: "Recepción IA activa 24 horas por WhatsApp oficial", detail: "Responde en 5 segundos, agenda citas directamente y envía recordatorios automáticos." },
-  { title: "App para doctores con odontograma y fotos seguras", detail: "Captura fotos desde el gabinete y se asocian directo a la historia clínica del paciente." },
-  { title: "Dictado por voz IA estructurado automáticamente", detail: "El doctor dicta el procedimiento en 20 segundos y la nota queda redactada y archivada." },
+const painPoints = [
+  { icon: "📅", pain: "Agenda en papel o Google Calendar", tool: "Herramienta aislada" },
+  { icon: "📱", pain: "WhatsApp en celular de recepción", tool: "Teléfono personal" },
+  { icon: "📸", pain: "Fotos perdidas en galería del doctor", tool: "Sin respaldo clínico" },
+  { icon: "📝", pain: "Notas escritas a mano post-consulta", tool: "1-2 hrs de papeleo" },
 ] as const
 
 export function UnifiedPlatform() {
   return (
-    <section className="border-b border-slate-200 bg-white px-4 py-20 sm:px-6 lg:py-24">
+    <section className="relative overflow-hidden border-b border-slate-200 bg-white px-4 py-20 sm:px-6 lg:py-28">
       <div className="mx-auto max-w-7xl">
         <SectionReveal>
-          <div className="mx-auto mb-12 max-w-3xl text-center lg:mb-16">
+          <div className="mx-auto mb-14 max-w-3xl text-center lg:mb-16">
             <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.12em] text-brand-600 sm:text-xs">
               Evolución Clínica
             </p>
@@ -29,44 +23,64 @@ export function UnifiedPlatform() {
           </div>
         </SectionReveal>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:gap-10">
-          {/* BEFORE */}
+        {/* Visual transformation layout */}
+        <div className="relative">
+          {/* BEFORE — scattered, fragmented look */}
           <SectionReveal>
-            <div className="rounded-3xl border border-slate-200 bg-slate-50 p-7 sm:p-8">
-              <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-red-100 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.1em] text-red-700">
-                El modelo fragmentado tradicional
-              </div>
-              <ul className="space-y-5">
-                {beforeItems.map((item) => (
-                  <li key={item.title} className="flex items-start gap-3.5">
-                    <div className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-200 text-[11px] font-bold text-red-700">✕</div>
-                    <div>
-                      <h4 className="text-[14px] font-bold text-ink">{item.title}</h4>
-                      <p className="mt-0.5 text-[12px] text-muted sm:text-[13px]">{item.detail}</p>
-                    </div>
-                  </li>
+            <div className="mb-6 sm:mb-8">
+              <p className="mb-4 text-center text-[11px] font-bold uppercase tracking-[0.12em] text-red-500">
+                Así opera hoy la mayoría de clínicas
+              </p>
+              <div className="mx-auto grid max-w-3xl grid-cols-2 gap-2 sm:gap-3 md:grid-cols-4">
+                {painPoints.map((p) => (
+                  <div key={p.pain} className="rounded-xl border border-red-100 bg-red-50/50 p-3 text-center sm:p-4">
+                    <span className="text-xl sm:text-2xl">{p.icon}</span>
+                    <p className="mt-2 text-[11px] font-semibold text-slate-800 sm:text-[12px]">{p.pain}</p>
+                    <p className="mt-0.5 text-[10px] text-red-400 sm:text-[11px]">{p.tool}</p>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </div>
           </SectionReveal>
 
-          {/* AFTER */}
+          {/* Arrow / transformation line */}
+          <div className="flex flex-col items-center gap-1 py-3 sm:py-4">
+            <div className="h-8 w-px bg-gradient-to-b from-red-200 to-brand-300 sm:h-10" />
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-600 text-[12px] font-bold text-white shadow-md sm:h-10 sm:w-10 sm:text-[14px]">
+              ↓
+            </div>
+            <div className="h-4 w-px bg-brand-300 sm:h-6" />
+          </div>
+
+          {/* AFTER — unified product screenshot */}
           <SectionReveal>
-            <div className="rounded-3xl border-2 border-brand-500 bg-brand-50/50 p-7 shadow-xl shadow-brand-500/10 sm:p-8">
-              <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-brand-600 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.1em] text-white">
-                Con ClinicFlow360
+            <div>
+              <p className="mb-4 text-center text-[11px] font-bold uppercase tracking-[0.12em] text-brand-600">
+                Con ClinicFlow360 — todo conectado
+              </p>
+              <div className="mx-auto max-w-5xl overflow-hidden rounded-2xl shadow-tier-3 sm:rounded-3xl" style={{ border: "1px solid rgba(3,126,204,0.15)" }}>
+                <Image
+                  src="/landing/screenshots/dashboard-light.webp"
+                  alt="Dashboard de ClinicFlow360 con métricas de la clínica, señales operativas y ocupación de doctores unificados en una sola vista"
+                  width={1400}
+                  height={780}
+                  className="w-full"
+                />
               </div>
-              <ul className="space-y-5">
-                {afterItems.map((item) => (
-                  <li key={item.title} className="flex items-start gap-3.5">
-                    <div className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-600 text-[11px] font-bold text-white">✓</div>
-                    <div>
-                      <h4 className="text-[14px] font-bold text-ink">{item.title}</h4>
-                      <p className="mt-0.5 text-[12px] text-slate-600 sm:text-[13px]">{item.detail}</p>
-                    </div>
-                  </li>
+              {/* Value props below screenshot */}
+              <div className="mx-auto mt-6 flex max-w-3xl flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[12px] font-medium text-slate-600 sm:mt-8 sm:text-[13px]">
+                {[
+                  "Agenda inteligente",
+                  "Recepción IA 24/7",
+                  "Odontograma + fotos",
+                  "Dictado por voz",
+                ].map((v, i) => (
+                  <span key={v} className="flex items-center gap-1.5">
+                    {i > 0 && <span className="hidden text-slate-300 sm:inline">·</span>}
+                    <span className="text-brand-600">✓</span> {v}
+                  </span>
                 ))}
-              </ul>
+              </div>
             </div>
           </SectionReveal>
         </div>
