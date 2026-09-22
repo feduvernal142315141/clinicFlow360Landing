@@ -21,10 +21,10 @@ import { AppMovilPreview } from "./previews/app-movil-preview"
 const tabs = [
   { id: "agenda", label: "Agenda", icon: Calendar },
   { id: "pacientes", label: "Pacientes", icon: Users },
-  { id: "doctores", label: "Doctores", icon: Stethoscope },
-  { id: "clinica", label: "Clínica", icon: Building2 },
-  { id: "comunicacion", label: "Comunicación", icon: MessageSquare },
-  { id: "app-movil", label: "App móvil", icon: Smartphone },
+  { id: "doctores", label: "Dashboard", icon: Stethoscope },
+  { id: "clinica", label: "Odontograma", icon: Building2 },
+  { id: "comunicacion", label: "Expediente", icon: MessageSquare },
+  { id: "app-movil", label: "Pieza dental", icon: Smartphone },
 ] as const
 
 type TabId = (typeof tabs)[number]["id"]
