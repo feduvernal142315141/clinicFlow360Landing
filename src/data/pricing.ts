@@ -18,7 +18,7 @@ export const plans: Plan[] = [
   {
     name: "Esencial",
     slug: "esencial",
-    price: 49,
+    price: 29,
     description: "Para consultorios independientes",
     highlighted: false,
     ctaLabel: "Comenzar prueba gratis",
@@ -34,7 +34,7 @@ export const plans: Plan[] = [
   {
     name: "Clínica Pro",
     slug: "pro",
-    price: 89,
+    price: 49,
     description: "Para clínicas con equipo multidisciplinario",
     highlighted: true,
     badge: "Más Popular en Clínicas",
@@ -51,7 +51,7 @@ export const plans: Plan[] = [
   {
     name: "Clínica AI 24/7",
     slug: "ai",
-    price: 149,
+    price: 89,
     description: "Automatización total con Recepción Autónoma",
     highlighted: false,
     ctaLabel: "Contactar a un asesor",

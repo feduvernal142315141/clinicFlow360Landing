@@ -69,8 +69,8 @@ export function ProductNavigator() {
     <div
       className="overflow-hidden rounded-3xl"
       style={{
-        border: "1px solid rgba(15,23,42,0.07)",
-        boxShadow: "0 30px 90px rgba(15,23,42,0.10)",
+        border: "1px solid rgba(255,255,255,0.08)",
+        boxShadow: "0 30px 90px rgba(0,0,0,0.3)",
         background: "#FFFFFF",
       }}
       onMouseEnter={() => setPaused(true)}

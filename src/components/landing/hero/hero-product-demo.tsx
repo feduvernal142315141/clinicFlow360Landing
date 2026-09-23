@@ -27,26 +27,26 @@ export function HeroProductDemo() {
 
       {/* ═══ MOBILE (< lg) ═══ */}
       <div className="lg:hidden">
-        {/* Dashboard — main focus */}
+        {/* Dashboard — wider on mobile for more impact */}
         <motion.div variants={stageIn} initial="hidden" animate="visible">
-          <div style={{ transform: "rotateX(2deg)", transformOrigin: "center 80%" }}>
+          <div className="-mx-2 sm:mx-0" style={{ transform: "rotateX(2deg)", transformOrigin: "center 80%" }}>
             <BrowserMockup />
           </div>
         </motion.div>
 
-        {/* Overlapping cards — create depth layers */}
-        <div className="relative z-20 -mt-6 flex items-end gap-3 px-2 sm:-mt-10 sm:gap-4">
-          <motion.div variants={cardIn(0.4)} initial="hidden" animate="visible" className="flex-1 max-w-[65%]">
+        {/* Cards — stacked vertically on mobile, side-by-side on sm+ */}
+        <div className="relative z-20 -mt-4 flex flex-col items-center gap-4 px-4 sm:-mt-10 sm:flex-row sm:items-end sm:justify-center sm:gap-4 sm:px-2">
+          <motion.div variants={cardIn(0.4)} initial="hidden" animate="visible" className="w-full max-w-[320px] sm:max-w-[300px]">
             <AIChatCard />
           </motion.div>
-          <motion.div variants={cardIn(0.55)} initial="hidden" animate="visible" className="shrink-0">
+          <motion.div variants={cardIn(0.55)} initial="hidden" animate="visible" className="mx-auto w-[180px] sm:w-[200px]">
             <DoctorPhone />
           </motion.div>
         </div>
       </div>
 
       {/* ═══ DESKTOP (>= lg) ═══ */}
-      <div className="relative hidden lg:block" style={{ minHeight: 520 }}>
+      <div className="relative hidden pb-28 lg:block" style={{ minHeight: 520 }}>
         {/* Dashboard — large, central */}
         <motion.div variants={stageIn} initial="hidden" animate="visible" className="relative z-10 mx-auto" style={{ maxWidth: 1000 }}>
           <div style={{ transform: "rotateX(2deg)", transformOrigin: "center 80%" }}>

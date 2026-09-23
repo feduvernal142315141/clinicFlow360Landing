@@ -10,14 +10,17 @@ const painPoints = [
 
 export function UnifiedPlatform() {
   return (
-    <section className="relative overflow-hidden border-b border-slate-200 bg-white px-4 py-20 sm:px-6 lg:py-28">
+    <section
+      className="relative overflow-hidden border-b border-white/[0.06] px-4 py-20 sm:px-6 lg:py-28"
+      style={{ background: "linear-gradient(180deg, #0a1628 0%, #0d1a30 100%)" }}
+    >
       <div className="mx-auto max-w-7xl">
         <SectionReveal>
           <div className="mx-auto mb-14 max-w-3xl text-center lg:mb-16">
-            <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.12em] text-brand-600 sm:text-xs">
+            <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.12em] text-brand-400 sm:text-xs">
               Evolución Clínica
             </p>
-            <h2 className="headline-section text-balance text-ink text-[26px] sm:text-[34px] lg:text-[40px]">
+            <h2 className="headline-section text-balance text-white text-[26px] sm:text-[34px] lg:text-[40px]">
               Administrar una clínica no debería requerir cinco herramientas desconectadas.
             </h2>
           </div>
@@ -28,15 +31,15 @@ export function UnifiedPlatform() {
           {/* BEFORE — scattered, fragmented look */}
           <SectionReveal>
             <div className="mb-6 sm:mb-8">
-              <p className="mb-4 text-center text-[11px] font-bold uppercase tracking-[0.12em] text-red-500">
+              <p className="mb-4 text-center text-[11px] font-bold uppercase tracking-[0.12em] text-red-400">
                 Así opera hoy la mayoría de clínicas
               </p>
               <div className="mx-auto grid max-w-3xl grid-cols-2 gap-2 sm:gap-3 md:grid-cols-4">
                 {painPoints.map((p) => (
-                  <div key={p.pain} className="rounded-xl border border-red-100 bg-red-50/50 p-3 text-center sm:p-4">
+                  <div key={p.pain} className="rounded-xl border border-red-500/20 bg-red-950/30 p-3 text-center sm:p-4">
                     <span className="text-xl sm:text-2xl">{p.icon}</span>
-                    <p className="mt-2 text-[11px] font-semibold text-slate-800 sm:text-[12px]">{p.pain}</p>
-                    <p className="mt-0.5 text-[10px] text-red-400 sm:text-[11px]">{p.tool}</p>
+                    <p className="mt-2 text-[11px] font-semibold text-slate-300 sm:text-[12px]">{p.pain}</p>
+                    <p className="mt-0.5 text-[10px] text-red-400/70 sm:text-[11px]">{p.tool}</p>
                   </div>
                 ))}
               </div>
@@ -45,20 +48,20 @@ export function UnifiedPlatform() {
 
           {/* Arrow / transformation line */}
           <div className="flex flex-col items-center gap-1 py-3 sm:py-4">
-            <div className="h-8 w-px bg-gradient-to-b from-red-200 to-brand-300 sm:h-10" />
-            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-600 text-[12px] font-bold text-white shadow-md sm:h-10 sm:w-10 sm:text-[14px]">
+            <div className="h-8 w-px bg-gradient-to-b from-red-500/40 to-brand-400/40 sm:h-10" />
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-600 text-[12px] font-bold text-white shadow-md shadow-brand-600/30 sm:h-10 sm:w-10 sm:text-[14px]">
               ↓
             </div>
-            <div className="h-4 w-px bg-brand-300 sm:h-6" />
+            <div className="h-4 w-px bg-brand-400/40 sm:h-6" />
           </div>
 
           {/* AFTER — unified product screenshot */}
           <SectionReveal>
             <div>
-              <p className="mb-4 text-center text-[11px] font-bold uppercase tracking-[0.12em] text-brand-600">
+              <p className="mb-4 text-center text-[11px] font-bold uppercase tracking-[0.12em] text-brand-400">
                 Con ClinicFlow360 — todo conectado
               </p>
-              <div className="mx-auto max-w-5xl overflow-hidden rounded-2xl shadow-tier-3 sm:rounded-3xl" style={{ border: "1px solid rgba(3,126,204,0.15)" }}>
+              <div className="mx-auto max-w-5xl overflow-hidden rounded-2xl shadow-tier-3 sm:rounded-3xl" style={{ border: "1px solid rgba(255,255,255,0.08)" }}>
                 <Image
                   src="/landing/screenshots/dashboard-light.webp"
                   alt="Dashboard de ClinicFlow360 con métricas de la clínica, señales operativas y ocupación de doctores unificados en una sola vista"
@@ -68,7 +71,7 @@ export function UnifiedPlatform() {
                 />
               </div>
               {/* Value props below screenshot */}
-              <div className="mx-auto mt-6 flex max-w-3xl flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[12px] font-medium text-slate-600 sm:mt-8 sm:text-[13px]">
+              <div className="mx-auto mt-6 flex max-w-3xl flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[12px] font-medium text-slate-400 sm:mt-8 sm:text-[13px]">
                 {[
                   "Agenda inteligente",
                   "Recepción IA 24/7",
@@ -76,8 +79,8 @@ export function UnifiedPlatform() {
                   "Dictado por voz",
                 ].map((v, i) => (
                   <span key={v} className="flex items-center gap-1.5">
-                    {i > 0 && <span className="hidden text-slate-300 sm:inline">·</span>}
-                    <span className="text-brand-600">✓</span> {v}
+                    {i > 0 && <span className="hidden text-slate-700 sm:inline">·</span>}
+                    <span className="text-brand-400">✓</span> {v}
                   </span>
                 ))}
               </div>
