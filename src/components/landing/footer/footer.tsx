@@ -92,7 +92,10 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="h-px" style={{ background: "linear-gradient(to right, transparent, rgba(255,255,255,0.04), transparent)" }} />
         <div className="flex flex-col items-center justify-between gap-4 pt-8 text-[11px] text-slate-600 sm:flex-row">
-          <span>© {year} ClinicFlow360 Technologies. Todos los derechos reservados.</span>
+          <div className="flex flex-col items-center gap-2 sm:items-start">
+            <span>© {year} KodeWave Solutions. Todos los derechos reservados.</span>
+            <span className="text-[10px] text-slate-700">ClinicFlow360 es una plataforma SaaS desarrollada y operada por KodeWave Solutions.</span>
+          </div>
           <div className="flex items-center gap-6">
             <a href="#" className="transition-colors hover:text-slate-400">Aviso de Privacidad</a>
             <a href="#" className="transition-colors hover:text-slate-400">Políticas de Cookies</a>

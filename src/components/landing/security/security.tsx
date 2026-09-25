@@ -46,9 +46,9 @@ const items = [
   },
   {
     icon: DatabaseIcon,
-    title: "Respaldos cada hora",
+    title: "Respaldos automáticos",
     detail: "Historias clínicas, radiografías y odontogramas respaldados automáticamente en múltiples zonas.",
-    metric: "24/día",
+    metric: "Automático",
     color: "#38BDF8",
   },
   {
@@ -60,9 +60,9 @@ const items = [
   },
   {
     icon: ServerIcon,
-    title: "Disponibilidad 99.98%",
-    detail: "Infraestructura cloud multi-zona con failover automático. Tu clínica nunca se detiene.",
-    metric: "99.98%",
+    title: "Infraestructura resiliente",
+    detail: "Infraestructura cloud multi-zona con failover automático. Arquitectura diseñada para confiabilidad.",
+    metric: "Redundancia",
     color: "#F59E0B",
   },
 ] as const
@@ -162,10 +162,10 @@ export function Security() {
         <SectionReveal>
           <div className="mx-auto mt-12 flex max-w-3xl flex-wrap items-center justify-center gap-x-8 gap-y-3 text-[12px] font-medium text-slate-500 sm:mt-14">
             {[
-              { label: "HIPAA ready", icon: "🛡️" },
-              { label: "SOC 2 Type II", icon: "✓" },
+              { label: "Cifrado HTTPS", icon: "🔒" },
+              { label: "Controles de acceso", icon: "🔐" },
               { label: "Datos en tu región", icon: "🌎" },
-              { label: "Auditoría completa", icon: "📋" },
+              { label: "Prácticas de seguridad", icon: "✓" },
             ].map((badge, i) => (
               <span key={badge.label} className="flex items-center gap-2">
                 {i > 0 && <span className="hidden text-slate-700 sm:inline">·</span>}
