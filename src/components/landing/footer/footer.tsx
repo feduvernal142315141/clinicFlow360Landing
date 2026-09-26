@@ -80,9 +80,14 @@ export function Footer() {
           <div>
             <div className="mb-4 text-[11px] font-bold uppercase tracking-[0.1em] text-slate-500">Seguridad &amp; Legal</div>
             <ul className="space-y-2.5">
-              {["Privacidad de Datos", "Términos de Servicio", "Estado del Sistema", "Centro de Ayuda"].map((item) => (
-                <li key={item}>
-                  <a href="#" className="text-[13px] text-slate-500 transition-colors hover:text-white">{item}</a>
+              {[
+                { label: "Privacidad de Datos", href: "/privacy" },
+                { label: "Términos de Servicio", href: "#" },
+                { label: "Estado del Sistema", href: "#" },
+                { label: "Centro de Ayuda", href: "#" }
+              ].map((item) => (
+                <li key={item.label}>
+                  <a href={item.href} className="text-[13px] text-slate-500 transition-colors hover:text-white">{item.label}</a>
                 </li>
               ))}
             </ul>
@@ -97,7 +102,7 @@ export function Footer() {
             <span className="text-[10px] text-slate-700">ClinicFlow360 es una plataforma SaaS desarrollada y operada por KodeWave Solutions.</span>
           </div>
           <div className="flex items-center gap-6">
-            <a href="#" className="transition-colors hover:text-slate-400">Aviso de Privacidad</a>
+            <a href="/privacy" className="transition-colors hover:text-slate-400">Aviso de Privacidad</a>
             <a href="#" className="transition-colors hover:text-slate-400">Políticas de Cookies</a>
           </div>
         </div>
