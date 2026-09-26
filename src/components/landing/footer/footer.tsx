@@ -101,9 +101,10 @@ export function Footer() {
             <span>© {year} KodeWave Solutions. Todos los derechos reservados.</span>
             <span className="text-[10px] text-slate-700">ClinicFlow360 es una plataforma SaaS desarrollada y operada por KodeWave Solutions.</span>
           </div>
-          <div className="flex items-center gap-6">
-            <a href="/privacy" className="transition-colors hover:text-slate-400">Aviso de Privacidad</a>
-            <a href="#" className="transition-colors hover:text-slate-400">Políticas de Cookies</a>
+          <div className="flex flex-col items-center gap-4 sm:flex-row sm:gap-6">
+            <a href="/privacy" className="transition-colors hover:text-slate-400">Política de Privacidad</a>
+            <a href="/terms" className="transition-colors hover:text-slate-400">Condiciones del Servicio</a>
+            <a href="/data-deletion" className="transition-colors hover:text-slate-400">Eliminación de Datos</a>
           </div>
         </div>
       </div>
