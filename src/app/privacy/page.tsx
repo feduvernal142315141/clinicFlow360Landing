@@ -1,14 +1,23 @@
 import { Metadata } from "next"
 import { Navbar } from "@/components/landing/navbar/navbar"
 import { Footer } from "@/components/landing/footer/footer"
+import { siteConfig } from "@/lib/config"
+
+const title = "Política de Privacidad"
+const description = "Política de privacidad de ClinicFlow360. Información sobre cómo recopilamos, usamos y protegemos tus datos."
 
 export const metadata: Metadata = {
-  title: "Política de Privacidad | ClinicFlow360",
-  description: "Política de privacidad de ClinicFlow360. Información sobre cómo recopilamos, usamos y protegemos tus datos.",
+  title,
+  description,
+  alternates: { canonical: "/privacy" },
   openGraph: {
-    title: "Política de Privacidad | ClinicFlow360",
-    description: "Política de privacidad de ClinicFlow360",
-    url: "https://clinic-landing-sable.vercel.app/privacy",
+    title: `${title} | ${siteConfig.name}`,
+    description,
+    url: "/privacy",
+    images: ["/opengraph-image"],
+    siteName: siteConfig.name,
+    locale: "es_LA",
+    type: "website",
   },
 }
 

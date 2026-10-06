@@ -56,9 +56,15 @@ export function Footer() {
           <div>
             <div className="mb-4 text-[11px] font-bold uppercase tracking-[0.1em] text-slate-500">Producto</div>
             <ul className="space-y-2.5">
-              {["Agenda Dental", "Recepción IA WhatsApp", "Odontograma Digital", "App para Doctores", "Dictado Clínico IA"].map((item) => (
-                <li key={item}>
-                  <a href="#" className="text-[13px] text-slate-500 transition-colors hover:text-white">{item}</a>
+              {[
+                { label: "Agenda Dental", href: "/#producto" },
+                { label: "Recepción IA WhatsApp", href: "/#recepcion-ia" },
+                { label: "Odontograma Digital", href: "/#producto" },
+                { label: "App para Doctores", href: "/#app-movil" },
+                { label: "Dictado Clínico IA", href: "/#dictado" },
+              ].map((item) => (
+                <li key={item.label}>
+                  <a href={item.href} className="text-[13px] text-slate-500 transition-colors hover:text-white">{item.label}</a>
                 </li>
               ))}
             </ul>
@@ -82,7 +88,7 @@ export function Footer() {
             <ul className="space-y-2.5">
               {[
                 { label: "Privacidad de Datos", href: "/privacy" },
-                { label: "Términos de Servicio", href: "#" },
+                { label: "Términos de Servicio", href: "/terms" },
                 { label: "Estado del Sistema", href: "#" },
                 { label: "Centro de Ayuda", href: "#" }
               ].map((item) => (

@@ -1,14 +1,23 @@
 import { Metadata } from "next"
 import { Navbar } from "@/components/landing/navbar/navbar"
 import { Footer } from "@/components/landing/footer/footer"
+import { siteConfig } from "@/lib/config"
+
+const title = "Solicitud de Eliminación de Datos"
+const description = "Solicita la eliminación de tus datos de ClinicFlow360. Instrucciones claras para ejercer tu derecho a la privacidad."
 
 export const metadata: Metadata = {
-  title: "Solicitud de Eliminación de Datos | ClinicFlow360",
-  description: "Solicita la eliminación de tus datos de ClinicFlow360. Instrucciones claras para ejercer tu derecho a la privacidad.",
+  title,
+  description,
+  alternates: { canonical: "/data-deletion" },
   openGraph: {
-    title: "Solicitud de Eliminación de Datos | ClinicFlow360",
-    description: "Solicitud de Eliminación de Datos | ClinicFlow360",
-    url: "https://clinic-landing-sable.vercel.app/data-deletion",
+    title: `${title} | ${siteConfig.name}`,
+    description,
+    url: "/data-deletion",
+    images: ["/opengraph-image"],
+    siteName: siteConfig.name,
+    locale: "es_LA",
+    type: "website",
   },
 }
 

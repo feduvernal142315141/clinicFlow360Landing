@@ -63,7 +63,7 @@ export function UnifiedPlatform() {
               </p>
               <div className="mx-auto max-w-5xl overflow-hidden rounded-2xl shadow-tier-3 sm:rounded-3xl" style={{ border: "1px solid rgba(255,255,255,0.08)" }}>
                 <Image
-                  src="/landing/screenshots/dashboard-light.webp"
+                  src="/landing/screenshots/dashboard-dark.webp"
                   alt="Dashboard de ClinicFlow360 con métricas de la clínica, señales operativas y ocupación de doctores unificados en una sola vista"
                   width={1400}
                   height={780}

@@ -1,36 +1,56 @@
 import { siteConfig } from "@/lib/config"
+import { plans } from "@/data/pricing"
 
-export function OrganizationJsonLd() {
+const organizationId = `${siteConfig.url}/#organization`
+const websiteId = `${siteConfig.url}/#website`
+
+/**
+ * Organization + WebSite + SoftwareApplication as a single linked @graph.
+ * Offers are derived from data/pricing so schema never drifts from the UI.
+ */
+export function SiteJsonLd() {
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    name: siteConfig.name,
-    url: siteConfig.url,
-    description: siteConfig.description,
-  }
-
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-    />
-  )
-}
-
-export function SoftwareApplicationJsonLd() {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: siteConfig.name,
-    applicationCategory: "BusinessApplication",
-    operatingSystem: "Web, iOS, Android",
-    description: siteConfig.description,
-    url: siteConfig.url,
-    offers: {
-      "@type": "AggregateOffer",
-      priceCurrency: "USD",
-      availability: "https://schema.org/OnlineOnly",
-    },
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": organizationId,
+        name: siteConfig.name,
+        url: siteConfig.url,
+        logo: `${siteConfig.url}/icon.svg`,
+        description: siteConfig.description,
+      },
+      {
+        "@type": "WebSite",
+        "@id": websiteId,
+        name: siteConfig.name,
+        url: siteConfig.url,
+        inLanguage: "es",
+        publisher: { "@id": organizationId },
+      },
+      {
+        "@type": "SoftwareApplication",
+        name: siteConfig.name,
+        applicationCategory: "BusinessApplication",
+        applicationSubCategory: "Software de gestión para clínicas dentales",
+        operatingSystem: "Web, iOS, Android",
+        description: siteConfig.description,
+        url: siteConfig.url,
+        inLanguage: "es",
+        image: `${siteConfig.url}/opengraph-image`,
+        publisher: { "@id": organizationId },
+        offers: plans
+          .filter((plan) => plan.price !== null)
+          .map((plan) => ({
+            "@type": "Offer",
+            name: plan.name,
+            description: plan.description,
+            price: plan.price,
+            priceCurrency: "USD",
+            url: `${siteConfig.url}/#precios`,
+          })),
+      },
+    ],
   }
 
   return (

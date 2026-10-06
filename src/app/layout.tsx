@@ -15,21 +15,40 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: `${siteConfig.name} | Software para clínicas dentales con IA`,
+  title: {
+    default: siteConfig.title,
+    template: `%s | ${siteConfig.name}`,
+  },
   description: siteConfig.description,
   metadataBase: new URL(siteConfig.url),
+  applicationName: siteConfig.name,
+  category: "technology",
   openGraph: {
-    title: `${siteConfig.name} | Software para clínicas dentales con IA`,
+    title: siteConfig.title,
     description: siteConfig.description,
-    url: siteConfig.url,
+    url: "/",
     siteName: siteConfig.name,
     locale: "es_LA",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} | Software para clínicas dentales con IA`,
+    title: siteConfig.title,
     description: siteConfig.description,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
   },
   keywords: [
     "software dental",

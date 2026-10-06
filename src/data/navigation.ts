@@ -1,3 +1,5 @@
+import { siteConfig } from "@/lib/config"
+
 export const navItems = [
   { label: "Producto", href: "#producto" },
   { label: "Recepción IA", href: "#recepcion-ia" },
@@ -6,6 +8,6 @@ export const navItems = [
 ] as const
 
 export const navActions = {
-  login: { label: "Iniciar sesión", href: "/login" },
+  login: { label: "Iniciar sesión", href: siteConfig.loginUrl },
   cta: { label: "Probar gratis", href: "#precios" },
 } as const

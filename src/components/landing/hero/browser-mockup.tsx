@@ -2,7 +2,7 @@ import Image from "next/image"
 
 /**
  * Real product screenshot in a browser frame.
- * Uses the actual ClinicFlow360 agenda view (light mode).
+ * Uses the actual ClinicFlow360 agenda view (dark mode).
  */
 export function BrowserMockup() {
   return (
@@ -20,8 +20,8 @@ export function BrowserMockup() {
 
       {/* Real product screenshot */}
       <Image
-        src="/landing/screenshots/agenda-light.webp"
-        alt="Agenda de citas de ClinicFlow360 mostrando vista semanal con citas de pacientes, filtros por especialista y etiquetas de estado"
+        src="/landing/screenshots/agenda-dark.webp"
+        alt="Agenda de citas de ClinicFlow360 mostrando vista mensual con citas de pacientes, filtros por especialista y etiquetas de estado"
         width={1400}
         height={780}
         className="w-full"

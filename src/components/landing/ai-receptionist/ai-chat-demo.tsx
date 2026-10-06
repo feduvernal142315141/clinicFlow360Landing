@@ -39,7 +39,7 @@ export function AIChatDemo() {
             <p className="mt-2">
               El Dr. Roberto tiene un espacio para valoración de emergencia mañana lunes a las{" "}
               <strong className="text-white">08:30 AM</strong> o a las{" "}
-              <strong className="text-white">09:15 AM</strong>. ¿Cuál te conviene?
+              <strong className="text-white">09:15 AM</strong>. ¿Cuál le parece mejor?
             </p>
             <div className="mt-1 text-right text-[9px] text-slate-400">11:24 PM (Respondido en 4s)</div>
           </div>

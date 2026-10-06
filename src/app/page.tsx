@@ -12,16 +12,17 @@ import { Pricing } from "@/components/landing/pricing/pricing"
 import { FAQSection } from "@/components/landing/faq/faq-section"
 import { FinalCTA } from "@/components/landing/final-cta/final-cta"
 import { Footer } from "@/components/landing/footer/footer"
-import {
-  OrganizationJsonLd,
-  SoftwareApplicationJsonLd,
-} from "@/lib/seo/structured-data"
+import type { Metadata } from "next"
+import { SiteJsonLd } from "@/lib/seo/structured-data"
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+}
 
 export default function LandingPage() {
   return (
     <>
-      <OrganizationJsonLd />
-      <SoftwareApplicationJsonLd />
+      <SiteJsonLd />
 
       <Navbar />
 

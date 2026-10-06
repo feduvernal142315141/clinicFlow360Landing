@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next"
 import { siteConfig } from "@/lib/config"
 
+const legalPages = ["privacy", "terms", "data-deletion"] as const
+
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
@@ -9,23 +11,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 1,
     },
-    {
-      url: `${siteConfig.url}/privacy`,
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.8,
-    },
-    {
-      url: `${siteConfig.url}/terms`,
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.8,
-    },
-    {
-      url: `${siteConfig.url}/data-deletion`,
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.8,
-    },
+    ...legalPages.map((slug) => ({
+      url: `${siteConfig.url}/${slug}`,
+      changeFrequency: "yearly" as const,
+      priority: 0.2,
+    })),
   ]
 }

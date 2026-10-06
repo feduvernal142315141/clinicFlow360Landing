@@ -4,7 +4,7 @@ export function AppMovilPreview() {
   return (
     <div className="overflow-hidden rounded-xl">
       <Image
-        src="/landing/screenshots/diente-modal-light.webp"
+        src="/landing/screenshots/diente-superficies-dark.webp"
         alt="Modal de diente con selección de superficies vestibular, oclusal y palatino, plantillas ICDAS y estados clínicos"
         width={1400}
         height={780}

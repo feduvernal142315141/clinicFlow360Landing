@@ -4,7 +4,7 @@ export function DoctoresPreview() {
   return (
     <div className="overflow-hidden rounded-xl">
       <Image
-        src="/landing/screenshots/dashboard-light.webp"
+        src="/landing/screenshots/dashboard-dark.webp"
         alt="Dashboard con ocupación de doctores, tasa de asistencia y señales operativas"
         width={1400}
         height={780}

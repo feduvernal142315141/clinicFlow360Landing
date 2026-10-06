@@ -10,9 +10,11 @@ export function AIChatCard() {
     <div
       className="w-full overflow-hidden rounded-2xl sm:w-[300px] lg:w-[360px]"
       style={{
-        background: "rgba(255,255,255,0.04)",
-        border: "1px solid rgba(255,255,255,0.08)",
-        backdropFilter: "blur(12px)",
+        // Near-opaque: the card overlaps the light agenda screenshot, so a
+        // translucent fill washes out the light text.
+        background: "rgba(9,22,38,0.94)",
+        border: "1px solid rgba(255,255,255,0.1)",
+        backdropFilter: "blur(16px)",
         boxShadow: "0 20px 50px rgba(0,0,0,0.3), 0 8px 20px rgba(0,0,0,0.15)",
       }}
     >
@@ -28,7 +30,7 @@ export function AIChatCard() {
             ClinicFlow AI
             <span className="inline-flex items-center rounded bg-emerald-950/80 px-1.5 py-px text-[10px] font-bold text-emerald-400">24/7</span>
           </div>
-          <div className="text-[11px] text-slate-500">Recepción dental automatizada</div>
+          <div className="text-[11px] text-slate-400">Recepción dental automatizada</div>
         </div>
       </div>
       {/* Messages */}
@@ -39,7 +41,7 @@ export function AIChatCard() {
               className={`max-w-[85%] rounded-2xl px-3.5 py-2 ${
                 m.from === "p"
                   ? "rounded-tr-none bg-brand-600 text-white shadow-sm"
-                  : "rounded-tl-none border border-white/[0.06] bg-white/[0.06] text-slate-300"
+                  : "rounded-tl-none border border-white/[0.06] bg-white/[0.08] text-slate-100"
               }`}
             >
               {m.text}

@@ -1,14 +1,23 @@
 import { Metadata } from "next"
 import { Navbar } from "@/components/landing/navbar/navbar"
 import { Footer } from "@/components/landing/footer/footer"
+import { siteConfig } from "@/lib/config"
+
+const title = "Condiciones del Servicio"
+const description = "Condiciones del servicio de ClinicFlow360. Términos y condiciones de uso de la plataforma."
 
 export const metadata: Metadata = {
-  title: "Condiciones del Servicio | ClinicFlow360",
-  description: "Condiciones del servicio de ClinicFlow360. Términos y condiciones de uso de la plataforma.",
+  title,
+  description,
+  alternates: { canonical: "/terms" },
   openGraph: {
-    title: "Condiciones del Servicio | ClinicFlow360",
-    description: "Condiciones del servicio de ClinicFlow360",
-    url: "https://clinic-landing-sable.vercel.app/terms",
+    title: `${title} | ${siteConfig.name}`,
+    description,
+    url: "/terms",
+    images: ["/opengraph-image"],
+    siteName: siteConfig.name,
+    locale: "es_LA",
+    type: "website",
   },
 }
 
