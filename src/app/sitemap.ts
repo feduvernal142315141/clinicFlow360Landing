@@ -11,6 +11,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 1,
     },
+    {
+      url: `${siteConfig.url}${siteConfig.trialSignupPath}`,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
     ...legalPages.map((slug) => ({
       url: `${siteConfig.url}/${slug}`,
       changeFrequency: "yearly" as const,

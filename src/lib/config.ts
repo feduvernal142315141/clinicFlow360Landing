@@ -8,6 +8,15 @@ export const siteConfig = {
   loginUrl:
     process.env.NEXT_PUBLIC_LOGIN_URL ?? "https://app.clinicflow360.com/login",
   signupUrl: process.env.NEXT_PUBLIC_SIGNUP_URL ?? null,
+  trialSignupPath: "/prueba-gratis",
+  // Server-only: base URL of the clinic backend that creates trial clinics.
+  apiUrl: process.env.CLINIC_API_URL ?? null,
+  // Version of /terms shown to the person signing up (its "last updated" date).
+  termsVersion: "2026-09-25",
+  // Captcha is optional: the widget only renders when a site key is configured.
+  turnstileSiteKey: process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? null,
+  turnstileScriptUrl:
+    "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit",
   whatsappDemoUrl: null as string | null,
   locale: "es" as const,
 } as const

@@ -3,6 +3,7 @@
 import { motion } from "motion/react"
 import { ArrowRight, PlayCircle } from "lucide-react"
 import { easeOutPremium } from "@/lib/motion/easings"
+import { siteConfig } from "@/lib/config"
 
 const fade = {
   hidden: { opacity: 0, y: 8 },
@@ -72,7 +73,7 @@ export function HeroCopy() {
       <motion.div custom={0.16} variants={fade} initial="hidden" animate="visible"
         className="mt-6 flex w-full flex-col gap-3 px-4 sm:mt-8 sm:w-auto sm:flex-row sm:px-0"
       >
-        <a href="#precios" className="btn-primary inline-flex h-[50px] items-center justify-center gap-2 rounded-full px-7 text-[15px] sm:h-[52px]">
+        <a href={siteConfig.trialSignupPath} className="btn-primary inline-flex h-[50px] items-center justify-center gap-2 rounded-full px-7 text-[15px] sm:h-[52px]">
           Probar gratis 14 días
           <ArrowRight className="h-4 w-4" />
         </a>

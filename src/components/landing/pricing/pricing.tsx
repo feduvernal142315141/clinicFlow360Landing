@@ -3,7 +3,16 @@
 import { motion } from "motion/react"
 import { easeOutPremium } from "@/lib/motion/easings"
 import { plans } from "@/data/pricing"
+import { siteConfig } from "@/lib/config"
 import { SectionReveal } from "../section-reveal"
+
+function ctaClassName(highlighted: boolean) {
+  return `mt-8 block w-full rounded-xl py-3.5 text-center text-[14px] font-bold transition-all duration-200 ${
+    highlighted
+      ? "bg-brand-600 text-white shadow-lg shadow-brand-600/25 hover:bg-brand-500 hover:shadow-brand-500/30 active:scale-[0.98]"
+      : "border border-white/10 text-slate-300 hover:border-white/20 hover:bg-white/[0.04] hover:text-white"
+  }`
+}
 
 /* ── Plan icon per slug ─────────────────────────── */
 const planIcons: Record<string, React.ReactNode> = {
@@ -186,15 +195,15 @@ export function Pricing() {
                   </ul>
 
                   {/* CTA */}
-                  <button
-                    className={`mt-8 w-full rounded-xl py-3.5 text-[14px] font-bold transition-all duration-200 ${
-                      plan.highlighted
-                        ? "bg-brand-600 text-white shadow-lg shadow-brand-600/25 hover:bg-brand-500 hover:shadow-brand-500/30 active:scale-[0.98]"
-                        : "border border-white/10 text-slate-300 hover:border-white/20 hover:bg-white/[0.04] hover:text-white"
-                    }`}
-                  >
-                    {plan.ctaLabel}
-                  </button>
+                  {plan.ctaStartsTrial ? (
+                    <a href={siteConfig.trialSignupPath} className={ctaClassName(plan.highlighted)}>
+                      {plan.ctaLabel}
+                    </a>
+                  ) : (
+                    <button className={ctaClassName(plan.highlighted)}>
+                      {plan.ctaLabel}
+                    </button>
+                  )}
                 </div>
               </motion.div>
             )

@@ -1,3 +1,4 @@
+import { siteConfig } from "@/lib/config"
 import { SectionReveal } from "../section-reveal"
 
 export function FinalCTA() {
@@ -51,7 +52,7 @@ export function FinalCTA() {
 
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a
-              href="#precios"
+              href={siteConfig.trialSignupPath}
               className="btn-primary inline-flex h-[54px] w-full items-center justify-center gap-2 rounded-full px-8 text-[15px] font-bold sm:w-auto"
             >
               Probar ClinicFlow360 gratis

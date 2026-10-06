@@ -175,14 +175,15 @@ export function MobileMenu() {
   }, [open])
 
   function handleNavigate(href: string) {
-    if (href.startsWith("/")) {
-      // Unlock before navigating away
-      unlockScroll(savedScrollRef.current)
-      window.location.href = href
+    // Section anchors scroll in place when the section exists on this page
+    if (href.startsWith("#") && document.getElementById(href.slice(1))) {
+      targetRef.current = href
+      setOpen(false)
       return
     }
-    targetRef.current = href
-    setOpen(false)
+    // Unlock before navigating away (other page, external URL, or home section)
+    unlockScroll(savedScrollRef.current)
+    window.location.href = href.startsWith("#") ? `/${href}` : href
   }
 
   return (

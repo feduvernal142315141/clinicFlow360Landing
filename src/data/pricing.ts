@@ -12,6 +12,8 @@ export interface Plan {
   highlighted: boolean
   badge?: string
   ctaLabel: string
+  /** Whether the CTA starts the self-service trial signup. */
+  ctaStartsTrial: boolean
 }
 
 export const plans: Plan[] = [
@@ -22,6 +24,7 @@ export const plans: Plan[] = [
     description: "Para consultorios independientes",
     highlighted: false,
     ctaLabel: "Comenzar prueba gratis",
+    ctaStartsTrial: true,
     features: [
       { name: "1 Doctor titular + Asistente", included: true },
       { name: "Agenda inteligente sin límite de citas", included: true },
@@ -39,6 +42,7 @@ export const plans: Plan[] = [
     highlighted: true,
     badge: "Más Popular en Clínicas",
     ctaLabel: "Probar Clínica Pro gratis",
+    ctaStartsTrial: true,
     features: [
       { name: "Hasta 4 Doctores y especialistas", included: true },
       { name: "Odontograma interactivo avanzado", included: true },
@@ -55,6 +59,7 @@ export const plans: Plan[] = [
     description: "Automatización total con Recepción Autónoma",
     highlighted: false,
     ctaLabel: "Contactar a un asesor",
+    ctaStartsTrial: false,
     features: [
       { name: "Doctores y sillones ilimitados", included: true },
       { name: "Recepcionista IA 24/7 en WhatsApp oficial", included: true },
