@@ -2,6 +2,7 @@ import { growthCopy, leadsStatusLabel } from "@/data/home"
 import { SectionReveal } from "../section-reveal"
 import { SectionHeader } from "../shared/section-header"
 import { FlowSteps } from "../shared/flow-steps"
+import { ScreenshotFrame } from "../shared/screenshot-frame"
 import { GrowthStory, type StoryStep } from "./growth-story"
 
 function Track({
@@ -119,19 +120,25 @@ export function Growth() {
         {/* Campaigns and segmentation: what they are for */}
         <SectionReveal>
           <div className="mt-6 rounded-3xl border border-white/[0.08] bg-white/[0.02] p-6 sm:p-8 lg:mt-8">
-            <div className="grid gap-8 lg:grid-cols-[1fr_1.1fr] lg:gap-12">
+            <div className="grid items-center gap-8 lg:grid-cols-[1fr_1.25fr] lg:gap-12">
               <div>
                 <h3 className="text-[24px] font-black leading-tight tracking-tight text-white sm:text-[28px]">{campaigns.title}</h3>
                 <p className="mt-3 text-[15px] leading-relaxed text-slate-400">{campaigns.text}</p>
+                <ul className="mt-6 space-y-2.5 text-[14px] text-slate-300">
+                  {campaigns.points.map((point) => (
+                    <li key={point} className="flex items-start gap-2.5">
+                      <span className="mt-0.5 font-bold text-emerald-400">✓</span>
+                      {point}
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <ul className="space-y-2.5 text-[14px] text-slate-300">
-                {campaigns.points.map((point) => (
-                  <li key={point} className="flex items-start gap-2.5">
-                    <span className="mt-0.5 font-bold text-emerald-400">✓</span>
-                    {point}
-                  </li>
-                ))}
-              </ul>
+              <ScreenshotFrame
+                src={campaigns.screenshot.src}
+                alt={campaigns.screenshot.alt}
+                caption={campaigns.screenshot.caption}
+                sizes="(min-width: 1024px) 600px, 100vw"
+              />
             </div>
             <FlowSteps steps={campaigns.flow} horizontalFrom="lg" className="mt-8" />
           </div>

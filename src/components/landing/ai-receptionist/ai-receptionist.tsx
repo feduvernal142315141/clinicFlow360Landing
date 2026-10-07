@@ -2,6 +2,7 @@ import { receptionistCopy } from "@/data/home"
 import { SectionReveal } from "../section-reveal"
 import { SectionHeader } from "../shared/section-header"
 import { FlowSteps } from "../shared/flow-steps"
+import { ScreenshotFrame } from "../shared/screenshot-frame"
 import { AIChatDemo } from "./ai-chat-demo"
 
 export function AIReceptionist() {
@@ -37,6 +38,15 @@ export function AIReceptionist() {
             </div>
           </SectionReveal>
         </div>
+
+        <SectionReveal>
+          <ScreenshotFrame
+            src={receptionistCopy.inbox.src}
+            alt={receptionistCopy.inbox.alt}
+            caption={receptionistCopy.inbox.caption}
+            className="mx-auto mt-14 max-w-5xl lg:mt-16"
+          />
+        </SectionReveal>
       </div>
     </section>
   )

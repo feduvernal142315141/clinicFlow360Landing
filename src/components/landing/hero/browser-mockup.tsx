@@ -20,10 +20,11 @@ export function BrowserMockup() {
 
       {/* Real product screenshot */}
       <Image
-        src="/landing/screenshots/agenda-dark.webp"
-        alt="Agenda de citas de ClinicFlow360 mostrando vista mensual con citas de pacientes, filtros por especialista y etiquetas de estado"
-        width={1400}
-        height={780}
+        src="/landing/screenshots/desktop/agenda-semana.webp"
+        alt="Agenda semanal de ClinicFlow360 con las citas de cada especialista, filtros por doctor y etiquetas de tipo de atención"
+        width={1920}
+        height={1200}
+        sizes="(min-width: 1024px) 940px, 100vw"
         className="w-full"
         priority
       />

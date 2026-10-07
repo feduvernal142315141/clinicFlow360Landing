@@ -1,6 +1,7 @@
 import { financeCopy } from "@/data/home"
 import { SectionReveal } from "../section-reveal"
 import { FlowSteps } from "../shared/flow-steps"
+import { ScreenshotFrame } from "../shared/screenshot-frame"
 
 /** Finance: from the treatment to the income, tied to the patient. */
 export function Operations() {
@@ -10,7 +11,7 @@ export function Operations() {
       className="relative overflow-hidden border-t border-white/[0.06] px-4 py-20 sm:px-6 lg:py-28"
       style={{ background: "linear-gradient(180deg, #0d1a30 0%, #0a1628 100%)" }}
     >
-      <div className="relative mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
+      <div className="relative mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[1fr_1.35fr] lg:gap-14">
         <SectionReveal>
           <div>
             <span className="inline-flex items-center gap-2 rounded-full border border-brand-500/30 bg-brand-950/60 px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.1em] text-brand-300">
@@ -34,9 +35,18 @@ export function Operations() {
         </SectionReveal>
 
         <SectionReveal>
-          <FlowSteps steps={financeCopy.flow} horizontalFrom="never" />
+          <ScreenshotFrame
+            src={financeCopy.screenshot.src}
+            alt={financeCopy.screenshot.alt}
+            caption={financeCopy.screenshot.caption}
+            sizes="(min-width: 1024px) 660px, 100vw"
+          />
         </SectionReveal>
       </div>
+
+      <SectionReveal>
+        <FlowSteps steps={financeCopy.flow} horizontalFrom="md" className="relative mx-auto mt-12 max-w-6xl" />
+      </SectionReveal>
     </section>
   )
 }

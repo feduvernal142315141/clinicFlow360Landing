@@ -57,6 +57,12 @@ export const featurePages: FeaturePage[] = [
     heading: "Recepcionista con IA en WhatsApp para clínicas dentales",
     intro:
       "ClinicFlow AI es un agente conectado al sistema de tu clínica que atiende WhatsApp las 24 horas: consulta la disponibilidad real de tu agenda, ofrece horarios y crea, reprograma, cancela o confirma citas directamente en ClinicFlow.",
+    screenshot: {
+      src: "/landing/screenshots/desktop/bandeja-whatsapp.webp",
+      alt: "Bandeja de WhatsApp de ClinicFlow360 con las conversaciones de los pacientes y el momento en que el equipo toma la conversación",
+      width: 1920,
+      height: 1200,
+    },
     capabilities: [
       {
         title: "Consulta disponibilidad real",
@@ -228,6 +234,12 @@ export const featurePages: FeaturePage[] = [
     heading: "Haz que tus pacientes regresen",
     intro:
       "ClinicFlow Growth ayuda a una clínica dental a recuperar pacientes que ya tiene: defines un segmento con reglas —por ejemplo, pacientes sin visita desde hace meses—, les envías una campaña por WhatsApp y, cuando responden, ClinicFlow AI puede consultar la agenda y crear la cita.",
+    screenshot: {
+      src: "/landing/screenshots/desktop/segmentos.webp",
+      alt: "Segmentos de pacientes en ClinicFlow360 definidos con reglas, como sin limpieza en seis meses o cumpleaños del mes",
+      width: 1920,
+      height: 1200,
+    },
     capabilities: [
       {
         title: "Segmentos con reglas",
@@ -284,10 +296,10 @@ export const featurePages: FeaturePage[] = [
     intro:
       "La agenda de ClinicFlow360 es un calendario de citas pensado para clínicas dentales: organiza las citas por especialista en vistas de día, semana y mes, y está conectada con WhatsApp y con la app del doctor para que nadie tenga que avisar de los cambios.",
     screenshot: {
-      src: "/landing/screenshots/agenda-dark.webp",
-      alt: "Agenda dental de ClinicFlow360 en vista mensual, con citas por especialista y etiquetas de estado",
-      width: 1400,
-      height: 703,
+      src: "/landing/screenshots/desktop/agenda-semana.webp",
+      alt: "Agenda dental de ClinicFlow360 en vista semanal, con citas por especialista y etiquetas de tipo de atención",
+      width: 1920,
+      height: 1200,
     },
     capabilities: [
       {
@@ -344,10 +356,10 @@ export const featurePages: FeaturePage[] = [
     intro:
       "El odontograma digital de ClinicFlow360 es un odontograma interactivo con nomenclatura FDI: registras el estado de cada diente y de cada superficie, el diagnóstico, el plan de tratamiento y lo realizado, dentro del expediente del paciente.",
     screenshot: {
-      src: "/landing/screenshots/odontograma-dark.webp",
-      alt: "Odontograma digital FDI de ClinicFlow360 con arcada superior e inferior y estados clínicos por diente",
-      width: 1400,
-      height: 714,
+      src: "/landing/screenshots/desktop/odontograma.webp",
+      alt: "Odontograma digital FDI de ClinicFlow360 con arcada superior e inferior y hallazgos por superficie",
+      width: 1920,
+      height: 1200,
     },
     capabilities: [
       {

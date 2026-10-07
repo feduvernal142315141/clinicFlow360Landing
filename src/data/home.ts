@@ -90,6 +90,11 @@ export const receptionistCopy = {
     { label: "Cita creada", detail: "Queda en ClinicFlow" },
     { label: "Doctor notificado", detail: "Aviso en su app" },
   ],
+  inbox: {
+    src: "/landing/screenshots/desktop/bandeja-whatsapp.webp",
+    alt: "Bandeja de WhatsApp de ClinicFlow360 con las conversaciones de los pacientes, las respuestas del asistente y el momento en que el equipo toma la conversación",
+    caption: "Tu equipo ve cada conversación en la bandeja y puede tomar el control cuando quiera.",
+  },
   capabilities: [
     "Consulta disponibilidad real",
     "Ofrece horarios",
@@ -234,6 +239,59 @@ export const rxCopy = {
 } as const
 
 export const platformCopy = {
+  screensLabel: "Módulos de la plataforma",
+  demoNote: "Capturas del producto con datos de demostración.",
+  screens: [
+    {
+      id: "agenda",
+      label: "Agenda",
+      desc: "Citas por especialista, día a día",
+      src: "/landing/screenshots/desktop/agenda-dia.webp",
+      alt: "Agenda del día en ClinicFlow360 con las citas de cada especialista por horario y etiquetas de tipo de atención",
+    },
+    {
+      id: "pacientes",
+      label: "Pacientes",
+      desc: "Toda tu base, a un clic",
+      src: "/landing/screenshots/desktop/pacientes.webp",
+      alt: "Listado de pacientes en ClinicFlow360 con edad, contacto, dirección y estado",
+    },
+    {
+      id: "expediente",
+      label: "Expediente",
+      desc: "Evolución, alertas y antecedentes",
+      src: "/landing/screenshots/desktop/expediente.webp",
+      alt: "Expediente del paciente con su evolución clínica, alertas de alergias, antecedentes médicos y radiografías",
+    },
+    {
+      id: "odontograma",
+      label: "Odontograma",
+      desc: "FDI interactivo, con dictado",
+      src: "/landing/screenshots/desktop/odontograma.webp",
+      alt: "Odontograma interactivo de ClinicFlow360 con arcada superior e inferior, hallazgos por superficie y el botón para dictar",
+    },
+    {
+      id: "tratamientos",
+      label: "Tratamientos",
+      desc: "El plan, pieza por pieza",
+      src: "/landing/screenshots/desktop/tratamientos.webp",
+      alt: "Plan de tratamiento del paciente con cada servicio por pieza, su importe y su estado",
+    },
+    {
+      id: "imagenes",
+      label: "Imágenes",
+      desc: "Radiografías y archivos del paciente",
+      src: "/landing/screenshots/desktop/imagenes.webp",
+      alt: "Galería de imágenes y archivos clínicos del paciente con radiografías, consentimientos e informes",
+    },
+    {
+      id: "dashboard",
+      label: "Dashboard",
+      desc: "La clínica de un vistazo",
+      src: "/landing/screenshots/desktop/dashboard.webp",
+      alt: "Dashboard de ClinicFlow360 con las citas de hoy, la tasa de asistencia, los pacientes nuevos y la ocupación de doctores",
+    },
+  ],
   eyebrow: "La base clínica",
   heading: "Agenda, pacientes y expediente: la base de todo lo demás.",
   text: "Lo esencial de una clínica dental, resuelto y conectado: agenda, pacientes, expediente clínico, odontograma, tratamientos e imágenes.",
@@ -308,6 +366,11 @@ export const financeCopy = {
   eyebrow: "Finanzas",
   heading: "De la cita al ingreso.",
   text: "Presupuestos, recibos y pagos ligados al paciente, con la caja del día y lo que falta por cobrar a la vista.",
+  screenshot: {
+    src: "/landing/screenshots/desktop/finanzas.webp",
+    alt: "Reportes de finanzas en ClinicFlow360 con lo emitido, lo cobrado, lo que falta por cobrar y el cobro por método de pago",
+    caption: "Captura del producto con datos de demostración.",
+  },
   flow: [
     { label: "Tratamiento" },
     { label: "Presupuesto" },
@@ -396,6 +459,11 @@ export const growthCopy = {
   },
   campaigns: {
     title: "Comunícate con intención.",
+    screenshot: {
+      src: "/landing/screenshots/desktop/segmentos.webp",
+      alt: "Segmentos de pacientes en ClinicFlow360 definidos con reglas, como sin limpieza en seis meses, ortodoncia en tratamiento o cumpleaños del mes",
+      caption: "Segmentos definidos con reglas. Captura con datos de demostración.",
+    },
     text: "Segmenta pacientes, crea campañas personalizadas y da seguimiento desde ClinicFlow. Habla con el grupo correcto de pacientes en el momento correcto.",
     flow: [
       { label: "Pacientes" },
