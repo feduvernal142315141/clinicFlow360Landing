@@ -1,39 +1,104 @@
+export type FAQCategory = "ai" | "clinical" | "rx" | "start"
+
 export interface FAQItem {
   question: string
   answer: string
+  category?: FAQCategory
 }
+
+export const faqCategories: { id: FAQCategory; label: string }[] = [
+  { id: "ai", label: "Recepción IA" },
+  { id: "clinical", label: "Voz y consulta" },
+  { id: "rx", label: "ClinicFlow RX" },
+  { id: "start", label: "Empezar" },
+]
 
 export const faqItems: FAQItem[] = [
   {
-    question: "¿Cómo se conecta la recepcionista IA a nuestro WhatsApp?",
-    answer: "Utilizamos la API Oficial de WhatsApp Cloud (Meta). Puedes conservar el mismo número de teléfono de tu clínica. El asistente responde al instante y cuando tu equipo desee intervenir, puede tomar el control de la conversación con un solo clic.",
+    category: "ai",
+    question: "¿La recepcionista IA realmente puede crear citas?",
+    answer:
+      "Sí. ClinicFlow AI consulta la disponibilidad real de tu agenda, ofrece horarios al paciente y crea la cita directamente en ClinicFlow. No deja un mensaje para que recepción la registre después.",
   },
   {
-    question: "¿Puedo migrar mis pacientes desde otro software dental o Excel?",
-    answer: "Sí. ClinicFlow360 incluye una herramienta de importación rápida de archivos CSV y Excel. Además, nuestro equipo de soporte técnico te asiste sin costo adicional en el plan Pro y Clínica AI.",
+    category: "ai",
+    question: "¿Puede cancelar y reprogramar?",
+    answer:
+      "Sí. El paciente puede confirmar, cancelar o reprogramar su cita por WhatsApp y el cambio queda reflejado en la agenda.",
   },
   {
-    question: "¿Los doctores pueden usarlo en sus teléfonos personales de forma segura?",
-    answer: "Totalmente. La aplicación móvil de ClinicFlow360 no almacena fotografías en la galería personal del teléfono. Todas las capturas van encriptadas directo a la nube clínica.",
+    category: "ai",
+    question: "¿Qué pasa si el paciente necesita hablar con una persona?",
+    answer:
+      "ClinicFlow AI puede pasar la conversación a tu equipo, que continúa respondiendo desde la bandeja de mensajes de ClinicFlow.",
   },
   {
+    category: "ai",
+    question: "¿Cómo se conecta al WhatsApp de la clínica?",
+    answer: "ClinicFlow AI trabaja sobre la API oficial de WhatsApp Cloud de Meta.",
+  },
+  {
+    category: "clinical",
+    question: "¿Cómo funciona el odontograma por voz?",
+    answer:
+      "Dices lo que encuentras —pieza, superficie, hallazgo y, si aplica, el código ICDAS— y ClinicFlow Voice lo convierte en cambios sobre el odontograma. Ves la propuesta antes de aplicarla, y eliminar una condición siempre pide confirmación.",
+  },
+  {
+    category: "clinical",
+    question: "¿Necesito tocar la tablet mientras dicto?",
+    answer:
+      "Solo un toque para iniciar la sesión de voz. Después el micrófono queda abierto y puedes aplicar, descartar o deshacer cada cambio con la voz.",
+  },
+  {
+    category: "clinical",
+    question: "¿Puedo usar ClinicFlow desde tablet?",
+    answer:
+      "Sí. ClinicFlow Chairside es la experiencia para tablet: odontograma, expediente, imágenes y plan de tratamiento del paciente al lado del sillón. No es otra aplicación, es ClinicFlow adaptado a la consulta.",
+  },
+  {
+    category: "clinical",
+    question: "¿Los doctores tienen app móvil?",
+    answer:
+      "Sí. Desde la app el doctor consulta su agenda y sus pacientes, revisa expedientes, toma fotografías clínicas, compara antes y después, y recibe notificaciones cuando hay citas nuevas o cambios en su agenda.",
+  },
+  {
+    category: "rx",
+    question: "¿Qué es ClinicFlow RX?",
+    answer:
+      "Es la integración de imagenología de ClinicFlow360: conecta equipos compatibles con el expediente para que la radiografía quede asociada al paciente sin exportar archivos. Funciona con equipos e integraciones compatibles; escríbenos para consultar la compatibilidad de los tuyos.",
+  },
+  {
+    category: "rx",
+    question: "¿Tengo que cambiar mis equipos de radiografía?",
+    answer:
+      "La idea es que no: ClinicFlow RX está pensado para trabajar con los equipos compatibles que la clínica ya utiliza. Consulta la compatibilidad de los tuyos antes de contratar.",
+  },
+  {
+    category: "rx",
+    question: "¿ClinicFlow RX funciona con cualquier sensor?",
+    answer:
+      "No. Funciona únicamente con equipos e integraciones compatibles, y la lista se está validando equipo por equipo. Consulta la compatibilidad del tuyo.",
+  },
+  {
+    category: "start",
+    question: "¿Cómo funcionan los recordatorios y las campañas?",
+    answer:
+      "Los recordatorios de cita salen automáticamente por WhatsApp, con botones para confirmar, reagendar o cancelar, en los tiempos que configure la clínica. Las campañas se envían por WhatsApp a segmentos de pacientes que defines con reglas, y puedes ver los resultados de cada una.",
+  },
+  {
+    category: "start",
     question: "¿Qué necesito para empezar los 14 días de prueba?",
-    answer: "Solo tu correo electrónico y el nombre de tu clínica. No solicitamos tarjetas de crédito ni compromisos de permanencia.",
+    answer: "Solo tu correo electrónico y el nombre de tu clínica. No pedimos tarjeta de crédito.",
   },
   {
-    question: "¿ClinicFlow360 funciona con un solo doctor?",
-    answer: "Sí. El plan Esencial está diseñado para consultorios de un solo profesional. Cuando crezcas puedes escalar sin perder datos.",
+    category: "start",
+    question: "¿ClinicFlow360 funciona para un consultorio pequeño?",
+    answer:
+      "Sí. El plan Essential está pensado para consultorios pequeños e incluye el software clínico completo: agenda, pacientes, expediente, odontograma, tratamientos y finanzas.",
   },
   {
-    question: "¿La recepcionista IA puede agendar, cancelar y reagendar citas?",
-    answer: "Sí. Consulta la disponibilidad real de tus doctores y sillones, agenda citas directamente, y permite al paciente cancelar o cambiar su cita sin intervención humana.",
-  },
-  {
-    question: "¿Cómo funciona el dictado por voz para notas clínicas?",
-    answer: "El doctor dicta con su voz desde la app. La IA transcribe, estructura la nota con nomenclatura médica y la archiva en el expediente del paciente lista para revisión y firma.",
-  },
-  {
+    category: "start",
     question: "¿Puedo cancelar la suscripción en cualquier momento?",
-    answer: "Sí. No hay contratos de permanencia. Puedes cancelar desde la configuración de tu cuenta cuando lo desees.",
+    answer: "Sí. No hay contratos de permanencia.",
   },
 ]

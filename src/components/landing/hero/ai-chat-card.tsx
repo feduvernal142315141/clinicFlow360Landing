@@ -2,7 +2,7 @@ const msgs = [
   { from: "p" as const, text: "Hola, quisiera una limpieza mañana después de las 3." },
   { from: "a" as const, text: "Claro, Ana 😊 Tenemos disponible 3:30 PM o 4:15 PM con la Dra. Valeria." },
   { from: "p" as const, text: "Las 3:30, por favor." },
-  { from: "a" as const, text: "¡Listo! Tu cita quedó agendada para mañana 3:30 PM. Te enviamos recordatorio con indicaciones de llegada. 🦷" },
+  { from: "a" as const, text: "¡Listo! Tu cita quedó agendada para mañana a las 3:30 PM. 🦷" },
 ] as const
 
 export function AIChatCard() {
@@ -27,10 +27,10 @@ export function AIChatCard() {
         </div>
         <div>
           <div className="flex items-center gap-1.5 text-[13px] font-bold text-white">
-            ClinicFlow AI
+            ClinicFlow AI Receptionist
             <span className="inline-flex items-center rounded bg-emerald-950/80 px-1.5 py-px text-[10px] font-bold text-emerald-400">24/7</span>
           </div>
-          <div className="text-[11px] text-slate-400">Recepción dental automatizada</div>
+          <div className="text-[11px] text-slate-400">WhatsApp · agenda en tiempo real</div>
         </div>
       </div>
       {/* Messages */}

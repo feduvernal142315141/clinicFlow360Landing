@@ -394,6 +394,47 @@
 }
 
 /* ═══════════════════════════════════════════════════
+   CONNECTED FLOW — steps light up in sequence (opacity only)
+   Set --flow-index and --flow-count on each .flow-step.
+   ═══════════════════════════════════════════════════ */
+
+.flow-step { position: relative; }
+.flow-step::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  border: 1px solid rgba(50,180,254,0.7);
+  background: rgba(50,180,254,0.10);
+  box-shadow: 0 0 24px rgba(50,180,254,0.18);
+  opacity: 0;
+  pointer-events: none;
+  animation: flow-step calc(var(--flow-count, 5) * 1.5s) ease-in-out infinite;
+  animation-delay: calc(var(--flow-index, 0) * 1.5s);
+}
+@keyframes flow-step {
+  0% { opacity: 0; }
+  6%, 16% { opacity: 1; }
+  26%, 100% { opacity: 0; }
+}
+
+/* Voice waveform bars and the ring shown when a tooth reacts to a command */
+.voice-bar {
+  transform-origin: center;
+  animation: voice-bar 1.1s ease-in-out infinite alternate;
+}
+.voice-bar[data-idle="true"] { animation-play-state: paused; opacity: 0.35; }
+@keyframes voice-bar {
+  from { transform: scaleY(0.25); }
+  to { transform: scaleY(1); }
+}
+.tooth-pulse { animation: tooth-pulse 1.4s ease-out forwards; }
+@keyframes tooth-pulse {
+  0% { opacity: 0.9; stroke-width: 2; }
+  100% { opacity: 0; stroke-width: 10; }
+}
+
+/* ═══════════════════════════════════════════════════
    ACCESSIBILITY
    ═══════════════════════════════════════════════════ */
 

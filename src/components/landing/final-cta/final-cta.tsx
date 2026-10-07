@@ -1,4 +1,5 @@
 import { siteConfig } from "@/lib/config"
+import { finalCtaCopy } from "@/data/home"
 import { SectionReveal } from "../section-reveal"
 
 export function FinalCTA() {
@@ -38,16 +39,15 @@ export function FinalCTA() {
             className="text-balance text-white"
             style={{ fontSize: "clamp(30px, 5vw, 56px)", fontWeight: 780, lineHeight: 1.06, letterSpacing: "-0.04em" }}
           >
-            Menos tiempo administrando.
+            {finalCtaCopy.headingLead}
             <br />
             <span className="bg-gradient-to-r from-brand-300 via-brand-400 to-sky-300 bg-clip-text text-transparent">
-              Más tiempo atendiendo sonrisas.
+              {finalCtaCopy.headingAccent}
             </span>
           </h2>
 
           <p className="mx-auto mt-6 max-w-2xl text-[15px] leading-relaxed text-slate-400 sm:text-[16px]">
-            Despídete de la recepción saturada, llamadas perdidas y fichas en papel.
-            Lleva tu clínica dental al siguiente nivel con un ecosistema clínico completo.
+            {finalCtaCopy.text}
           </p>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -55,27 +55,22 @@ export function FinalCTA() {
               href={siteConfig.trialSignupPath}
               className="btn-primary inline-flex h-[54px] w-full items-center justify-center gap-2 rounded-full px-8 text-[15px] font-bold sm:w-auto"
             >
-              Probar ClinicFlow360 gratis
+              {finalCtaCopy.primaryCta}
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="ml-1">
                 <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </a>
             <a
-              href="#"
+              href="#precios"
               className="inline-flex h-[54px] w-full items-center justify-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-8 text-[15px] font-bold text-white transition-all hover:border-white/20 hover:bg-white/[0.08] sm:w-auto"
             >
-              Solicitar demostración
+              {finalCtaCopy.secondaryCta}
             </a>
           </div>
 
           {/* Trust microcopy */}
           <div className="mt-8 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[12px] text-slate-500">
-            {[
-              "Configuración en 5 min",
-              "Sin descargas",
-              "Soporte en español",
-              "Cancela cuando quieras",
-            ].map((item, i) => (
+            {finalCtaCopy.microcopy.map((item, i) => (
               <span key={item} className="flex items-center gap-1.5">
                 {i > 0 && <span className="hidden text-slate-700 sm:inline">·</span>}
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="shrink-0 text-emerald-500/60">

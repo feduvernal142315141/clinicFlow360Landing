@@ -37,18 +37,8 @@ export function Hero() {
           <HeroCopy />
         </div>
 
-        {/* Product stage — floating badges + composition */}
+        {/* Product stage — the ecosystem at a glance */}
         <div className="relative mt-10 sm:mt-14 lg:mt-16">
-          {/* Floating product badges — desktop only */}
-          <div className="pointer-events-none absolute -top-4 left-8 z-30 hidden items-center gap-2 rounded-full border border-white/10 bg-white/[0.06] px-3.5 py-1.5 text-[11px] font-bold text-brand-300 shadow-md backdrop-blur-md md:flex">
-            <span className="h-2 w-2 animate-pulse rounded-full bg-brand-400" />
-            Odontograma FDI + IA Activa
-          </div>
-          <div className="pointer-events-none absolute -top-4 right-12 z-30 hidden items-center gap-2 rounded-full border border-white/10 bg-white/[0.06] px-3.5 py-1.5 text-[11px] font-bold text-slate-300 shadow-md backdrop-blur-md md:flex">
-            Esmalte &amp; Estética Digital
-            <span className="rounded bg-emerald-900/60 px-1.5 py-0.5 text-[10px] text-emerald-400">HD</span>
-          </div>
-
           <div className="px-4 sm:px-6">
             <HeroProductDemo />
           </div>

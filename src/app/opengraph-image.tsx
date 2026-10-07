@@ -6,10 +6,10 @@ export const size = { width: 1200, height: 630 }
 export const contentType = "image/png"
 
 const features = [
-  "Agenda inteligente",
-  "Odontograma digital",
-  "Recepcionista IA en WhatsApp",
-  "App móvil para doctores",
+  "Recepcionista IA 24/7",
+  "Odontograma por voz",
+  "Agenda y expediente",
+  "App móvil y tablet",
 ]
 
 export default function OpengraphImage() {

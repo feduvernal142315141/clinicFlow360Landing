@@ -26,10 +26,7 @@ export function Footer() {
               </div>
             </div>
             <p className="max-w-sm text-[13px] leading-relaxed text-slate-500">
-              La plataforma clínica y de recepción autónoma que sincroniza agenda, odontograma digital, WhatsApp y flujo odontológico en una sola experiencia.
-            </p>
-            <p className="text-[11px] text-slate-600">
-              Diseñado para clínicas en México, Colombia, Chile, España y toda Latinoamérica.
+              La plataforma inteligente para clínicas dentales: recepción, agenda, odontograma, imágenes y administración en un solo flujo.
             </p>
 
             {/* Social placeholder */}

@@ -24,9 +24,8 @@ export function GET() {
     "## Planes y precios",
     "",
     ...plans.map((plan) => {
-      const included = plan.features.filter((feature) => feature.included).map((feature) => feature.name)
-      const price = plan.price === null ? "" : ` — USD ${plan.price} al mes`
-      return `- **${plan.name}**${price}. ${plan.description}. Incluye: ${included.join("; ")}.`
+      const features = plan.features.map((feature) => feature.name)
+      return `- **${plan.name}** — USD ${plan.price} al mes. ${plan.description} ${plan.includesLabel ?? "Incluye:"} ${features.join("; ")}.`
     }),
     "",
     `Prueba gratis de 14 días, sin tarjeta de crédito: ${url(siteConfig.trialSignupPath)}`,

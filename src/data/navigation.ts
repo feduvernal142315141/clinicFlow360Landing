@@ -1,9 +1,10 @@
 import { siteConfig } from "@/lib/config"
 
 export const navItems = [
-  { label: "Producto", href: "/#producto" },
   { label: "Recepción IA", href: "/#recepcion-ia" },
-  { label: "App móvil", href: "/#app-movil" },
+  { label: "Voice", href: "/#voice" },
+  { label: "RX", href: "/#rx" },
+  { label: "Plataforma", href: "/#producto" },
   { label: "Precios", href: "/#precios" },
 ] as const
 

@@ -1,72 +1,89 @@
-export interface PlanFeature {
-  name: string
-  included: boolean
-}
-
 export interface Plan {
   name: string
   slug: string
-  price: number | null
+  /** Monthly price in USD. */
+  price: number
+  /** One-line promise shown under the plan name. */
   description: string
-  features: PlanFeature[]
+  /** Where the plan sits in the ladder: software → intelligence → scale. */
+  positioning: string
+  /** Lead-in for plans that build on the previous one. */
+  includesLabel?: string
+  features: { name: string; detail?: string }[]
   highlighted: boolean
   badge?: string
   ctaLabel: string
-  /** Whether the CTA starts the self-service trial signup. */
-  ctaStartsTrial: boolean
 }
 
 export const plans: Plan[] = [
   {
-    name: "Esencial",
-    slug: "esencial",
-    price: 29,
-    description: "Para consultorios independientes",
-    highlighted: false,
-    ctaLabel: "Comenzar prueba gratis",
-    ctaStartsTrial: true,
-    features: [
-      { name: "1 Doctor titular + Asistente", included: true },
-      { name: "Agenda inteligente sin límite de citas", included: true },
-      { name: "Historia clínica y Odontograma digital", included: true },
-      { name: "Recordatorios automáticos por SMS/Email", included: true },
-      { name: "Recepcionista WhatsApp con IA", included: false },
-      { name: "Dictado clínico por voz", included: false },
-    ],
-  },
-  {
-    name: "Clínica Pro",
-    slug: "pro",
+    name: "Essential",
+    slug: "essential",
     price: 49,
-    description: "Para clínicas con equipo multidisciplinario",
-    highlighted: true,
-    badge: "Más Popular en Clínicas",
-    ctaLabel: "Probar Clínica Pro gratis",
-    ctaStartsTrial: true,
+    description: "Todo lo necesario para digitalizar tu consultorio.",
+    positioning: "Software clínico completo",
+    highlighted: false,
+    ctaLabel: "Probar gratis 14 días",
     features: [
-      { name: "Hasta 4 Doctores y especialistas", included: true },
-      { name: "Odontograma interactivo avanzado", included: true },
-      { name: "App móvil iOS & Android para doctores", included: true },
-      { name: "Confirmaciones automáticas por WhatsApp", included: true },
-      { name: "Galería clínica y comparador Antes/Después", included: true },
-      { name: "Dictado por voz IA (hasta 300 notas/mes)", included: true },
+      { name: "Agenda" },
+      { name: "Gestión de pacientes" },
+      { name: "Expediente clínico" },
+      { name: "Odontograma" },
+      { name: "Tratamientos" },
+      { name: "Finanzas" },
+      { name: "App móvil" },
+      { name: "Experiencia tablet" },
+      { name: "Recordatorios básicos" },
     ],
   },
   {
-    name: "Clínica AI 24/7",
-    slug: "ai",
-    price: 89,
-    description: "Automatización total con Recepción Autónoma",
-    highlighted: false,
-    ctaLabel: "Contactar a un asesor",
-    ctaStartsTrial: false,
+    name: "Pro",
+    slug: "pro",
+    price: 99,
+    description: "La clínica inteligente que trabaja contigo.",
+    positioning: "Software + inteligencia + automatización",
+    includesLabel: "Todo Essential, más:",
+    highlighted: true,
+    badge: "Más popular",
+    ctaLabel: "Probar Pro gratis 14 días",
     features: [
-      { name: "Doctores y sillones ilimitados", included: true },
-      { name: "Recepcionista IA 24/7 en WhatsApp oficial", included: true },
-      { name: "Agendamiento y reagendamiento autónomo", included: true },
-      { name: "Dictado por voz con IA ilimitado", included: true },
-      { name: "Reportes de ingresos y comisiones médicas", included: true },
-      { name: "Onboarding guiado y migración de datos", included: true },
+      {
+        name: "ClinicFlow AI Receptionist 24/7",
+        detail: "Atiende WhatsApp y agenda, reagenda, cancela y confirma citas.",
+      },
+      {
+        name: "ClinicFlow Voice",
+        detail: "Odontograma manos libres: hablas y el odontograma cambia.",
+      },
+      {
+        name: "ClinicFlow RX",
+        detail: "Para una estación o equipo compatible.",
+      },
+      { name: "Automatizaciones" },
+      { name: "Campañas y segmentación" },
+      { name: "App móvil completa" },
+      { name: "Tablet / Chairside" },
+      { name: "Reportes avanzados" },
+    ],
+  },
+  {
+    name: "Elite",
+    slug: "elite",
+    price: 149,
+    description: "Más capacidad para clínicas que están creciendo.",
+    positioning: "Inteligencia + automatización + escala",
+    includesLabel: "Todo Pro, más:",
+    highlighted: false,
+    ctaLabel: "Probar gratis 14 días",
+    features: [
+      { name: "Más doctores y usuarios" },
+      { name: "Mayor capacidad de IA y de conversaciones" },
+      { name: "Mayor capacidad de campañas" },
+      { name: "Más estaciones ClinicFlow RX" },
+      { name: "Automatizaciones avanzadas" },
+      { name: "Segmentación avanzada" },
+      { name: "Almacenamiento superior" },
+      { name: "Soporte prioritario" },
     ],
   },
 ]

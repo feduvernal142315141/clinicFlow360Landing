@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "ClinicFlow360",
   title: "ClinicFlow360 | Software para clínicas dentales con IA",
   description:
-    "Gestiona citas, pacientes, odontograma y doctores desde una sola plataforma. Automatiza WhatsApp y atiende pacientes 24/7 con ClinicFlow AI.",
+    "Agenda, pacientes, odontograma manos libres, finanzas y una recepcionista IA 24/7 por WhatsApp, conectados en una sola plataforma para clínicas dentales.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://clinicflow360.com",
   appUrl: process.env.NEXT_PUBLIC_APP_URL ?? "https://app.clinicflow360.com",
   loginUrl:
@@ -18,6 +18,7 @@ export const siteConfig = {
   turnstileScriptUrl:
     "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit",
   whatsappDemoUrl: null as string | null,
+  contactEmail: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "soporte@clinicflow360.com",
   // Company that develops and operates the product (see footer and legal pages).
   publisher: "KodeWave Solutions",
   themeColor: "#060d1a",

@@ -1,10 +1,12 @@
 "use client"
 
+import type { CSSProperties } from "react"
 import { motion } from "motion/react"
 import { easeOutPremium } from "@/lib/motion/easings"
+import { heroCopy } from "@/data/home"
 import { BrowserMockup } from "./browser-mockup"
 import { AIChatCard } from "./ai-chat-card"
-import { DoctorPhone } from "./doctor-phone"
+import { HeroVoiceCard } from "./hero-voice-card"
 
 const stageIn = {
   hidden: { opacity: 0, y: 20, scale: 0.985 },
@@ -16,67 +18,73 @@ const cardIn = (delay: number) => ({
   visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.65, ease: easeOutPremium, delay } },
 })
 
+/** Small status chip; lights up in turn to show information travelling. */
+function StageChip({ index, title, text }: { index: number; title: string; text: string }) {
+  return (
+    <div
+      className="flow-step flex items-center gap-2.5 rounded-xl border border-white/10 px-3.5 py-2.5"
+      style={{ background: "rgba(9,22,38,0.94)", "--flow-index": index, "--flow-count": 3 } as CSSProperties}
+    >
+      <span className="h-2 w-2 shrink-0 rounded-full bg-emerald-400" />
+      <span className="min-w-0">
+        <span className="block text-[12px] font-bold text-white">{title}</span>
+        <span className="block text-[11px] text-slate-400">{text}</span>
+      </span>
+    </div>
+  )
+}
+
 export function HeroProductDemo() {
+  const { stage } = heroCopy
+
   return (
     <div className="relative mx-auto max-w-[1200px]" style={{ perspective: "1200px" }}>
-
-      {/* Glow behind dashboard — responsive */}
+      {/* Glow behind dashboard */}
       <div className="pointer-events-none absolute left-1/2 top-[30%] -z-10 h-[200px] w-[400px] -translate-x-1/2 sm:h-[300px] sm:w-[600px] lg:h-[400px] lg:w-[800px]" aria-hidden="true"
         style={{ background: "radial-gradient(circle, rgba(7,156,251,0.14), transparent 55%)", filter: "blur(60px)" }}
       />
 
-      {/* ═══ MOBILE (< lg) ═══ */}
+      {/* ═══ MOBILE / TABLET (< lg) ═══ */}
       <div className="lg:hidden">
-        {/* Dashboard — wider on mobile for more impact */}
         <motion.div variants={stageIn} initial="hidden" animate="visible">
           <div className="-mx-2 sm:mx-0" style={{ transform: "rotateX(2deg)", transformOrigin: "center 80%" }}>
             <BrowserMockup />
           </div>
         </motion.div>
 
-        {/* Cards — stacked vertically on mobile, side-by-side on sm+ */}
-        <div className="relative z-20 -mt-4 flex flex-col items-center gap-4 px-4 sm:-mt-10 sm:flex-row sm:items-end sm:justify-center sm:gap-4 sm:px-2">
-          <motion.div variants={cardIn(0.4)} initial="hidden" animate="visible" className="w-full max-w-[320px] sm:max-w-[300px]">
+        <div className="relative z-20 -mt-4 flex flex-col items-center gap-4 px-4 sm:-mt-10 sm:flex-row sm:items-start sm:justify-center sm:px-2">
+          <motion.div variants={cardIn(0.4)} initial="hidden" animate="visible" className="w-full max-w-[340px] sm:max-w-[300px]">
             <AIChatCard />
           </motion.div>
-          <motion.div variants={cardIn(0.55)} initial="hidden" animate="visible" className="mx-auto w-[180px] sm:w-[200px]">
-            <DoctorPhone />
+          <motion.div variants={cardIn(0.55)} initial="hidden" animate="visible" className="w-full max-w-[340px] sm:max-w-[300px]">
+            <HeroVoiceCard />
           </motion.div>
         </div>
       </div>
 
       {/* ═══ DESKTOP (>= lg) ═══ */}
-      <div className="relative hidden pb-28 lg:block" style={{ minHeight: 520 }}>
-        {/* Dashboard — large, central */}
-        <motion.div variants={stageIn} initial="hidden" animate="visible" className="relative z-10 mx-auto" style={{ maxWidth: 1000 }}>
+      <div className="relative hidden pb-24 lg:block" style={{ minHeight: 560 }}>
+        {/* Centre — ClinicFlow agenda */}
+        <motion.div variants={stageIn} initial="hidden" animate="visible" className="relative z-10 mx-auto" style={{ maxWidth: 940 }}>
           <div style={{ transform: "rotateX(2deg)", transformOrigin: "center 80%" }}>
             <BrowserMockup />
           </div>
         </motion.div>
 
-        {/* Chat — floating left, overlapping dashboard */}
-        <motion.div
-          variants={cardIn(0.45)}
-          initial="hidden"
-          animate="visible"
-          className="absolute z-30"
-          style={{ left: 0, top: 60 }}
-        >
-          <motion.div animate={{ y: [0, -4, 0] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}>
+        {/* Left — WhatsApp → AI Receptionist → appointment */}
+        <motion.div variants={cardIn(0.45)} initial="hidden" animate="visible" className="absolute z-30" style={{ left: 0, top: 56 }}>
+          <motion.div animate={{ y: [0, -4, 0] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="space-y-3">
             <AIChatCard />
+            <StageChip index={0} title={stage.appointmentTitle} text={stage.appointmentText} />
           </motion.div>
         </motion.div>
 
-        {/* Phone — floating right */}
-        <motion.div
-          variants={cardIn(0.6)}
-          initial="hidden"
-          animate="visible"
-          className="absolute z-40"
-          style={{ right: 10, top: 70 }}
-        >
-          <motion.div animate={{ y: [0, -5, 0] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}>
-            <DoctorPhone />
+        {/* Right — tablet → odontogram → Voice, plus RX → record */}
+        <motion.div variants={cardIn(0.6)} initial="hidden" animate="visible" className="absolute z-40" style={{ right: 0, top: 84 }}>
+          <motion.div animate={{ y: [0, -5, 0] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="space-y-3">
+            <HeroVoiceCard />
+            <StageChip index={1} title={stage.voiceTitle} text={stage.voiceResult} />
+            <StageChip index={2} title={stage.rxTitle} text={stage.rxText} />
           </motion.div>
         </motion.div>
       </div>

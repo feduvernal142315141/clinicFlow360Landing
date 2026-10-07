@@ -5,35 +5,17 @@ import { motion, AnimatePresence } from "motion/react"
 import { easeOutPremium } from "@/lib/motion/easings"
 import { SectionReveal } from "../section-reveal"
 import { FAQStructuredData } from "./faq-structured-data"
-import { faqItems } from "@/data/faq"
+import { faqCategories, faqItems, type FAQCategory } from "@/data/faq"
+import { siteConfig } from "@/lib/config"
 
-/* ── Categories ─────────────────────────────────── */
-const categories = [
-  { id: "all", label: "Todas" },
-  { id: "setup", label: "Configuración" },
-  { id: "ai", label: "IA & Automatización" },
-  { id: "billing", label: "Planes & Pagos" },
-] as const
+const categories = [{ id: "all", label: "Todas" }, ...faqCategories] as const
 
-type CategoryId = (typeof categories)[number]["id"]
-
-const faqCategorized = [
-  { ...faqItems[0]!, category: "setup" as const },
-  { ...faqItems[1]!, category: "setup" as const },
-  { ...faqItems[2]!, category: "setup" as const },
-  { ...faqItems[3]!, category: "billing" as const },
-  { ...faqItems[4]!, category: "billing" as const },
-  { ...faqItems[5]!, category: "ai" as const },
-  { ...faqItems[6]!, category: "ai" as const },
-  { ...faqItems[7]!, category: "billing" as const },
-]
+type CategoryId = FAQCategory | "all"
 
 export function FAQSection() {
   const [active, setActive] = useState<CategoryId>("all")
 
-  const filtered = active === "all"
-    ? faqCategorized
-    : faqCategorized.filter((item) => item.category === active)
+  const filtered = active === "all" ? faqItems : faqItems.filter((item) => item.category === active)
 
   return (
     <section
@@ -64,11 +46,8 @@ export function FAQSection() {
               Preguntas Frecuentes
             </div>
             <h2 className="text-balance text-[28px] font-black leading-[1.1] tracking-tight text-white sm:text-[36px] lg:text-[44px]">
-              Todo lo que necesitas saber
+              Lo que suelen preguntarnos
             </h2>
-            <p className="mx-auto mt-4 max-w-lg text-[15px] leading-relaxed text-slate-400">
-              Si no encuentras tu respuesta, nuestro equipo responde en menos de 2 horas.
-            </p>
           </div>
         </SectionReveal>
 
@@ -105,12 +84,10 @@ export function FAQSection() {
         <SectionReveal>
           <div className="mt-12 text-center sm:mt-14">
             <p className="text-[14px] text-slate-500">
-              ¿Tienes otra duda?{" "}
-              <a href="#" className="font-semibold text-brand-400 transition-colors hover:text-brand-300">
-                Escríbenos por WhatsApp
-              </a>{" "}
-              o envía un correo a{" "}
-              <span className="font-medium text-slate-300">soporte@clinicflow360.com</span>
+              ¿Tienes otra duda? Escríbenos a{" "}
+              <a href={`mailto:${siteConfig.contactEmail}`} className="font-semibold text-brand-400 transition-colors hover:text-brand-300">
+                {siteConfig.contactEmail}
+              </a>
             </p>
           </div>
         </SectionReveal>

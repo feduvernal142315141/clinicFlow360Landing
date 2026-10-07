@@ -4,6 +4,7 @@ import { useState } from "react"
 import Image from "next/image"
 import { motion, AnimatePresence } from "motion/react"
 import { easeOutPremium } from "@/lib/motion/easings"
+import { mobileCopy } from "@/data/home"
 import { SectionReveal } from "../section-reveal"
 
 /* ── screens ─────────────────────────────────────── */
@@ -11,14 +12,14 @@ const screens = [
   {
     id: "home",
     label: "Tu día de un vistazo",
-    desc: "Resumen clínico diario con citas, métricas y acciones rápidas al alcance.",
+    desc: "Resumen del día con tus citas y acciones rápidas al alcance.",
     src: "/landing/screenshots/mobile/home.webp",
     alt: "Pantalla de inicio con resumen del día, citas pendientes y acciones rápidas",
   },
   {
     id: "agenda",
     label: "Agenda en tiempo real",
-    desc: "Calendario semanal con vista por día. Sillones, horarios y pacientes confirmados.",
+    desc: "Calendario semanal con vista por día y aviso cuando una cita cambia.",
     src: "/landing/screenshots/mobile/agenda.webp",
     alt: "Vista de agenda semanal con calendario y citas del día",
   },
@@ -88,13 +89,13 @@ export function MobileApp() {
           <div className="mx-auto mb-14 max-w-3xl text-center lg:mb-20">
             <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-brand-500/30 bg-brand-950/60 px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.1em] text-brand-300 backdrop-blur-sm">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.6)]" />
-              App Nativa iOS & Android
+              {mobileCopy.eyebrow}
             </div>
             <h2 className="text-balance text-[28px] font-black leading-[1.1] tracking-tight text-white sm:text-[36px] lg:text-[46px]">
-              Tu clínica dental en tu bolsillo.
+              {mobileCopy.heading}
             </h2>
             <p className="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-slate-400 sm:text-[16px]">
-              Diseñada para el flujo del odontólogo en gabinete. Rápida, clara, sin clics innecesarios.
+              {mobileCopy.text}
             </p>
           </div>
         </SectionReveal>
@@ -189,12 +190,7 @@ export function MobileApp() {
         {/* ── Bottom capability strip ── */}
         <SectionReveal>
           <div className="mx-auto mt-14 flex max-w-3xl flex-wrap items-center justify-center gap-x-6 gap-y-3 text-[13px] sm:mt-20">
-            {[
-              "Agenda en tiempo real",
-              "Expediente completo",
-              "Cámara clínica",
-              "Dictado por voz",
-            ].map((cap, i) => (
+            {mobileCopy.capabilities.map((cap, i) => (
               <span key={cap} className="flex items-center gap-2">
                 {i > 0 && <span className="hidden text-slate-700 sm:inline">·</span>}
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="shrink-0">
@@ -204,6 +200,23 @@ export function MobileApp() {
                 <span className="text-slate-400">{cap}</span>
               </span>
             ))}
+          </div>
+        </SectionReveal>
+
+        {/* ── One platform, three contexts ── */}
+        <SectionReveal>
+          <div className="mx-auto mt-16 max-w-5xl sm:mt-20">
+            <p className="text-center text-[20px] font-black tracking-tight text-white sm:text-[24px]">
+              {mobileCopy.contextsTitle}
+            </p>
+            <dl className="mt-6 grid gap-3 sm:grid-cols-3">
+              {mobileCopy.contexts.map((context) => (
+                <div key={context.device} className="rounded-2xl border border-white/[0.08] bg-white/[0.03] p-5">
+                  <dt className="text-[11px] font-bold uppercase tracking-[0.1em] text-brand-300">{context.device}</dt>
+                  <dd className="mt-2 text-[14px] leading-relaxed text-slate-300">{context.text}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
         </SectionReveal>
       </div>

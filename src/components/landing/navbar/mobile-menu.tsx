@@ -1,19 +1,19 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef, useSyncExternalStore } from "react"
 import { createPortal } from "react-dom"
 import { AnimatePresence, motion } from "motion/react"
-import { Menu, X, LayoutGrid, Bot, Smartphone, CreditCard, Mic, Shield, HelpCircle, ArrowRight } from "lucide-react"
+import { Menu, X, LayoutGrid, Bot, Smartphone, CreditCard, Mic, ScanLine, HelpCircle, ArrowRight } from "lucide-react"
 import { navActions } from "@/data/navigation"
 import { easeOutPremium } from "@/lib/motion/easings"
 
 const menuItems = [
-  { label: "Producto", href: "#producto", desc: "Agenda, odontograma y más", icon: LayoutGrid },
-  { label: "Recepción IA", href: "#recepcion-ia", desc: "WhatsApp automatizado 24/7", icon: Bot, badge: "24/7" },
-  { label: "App móvil", href: "#app-movil", desc: "Para doctores en movimiento", icon: Smartphone },
-  { label: "Dictado clínico", href: "#dictado", desc: "Voz a nota clínica con IA", icon: Mic },
-  { label: "Seguridad", href: "#seguridad", desc: "Cifrado y cumplimiento", icon: Shield },
-  { label: "Precios", href: "#precios", desc: "Planes desde $29/mes", icon: CreditCard },
+  { label: "Recepción IA", href: "#recepcion-ia", desc: "Agenda citas por WhatsApp", icon: Bot, badge: "24/7" },
+  { label: "ClinicFlow Voice", href: "#voice", desc: "Odontograma manos libres", icon: Mic },
+  { label: "ClinicFlow RX", href: "#rx", desc: "Radiografías al expediente", icon: ScanLine },
+  { label: "Plataforma", href: "#producto", desc: "Agenda, pacientes y expediente", icon: LayoutGrid },
+  { label: "App móvil", href: "#app-movil", desc: "Para el doctor en movimiento", icon: Smartphone },
+  { label: "Precios", href: "#precios", desc: "Essential, Pro y Elite", icon: CreditCard },
   { label: "Preguntas frecuentes", href: "#faq", desc: "Resuelve tus dudas", icon: HelpCircle },
 ] as const
 
@@ -144,11 +144,10 @@ function MenuOverlay({ onNavigate, onClose }: { onNavigate: (href: string) => vo
 /* ── Main component ── */
 export function MobileMenu() {
   const [open, setOpen] = useState(false)
-  const [mounted, setMounted] = useState(false)
+  // True only on the client, so the portal is not rendered during SSR
+  const mounted = useSyncExternalStore(() => () => {}, () => true, () => false)
   const savedScrollRef = useRef(0)
   const targetRef = useRef<string | null>(null)
-
-  useEffect(() => { setMounted(true) }, [])
 
   // Lock/unlock scroll
   useEffect(() => {

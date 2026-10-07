@@ -21,9 +21,9 @@ import { AppMovilPreview } from "./previews/app-movil-preview"
 
 const tabs = [
   { id: "agenda", label: "Agenda", desc: "Citas por especialista y sillón", icon: Calendar },
-  { id: "pacientes", label: "Pacientes", desc: "42 registros con historial", icon: Users },
-  { id: "doctores", label: "Dashboard", desc: "Métricas y ocupación", icon: LayoutDashboard },
-  { id: "clinica", label: "Odontograma", desc: "FDI interactivo con IA", icon: CircleDot },
+  { id: "pacientes", label: "Pacientes", desc: "Fichas con historial", icon: Users },
+  { id: "doctores", label: "Dashboard", desc: "Actividad y ocupación", icon: LayoutDashboard },
+  { id: "clinica", label: "Odontograma", desc: "FDI interactivo", icon: CircleDot },
   { id: "comunicacion", label: "Expediente", desc: "Ficha clínica completa", icon: FolderOpen },
   { id: "app-movil", label: "Pieza dental", desc: "Superficies e ICDAS", icon: Crosshair },
 ] as const
@@ -166,7 +166,7 @@ export function ProductNavigator() {
 
           {/* Subtle label overlay */}
           <div className="absolute bottom-3 right-3 rounded-lg bg-white/80 px-2.5 py-1 text-[10px] font-semibold text-muted backdrop-blur-sm sm:bottom-4 sm:right-4">
-            {tabs.find((t) => t.id === active)?.label} — Vista en vivo
+            {tabs.find((t) => t.id === active)?.label}
           </div>
         </div>
       </div>

@@ -12,11 +12,11 @@ test.describe("Landing page", () => {
   test("hero section is visible with H1", async ({ page }) => {
     const h1 = page.locator("h1")
     await expect(h1).toBeVisible()
-    await expect(h1).toContainText("Tu clínica sigue atendiendo")
+    await expect(h1).toContainText("Tu clínica conectada.")
   })
 
   test("hero CTA button is visible", async ({ page }) => {
-    const cta = page.getByRole("link", { name: /Probar gratis 14 días/ })
+    const cta = page.locator("#hero").getByRole("link", { name: /Probar gratis 14 días/ })
     await expect(cta).toBeVisible()
   })
 
@@ -25,9 +25,10 @@ test.describe("Landing page", () => {
     await expect(nav).toBeVisible()
 
     // Desktop links (hidden on mobile, but exist in DOM)
-    await expect(nav.getByText("Producto")).toBeAttached()
     await expect(nav.getByText("Recepción IA")).toBeAttached()
-    await expect(nav.getByText("App móvil")).toBeAttached()
+    await expect(nav.getByText("Voice")).toBeAttached()
+    await expect(nav.getByText("RX")).toBeAttached()
+    await expect(nav.getByText("Plataforma")).toBeAttached()
     await expect(nav.getByText("Precios")).toBeAttached()
   })
 
@@ -35,36 +36,27 @@ test.describe("Landing page", () => {
     const pricing = page.locator("#precios")
     await pricing.scrollIntoViewIfNeeded()
 
-    await expect(page.getByText("Esencial")).toBeVisible()
-    await expect(page.getByText("Clínica Pro")).toBeVisible()
-    await expect(page.getByText("Clínica AI")).toBeVisible()
+    for (const [plan, price] of [["Essential", "$49"], ["Pro", "$99"], ["Elite", "$149"]] as const) {
+      await expect(pricing.getByRole("heading", { name: plan, exact: true })).toBeVisible()
+      await expect(pricing.getByText(price, { exact: true })).toBeVisible()
+    }
   })
 
   test("FAQ accordion expands on click", async ({ page }) => {
     const faq = page.locator("#faq")
     await faq.scrollIntoViewIfNeeded()
 
-    const firstQuestion = page.getByText(
-      "¿ClinicFlow360 funciona con un solo doctor?"
-    )
+    const firstQuestion = page.getByText("¿Qué es ClinicFlow RX?")
     await firstQuestion.click()
 
-    const answer = page.getByText("Funciona para consultorios de un solo")
+    const answer = page.getByText("Es la integración de imagenología de ClinicFlow360")
     await expect(answer).toBeVisible()
-  })
-
-  test("before/after slider has correct ARIA role", async ({ page }) => {
-    const slider = page.getByRole("slider", {
-      name: "Comparador antes y después",
-    })
-    await slider.scrollIntoViewIfNeeded()
-    await expect(slider).toBeAttached()
   })
 
   test("footer is visible with copyright", async ({ page }) => {
     const footer = page.getByRole("contentinfo")
     await footer.scrollIntoViewIfNeeded()
-    await expect(footer.getByText(/ClinicFlow360/)).toBeVisible()
+    await expect(footer.getByText(/ClinicFlow360/).first()).toBeVisible()
   })
 
   test("skip-to-content link exists", async ({ page }) => {

@@ -1,3 +1,4 @@
+import { platformCopy } from "@/data/home"
 import { SectionReveal } from "../section-reveal"
 import { ProductNavigator } from "./product-navigator"
 
@@ -20,13 +21,13 @@ export function ProductShowcase() {
         <SectionReveal>
           <div className="mx-auto mb-12 max-w-3xl text-center lg:mb-16">
             <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.12em] text-brand-400 sm:text-xs">
-              Plataforma Todo en Uno
+              {platformCopy.eyebrow}
             </p>
             <h2 className="headline-section text-balance text-white text-[28px] sm:text-[36px] lg:text-[42px]">
-              Todo lo que ocurre en tu clínica, conectado en tiempo real.
+              {platformCopy.heading}
             </h2>
             <p className="mt-4 text-[15px] text-slate-400 sm:text-base">
-              Una visión unificada que sincroniza recepción, doctores en gabinete, odontograma y WhatsApp sin duplicar trabajo.
+              {platformCopy.text}
             </p>
           </div>
         </SectionReveal>
