@@ -1,4 +1,6 @@
-export type FAQCategory = "ai" | "clinical" | "rx" | "start"
+import { leadsStatusLabel } from "@/data/home"
+
+export type FAQCategory = "ai" | "clinical" | "rx" | "growth" | "start"
 
 export interface FAQItem {
   question: string
@@ -10,8 +12,14 @@ export const faqCategories: { id: FAQCategory; label: string }[] = [
   { id: "ai", label: "Recepción IA" },
   { id: "clinical", label: "Voz y consulta" },
   { id: "rx", label: "ClinicFlow RX" },
+  { id: "growth", label: "Growth" },
   { id: "start", label: "Empezar" },
 ]
+
+// Added to lead answers while lead management is not generally available.
+const leadsNote = leadsStatusLabel
+  ? " La gestión de leads se está incorporando al plan Elite; escríbenos para conocer su disponibilidad."
+  : ""
 
 export const faqItems: FAQItem[] = [
   {
@@ -80,7 +88,31 @@ export const faqItems: FAQItem[] = [
       "No. Funciona únicamente con equipos e integraciones compatibles, y la lista se está validando equipo por equipo. Consulta la compatibilidad del tuyo.",
   },
   {
-    category: "start",
+    category: "growth",
+    question: "¿Qué es ClinicFlow Growth?",
+    answer:
+      "Es la parte de ClinicFlow360 que convierte la información que la clínica ya tiene en nuevas citas. Tiene dos áreas: reactivar pacientes que ya existen y dar seguimiento a personas interesadas que todavía no son pacientes. Como vive junto a la agenda, los pacientes y WhatsApp, cada conversación puede terminar en una cita.",
+  },
+  {
+    category: "growth",
+    question: "¿Puedo recuperar pacientes que dejaron de venir?",
+    answer:
+      "Sí, desde el plan Pro. Defines segmentos con reglas —por ejemplo, pacientes sin visita desde hace meses o con citas canceladas sin reagendar— y les envías una campaña por WhatsApp. Cuando el paciente responde, ClinicFlow AI puede consultar la agenda y crear la cita.",
+  },
+  {
+    category: "growth",
+    question: "¿Qué es un lead en ClinicFlow y puedo clasificarlo?",
+    answer:
+      `Un lead es una persona interesada que todavía no se ha convertido en paciente. En el plan Elite, cada lead se organiza como frío, tibio o caliente para que tu equipo sepa dónde enfocarse.${leadsNote}`,
+  },
+  {
+    category: "growth",
+    question: "¿De dónde llegan los leads y cómo se convierten en cita?",
+    answer:
+      `Los leads se centralizan desde tus canales compatibles, empezando por WhatsApp. Cuando la persona está lista, la cita se crea en la misma agenda de la clínica y el lead pasa a ser paciente.${leadsNote}`,
+  },
+  {
+    category: "growth",
     question: "¿Cómo funcionan los recordatorios y las campañas?",
     answer:
       "Los recordatorios de cita salen automáticamente por WhatsApp, con botones para confirmar, reagendar o cancelar, en los tiempos que configure la clínica. Las campañas se envían por WhatsApp a segmentos de pacientes que defines con reglas, y puedes ver los resultados de cada una.",
@@ -94,7 +126,7 @@ export const faqItems: FAQItem[] = [
     category: "start",
     question: "¿ClinicFlow360 funciona para un consultorio pequeño?",
     answer:
-      "Sí. El plan Essential está pensado para consultorios pequeños e incluye el software clínico completo: agenda, pacientes, expediente, odontograma, tratamientos y finanzas.",
+      "Sí. El plan Essential incluye el software clínico completo para operar un consultorio: agenda, pacientes, expediente, odontograma, tratamientos y finanzas.",
   },
   {
     category: "start",

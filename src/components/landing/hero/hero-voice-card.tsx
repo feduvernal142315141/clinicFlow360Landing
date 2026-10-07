@@ -22,7 +22,7 @@ export function HeroVoiceCard() {
             </svg>
           </div>
           <div>
-            <div className="text-[13px] font-bold text-white">{heroCopy.stage.voiceTitle}</div>
+            <div className="text-[13px] font-bold text-white">{heroCopy.stage.chair.title}</div>
             <div className="text-[11px] text-slate-400">{voiceCopy.demo.screenTitle} · tablet</div>
           </div>
         </div>
@@ -31,7 +31,7 @@ export function HeroVoiceCard() {
 
       <div className="p-3 sm:p-4">
         <p className="rounded-xl border border-white/[0.06] bg-white/[0.06] px-3.5 py-2 text-[13px] font-medium text-slate-100">
-          «{heroCopy.stage.voiceCommand}»
+          «{heroCopy.stage.chair.command}»
         </p>
         <div className="mt-3 overflow-hidden rounded-xl border border-white/[0.08]">
           <TabletOdontogram
@@ -43,7 +43,7 @@ export function HeroVoiceCard() {
         </div>
         <p className="mt-3 flex items-center gap-2 text-[12px] font-semibold text-emerald-400">
           <span className="flex h-4 w-4 items-center justify-center rounded-full bg-emerald-950 text-[10px]">✓</span>
-          {heroCopy.stage.voiceResult}
+          {heroCopy.stage.chair.result}
         </p>
       </div>
     </div>

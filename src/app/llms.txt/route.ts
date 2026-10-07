@@ -2,6 +2,7 @@ import { siteConfig } from "@/lib/config"
 import { faqItems } from "@/data/faq"
 import { featurePages, featurePagesCopy, featurePath } from "@/data/feature-pages"
 import { plans } from "@/data/pricing"
+import { leadsStatusLabel } from "@/data/home"
 
 export const dynamic = "force-static"
 
@@ -24,8 +25,10 @@ export function GET() {
     "## Planes y precios",
     "",
     ...plans.map((plan) => {
-      const features = plan.features.map((feature) => feature.name)
-      return `- **${plan.name}** — USD ${plan.price} al mes. ${plan.description} ${plan.includesLabel ?? "Incluye:"} ${features.join("; ")}.`
+      const features = plan.features.map(
+        (feature) => `${feature.name}${feature.leads && leadsStatusLabel ? ` (${leadsStatusLabel.toLowerCase()})` : ""}`,
+      )
+      return `- **${plan.name}** (${plan.stage}) — USD ${plan.price} al mes. ${plan.description} ${plan.includesLabel ?? "Incluye:"} ${features.join("; ")}.`
     }),
     "",
     `Prueba gratis de 14 días, sin tarjeta de crédito: ${url(siteConfig.trialSignupPath)}`,

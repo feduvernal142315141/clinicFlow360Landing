@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "ClinicFlow360",
   title: "ClinicFlow360 | Software para clínicas dentales con IA",
   description:
-    "Agenda, pacientes, odontograma manos libres, finanzas y una recepcionista IA 24/7 por WhatsApp, conectados en una sola plataforma para clínicas dentales.",
+    "Software para clínicas dentales: agenda, pacientes, odontograma por voz, finanzas y una recepcionista IA 24/7 por WhatsApp, con reactivación de pacientes y seguimiento de nuevas oportunidades.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://clinicflow360.com",
   appUrl: process.env.NEXT_PUBLIC_APP_URL ?? "https://app.clinicflow360.com",
   loginUrl:

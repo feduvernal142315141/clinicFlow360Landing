@@ -28,7 +28,7 @@ test.describe("Landing page", () => {
     await expect(nav.getByText("Recepción IA")).toBeAttached()
     await expect(nav.getByText("Voice")).toBeAttached()
     await expect(nav.getByText("RX")).toBeAttached()
-    await expect(nav.getByText("Plataforma")).toBeAttached()
+    await expect(nav.getByText("Growth")).toBeAttached()
     await expect(nav.getByText("Precios")).toBeAttached()
   })
 

@@ -4,30 +4,33 @@
  */
 
 export const heroCopy = {
-  eyebrow: "La plataforma inteligente para clínicas dentales",
+  eyebrow: "Plataforma inteligente para clínicas dentales",
   eyebrowShort: "Plataforma dental inteligente",
   headingLead: "Tu clínica conectada.",
   headingAccent: "De recepción al sillón.",
-  text: "Agenda, pacientes, odontograma manos libres, imagenología, finanzas y una recepcionista IA 24/7 conectados en una sola plataforma.",
+  text: "Gestiona tu clínica, automatiza la recepción y trabaja desde el sillón con IA, voz e imagenología conectadas.",
+  pillars: ["Opera", "Automatiza", "Recupera", "Crece"],
   primaryCta: "Probar gratis 14 días",
   secondaryCta: "Ver ClinicFlow en acción",
   microcopy: ["Sin tarjeta", "Configuración guiada", "Cancela cuando quieras"],
+  /** Three moments of the clinic shown around the agenda. */
   stage: {
-    chatTitle: "WhatsApp → ClinicFlow AI",
-    voiceTitle: "ClinicFlow Voice",
-    voiceCommand: "Caries mesial en la pieza 34.",
-    voiceResult: "Odontograma actualizado",
-    rxTitle: "ClinicFlow RX",
-    rxText: "Radiografía en el expediente",
-    appointmentTitle: "Cita creada",
-    appointmentText: "Doctor notificado",
+    reception: { label: "Recepción", title: "Cita creada", text: "Doctor notificado" },
+    chair: { label: "Sillón", title: "ClinicFlow Voice", command: "Caries mesial en la pieza 34.", result: "Odontograma actualizado" },
+    imaging: { label: "Imagenología", title: "ClinicFlow RX", text: "Radiografía capturada · Expediente actualizado" },
   },
 } as const
 
 export const ecosystemCopy = {
   eyebrow: "Todo conectado",
-  heading: "La información fluye. Nadie repite trabajo.",
-  text: "Lo que recepción agenda, el doctor lo ve. Lo que el doctor registra en el sillón, administración ya lo tiene.",
+  heading: "Opera. Automatiza. Crece.",
+  text: "Una plataforma para administrar tu clínica, automatizar el trabajo diario y convertir más conversaciones en citas.",
+  stages: [
+    { title: "Opera", items: ["Agenda", "Pacientes", "Odontograma", "Finanzas"], href: "#producto" },
+    { title: "Automatiza", items: ["AI Receptionist", "Voice", "RX", "Seguimiento"], href: "#recepcion-ia" },
+    { title: "Crece", items: ["Reactivación", "Campañas", "Leads"], href: "#growth" },
+  ],
+  flowCaption: "La información fluye. Nadie repite trabajo.",
   steps: [
     "Recepción",
     "Agenda",
@@ -39,28 +42,6 @@ export const ecosystemCopy = {
     "Tratamiento",
     "Finanzas",
     "Seguimiento",
-  ],
-  proofs: [
-    {
-      title: "Recepción 24/7",
-      text: "El paciente escribe. ClinicFlow encuentra el horario. La cita aparece en tu agenda.",
-      href: "#recepcion-ia",
-    },
-    {
-      title: "Odontograma por voz",
-      text: "Hablas. El odontograma cambia.",
-      href: "#voice",
-    },
-    {
-      title: "RX directo al expediente",
-      text: "Tomas la radiografía. Aparece en el expediente.",
-      href: "#rx",
-    },
-    {
-      title: "Agenda conectada",
-      text: "La cita cambia. El doctor recibe la notificación.",
-      href: "#app-movil",
-    },
   ],
 } as const
 
@@ -304,46 +285,116 @@ export const mobileCopy = {
   ],
 } as const
 
-export const operationsCopy = {
-  eyebrow: "Administración",
-  heading: "Lo que pasa en el sillón llega a administración.",
-  finance: {
-    title: "De la cita al ingreso.",
-    text: "Presupuestos, recibos y pagos ligados al paciente, con la caja del día y lo que falta por cobrar a la vista.",
-    flow: [
-      { label: "Tratamiento" },
-      { label: "Presupuesto" },
-      { label: "Pago" },
-      { label: "Ingreso" },
-      { label: "Dashboard financiero" },
+export const financeCopy = {
+  eyebrow: "Finanzas",
+  heading: "De la cita al ingreso.",
+  text: "Presupuestos, recibos y pagos ligados al paciente, con la caja del día y lo que falta por cobrar a la vista.",
+  flow: [
+    { label: "Tratamiento" },
+    { label: "Presupuesto" },
+    { label: "Pago" },
+    { label: "Ingreso" },
+    { label: "Dashboard financiero" },
+  ],
+  points: [
+    "Presupuestos y recibos por paciente",
+    "Registro de pagos y saldo a favor",
+    "Apertura y cierre de caja",
+    "Cuentas por cobrar",
+    "Dashboard de ingresos",
+  ],
+} as const
+
+/**
+ * Lead management (CRM, pipeline, classification) is not generally available yet.
+ * While this label is set it is shown next to every lead feature; set it to null
+ * once the feature ships.
+ */
+export const leadsStatusLabel: string | null = "Próximamente"
+
+export const growthCopy = {
+  eyebrow: "ClinicFlow Growth",
+  heading: "Tu próxima cita puede estar en tu base de datos. O esperando tu respuesta.",
+  text: "Reactiva pacientes que dejaron de venir y convierte nuevos leads en citas con seguimiento inteligente.",
+  demoLabel: "Demostración",
+  reactivation: {
+    tag: "Pacientes que ya tienes",
+    plan: "Desde Pro",
+    title: "Haz que tus pacientes regresen.",
+    text: "ClinicFlow identifica oportunidades dentro de tu propia base de pacientes para ayudarte a recuperar citas y continuar tratamientos.",
+    story: [
+      {
+        kind: "card",
+        eyebrow: "Oportunidad detectada",
+        title: "María López",
+        lines: ["Última visita: hace 8 meses", "Sin cita futura"],
+        badge: "Paciente inactivo",
+        action: "Reactivar paciente",
+      },
+      { kind: "outbound", from: "WhatsApp", text: "Hola María 👋 Hace tiempo que no te vemos. ¿Te gustaría agendar tu revisión?" },
+      { kind: "inbound", from: "María", text: "Sí, quisiera una cita esta semana." },
+      { kind: "system", text: "ClinicFlow AI consulta disponibilidad" },
+      { kind: "result", text: "Cita agendada" },
     ],
-    points: [
-      "Presupuestos y recibos por paciente",
-      "Registro de pagos y saldo a favor",
-      "Apertura y cierre de caja",
-      "Cuentas por cobrar",
-      "Dashboard de ingresos",
+    footerTitle: "Oportunidades que puedes trabajar",
+    categories: [
+      "Pacientes inactivos",
+      "Inasistencias",
+      "Citas canceladas sin reagendar",
+      "Seguimientos",
+      "Cumpleaños",
+      "Por servicio",
     ],
+    microcopy: "De paciente inactivo a paciente recuperado.",
+  },
+  leads: {
+    tag: "Personas que aún no son pacientes",
+    plan: "Elite",
+    title: "De lead a paciente.",
+    text: "Centraliza nuevas oportunidades, identifica cuáles requieren atención y continúa el seguimiento hasta convertir interés en una cita.",
+    story: [
+      {
+        kind: "card",
+        eyebrow: "Nuevo lead",
+        title: "Carlos Mendoza",
+        lines: ["Tratamiento: implante dental", "Origen: campaña digital"],
+        badge: "🔥 Lead caliente",
+        action: "Continuar conversación",
+      },
+      { kind: "outbound", from: "WhatsApp", text: "Hola Carlos, vi que estás interesado en una valoración para implante." },
+      { kind: "inbound", from: "Carlos", text: "Sí. ¿Tienen disponibilidad mañana?" },
+      { kind: "system", text: "ClinicFlow consulta la agenda y ofrece horarios" },
+      { kind: "result", text: "Cita de valoración" },
+    ],
+    conversion: ["Lead", "Cita", "Paciente"],
+    footerTitle: "Sabe dónde enfocar a tu equipo",
+    temperatures: [
+      { icon: "🔥", label: "Caliente", text: "Preguntó precio y disponibilidad. Respondió hace poco." },
+      { icon: "●", label: "Tibio", text: "Mostró interés, todavía sin fecha." },
+      { icon: "❄", label: "Frío", text: "Sin respuesta reciente." },
+    ],
+    microcopy: "Que una consulta no termine en un mensaje olvidado.",
   },
   campaigns: {
-    title: "Comunícate con el paciente correcto, en el momento correcto.",
-    text: "Recordatorios automáticos de cita por WhatsApp y campañas para los pacientes que tú definas con reglas.",
+    title: "Comunícate con intención.",
+    text: "Segmenta pacientes, crea campañas personalizadas y da seguimiento desde ClinicFlow. Habla con el grupo correcto de pacientes en el momento correcto.",
     flow: [
       { label: "Pacientes" },
-      { label: "Segmentos" },
+      { label: "Segmento" },
       { label: "Campaña" },
       { label: "WhatsApp" },
-      { label: "Resultados" },
+      { label: "Respuesta" },
+      { label: "Cita" },
     ],
-    segmentsTitle: "Segmenta con reglas como",
-    segments: ["Sin visita reciente", "Sin cita futura", "Cumpleaños del mes", "Por doctor o servicio"],
     points: [
-      "Recordatorios con botones para confirmar, reagendar o cancelar",
-      "Tiempos de aviso configurables por clínica",
+      "Segmentos con reglas: última visita, citas futuras, cancelaciones, servicio o doctor",
+      "Recordatorios de cita con botones para confirmar, reagendar o cancelar",
       "Campañas programadas o de envío inmediato",
       "Resultados por campaña",
     ],
   },
+  closing: "De oportunidad a cita. De cita a paciente.",
+  cta: "Ver qué incluye cada plan",
 } as const
 
 export const dayCopy = {
@@ -410,7 +461,8 @@ export const pricingCopy = {
   eyebrow: "Planes",
   heading: "Comienza hoy con 14 días gratis.",
   headingMuted: "Sin tarjeta.",
-  text: "Empieza con el software clínico completo. Suma inteligencia y automatización cuando la necesites.",
+  text: "Tres etapas de una clínica: operar, automatizar y recuperar pacientes, y captar nuevos.",
+  capacityLabel: "Más capacidad",
   currency: "USD",
   period: "/mes",
   footnote: "Todos los planes incluyen la prueba gratis de 14 días. Sin contratos de permanencia.",

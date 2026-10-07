@@ -18,6 +18,16 @@ const cardIn = (delay: number) => ({
   visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.65, ease: easeOutPremium, delay } },
 })
 
+/** Names the moment of the clinic a card belongs to. */
+function MomentLabel({ children }: { children: string }) {
+  return (
+    <p className="mb-2 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.14em] text-brand-300">
+      <span className="h-px w-5 bg-brand-400/60" aria-hidden="true" />
+      {children}
+    </p>
+  )
+}
+
 /** Small status chip; lights up in turn to show information travelling. */
 function StageChip({ index, title, text }: { index: number; title: string; text: string }) {
   return (
@@ -52,18 +62,23 @@ export function HeroProductDemo() {
           </div>
         </motion.div>
 
-        <div className="relative z-20 -mt-4 flex flex-col items-center gap-4 px-4 sm:-mt-10 sm:flex-row sm:items-start sm:justify-center sm:px-2">
-          <motion.div variants={cardIn(0.4)} initial="hidden" animate="visible" className="w-full max-w-[340px] sm:max-w-[300px]">
+        <div className="relative z-20 -mt-4 flex flex-col items-center gap-5 px-4 sm:-mt-10 sm:flex-row sm:items-start sm:justify-center sm:px-2">
+          <motion.div variants={cardIn(0.4)} initial="hidden" animate="visible" className="w-full max-w-[340px] space-y-3 sm:max-w-[300px]">
+            <MomentLabel>{stage.reception.label}</MomentLabel>
             <AIChatCard />
+            <StageChip index={0} title={stage.reception.title} text={stage.reception.text} />
           </motion.div>
-          <motion.div variants={cardIn(0.55)} initial="hidden" animate="visible" className="w-full max-w-[340px] sm:max-w-[300px]">
+          <motion.div variants={cardIn(0.55)} initial="hidden" animate="visible" className="w-full max-w-[340px] space-y-3 sm:max-w-[300px]">
+            <MomentLabel>{stage.chair.label}</MomentLabel>
             <HeroVoiceCard />
+            <MomentLabel>{stage.imaging.label}</MomentLabel>
+            <StageChip index={2} title={stage.imaging.title} text={stage.imaging.text} />
           </motion.div>
         </div>
       </div>
 
       {/* ═══ DESKTOP (>= lg) ═══ */}
-      <div className="relative hidden pb-24 lg:block" style={{ minHeight: 560 }}>
+      <div className="relative hidden pb-24 lg:block" style={{ minHeight: 600 }}>
         {/* Centre — ClinicFlow agenda */}
         <motion.div variants={stageIn} initial="hidden" animate="visible" className="relative z-10 mx-auto" style={{ maxWidth: 940 }}>
           <div style={{ transform: "rotateX(2deg)", transformOrigin: "center 80%" }}>
@@ -71,20 +86,28 @@ export function HeroProductDemo() {
           </div>
         </motion.div>
 
-        {/* Left — WhatsApp → AI Receptionist → appointment */}
-        <motion.div variants={cardIn(0.45)} initial="hidden" animate="visible" className="absolute z-30" style={{ left: 0, top: 56 }}>
-          <motion.div animate={{ y: [0, -4, 0] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="space-y-3">
-            <AIChatCard />
-            <StageChip index={0} title={stage.appointmentTitle} text={stage.appointmentText} />
+        {/* Left — reception: WhatsApp → AI Receptionist → appointment */}
+        <motion.div variants={cardIn(0.45)} initial="hidden" animate="visible" className="absolute z-30" style={{ left: 0, top: 40 }}>
+          <motion.div animate={{ y: [0, -4, 0] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}>
+            <MomentLabel>{stage.reception.label}</MomentLabel>
+            <div className="space-y-3">
+              <AIChatCard />
+              <StageChip index={0} title={stage.reception.title} text={stage.reception.text} />
+            </div>
           </motion.div>
         </motion.div>
 
-        {/* Right — tablet → odontogram → Voice, plus RX → record */}
-        <motion.div variants={cardIn(0.6)} initial="hidden" animate="visible" className="absolute z-40" style={{ right: 0, top: 84 }}>
-          <motion.div animate={{ y: [0, -5, 0] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="space-y-3">
-            <HeroVoiceCard />
-            <StageChip index={1} title={stage.voiceTitle} text={stage.voiceResult} />
-            <StageChip index={2} title={stage.rxTitle} text={stage.rxText} />
+        {/* Right — chair: tablet → Voice → odontogram; imaging: RX → record */}
+        <motion.div variants={cardIn(0.6)} initial="hidden" animate="visible" className="absolute z-40" style={{ right: 0, top: 64 }}>
+          <motion.div animate={{ y: [0, -5, 0] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}>
+            <MomentLabel>{stage.chair.label}</MomentLabel>
+            <div className="flow-step rounded-2xl" style={{ "--flow-index": 1, "--flow-count": 3 } as CSSProperties}>
+              <HeroVoiceCard />
+            </div>
+            <div className="mt-4">
+              <MomentLabel>{stage.imaging.label}</MomentLabel>
+              <StageChip index={2} title={stage.imaging.title} text={stage.imaging.text} />
+            </div>
           </motion.div>
         </motion.div>
       </div>

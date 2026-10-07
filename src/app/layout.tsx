@@ -59,6 +59,10 @@ export const metadata: Metadata = {
   },
   keywords: [
     "software dental",
+    "CRM dental",
+    "reactivación de pacientes",
+    "recepcionista IA para clínicas",
+    "recordatorios de citas",
     "software para clínicas dentales",
     "agenda odontológica",
     "odontograma digital",

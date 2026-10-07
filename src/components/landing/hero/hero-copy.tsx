@@ -43,6 +43,17 @@ export function HeroCopy() {
         {heroCopy.text}
       </motion.p>
 
+      <motion.ul custom={0.13} variants={fade} initial="hidden" animate="visible"
+        className="mt-4 flex flex-wrap items-center justify-center gap-x-2.5 gap-y-1 text-[11px] font-bold uppercase tracking-[0.14em] text-brand-300 sm:text-[12px]"
+      >
+        {heroCopy.pillars.map((pillar, index) => (
+          <li key={pillar} className="flex items-center gap-2.5">
+            {index > 0 && <span className="text-slate-600" aria-hidden="true">·</span>}
+            {pillar}
+          </li>
+        ))}
+      </motion.ul>
+
       {/* CTAs */}
       <motion.div custom={0.16} variants={fade} initial="hidden" animate="visible"
         className="mt-7 flex w-full flex-col gap-3 px-4 sm:mt-9 sm:w-auto sm:flex-row sm:px-0"

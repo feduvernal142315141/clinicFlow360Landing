@@ -1,5 +1,5 @@
 import { plans } from "@/data/pricing"
-import { pricingCopy } from "@/data/home"
+import { leadsStatusLabel, pricingCopy } from "@/data/home"
 import { siteConfig } from "@/lib/config"
 import { SectionReveal } from "../section-reveal"
 
@@ -58,8 +58,8 @@ export function Pricing() {
                   </span>
                 )}
 
-                <p className={`text-[11px] font-bold uppercase tracking-[0.1em] ${plan.highlighted ? "text-brand-300" : "text-slate-500"}`}>
-                  {plan.positioning}
+                <p className={`text-[13px] font-black uppercase tracking-[0.12em] ${plan.highlighted ? "text-brand-300" : "text-slate-300"}`}>
+                  {plan.stage}
                 </p>
                 <h3 className={`mt-2 font-black tracking-tight text-white ${plan.highlighted ? "text-[28px]" : "text-[22px]"}`}>{plan.name}</h3>
                 <p className="mt-1.5 min-h-[40px] text-[14px] leading-snug text-slate-400">{plan.description}</p>
@@ -94,11 +94,22 @@ export function Pricing() {
                       <span className={`mt-0.5 font-bold ${plan.highlighted ? "text-brand-300" : "text-emerald-400"}`}>✓</span>
                       <span>
                         <span className={feature.detail ? "font-bold text-white" : ""}>{feature.name}</span>
+                        {feature.leads && leadsStatusLabel && (
+                          <span className="ml-2 rounded bg-amber-950/60 px-1.5 py-px align-middle text-[9px] font-bold uppercase tracking-wide text-amber-300">
+                            {leadsStatusLabel}
+                          </span>
+                        )}
                         {feature.detail && <span className="mt-0.5 block text-[13px] text-slate-400">{feature.detail}</span>}
                       </span>
                     </li>
                   ))}
                 </ul>
+
+                {plan.capacity && (
+                  <p className="mt-6 border-t border-white/[0.08] pt-5 text-[13px] leading-relaxed text-slate-400">
+                    <span className="font-bold text-slate-200">{pricingCopy.capacityLabel}:</span> {plan.capacity}
+                  </p>
+                )}
               </li>
             ))}
           </ul>

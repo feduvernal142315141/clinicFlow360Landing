@@ -10,6 +10,7 @@ import { ClinicFlowRX } from "@/components/landing/rx/clinicflow-rx"
 import { ProductShowcase } from "@/components/landing/product-showcase/product-showcase"
 import { MobileApp } from "@/components/landing/mobile-app/mobile-app"
 import { Operations } from "@/components/landing/operations/operations"
+import { Growth } from "@/components/landing/growth/growth"
 import { DayTimeline } from "@/components/landing/day-timeline/day-timeline"
 import { Security } from "@/components/landing/security/security"
 import { Pricing } from "@/components/landing/pricing/pricing"
@@ -40,6 +41,7 @@ export default function LandingPage() {
         <ProductShowcase />
         <MobileApp />
         <Operations />
+        <Growth />
         <DayTimeline />
         <Security />
         <Pricing />

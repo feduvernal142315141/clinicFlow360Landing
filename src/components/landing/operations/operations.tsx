@@ -1,75 +1,41 @@
-import { operationsCopy } from "@/data/home"
+import { financeCopy } from "@/data/home"
 import { SectionReveal } from "../section-reveal"
-import { SectionHeader } from "../shared/section-header"
-import { FlowSteps, type FlowStep } from "../shared/flow-steps"
+import { FlowSteps } from "../shared/flow-steps"
 
-function OperationsCard({
-  title,
-  text,
-  flow,
-  points,
-  children,
-}: {
-  title: string
-  text: string
-  flow: readonly FlowStep[]
-  points: readonly string[]
-  children?: React.ReactNode
-}) {
-  return (
-    <div className="flex h-full flex-col rounded-3xl border border-white/[0.08] bg-white/[0.02] p-6 sm:p-8">
-      <h3 className="text-balance text-[22px] font-black leading-tight tracking-tight text-white sm:text-[26px]">{title}</h3>
-      <p className="mt-3 text-[15px] leading-relaxed text-slate-400">{text}</p>
-
-      <FlowSteps steps={flow} horizontalFrom="never" className="mt-7" />
-
-      {children}
-
-      <ul className="mt-7 space-y-2.5 text-[14px] text-slate-300">
-        {points.map((point) => (
-          <li key={point} className="flex items-start gap-2.5">
-            <span className="mt-0.5 font-bold text-emerald-400">✓</span>
-            {point}
-          </li>
-        ))}
-      </ul>
-    </div>
-  )
-}
-
-/** Finance and patient communication: what happens after the chair. */
+/** Finance: from the treatment to the income, tied to the patient. */
 export function Operations() {
-  const { finance, campaigns } = operationsCopy
-
   return (
     <section
-      id="administracion"
+      id="finanzas"
       className="relative overflow-hidden border-t border-white/[0.06] px-4 py-20 sm:px-6 lg:py-28"
       style={{ background: "linear-gradient(180deg, #0d1a30 0%, #0a1628 100%)" }}
     >
-      <div className="relative mx-auto max-w-6xl">
-        <SectionHeader eyebrow={operationsCopy.eyebrow} heading={operationsCopy.heading} />
+      <div className="relative mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
+        <SectionReveal>
+          <div>
+            <span className="inline-flex items-center gap-2 rounded-full border border-brand-500/30 bg-brand-950/60 px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.1em] text-brand-300">
+              <span className="h-1.5 w-1.5 rounded-full bg-brand-400 shadow-[0_0_6px_rgba(56,189,248,0.5)]" />
+              {financeCopy.eyebrow}
+            </span>
+            <h2 className="text-balance mt-5 text-[28px] font-black leading-[1.1] tracking-tight text-white sm:text-[36px] lg:text-[44px]">
+              {financeCopy.heading}
+            </h2>
+            <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-slate-400 sm:text-[16px]">{financeCopy.text}</p>
 
-        <div className="grid gap-5 lg:grid-cols-2 lg:gap-6">
-          <SectionReveal className="h-full">
-            <OperationsCard title={finance.title} text={finance.text} flow={finance.flow} points={finance.points} />
-          </SectionReveal>
+            <ul className="mt-7 space-y-2.5 text-[14px] text-slate-300">
+              {financeCopy.points.map((point) => (
+                <li key={point} className="flex items-start gap-2.5">
+                  <span className="mt-0.5 font-bold text-emerald-400">✓</span>
+                  {point}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </SectionReveal>
 
-          <SectionReveal className="h-full">
-            <OperationsCard title={campaigns.title} text={campaigns.text} flow={campaigns.flow} points={campaigns.points}>
-              <div className="mt-6">
-                <p className="text-[11px] font-bold uppercase tracking-[0.1em] text-slate-500">{campaigns.segmentsTitle}</p>
-                <ul className="mt-3 flex flex-wrap gap-2">
-                  {campaigns.segments.map((segment) => (
-                    <li key={segment} className="rounded-full border border-white/[0.08] bg-white/[0.04] px-3 py-1.5 text-[12px] font-medium text-slate-300">
-                      {segment}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </OperationsCard>
-          </SectionReveal>
-        </div>
+        <SectionReveal>
+          <FlowSteps steps={financeCopy.flow} horizontalFrom="never" />
+        </SectionReveal>
       </div>
     </section>
   )

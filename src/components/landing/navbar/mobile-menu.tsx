@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef, useSyncExternalStore } from "react"
 import { createPortal } from "react-dom"
 import { AnimatePresence, motion } from "motion/react"
-import { Menu, X, LayoutGrid, Bot, Smartphone, CreditCard, Mic, ScanLine, HelpCircle, ArrowRight } from "lucide-react"
+import { Menu, X, LayoutGrid, Bot, Smartphone, CreditCard, Mic, ScanLine, TrendingUp, HelpCircle, ArrowRight } from "lucide-react"
 import { navActions } from "@/data/navigation"
 import { easeOutPremium } from "@/lib/motion/easings"
 
@@ -11,6 +11,7 @@ const menuItems = [
   { label: "Recepción IA", href: "#recepcion-ia", desc: "Agenda citas por WhatsApp", icon: Bot, badge: "24/7" },
   { label: "ClinicFlow Voice", href: "#voice", desc: "Odontograma manos libres", icon: Mic },
   { label: "ClinicFlow RX", href: "#rx", desc: "Radiografías al expediente", icon: ScanLine },
+  { label: "ClinicFlow Growth", href: "#growth", desc: "Reactiva pacientes y convierte leads", icon: TrendingUp },
   { label: "Plataforma", href: "#producto", desc: "Agenda, pacientes y expediente", icon: LayoutGrid },
   { label: "App móvil", href: "#app-movil", desc: "Para el doctor en movimiento", icon: Smartphone },
   { label: "Precios", href: "#precios", desc: "Essential, Pro y Elite", icon: CreditCard },

@@ -4,7 +4,7 @@ export const navItems = [
   { label: "Recepción IA", href: "/#recepcion-ia" },
   { label: "Voice", href: "/#voice" },
   { label: "RX", href: "/#rx" },
-  { label: "Plataforma", href: "/#producto" },
+  { label: "Growth", href: "/#growth" },
   { label: "Precios", href: "/#precios" },
 ] as const
 

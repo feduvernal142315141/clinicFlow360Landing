@@ -30,7 +30,7 @@ export const featurePagesCopy = {
   indexName: "Funciones",
   indexMetaTitle: "Funciones del software dental",
   indexMetaDescription:
-    "Conoce las funciones de ClinicFlow360: recepcionista con IA en WhatsApp, odontograma por voz, agenda dental, odontograma digital y app móvil para dentistas.",
+    "Conoce las funciones de ClinicFlow360: recepcionista con IA en WhatsApp, odontograma por voz, reactivación de pacientes, agenda dental, odontograma digital y app móvil para dentistas.",
   indexHeading: "Funciones de ClinicFlow360",
   indexIntro:
     "ClinicFlow360 es la plataforma inteligente para clínicas dentales: conecta recepción, agenda, expediente, odontograma, imágenes y administración en un solo flujo.",
@@ -215,6 +215,61 @@ export const featurePages: FeaturePage[] = [
         question: "¿ClinicFlow RX funciona con cualquier sensor?",
         answer:
           "No. Funciona únicamente con equipos e integraciones compatibles, y la lista se está validando equipo por equipo.",
+      },
+    ],
+  },
+  {
+    slug: "reactivacion-de-pacientes",
+    name: "Reactivación de pacientes",
+    summary: "Segmentos y campañas por WhatsApp para que los pacientes que dejaron de venir vuelvan a tu agenda.",
+    metaTitle: "Reactivación de pacientes para clínicas dentales",
+    metaDescription:
+      "Recupera pacientes que dejaron de venir: segmenta tu base, envía campañas por WhatsApp y deja que ClinicFlow AI agende la cita cuando el paciente responde.",
+    heading: "Haz que tus pacientes regresen",
+    intro:
+      "ClinicFlow Growth ayuda a una clínica dental a recuperar pacientes que ya tiene: defines un segmento con reglas —por ejemplo, pacientes sin visita desde hace meses—, les envías una campaña por WhatsApp y, cuando responden, ClinicFlow AI puede consultar la agenda y crear la cita.",
+    capabilities: [
+      {
+        title: "Segmentos con reglas",
+        description: "Agrupa pacientes por última visita, citas futuras, cancelaciones, servicio, doctor o mes de cumpleaños.",
+      },
+      {
+        title: "Campañas por WhatsApp",
+        description: "Reactivación, inasistencias, citas canceladas sin reagendar, seguimiento, cumpleaños o por servicio.",
+      },
+      {
+        title: "Envío programado o inmediato",
+        description: "Decide cuándo sale cada campaña; también puedes pausarla o cancelarla.",
+      },
+      {
+        title: "De la respuesta a la cita",
+        description: "Cuando el paciente contesta, ClinicFlow AI consulta la disponibilidad real y agenda.",
+      },
+      {
+        title: "Recordatorios de cita",
+        description: "Con botones para confirmar, reagendar o cancelar, en los tiempos que configure la clínica.",
+      },
+      {
+        title: "Resultados por campaña",
+        description: "Revisa qué pasó con cada campaña que enviaste.",
+      },
+    ],
+    planNote: "La reactivación de pacientes, las campañas y la segmentación están incluidas desde el plan Pro.",
+    faq: [
+      {
+        question: "¿Puedo recuperar pacientes que dejaron de venir?",
+        answer:
+          "Sí, desde el plan Pro. Defines segmentos con reglas —por ejemplo, pacientes sin visita desde hace meses o con citas canceladas sin reagendar— y les envías una campaña por WhatsApp.",
+      },
+      {
+        question: "¿Qué pasa cuando el paciente responde a la campaña?",
+        answer:
+          "La conversación continúa en el mismo WhatsApp de la clínica. ClinicFlow AI puede consultar la disponibilidad real de la agenda y crear la cita, o pasar la conversación a tu equipo.",
+      },
+      {
+        question: "¿Es envío masivo?",
+        answer:
+          "No es la idea. Las campañas se envían a segmentos concretos de tu propia base de pacientes, definidos con reglas, para que cada mensaje llegue a quien le corresponde.",
       },
     ],
   },
