@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 import { SmoothScrollProvider } from "@/components/landing/smooth-scroll-provider"
 import { siteConfig } from "@/lib/config"
@@ -22,6 +22,10 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   metadataBase: new URL(siteConfig.url),
   applicationName: siteConfig.name,
+  authors: [{ name: siteConfig.publisher }],
+  creator: siteConfig.publisher,
+  publisher: siteConfig.publisher,
+  formatDetection: { telephone: false, email: false, address: false },
   category: "technology",
   openGraph: {
     title: siteConfig.title,
@@ -49,6 +53,9 @@ export const metadata: Metadata = {
   },
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    other: process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
+      ? { "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION }
+      : undefined,
   },
   keywords: [
     "software dental",
@@ -61,6 +68,11 @@ export const metadata: Metadata = {
     "recepcionista IA",
     "citas odontológicas",
   ],
+}
+
+export const viewport: Viewport = {
+  themeColor: siteConfig.themeColor,
+  colorScheme: "dark",
 }
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

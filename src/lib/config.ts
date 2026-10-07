@@ -18,5 +18,8 @@ export const siteConfig = {
   turnstileScriptUrl:
     "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit",
   whatsappDemoUrl: null as string | null,
+  // Company that develops and operates the product (see footer and legal pages).
+  publisher: "KodeWave Solutions",
+  themeColor: "#060d1a",
   locale: "es" as const,
 } as const
