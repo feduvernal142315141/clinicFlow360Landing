@@ -9,7 +9,7 @@ function CardLabel({ children }: { children: string }) {
 
 /** ClinicFlow Elite — patient acquisition: Lead CRM, Sites, domain, email and lead origin. */
 export function Acquisition() {
-  const { pipeline, sites, identity, origins } = acquisitionCopy
+  const { receptionist, pipeline, sites, identity, origins } = acquisitionCopy
 
   return (
     <section
@@ -38,6 +38,48 @@ export function Acquisition() {
             {acquisitionCopy.statusNote}
           </p>
         )}
+
+        {/* Pro vs Elite: the same receptionist, a longer flow */}
+        <SectionReveal>
+          <div className="mb-5 rounded-3xl border border-white/[0.08] bg-white/[0.02] p-5 sm:p-8 lg:mb-6">
+            <h3 className="text-balance max-w-2xl text-[20px] font-black leading-snug tracking-tight text-white sm:text-[24px]">
+              {receptionist.title}
+            </h3>
+            <dl className="mt-6 space-y-5">
+              {receptionist.flows.map((flow, flowIndex) => {
+                const isElite = flowIndex === receptionist.flows.length - 1
+                return (
+                  <div key={flow.plan} className="grid gap-3 border-t border-white/[0.06] pt-5 lg:grid-cols-[220px_1fr] lg:items-center lg:gap-6">
+                    <dt>
+                      <span className={`text-[12px] font-black uppercase tracking-[0.12em] ${isElite ? "text-brand-300" : "text-slate-400"}`}>{flow.plan}</span>
+                      <span className="mt-1 block text-[14px] leading-snug text-slate-300">{flow.text}</span>
+                    </dt>
+                    <dd>
+                      <ol className="flex flex-wrap items-center gap-x-2 gap-y-2 text-[12px] font-medium text-slate-300">
+                        {flow.steps.map((step, index) => (
+                          <li key={step} className="flex items-center gap-2">
+                            {index > 0 && <span className="text-slate-600" aria-hidden="true">→</span>}
+                            <span
+                              className={`rounded-full border px-3 py-1.5 ${
+                                isElite && index === flow.steps.length - 1
+                                  ? "border-emerald-500/30 bg-emerald-950/40 text-emerald-300"
+                                  : isElite
+                                    ? "border-brand-500/25 bg-brand-500/[0.07] text-white"
+                                    : "border-white/[0.08] bg-white/[0.04]"
+                              }`}
+                            >
+                              {step}
+                            </span>
+                          </li>
+                        ))}
+                      </ol>
+                    </dd>
+                  </div>
+                )
+              })}
+            </dl>
+          </div>
+        </SectionReveal>
 
         {/* Lead CRM pipeline */}
         <SectionReveal>

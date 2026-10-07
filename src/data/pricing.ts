@@ -60,7 +60,7 @@ export const plans: Plan[] = [
     badge: "Más popular",
     ctaLabel: "Probar Pro",
     features: [
-      { name: "Dalia — recepcionista IA 24/7", detail: "Atiende a tus pacientes y gestiona tu agenda por WhatsApp." },
+      { name: "Recepcionista IA 24/7", detail: "Atiende a tus pacientes y gestiona tu agenda por WhatsApp." },
       { name: "ClinicFlow Voice", detail: "Hablas. El odontograma cambia." },
       { name: "ClinicFlow RX", detail: "Tu imagenología llega al expediente. Equipos compatibles." },
       { name: "Reactivación de pacientes", detail: "Haz que regresen quienes dejaron de venir." },
@@ -82,7 +82,7 @@ export const plans: Plan[] = [
     ctaLabel: "Probar Elite",
     features: [
       { name: "Lead CRM", detail: "Cada oportunidad, del primer contacto a la cita.", acquisition: true },
-      { name: "Dalia para prospectos", detail: "También atiende a quienes aún no son pacientes.", acquisition: true },
+      { name: "Recepcionista IA para nuevos prospectos", detail: "La misma recepcionista, también con quienes aún no son pacientes.", acquisition: true },
       { name: "ClinicFlow Sites", detail: "Tu canal digital de adquisición.", acquisition: true },
       { name: "Dominio propio y 1 correo empresarial", acquisition: true },
       { name: "Conexión con tu web actual y formularios", acquisition: true },
@@ -117,7 +117,7 @@ export const comparison: { group: string; rows: ComparisonRow[] }[] = [
   {
     group: "IA y automatización",
     rows: [
-      { feature: "Dalia, recepcionista IA por WhatsApp", values: [false, true, true] },
+      { feature: "Recepcionista IA 24/7 por WhatsApp", values: [false, true, true] },
       { feature: "ClinicFlow Voice", values: [false, true, true] },
       { feature: "ClinicFlow RX", values: [false, true, true] },
       { feature: "Automatizaciones", values: [false, true, true] },
@@ -135,7 +135,7 @@ export const comparison: { group: string; rows: ComparisonRow[] }[] = [
     group: "Adquisición",
     rows: [
       { feature: "Lead CRM", values: [false, false, true], acquisition: true },
-      { feature: "Dalia para prospectos", values: [false, false, true], acquisition: true },
+      { feature: "Recepcionista IA para nuevos prospectos", values: [false, false, true], acquisition: true },
       { feature: "ClinicFlow Sites", values: [false, false, true], acquisition: true },
       { feature: "Dominio propio y 1 correo empresarial", values: [false, false, true], acquisition: true },
       { feature: "Conexión con tu web actual", values: [false, false, true], acquisition: true },

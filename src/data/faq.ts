@@ -1,6 +1,6 @@
 import { acquisitionStatusLabel } from "@/data/home"
 
-export type FAQCategory = "plans" | "dalia" | "clinical" | "rx" | "growth"
+export type FAQCategory = "plans" | "receptionist" | "clinical" | "rx" | "growth"
 
 export interface FAQItem {
   question: string
@@ -10,7 +10,7 @@ export interface FAQItem {
 
 export const faqCategories: { id: FAQCategory; label: string }[] = [
   { id: "plans", label: "Planes" },
-  { id: "dalia", label: "Dalia" },
+  { id: "receptionist", label: "Recepcionista IA" },
   { id: "clinical", label: "Voz y consulta" },
   { id: "rx", label: "ClinicFlow RX" },
   { id: "growth", label: "Crecimiento" },
@@ -37,7 +37,7 @@ export const faqItems: FAQItem[] = [
     category: "plans",
     question: "¿Cuál es la diferencia entre Pro y Elite?",
     answer:
-      `Pro trabaja con las personas que ya son tus pacientes: Dalia atiende y agenda, y las campañas hacen que regresen. Elite añade a quienes todavía no son pacientes: capta nuevas oportunidades, las organiza en el Lead CRM y las acompaña hasta la cita.${acquisitionNote}`,
+      `Pro trabaja con las personas que ya son tus pacientes: la recepcionista IA atiende y agenda, y las campañas hacen que regresen. Elite extiende esa misma recepcionista a quienes todavía no son pacientes: capta nuevas oportunidades, las organiza en el Lead CRM y las acompaña hasta la cita.${acquisitionNote}`,
   },
   {
     category: "plans",
@@ -50,27 +50,27 @@ export const faqItems: FAQItem[] = [
     answer: "Sí. Puedes cambiar de plan cuando tu clínica lo necesite y no hay contratos de permanencia.",
   },
   {
-    category: "dalia",
-    question: "¿Qué hace Dalia?",
+    category: "receptionist",
+    question: "¿Qué hace la recepcionista IA?",
     answer:
-      "Dalia es la recepcionista IA de ClinicFlow. Atiende a tus pacientes por WhatsApp las 24 horas: consulta la disponibilidad real de tu agenda, ofrece horarios y agenda, reagenda, cancela o confirma citas directamente en ClinicFlow.",
+      "Es la recepción de tu clínica cuando nadie está frente al teléfono. Atiende a tus pacientes por WhatsApp las 24 horas: consulta la disponibilidad real de tu agenda, ofrece horarios y agenda, reagenda, cancela o confirma citas directamente en ClinicFlow.",
   },
   {
-    category: "dalia",
-    question: "¿Dalia realmente puede crear citas?",
+    category: "receptionist",
+    question: "¿Realmente puede crear citas?",
     answer:
       "Sí. La cita queda registrada en la agenda de ClinicFlow, no en un mensaje pendiente para que recepción la capture después.",
   },
   {
-    category: "dalia",
+    category: "receptionist",
     question: "¿Qué pasa si el paciente necesita hablar con una persona?",
     answer:
-      "Dalia puede pasar la conversación a tu equipo, que continúa respondiendo desde la bandeja de mensajes de ClinicFlow.",
+      "La recepcionista IA puede pasar la conversación a tu equipo, que continúa respondiendo desde la bandeja de mensajes de ClinicFlow.",
   },
   {
-    category: "dalia",
+    category: "receptionist",
     question: "¿Cómo se conecta al WhatsApp de la clínica?",
-    answer: "Dalia trabaja sobre la API oficial de WhatsApp Cloud de Meta.",
+    answer: "La recepcionista IA trabaja sobre la API oficial de WhatsApp Cloud de Meta.",
   },
   {
     category: "clinical",
@@ -106,7 +106,7 @@ export const faqItems: FAQItem[] = [
     category: "growth",
     question: "¿Puedo recuperar pacientes que dejaron de venir?",
     answer:
-      "Sí, desde el plan Pro. Defines segmentos con reglas —por ejemplo, pacientes sin visita desde hace meses o con citas canceladas sin reagendar— y les envías una campaña por WhatsApp. Cuando el paciente responde, Dalia puede consultar la agenda y crear la cita.",
+      "Sí, desde el plan Pro. Defines segmentos con reglas —por ejemplo, pacientes sin visita desde hace meses o con citas canceladas sin reagendar— y les envías una campaña por WhatsApp. Cuando el paciente responde, la recepcionista IA puede consultar la agenda y crear la cita.",
   },
   {
     category: "growth",

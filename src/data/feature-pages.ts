@@ -56,7 +56,7 @@ export const featurePages: FeaturePage[] = [
       "ClinicFlow AI atiende el WhatsApp de tu clínica dental 24/7: consulta tu agenda en tiempo real y agenda, reprograma, cancela o confirma citas directamente.",
     heading: "Recepcionista con IA en WhatsApp para clínicas dentales",
     intro:
-      "Dalia es la recepcionista IA de ClinicFlow360: un agente conectado al sistema de tu clínica que atiende WhatsApp las 24 horas, consulta la disponibilidad real de tu agenda, ofrece horarios y crea, reprograma, cancela o confirma citas directamente en ClinicFlow.",
+      "La Recepcionista IA de ClinicFlow360 es un agente conectado al sistema de tu clínica que atiende WhatsApp las 24 horas: consulta la disponibilidad real de tu agenda, ofrece horarios y crea, reprograma, cancela o confirma citas directamente en ClinicFlow.",
     screenshot: {
       src: "/landing/screenshots/desktop/bandeja-whatsapp.webp",
       alt: "Bandeja de WhatsApp de ClinicFlow360 con las conversaciones de los pacientes y el momento en que el equipo toma la conversación",
@@ -89,7 +89,7 @@ export const featurePages: FeaturePage[] = [
         description: "Cuando hace falta una persona, tu equipo continúa desde la bandeja de mensajes.",
       },
     ],
-    planNote: "Dalia, la recepcionista IA 24/7, está incluida desde el plan Pro.",
+    planNote: "La Recepcionista IA 24/7 está incluida desde el plan Pro.",
     faq: [
       {
         question: "¿La recepcionista IA realmente puede crear citas?",

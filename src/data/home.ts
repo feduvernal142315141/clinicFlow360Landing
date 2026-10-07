@@ -27,8 +27,8 @@ export const ecosystemCopy = {
   text: "Una plataforma para administrar tu clínica, automatizar el trabajo diario y convertir más conversaciones en citas.",
   stages: [
     { title: "Opera", plan: "Essential", items: ["Agenda", "Pacientes", "Odontograma", "Finanzas"], href: "#producto" },
-    { title: "Automatiza y retén", plan: "Pro", items: ["Dalia", "Voice", "RX", "Reactivación"], href: "#recepcion-ia" },
-    { title: "Capta y convierte", plan: "Elite", items: ["Lead CRM", "ClinicFlow Sites", "Dalia para prospectos"], href: "#adquisicion" },
+    { title: "Automatiza y retén", plan: "Pro", items: ["Recepcionista IA", "Voice", "RX", "Reactivación"], href: "#recepcion-ia" },
+    { title: "Capta y convierte", plan: "Elite", items: ["Lead CRM", "ClinicFlow Sites", "Recepcionista IA para prospectos"], href: "#adquisicion" },
   ],
   flowCaption: "La información fluye. Nadie repite trabajo.",
   steps: [
@@ -80,19 +80,19 @@ export const problemCopy = {
 } as const
 
 export const receptionistCopy = {
-  eyebrow: "ClinicFlow AI · Dalia",
+  eyebrow: "Recepcionista IA 24/7",
   heading: "Tu recepción no cierra cuando termina el horario.",
-  text: "Dalia es tu recepcionista IA 24/7: atiende a tus pacientes y gestiona tu agenda por WhatsApp, incluso cuando tu recepción no está disponible.",
+  text: "Una recepcionista IA conectada a tu agenda: atiende conversaciones, consulta disponibilidad y gestiona citas por WhatsApp, incluso cuando tu equipo no está disponible.",
   flow: [
     { label: "WhatsApp", detail: "El paciente escribe" },
-    { label: "Dalia", detail: "Entiende lo que necesita" },
+    { label: "Recepcionista IA", detail: "Entiende lo que necesita" },
     { label: "Agenda real", detail: "Consulta disponibilidad" },
     { label: "Cita creada", detail: "Queda en ClinicFlow" },
     { label: "Doctor notificado", detail: "Aviso en su app" },
   ],
   inbox: {
     src: "/landing/screenshots/desktop/bandeja-whatsapp.webp",
-    alt: "Bandeja de WhatsApp de ClinicFlow360 con las conversaciones de los pacientes, las respuestas de Dalia y el momento en que el equipo toma la conversación",
+    alt: "Bandeja de WhatsApp de ClinicFlow360 con las conversaciones de los pacientes, las respuestas de la recepcionista IA y el momento en que el equipo toma la conversación",
     caption: "Tu equipo ve cada conversación en la bandeja y puede tomar el control cuando quiera.",
   },
   capabilities: [
@@ -107,7 +107,7 @@ export const receptionistCopy = {
   ],
   chat: {
     title: "WhatsApp de la clínica",
-    status: "En línea · Dalia, ClinicFlow AI 24/7",
+    status: "En línea · Recepcionista IA 24/7",
     tag: "Fuera de horario",
     timestamp: "DOMINGO · 11:24 PM",
     patientFirst: "Hola, buenas noches. Me duele una muela. ¿Tienen cita para mañana a primera hora?",
@@ -415,7 +415,7 @@ export const growthCopy = {
       },
       { kind: "outbound", from: "WhatsApp", text: "Hola María 👋 Hace tiempo que no te vemos. ¿Te gustaría agendar tu revisión?" },
       { kind: "inbound", from: "María", text: "Sí, quisiera una cita esta semana." },
-      { kind: "system", text: "Dalia consulta disponibilidad" },
+      { kind: "system", text: "La recepcionista IA consulta disponibilidad" },
       { kind: "result", text: "Nueva cita" },
     ],
     footerTitle: "Campañas que puedes enviar",
@@ -433,7 +433,7 @@ export const growthCopy = {
     tag: "Aún no son pacientes",
     plan: "Disponible en Elite",
     title: "Convierte nuevas oportunidades.",
-    text: "Dalia también atiende a tus prospectos: responde, consulta la agenda y los acompaña hasta la cita de valoración.",
+    text: "Tu misma recepcionista IA, ahora también con quienes aún no son pacientes: responde, registra su interés, consulta la agenda y los acompaña hasta la cita de valoración.",
     story: [
       {
         kind: "card",
@@ -444,8 +444,8 @@ export const growthCopy = {
         action: "Ver oportunidad",
       },
       { kind: "inbound", from: "Carlos", text: "Hola, quisiera información sobre implantes." },
-      { kind: "outbound", from: "Dalia", text: "Hola Carlos. Podemos verte en una cita de valoración. ¿Te queda bien mañana?" },
-      { kind: "system", text: "Dalia consulta disponibilidad" },
+      { kind: "outbound", from: "Recepcionista IA", text: "Hola Carlos. Podemos verte en una cita de valoración. ¿Te queda bien mañana?" },
+      { kind: "system", text: "La recepcionista IA consulta disponibilidad" },
       { kind: "result", text: "Cita de valoración" },
     ],
     conversion: ["Lead", "Cita", "Paciente"],
@@ -482,6 +482,18 @@ export const acquisitionCopy = {
   eyebrow: "ClinicFlow Elite · Patient Acquisition",
   heading: "Convierte oportunidades en nuevos pacientes.",
   statusNote: "Estas funciones se están incorporando al plan Elite.",
+  /** Same receptionist in both plans; Elite gives it the acquisition flow. */
+  receptionist: {
+    title: "No es otro bot. Es tu misma Recepcionista IA, con un flujo más largo.",
+    flows: [
+      { plan: "Pro", text: "Automatiza la atención de tus pacientes.", steps: ["Paciente", "WhatsApp", "Recepcionista IA", "Agenda"] },
+      {
+        plan: "Elite",
+        text: "La extiende a la adquisición de nuevos pacientes.",
+        steps: ["Nueva oportunidad", "WhatsApp / Web", "Recepcionista IA", "Lead CRM", "Agenda", "Nuevo paciente"],
+      },
+    ],
+  },
   text: "Captura nuevas oportunidades, organízalas en un solo lugar y acompáñalas desde el primer contacto hasta la cita.",
   pipeline: {
     label: "Lead CRM",
@@ -504,7 +516,7 @@ export const acquisitionCopy = {
     siteTagline: "Agenda tu valoración",
     formFields: ["Nombre", "Teléfono", "Tratamiento de interés"],
     formAction: "Solicitar cita",
-    flow: ["Visitante", "ClinicFlow Site", "Formulario", "Lead CRM", "Dalia / Recepción", "Cita", "Paciente"],
+    flow: ["Visitante", "ClinicFlow Site", "Formulario", "Lead CRM", "Recepcionista IA / Recepción", "Cita", "Paciente"],
   },
   identity: [
     {
@@ -541,7 +553,7 @@ export const dayCopy = {
       label: "Antes de abrir",
       steps: [
         { time: "07:12", event: "Paciente escribe por WhatsApp", detail: "«¿Tienen cita hoy después de las 3?»" },
-        { time: "07:12", event: "Dalia consulta disponibilidad", detail: "Revisa la agenda real y ofrece horarios" },
+        { time: "07:12", event: "La recepcionista IA consulta disponibilidad", detail: "Revisa la agenda real y ofrece horarios" },
         { time: "07:13", event: "Cita creada automáticamente", detail: "Agenda actualizada" },
         { time: "07:13", event: "Doctor recibe push", detail: "Nueva cita a las 15:00" },
       ],
@@ -599,7 +611,7 @@ export const pricingCopy = {
   doctorsLabel: (count: number) => `Hasta ${count} doctores incluidos`,
   extraDoctorsTitle: "¿Tu equipo es más grande?",
   extraDoctorsText: "Agrega doctores adicionales sin cambiar de plan.",
-  usageNote: "El uso de Dalia, ClinicFlow AI y ClinicFlow Voice está incluido según el plan.",
+  usageNote: "El uso de la Recepcionista IA y de ClinicFlow Voice está incluido según el plan.",
   compareLabel: "Ver todas las funciones",
   compareCaption: "Comparación de los planes Essential, Pro y Elite",
   featureColumn: "Función",
