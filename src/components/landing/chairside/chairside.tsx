@@ -1,7 +1,7 @@
-import Image from "next/image"
 import { chairsideCopy } from "@/data/home"
 import { SectionReveal } from "../section-reveal"
 import { SectionHeader } from "../shared/section-header"
+import { ChairsideTablet } from "./chairside-tablet"
 
 /** ClinicFlow Chairside — the tablet experience used next to the dental chair. */
 export function Chairside() {
@@ -17,21 +17,7 @@ export function Chairside() {
         <div className="grid items-center gap-10 lg:grid-cols-[1.5fr_1fr] lg:gap-12">
           {/* Tablet */}
           <SectionReveal>
-            <div
-              className="rounded-[22px] border-[8px] border-[#141a24] bg-black sm:rounded-[34px] sm:border-[12px]"
-              style={{ boxShadow: "0 0 0 1px rgba(255,255,255,0.08), 0 40px 100px rgba(0,0,0,0.5)" }}
-            >
-              <div className="overflow-hidden rounded-[14px] sm:rounded-[22px]">
-                <Image
-                  src="/landing/screenshots/odontograma-dark.webp"
-                  alt={chairsideCopy.screenshotAlt}
-                  width={1400}
-                  height={714}
-                  sizes="(min-width: 1024px) 680px, 100vw"
-                  className="w-full"
-                />
-              </div>
-            </div>
+            <ChairsideTablet />
           </SectionReveal>
 
           {/* What the doctor has in front */}

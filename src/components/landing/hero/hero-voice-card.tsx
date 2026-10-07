@@ -1,5 +1,5 @@
 import { heroCopy, voiceCopy } from "@/data/home"
-import { Odontogram } from "../voice/odontogram"
+import { TabletOdontogram } from "../voice/tablet-odontogram"
 
 /** Tablet-style card: a voice command and the odontogram reacting to it. */
 export function HeroVoiceCard() {
@@ -33,13 +33,15 @@ export function HeroVoiceCard() {
         <p className="rounded-xl border border-white/[0.06] bg-white/[0.06] px-3.5 py-2 text-[13px] font-medium text-slate-100">
           «{heroCopy.stage.voiceCommand}»
         </p>
-        <Odontogram
-          compact
-          states={{ 34: { conditions: ["mesial"] } }}
-          label={voiceCopy.demo.odontogramLabel}
-          className="mt-3 w-full"
-        />
-        <p className="mt-1 flex items-center gap-2 text-[12px] font-semibold text-emerald-400">
+        <div className="mt-3 overflow-hidden rounded-xl border border-white/[0.08]">
+          <TabletOdontogram
+            changes={{ mesial34: true }}
+            zoom="always"
+            alt={voiceCopy.demo.odontogramLabel}
+            sizes="800px"
+          />
+        </div>
+        <p className="mt-3 flex items-center gap-2 text-[12px] font-semibold text-emerald-400">
           <span className="flex h-4 w-4 items-center justify-center rounded-full bg-emerald-950 text-[10px]">✓</span>
           {heroCopy.stage.voiceResult}
         </p>

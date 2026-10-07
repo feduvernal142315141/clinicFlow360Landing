@@ -152,11 +152,11 @@ export const voiceCopy = {
   ],
   demo: {
     screenTitle: "Odontograma",
-    patient: "Paciente: Ana Martínez",
+    icdasLabel: "ICDAS 4",
     statusListening: "Escuchando",
     statusDone: "Cambio aplicado",
     odontogramLabel:
-      "Odontograma con nomenclatura FDI que se actualiza con cada comando de voz del doctor",
+      "Odontograma de ClinicFlow360 en tablet, con el botón Dictar, que se actualiza con cada comando de voz del doctor",
     legendCondition: "Caries registrada",
     legendActive: "Pieza activa",
     commandsLabel: "Comandos de voz de la demostración",
@@ -170,8 +170,39 @@ export const chairsideCopy = {
   heading: "El expediente completo, al lado del sillón.",
   text: "Una experiencia diseñada para tablet que pone odontograma, historial, imágenes, notas y plan de tratamiento frente al doctor durante la consulta.",
   highlight: "Menos clics. Menos interrupciones. Más atención al paciente.",
-  screenshotAlt:
-    "ClinicFlow360 en una tablet mostrando el odontograma del paciente durante la consulta",
+  screensLabel: "Pantallas de ClinicFlow Chairside",
+  screens: [
+    {
+      id: "odontograma",
+      label: "Odontograma",
+      src: "/landing/screenshots/tablet/odontograma.webp",
+      alt: "Odontograma completo en tablet con arcada superior e inferior, hallazgos por superficie y el botón Dictar",
+    },
+    {
+      id: "pieza",
+      label: "Pieza",
+      src: "/landing/screenshots/tablet/pieza-superficies.webp",
+      alt: "Ficha de la pieza 16 en tablet con sus superficies vestibular, oclusal y palatina",
+    },
+    {
+      id: "diagnostico",
+      label: "Diagnóstico",
+      src: "/landing/screenshots/tablet/pieza-diagnostico.webp",
+      alt: "Diagnóstico de la pieza 16 en tablet",
+    },
+    {
+      id: "plan",
+      label: "Plan",
+      src: "/landing/screenshots/tablet/pieza-plan.webp",
+      alt: "Plan de tratamiento de la pieza 16 en tablet, con procedimientos y prioridades",
+    },
+    {
+      id: "pacientes",
+      label: "Pacientes",
+      src: "/landing/screenshots/tablet/pacientes.webp",
+      alt: "Lista de pacientes en tablet con alergias, antecedentes y plan de tratamiento del paciente seleccionado",
+    },
+  ],
   features: [
     { title: "Odontograma", text: "Grande, táctil y optimizado para tablet." },
     { title: "Expediente", text: "Información clínica disponible sin regresar al escritorio." },

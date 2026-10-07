@@ -428,10 +428,14 @@
   from { transform: scaleY(0.25); }
   to { transform: scaleY(1); }
 }
-.tooth-pulse { animation: tooth-pulse 1.4s ease-out forwards; }
-@keyframes tooth-pulse {
-  0% { opacity: 0.9; stroke-width: 2; }
-  100% { opacity: 0; stroke-width: 10; }
+.tablet-pulse {
+  border-style: solid;
+  border-width: 2px;
+  animation: tablet-pulse 1.4s ease-out forwards;
+}
+@keyframes tablet-pulse {
+  0% { opacity: 0.9; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.18); }
 }
 
 /* ═══════════════════════════════════════════════════

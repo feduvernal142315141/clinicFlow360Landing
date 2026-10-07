@@ -5,28 +5,19 @@ import { AnimatePresence, motion, useInView } from "motion/react"
 import { easeOutPremium } from "@/lib/motion/easings"
 import { useReducedMotion } from "@/lib/motion/reduced-motion"
 import { voiceCopy } from "@/data/home"
-import { Odontogram, type ToothState } from "./odontogram"
+import { TabletOdontogram, type OdontogramChanges } from "./tablet-odontogram"
 
 const LISTEN_MS = 2600
 const RESULT_MS = 3400
 const BARS = [0.5, 0.9, 0.6, 1, 0.7, 0.4, 0.8, 0.55, 0.95, 0.6, 0.75, 0.45, 0.85, 0.5]
 
-/** Odontogram state after each command has (or has not yet) been applied. */
-function toothStates(step: number, applied: boolean): Record<number, ToothState> {
-  const mesial34 = (step === 0 && applied) || step === 1 || (step === 2 && !applied)
-  const occlusal36 = (step === 1 && applied) || step === 2
-
+/** What the odontogram shows once each command has (or has not yet) been applied. */
+function odontogramChanges(step: number, applied: boolean): OdontogramChanges {
   return {
-    34: {
-      conditions: mesial34 ? ["mesial"] : [],
-      pulse: applied && step !== 1,
-    },
-    36: {
-      active: step === 1,
-      conditions: occlusal36 ? ["occlusal"] : [],
-      tag: occlusal36 ? "ICDAS 4" : undefined,
-      pulse: applied && step === 1,
-    },
+    mesial34: (step === 0 && applied) || step === 1 || (step === 2 && !applied),
+    active36: step === 1,
+    occlusal36: (step === 1 && applied) || step === 2,
+    pulse: applied ? (step === 1 ? 36 : 34) : undefined,
   }
 }
 
@@ -42,7 +33,7 @@ export function VoiceDemo() {
   // Without motion there is no "listening" phase: show each command already applied.
   const showResult = applied || reducedMotion
   const command = voiceCopy.commands[step]!
-  const states = toothStates(step, showResult)
+  const changes = odontogramChanges(step, showResult)
 
   useEffect(() => {
     if (!running) return
@@ -68,35 +59,35 @@ export function VoiceDemo() {
 
   return (
     <div ref={ref} className="grid items-stretch gap-5 lg:grid-cols-[1.4fr_1fr] lg:gap-6">
-      {/* Tablet with the odontogram */}
+      {/* Tablet with the real odontogram */}
       <div
-        className="flex flex-col rounded-[26px] border-[8px] border-[#141a24] bg-[#0b111c] p-4 sm:rounded-[32px] sm:border-[10px] sm:p-6"
+        className="flex flex-col self-start rounded-[22px] border-[8px] border-[#141a24] bg-black sm:rounded-[30px] sm:border-[10px]"
         style={{ boxShadow: "0 0 0 1px rgba(255,255,255,0.08), 0 30px 80px rgba(0,0,0,0.45)" }}
       >
-        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/[0.06] pb-3">
-          <div>
-            <p className="text-[13px] font-bold text-white">{voiceCopy.demo.screenTitle}</p>
-            <p className="text-[11px] text-slate-500">{voiceCopy.demo.patient}</p>
-          </div>
+        <div className="overflow-hidden rounded-t-[14px] sm:rounded-t-[20px]">
+          <TabletOdontogram
+            changes={changes}
+            zoom="mobile"
+            alt={voiceCopy.demo.odontogramLabel}
+            sizes="(max-width: 640px) 230vw, (max-width: 1024px) 100vw, 680px"
+            icdasLabel={voiceCopy.demo.icdasLabel}
+          />
+        </div>
+
+        <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 rounded-b-[14px] bg-[#0b111c] px-4 py-3 sm:rounded-b-[20px]">
           <span className="inline-flex items-center gap-1.5 rounded-full border border-brand-500/30 bg-brand-950/60 px-2.5 py-1 text-[10px] font-bold text-brand-300">
             <span className={`h-1.5 w-1.5 rounded-full bg-brand-400 ${showResult ? "" : "animate-pulse"}`} />
             {showResult ? voiceCopy.demo.statusDone : voiceCopy.demo.statusListening}
           </span>
-        </div>
-
-        <div className="flex flex-1 items-center py-5 sm:py-8">
-          <Odontogram states={states} label={voiceCopy.demo.odontogramLabel} className="hidden w-full sm:block" />
-          <Odontogram states={states} compact label={voiceCopy.demo.odontogramLabel} className="w-full sm:hidden" />
-        </div>
-
-        <div className="flex flex-wrap items-center gap-x-5 gap-y-1 border-t border-white/[0.06] pt-3 text-[11px] text-slate-500">
-          <span className="flex items-center gap-1.5">
-            <span className="h-2.5 w-2.5 rounded-sm bg-red-400" />
-            {voiceCopy.demo.legendCondition}
-          </span>
-          <span className="flex items-center gap-1.5">
-            <span className="h-2.5 w-2.5 rounded-sm border border-brand-400 bg-brand-400/10" />
-            {voiceCopy.demo.legendActive}
+          <span className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px] text-slate-500">
+            <span className="flex items-center gap-1.5">
+              <span className="h-2.5 w-2.5 rounded-sm bg-red-500" />
+              {voiceCopy.demo.legendCondition}
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="h-2.5 w-2.5 rounded-sm border border-brand-400 bg-brand-400/15" />
+              {voiceCopy.demo.legendActive}
+            </span>
           </span>
         </div>
       </div>

@@ -111,6 +111,12 @@ export const featurePages: FeaturePage[] = [
     heading: "Odontograma por voz, con las manos en el paciente",
     intro:
       "ClinicFlow Voice permite actualizar el odontograma hablando: el doctor dice el hallazgo y ClinicFlow interpreta la pieza, la superficie, el diagnóstico y el contexto para proponer el cambio sobre el odontograma. No es un dictado de notas: es una forma de actuar sobre el odontograma sin soltar el instrumental.",
+    screenshot: {
+      src: "/landing/screenshots/tablet/odontograma.webp",
+      alt: "Odontograma de ClinicFlow360 en tablet con el botón Dictar para actualizarlo por voz",
+      width: 1920,
+      height: 1200,
+    },
     capabilities: [
       {
         title: "Reconoce piezas FDI",
