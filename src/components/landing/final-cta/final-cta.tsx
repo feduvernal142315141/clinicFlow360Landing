@@ -1,22 +1,18 @@
 import { siteConfig } from "@/lib/config"
 import { finalCtaCopy } from "@/data/home"
 import { SectionReveal } from "../section-reveal"
+import { BrandToothOutline } from "../shared/brand-logo"
 
 export function FinalCTA() {
   return (
     <section className="relative overflow-hidden px-4 py-24 text-white sm:px-6 lg:py-32" style={{ background: "linear-gradient(180deg, #0a1628 0%, #0c2040 40%, #0a1628 100%)" }}>
       {/* Dental SVG decoration — left */}
       <div className="pointer-events-none absolute -bottom-16 -left-16 h-[440px] w-[440px] text-brand-400/[0.06]" aria-hidden="true">
-        <svg className="h-full w-full -rotate-12" viewBox="0 0 100 100" fill="none" stroke="currentColor">
-          <path d="M28 20 C20 20 15 32 16 48 C17 62 23 85 34 85 C39 85 43 72 50 72 C57 72 61 85 66 85 C77 85 83 62 84 48 C85 32 80 20 72 20 C64 20 58 28 50 28 C42 28 36 20 28 20 Z" strokeWidth="1.5" />
-          <path d="M35 32 C35 26 42 25 50 25 C58 25 65 26 65 32 C65 42 58 48 50 48 C42 48 35 42 35 32 Z" strokeWidth="1" />
-        </svg>
+        <BrandToothOutline className="h-full w-full -rotate-12" />
       </div>
       {/* Dental SVG — right */}
       <div className="pointer-events-none absolute -right-16 -top-16 h-[440px] w-[440px] text-brand-400/[0.06]" aria-hidden="true">
-        <svg className="h-full w-full rotate-12" viewBox="0 0 100 100" fill="none" stroke="currentColor">
-          <path d="M28 20 C20 20 15 32 16 48 C17 62 23 85 34 85 C39 85 43 72 50 72 C57 72 61 85 66 85 C77 85 83 62 84 48 C85 32 80 20 72 20 C64 20 58 28 50 28 C42 28 36 20 28 20 Z" strokeWidth="1.5" />
-        </svg>
+        <BrandToothOutline className="h-full w-full rotate-12" />
       </div>
 
       {/* Central glow */}

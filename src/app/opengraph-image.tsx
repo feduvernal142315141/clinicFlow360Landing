@@ -1,3 +1,5 @@
+import { readFile } from "node:fs/promises"
+import { join } from "node:path"
 import { ImageResponse } from "next/og"
 import { siteConfig } from "@/lib/config"
 
@@ -12,7 +14,10 @@ const features = [
   "App móvil y tablet",
 ]
 
-export default function OpengraphImage() {
+export default async function OpengraphImage() {
+  const logoFile = await readFile(join(process.cwd(), "public/brand/logo-horizontal-dark.png"))
+  const logo = `data:image/png;base64,${logoFile.toString("base64")}`
+
   return new ImageResponse(
     (
       <div
@@ -28,28 +33,7 @@ export default function OpengraphImage() {
             "radial-gradient(circle at 80% 0%, rgba(7,156,251,0.35), transparent 55%), linear-gradient(135deg, #071525, #050e1a)",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-          <div
-            style={{
-              width: 76,
-              height: 76,
-              borderRadius: 20,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              background: "linear-gradient(45deg, #025f9a, #037ecc, #38bdf8)",
-            }}
-          >
-            <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M12 2C8.5 2 6 4.5 6 8c0 3.5 1.5 6 3 9 1 2 1.5 5 3 5s2-3 3-5c1.5-3 3-5.5 3-9 0-3.5-2.5-6-6-6z" />
-              <path d="M9 9c1.5 1 4.5 1 6 0" />
-            </svg>
-          </div>
-          <div style={{ display: "flex", fontSize: 44, fontWeight: 800, letterSpacing: -1 }}>
-            <span>ClinicFlow</span>
-            <span style={{ color: "#32b4fe" }}>360</span>
-          </div>
-        </div>
+        <img src={logo} alt="" width={397} height={88} />
 
         <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
           <div style={{ display: "flex", flexDirection: "column", fontSize: 76, fontWeight: 800, lineHeight: 1.05, letterSpacing: -2 }}>

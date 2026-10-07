@@ -17,7 +17,7 @@ export function SiteJsonLd() {
         "@id": organizationId,
         name: siteConfig.name,
         url: siteConfig.url,
-        logo: `${siteConfig.url}/icon.svg`,
+        logo: `${siteConfig.url}/brand/app-icon-512.png`,
         description: siteConfig.description,
       },
       {

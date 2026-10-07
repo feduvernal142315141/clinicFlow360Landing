@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from "motion/react"
 import { Menu, X, LayoutGrid, Bot, Smartphone, CreditCard, Mic, ScanLine, TrendingUp, HelpCircle, ArrowRight } from "lucide-react"
 import { navActions } from "@/data/navigation"
 import { easeOutPremium } from "@/lib/motion/easings"
+import { BrandLogo } from "../shared/brand-logo"
 
 const menuItems = [
   { label: "Recepción IA", href: "#recepcion-ia", desc: "Agenda citas por WhatsApp", icon: Bot, badge: "24/7" },
@@ -56,17 +57,8 @@ function MenuOverlay({ onNavigate, onClose }: { onNavigate: (href: string) => vo
       className="fixed inset-0 z-[100] flex flex-col overflow-y-auto bg-[#06101a]"
     >
       <div className="flex shrink-0 items-center justify-between px-6 py-5">
-        <button onClick={() => onNavigate("#hero")} className="flex items-center gap-2.5">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-tr from-brand-700 via-brand-600 to-sky-400 text-white shadow-md shadow-brand-500/20">
-            <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-              <path d="M12 2C8.5 2 6 4.5 6 8c0 3.5 1.5 6 3 9 1 2 1.5 5 3 5s2-3 3-5c1.5-3 3-5.5 3-9 0-3.5-2.5-6-6-6z" />
-              <path d="M9 9c1.5 1 4.5 1 6 0" />
-            </svg>
-          </div>
-          <div className="flex items-baseline">
-            <span className="text-lg font-black tracking-tight text-white">ClinicFlow</span>
-            <span className="text-lg font-extrabold tracking-tight text-brand-400">360</span>
-          </div>
+        <button onClick={() => onNavigate("#hero")} className="flex cursor-pointer items-center">
+          <BrandLogo className="h-9" />
         </button>
         <button
           onClick={onClose}

@@ -2,22 +2,14 @@ import Link from "next/link"
 import { navItems, navActions } from "@/data/navigation"
 import { NavbarScrollEffect } from "./navbar-scroll-effect"
 import { MobileMenu } from "./mobile-menu"
+import { BrandLogo } from "../shared/brand-logo"
 
 export function Navbar() {
   return (
     <NavbarScrollEffect>
       {/* Logo — scroll to top */}
-      <Link href="/#hero" className="flex items-center gap-2.5">
-        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-brand-700 via-brand-600 to-sky-400 text-white shadow-md shadow-brand-500/20">
-          <svg className="h-6 w-6" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" viewBox="0 0 24 24">
-            <path d="M12 2C8.5 2 6 4.5 6 8c0 3.5 1.5 6 3 9 1 2 1.5 5 3 5s2-3 3-5c1.5-3 3-5.5 3-9 0-3.5-2.5-6-6-6z" />
-            <path d="M9 9c1.5 1 4.5 1 6 0" />
-          </svg>
-        </div>
-        <div className="flex items-baseline">
-          <span className="text-2xl font-black tracking-tight text-white">ClinicFlow</span>
-          <span className="text-2xl font-extrabold tracking-tight text-brand-400">360</span>
-        </div>
+      <Link href="/#hero" className="flex items-center">
+        <BrandLogo className="h-9 sm:h-10" priority />
       </Link>
 
       {/* Desktop nav */}

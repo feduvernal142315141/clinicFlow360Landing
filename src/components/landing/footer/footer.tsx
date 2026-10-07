@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { featurePages, featurePath } from "@/data/feature-pages"
+import { BrandLogo } from "../shared/brand-logo"
 
 export function Footer() {
   const year = new Date().getFullYear()
@@ -13,18 +14,7 @@ export function Footer() {
         <div className="mb-14 grid grid-cols-2 gap-10 md:grid-cols-5 md:gap-8">
           {/* Brand */}
           <div className="col-span-2 space-y-5">
-            <div className="flex items-center gap-2.5">
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-tr from-brand-700 via-brand-600 to-sky-400 text-white shadow-md shadow-brand-500/20">
-                <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-                  <path d="M12 2C8.5 2 6 4.5 6 8c0 3.5 1.5 6 3 9 1 2 1.5 5 3 5s2-3 3-5c1.5-3 3-5.5 3-9 0-3.5-2.5-6-6-6z" />
-                  <path d="M9 9c1.5 1 4.5 1 6 0" />
-                </svg>
-              </div>
-              <div className="flex items-baseline">
-                <span className="text-lg font-black tracking-tight text-white">ClinicFlow</span>
-                <span className="text-lg font-extrabold tracking-tight text-brand-400">360</span>
-              </div>
-            </div>
+            <BrandLogo className="h-9" />
             <p className="max-w-sm text-[13px] leading-relaxed text-slate-500">
               La plataforma inteligente para clínicas dentales: recepción, agenda, odontograma, imágenes y administración en un solo flujo.
             </p>
