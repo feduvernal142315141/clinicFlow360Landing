@@ -48,16 +48,35 @@ export const ecosystemCopy = {
 export const problemCopy = {
   eyebrow: "El problema",
   heading: "Administrar una clínica no debería requerir cinco herramientas desconectadas.",
-  beforeLabel: "Así opera hoy la mayoría de clínicas",
-  afterLabel: "Con ClinicFlow360: un solo sistema",
-  pains: [
-    { title: "Agenda en un calendario aparte", detail: "El doctor se entera tarde de los cambios" },
-    { title: "WhatsApp en el celular de recepción", detail: "Nadie responde al cerrar" },
-    { title: "Radiografías en carpetas", detail: "Hay que buscarlas por nombre" },
-    { title: "Odontograma después de la consulta", detail: "Se llena de memoria" },
+  beforeLabel: "Hoy, en la mayoría de clínicas",
+  beforeLabelShort: "Hoy",
+  afterLabel: "Con ClinicFlow360",
+  rows: [
+    {
+      before: "La agenda vive en un calendario aparte",
+      beforeDetail: "El doctor se entera tarde de los cambios.",
+      after: "La cita cambia. El doctor recibe la notificación.",
+      href: "#app-movil",
+    },
+    {
+      before: "WhatsApp está en el celular de recepción",
+      beforeDetail: "Nadie responde cuando la clínica cierra.",
+      after: "El paciente escribe. ClinicFlow agenda.",
+      href: "#recepcion-ia",
+    },
+    {
+      before: "Las radiografías quedan en carpetas",
+      beforeDetail: "Hay que buscarlas por nombre.",
+      after: "Tomas la radiografía. Aparece en el expediente.",
+      href: "#rx",
+    },
+    {
+      before: "El odontograma se llena después de la consulta",
+      beforeDetail: "Se completa de memoria.",
+      after: "Hablas. El odontograma cambia.",
+      href: "#voice",
+    },
   ],
-  screenshotAlt:
-    "Dashboard de ClinicFlow360 con la actividad de la clínica y la ocupación de doctores en una sola vista",
 } as const
 
 export const receptionistCopy = {

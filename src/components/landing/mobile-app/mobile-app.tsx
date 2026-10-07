@@ -2,8 +2,6 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import { AnimatePresence, motion } from "motion/react"
-import { easeOutPremium } from "@/lib/motion/easings"
 import { mobileCopy } from "@/data/home"
 import { SectionReveal } from "../section-reveal"
 import { SectionHeader } from "../shared/section-header"
@@ -11,8 +9,9 @@ import { SectionHeader } from "../shared/section-header"
 const { screens } = mobileCopy
 type Screen = (typeof screens)[number]
 
-/* ── Phone frame showing one capture; cross-fades when the capture changes ── */
-function Phone({ screen, sizes }: { screen: Screen; sizes: string }) {
+/* ── Phone frame. Every capture stays mounted and only its opacity changes,
+      so switching screens never reloads an image or moves the layout. ── */
+function Phone({ activeIndex }: { activeIndex: number }) {
   return (
     <div
       className="relative overflow-hidden rounded-[13%/6%] border-[6px] border-[#1a1a1a] bg-black"
@@ -26,18 +25,17 @@ function Phone({ screen, sizes }: { screen: Screen; sizes: string }) {
       }}
     >
       <div className="relative aspect-[1080/2400]">
-        <AnimatePresence initial={false}>
-          <motion.div
+        {screens.map((screen, index) => (
+          <Image
             key={screen.id}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.35, ease: easeOutPremium }}
-            className="absolute inset-0"
-          >
-            <Image src={screen.src} alt={screen.alt} fill sizes={sizes} className="object-cover" />
-          </motion.div>
-        </AnimatePresence>
+            src={screen.src}
+            alt={index === activeIndex ? screen.alt : ""}
+            aria-hidden={index !== activeIndex}
+            fill
+            sizes="270px"
+            className={`object-cover transition-opacity duration-500 ${index === activeIndex ? "opacity-100" : "opacity-0"}`}
+          />
+        ))}
       </div>
       {/* Glass reflection */}
       <div
@@ -52,7 +50,6 @@ function Phone({ screen, sizes }: { screen: Screen; sizes: string }) {
 export function MobileApp() {
   const [activeIndex, setActiveIndex] = useState(0)
   const count = screens.length
-  const current = screens[activeIndex]!
   const previousIndex = (activeIndex + count - 1) % count
   const nextIndex = (activeIndex + 1) % count
 
@@ -73,7 +70,7 @@ export function MobileApp() {
       <div className="relative mx-auto max-w-6xl">
         <SectionHeader eyebrow={mobileCopy.eyebrow} heading={mobileCopy.heading} text={mobileCopy.text} />
 
-        <div className="grid items-center gap-12 lg:grid-cols-[1fr_1.15fr] lg:gap-8">
+        <div className="grid items-center gap-10 lg:grid-cols-[1fr_1.15fr] lg:gap-8">
           {/* ── Phones: the active screen in front, its neighbours behind ── */}
           <SectionReveal className="lg:order-2">
             <div className="relative mx-auto flex h-[470px] max-w-[560px] items-center justify-center sm:h-[620px]">
@@ -94,23 +91,22 @@ export function MobileApp() {
                   aria-label={`${mobileCopy.showScreen} ${screens[index]!.label}`}
                   className={`absolute top-1/2 w-[150px] -translate-y-1/2 cursor-pointer opacity-45 transition-opacity duration-300 hover:opacity-80 sm:w-[210px] ${side}`}
                 >
-                  <Phone screen={screens[index]!} sizes="210px" />
+                  <Phone activeIndex={index} />
                 </button>
               ))}
 
               <div className="relative z-10 w-[205px] sm:w-[270px]">
-                <Phone screen={current} sizes="(min-width: 640px) 270px, 205px" />
+                <Phone activeIndex={activeIndex} />
               </div>
             </div>
 
             {/* Position dots */}
-            <div role="tablist" aria-label={mobileCopy.screensLabel} className="mt-6 flex justify-center gap-1.5">
+            <div className="mt-6 flex justify-center gap-1.5">
               {screens.map((screen, index) => (
                 <button
                   key={screen.id}
-                  role="tab"
-                  aria-selected={index === activeIndex}
-                  aria-label={screen.label}
+                  aria-label={`${mobileCopy.showScreen} ${screen.label}`}
+                  aria-current={index === activeIndex}
                   onClick={() => setActiveIndex(index)}
                   className={`h-1.5 cursor-pointer rounded-full transition-all duration-300 ${
                     index === activeIndex ? "w-6 bg-brand-400" : "w-1.5 bg-white/20 hover:bg-white/40"
@@ -121,12 +117,11 @@ export function MobileApp() {
           </SectionReveal>
 
           {/* ── Feature list (drives the phones) ── */}
-          <div className="flex w-full flex-col gap-1 lg:order-1 lg:max-w-[440px]">
+          <div role="tablist" aria-label={mobileCopy.screensLabel} aria-orientation="vertical" className="flex w-full flex-col gap-1 lg:order-1 lg:max-w-[440px]">
             {screens.map((screen, index) => (
               <FeatureRow
                 key={screen.id}
                 screen={screen}
-                index={index}
                 isActive={index === activeIndex}
                 onActivate={() => setActiveIndex(index)}
               />
@@ -166,53 +161,24 @@ export function MobileApp() {
   )
 }
 
-/* ── Feature row — selects which screen the phones show ── */
-function FeatureRow({
-  screen,
-  index,
-  isActive,
-  onActivate,
-}: {
-  screen: Screen
-  index: number
-  isActive: boolean
-  onActivate: () => void
-}) {
+/* ── Feature row — selects which screen the phones show.
+      Title and description are always rendered, so selecting a row never changes heights. ── */
+function FeatureRow({ screen, isActive, onActivate }: { screen: Screen; isActive: boolean; onActivate: () => void }) {
   return (
     <button
+      role="tab"
+      aria-selected={isActive}
       onClick={onActivate}
-      className="group relative w-full cursor-pointer rounded-2xl px-5 py-4 text-left transition-colors duration-300 sm:py-5"
-      style={{ background: isActive ? "rgba(3,126,204,0.08)" : "transparent" }}
+      className={`group w-full cursor-pointer rounded-2xl border-l-[3px] px-5 py-3.5 text-left transition-colors duration-300 ${
+        isActive ? "border-brand-400 bg-brand-500/[0.08]" : "border-transparent hover:bg-white/[0.03]"
+      }`}
     >
-      {isActive && (
-        <motion.div
-          layoutId="mobile-feature-bar"
-          className="absolute bottom-3 left-0 top-3 w-[3px] rounded-full bg-brand-400"
-          transition={{ duration: 0.3, ease: easeOutPremium }}
-        />
-      )}
-
-      <span className={`text-[12px] font-bold tabular-nums tracking-wider transition-colors duration-300 ${isActive ? "text-brand-400" : "text-slate-600"}`}>
-        0{index + 1}
-      </span>
-
-      <h3 className={`mt-1 text-[17px] font-bold leading-snug transition-colors duration-300 sm:text-[19px] ${isActive ? "text-white" : "text-slate-400 group-hover:text-slate-200"}`}>
+      <h3 className={`text-[16px] font-bold leading-snug transition-colors duration-300 sm:text-[18px] ${isActive ? "text-white" : "text-slate-400 group-hover:text-slate-200"}`}>
         {screen.label}
       </h3>
-
-      <AnimatePresence initial={false}>
-        {isActive && (
-          <motion.p
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: easeOutPremium }}
-            className="overflow-hidden text-[14px] leading-relaxed text-slate-400"
-          >
-            <span className="block pt-2">{screen.desc}</span>
-          </motion.p>
-        )}
-      </AnimatePresence>
+      <p className={`mt-1 text-[13px] leading-relaxed transition-colors duration-300 sm:text-[14px] ${isActive ? "text-slate-300" : "text-slate-500 group-hover:text-slate-400"}`}>
+        {screen.desc}
+      </p>
     </button>
   )
 }
