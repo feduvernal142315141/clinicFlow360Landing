@@ -319,6 +319,20 @@
 }
 
 /* ═══════════════════════════════════════════════════
+   DARK FORM FIELD — keeps the dark look under browser autofill
+   ═══════════════════════════════════════════════════ */
+
+.field-dark:-webkit-autofill,
+.field-dark:-webkit-autofill:hover,
+.field-dark:-webkit-autofill:focus,
+.field-dark:autofill {
+  -webkit-text-fill-color: #ffffff;
+  caret-color: #ffffff;
+  /* Autofill ignores background-color, so paint over it with an inset shadow */
+  box-shadow: 0 0 0 1000px #121b2b inset;
+}
+
+/* ═══════════════════════════════════════════════════
    PHONE FRAME — Premium
    ═══════════════════════════════════════════════════ */
 

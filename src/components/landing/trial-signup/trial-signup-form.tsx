@@ -10,7 +10,7 @@ import { TurnstileWidget } from "./turnstile-widget"
 const initialState: TrialSignupState = { status: "idle" }
 
 const inputClassName =
-  "mt-1.5 h-12 w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 text-[15px] text-white placeholder:text-slate-600 outline-none transition-colors focus:border-brand-400 focus:bg-white/[0.06]"
+  "field-dark mt-1.5 h-12 w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 text-[15px] text-white placeholder:text-slate-600 outline-none transition-colors focus:border-brand-400 focus:bg-white/[0.06]"
 
 const textFields = [
   { name: "clinicName", type: "text", autoComplete: "organization" },
@@ -77,7 +77,7 @@ export function TrialSignupForm() {
           type="checkbox"
           required
           defaultChecked={values?.acceptedTerms ?? false}
-          className="mt-0.5 h-4 w-4 shrink-0 accent-brand-500"
+          className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer accent-brand-500"
         />
         <span>
           {terms.prefix}{" "}
@@ -105,7 +105,7 @@ export function TrialSignupForm() {
       <button
         type="submit"
         disabled={pending}
-        className="btn-primary flex h-[52px] w-full items-center justify-center rounded-full text-[15px] disabled:cursor-not-allowed disabled:opacity-60"
+        className="btn-primary flex h-[52px] w-full cursor-pointer items-center justify-center rounded-full text-[15px] disabled:cursor-not-allowed disabled:opacity-60"
       >
         {pending ? trialSignupCopy.submitting : trialSignupCopy.submit}
       </button>

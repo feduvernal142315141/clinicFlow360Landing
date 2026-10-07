@@ -76,7 +76,10 @@ export async function submitTrialSignup(
 
   const invalid = validate(values)
   if (invalid) return fail(invalid)
-  if (!siteConfig.apiUrl) return fail(errors.unavailable)
+  if (!siteConfig.apiUrl) {
+    console.error("[trial-signup] CLINIC_API_URL is not configured")
+    return fail(errors.unavailable)
+  }
 
   const forwardedFor = (await headers()).get("x-forwarded-for")
 
@@ -102,8 +105,10 @@ export async function submitTrialSignup(
     if (response.status === 202) {
       return { status: "success", message: body.message ?? trialSignupCopy.successFallback }
     }
+    console.error("[trial-signup] backend rejected the signup", response.status, body.errorCode ?? "")
     return fail(errorMessage(response.status, body))
-  } catch {
+  } catch (error) {
+    console.error("[trial-signup] backend request failed", error)
     return fail(errors.unavailable)
   }
 }

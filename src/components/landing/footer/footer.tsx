@@ -1,3 +1,6 @@
+import Link from "next/link"
+import { featurePages, featurePath } from "@/data/feature-pages"
+
 export function Footer() {
   const year = new Date().getFullYear()
 
@@ -56,15 +59,9 @@ export function Footer() {
           <div>
             <div className="mb-4 text-[11px] font-bold uppercase tracking-[0.1em] text-slate-500">Producto</div>
             <ul className="space-y-2.5">
-              {[
-                { label: "Agenda Dental", href: "/#producto" },
-                { label: "Recepción IA WhatsApp", href: "/#recepcion-ia" },
-                { label: "Odontograma Digital", href: "/#producto" },
-                { label: "App para Doctores", href: "/#app-movil" },
-                { label: "Dictado Clínico IA", href: "/#dictado" },
-              ].map((item) => (
-                <li key={item.label}>
-                  <a href={item.href} className="text-[13px] text-slate-500 transition-colors hover:text-white">{item.label}</a>
+              {featurePages.map((page) => (
+                <li key={page.slug}>
+                  <Link href={featurePath(page.slug)} className="text-[13px] text-slate-500 transition-colors hover:text-white">{page.name}</Link>
                 </li>
               ))}
             </ul>
