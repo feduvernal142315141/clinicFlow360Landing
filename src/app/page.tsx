@@ -11,6 +11,7 @@ import { ProductShowcase } from "@/components/landing/product-showcase/product-s
 import { MobileApp } from "@/components/landing/mobile-app/mobile-app"
 import { Operations } from "@/components/landing/operations/operations"
 import { Growth } from "@/components/landing/growth/growth"
+import { Acquisition } from "@/components/landing/acquisition/acquisition"
 import { DayTimeline } from "@/components/landing/day-timeline/day-timeline"
 import { Security } from "@/components/landing/security/security"
 import { Pricing } from "@/components/landing/pricing/pricing"
@@ -42,6 +43,7 @@ export default function LandingPage() {
         <MobileApp />
         <Operations />
         <Growth />
+        <Acquisition />
         <DayTimeline />
         <Security />
         <Pricing />

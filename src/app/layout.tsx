@@ -60,6 +60,8 @@ export const metadata: Metadata = {
   keywords: [
     "software dental",
     "CRM dental",
+    "captación de pacientes para clínicas dentales",
+    "software dental con WhatsApp",
     "reactivación de pacientes",
     "recepcionista IA para clínicas",
     "recordatorios de citas",

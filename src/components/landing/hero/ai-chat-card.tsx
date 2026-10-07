@@ -27,7 +27,7 @@ export function AIChatCard() {
         </div>
         <div>
           <div className="flex items-center gap-1.5 text-[13px] font-bold text-white">
-            ClinicFlow AI Receptionist
+            Dalia · ClinicFlow AI
             <span className="inline-flex items-center rounded bg-emerald-950/80 px-1.5 py-px text-[10px] font-bold text-emerald-400">24/7</span>
           </div>
           <div className="text-[11px] text-slate-400">WhatsApp · agenda en tiempo real</div>

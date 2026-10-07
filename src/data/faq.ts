@@ -1,6 +1,6 @@
-import { leadsStatusLabel } from "@/data/home"
+import { acquisitionStatusLabel } from "@/data/home"
 
-export type FAQCategory = "ai" | "clinical" | "rx" | "growth" | "start"
+export type FAQCategory = "plans" | "dalia" | "clinical" | "rx" | "growth"
 
 export interface FAQItem {
   question: string
@@ -9,41 +9,68 @@ export interface FAQItem {
 }
 
 export const faqCategories: { id: FAQCategory; label: string }[] = [
-  { id: "ai", label: "Recepción IA" },
+  { id: "plans", label: "Planes" },
+  { id: "dalia", label: "Dalia" },
   { id: "clinical", label: "Voz y consulta" },
   { id: "rx", label: "ClinicFlow RX" },
-  { id: "growth", label: "Growth" },
-  { id: "start", label: "Empezar" },
+  { id: "growth", label: "Crecimiento" },
 ]
 
-// Added to lead answers while lead management is not generally available.
-const leadsNote = leadsStatusLabel
-  ? " La gestión de leads se está incorporando al plan Elite; escríbenos para conocer su disponibilidad."
+// Added to acquisition answers while those features are not generally available.
+const acquisitionNote = acquisitionStatusLabel
+  ? " Estas funciones se están incorporando al plan Elite; escríbenos para conocer su disponibilidad."
   : ""
 
 export const faqItems: FAQItem[] = [
   {
-    category: "ai",
-    question: "¿La recepcionista IA realmente puede crear citas?",
-    answer:
-      "Sí. ClinicFlow AI consulta la disponibilidad real de tu agenda, ofrece horarios al paciente y crea la cita directamente en ClinicFlow. No deja un mensaje para que recepción la registre después.",
+    category: "plans",
+    question: "¿Cuántos doctores incluye cada plan?",
+    answer: "Essential incluye hasta 2 doctores, Pro hasta 10 y Elite hasta 20.",
   },
   {
-    category: "ai",
-    question: "¿Puede cancelar y reprogramar?",
+    category: "plans",
+    question: "¿Puedo agregar más doctores sin cambiar de plan?",
     answer:
-      "Sí. El paciente puede confirmar, cancelar o reprogramar su cita por WhatsApp y el cambio queda reflejado en la agenda.",
+      "Sí. Hay doctores adicionales disponibles en cualquier plan. El plan se elige por lo que necesita tu clínica, no por el tamaño del equipo: una clínica con 14 doctores puede quedarse en Pro.",
   },
   {
-    category: "ai",
+    category: "plans",
+    question: "¿Cuál es la diferencia entre Pro y Elite?",
+    answer:
+      `Pro trabaja con las personas que ya son tus pacientes: Dalia atiende y agenda, y las campañas hacen que regresen. Elite añade a quienes todavía no son pacientes: capta nuevas oportunidades, las organiza en el Lead CRM y las acompaña hasta la cita.${acquisitionNote}`,
+  },
+  {
+    category: "plans",
+    question: "¿Qué necesito para empezar los 14 días de prueba?",
+    answer: "Solo tu correo electrónico y el nombre de tu clínica. No pedimos tarjeta de crédito.",
+  },
+  {
+    category: "plans",
+    question: "¿Puedo cambiar de plan o cancelar?",
+    answer: "Sí. Puedes cambiar de plan cuando tu clínica lo necesite y no hay contratos de permanencia.",
+  },
+  {
+    category: "dalia",
+    question: "¿Qué hace Dalia?",
+    answer:
+      "Dalia es la recepcionista IA de ClinicFlow. Atiende a tus pacientes por WhatsApp las 24 horas: consulta la disponibilidad real de tu agenda, ofrece horarios y agenda, reagenda, cancela o confirma citas directamente en ClinicFlow.",
+  },
+  {
+    category: "dalia",
+    question: "¿Dalia realmente puede crear citas?",
+    answer:
+      "Sí. La cita queda registrada en la agenda de ClinicFlow, no en un mensaje pendiente para que recepción la capture después.",
+  },
+  {
+    category: "dalia",
     question: "¿Qué pasa si el paciente necesita hablar con una persona?",
     answer:
-      "ClinicFlow AI puede pasar la conversación a tu equipo, que continúa respondiendo desde la bandeja de mensajes de ClinicFlow.",
+      "Dalia puede pasar la conversación a tu equipo, que continúa respondiendo desde la bandeja de mensajes de ClinicFlow.",
   },
   {
-    category: "ai",
+    category: "dalia",
     question: "¿Cómo se conecta al WhatsApp de la clínica?",
-    answer: "ClinicFlow AI trabaja sobre la API oficial de WhatsApp Cloud de Meta.",
+    answer: "Dalia trabaja sobre la API oficial de WhatsApp Cloud de Meta.",
   },
   {
     category: "clinical",
@@ -59,57 +86,27 @@ export const faqItems: FAQItem[] = [
   },
   {
     category: "clinical",
-    question: "¿Puedo usar ClinicFlow desde tablet?",
+    question: "¿Puedo usar ClinicFlow desde tablet y desde el teléfono?",
     answer:
-      "Sí. ClinicFlow Chairside es la experiencia para tablet: odontograma, expediente, imágenes y plan de tratamiento del paciente al lado del sillón. No es otra aplicación, es ClinicFlow adaptado a la consulta.",
-  },
-  {
-    category: "clinical",
-    question: "¿Los doctores tienen app móvil?",
-    answer:
-      "Sí. Desde la app el doctor consulta su agenda y sus pacientes, revisa expedientes, toma fotografías clínicas, compara antes y después, y recibe notificaciones cuando hay citas nuevas o cambios en su agenda.",
+      "Sí. En tablet, ClinicFlow Chairside pone odontograma, expediente, imágenes y plan de tratamiento al lado del sillón. En el teléfono, el doctor consulta su agenda y sus pacientes, toma fotografías clínicas y recibe avisos de cambios. La administración completa está en el escritorio.",
   },
   {
     category: "rx",
     question: "¿Qué es ClinicFlow RX?",
     answer:
-      "Es la integración de imagenología de ClinicFlow360: conecta equipos compatibles con el expediente para que la radiografía quede asociada al paciente sin exportar archivos. Funciona con equipos e integraciones compatibles; escríbenos para consultar la compatibilidad de los tuyos.",
+      "Es la integración de imagenología de ClinicFlow360: conecta equipos compatibles con el expediente para que la radiografía quede asociada al paciente sin exportar archivos.",
   },
   {
     category: "rx",
-    question: "¿Tengo que cambiar mis equipos de radiografía?",
+    question: "¿Qué equipos funcionan con ClinicFlow RX?",
     answer:
-      "La idea es que no: ClinicFlow RX está pensado para trabajar con los equipos compatibles que la clínica ya utiliza. Consulta la compatibilidad de los tuyos antes de contratar.",
-  },
-  {
-    category: "rx",
-    question: "¿ClinicFlow RX funciona con cualquier sensor?",
-    answer:
-      "No. Funciona únicamente con equipos e integraciones compatibles, y la lista se está validando equipo por equipo. Consulta la compatibilidad del tuyo.",
-  },
-  {
-    category: "growth",
-    question: "¿Qué es ClinicFlow Growth?",
-    answer:
-      "Es la parte de ClinicFlow360 que convierte la información que la clínica ya tiene en nuevas citas. Tiene dos áreas: reactivar pacientes que ya existen y dar seguimiento a personas interesadas que todavía no son pacientes. Como vive junto a la agenda, los pacientes y WhatsApp, cada conversación puede terminar en una cita.",
+      "ClinicFlow RX funciona con equipos e integraciones compatibles, no con cualquier sensor. Está pensado para trabajar con los equipos que la clínica ya utiliza; consulta la compatibilidad de los tuyos antes de contratar.",
   },
   {
     category: "growth",
     question: "¿Puedo recuperar pacientes que dejaron de venir?",
     answer:
-      "Sí, desde el plan Pro. Defines segmentos con reglas —por ejemplo, pacientes sin visita desde hace meses o con citas canceladas sin reagendar— y les envías una campaña por WhatsApp. Cuando el paciente responde, ClinicFlow AI puede consultar la agenda y crear la cita.",
-  },
-  {
-    category: "growth",
-    question: "¿Qué es un lead en ClinicFlow y puedo clasificarlo?",
-    answer:
-      `Un lead es una persona interesada que todavía no se ha convertido en paciente. En el plan Elite, cada lead se organiza como frío, tibio o caliente para que tu equipo sepa dónde enfocarse.${leadsNote}`,
-  },
-  {
-    category: "growth",
-    question: "¿De dónde llegan los leads y cómo se convierten en cita?",
-    answer:
-      `Los leads se centralizan desde tus canales compatibles, empezando por WhatsApp. Cuando la persona está lista, la cita se crea en la misma agenda de la clínica y el lead pasa a ser paciente.${leadsNote}`,
+      "Sí, desde el plan Pro. Defines segmentos con reglas —por ejemplo, pacientes sin visita desde hace meses o con citas canceladas sin reagendar— y les envías una campaña por WhatsApp. Cuando el paciente responde, Dalia puede consultar la agenda y crear la cita.",
   },
   {
     category: "growth",
@@ -118,19 +115,21 @@ export const faqItems: FAQItem[] = [
       "Los recordatorios de cita salen automáticamente por WhatsApp, con botones para confirmar, reagendar o cancelar, en los tiempos que configure la clínica. Las campañas se envían por WhatsApp a segmentos de pacientes que defines con reglas, y puedes ver los resultados de cada una.",
   },
   {
-    category: "start",
-    question: "¿Qué necesito para empezar los 14 días de prueba?",
-    answer: "Solo tu correo electrónico y el nombre de tu clínica. No pedimos tarjeta de crédito.",
-  },
-  {
-    category: "start",
-    question: "¿ClinicFlow360 funciona para un consultorio pequeño?",
+    category: "growth",
+    question: "¿Elite incluye dominio? ¿A quién pertenece?",
     answer:
-      "Sí. El plan Essential incluye el software clínico completo para operar un consultorio: agenda, pacientes, expediente, odontograma, tratamientos y finanzas.",
+      `Elite incluye un dominio propio y un correo empresarial para tu clínica. El dominio pertenece a tu clínica; ClinicFlow se encarga de configurarlo.${acquisitionNote}`,
   },
   {
-    category: "start",
-    question: "¿Puedo cancelar la suscripción en cualquier momento?",
-    answer: "Sí. No hay contratos de permanencia.",
+    category: "growth",
+    question: "Ya tengo página web. ¿Puedo conectarla?",
+    answer:
+      `Sí. ClinicFlow Sites no es requisito: la idea es que tu web actual pueda enviar sus oportunidades al Lead CRM de ClinicFlow.${acquisitionNote}`,
+  },
+  {
+    category: "growth",
+    question: "¿La publicidad está incluida? ¿ClinicFlow crea mis campañas publicitarias?",
+    answer:
+      "No. Elite no incluye presupuesto publicitario ni la gestión de tus anuncios. ClinicFlow te da la infraestructura para captar, organizar, atender y convertir las oportunidades que lleguen de tu web, WhatsApp, redes, publicidad o referidos.",
   },
 ]

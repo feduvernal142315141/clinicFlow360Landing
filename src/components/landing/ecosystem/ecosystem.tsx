@@ -22,7 +22,7 @@ export function Ecosystem() {
                   href={stage.href}
                   className="block w-full flex-1 rounded-2xl border border-white/[0.08] bg-white/[0.02] p-6 transition-colors hover:border-brand-400/40 hover:bg-white/[0.04] md:h-full"
                 >
-                  <p className="font-mono text-[11px] font-medium text-brand-400/70">{String(index + 1).padStart(2, "0")}</p>
+                  <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-brand-300">{stage.plan}</p>
                   <h3 className="mt-1 text-[24px] font-black tracking-tight text-white sm:text-[28px]">{stage.title}</h3>
                   <p className="mt-2 text-[14px] leading-relaxed text-slate-400">{stage.items.join(" · ")}</p>
                 </a>

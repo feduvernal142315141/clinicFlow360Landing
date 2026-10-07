@@ -36,9 +36,9 @@ test.describe("Landing page", () => {
     const pricing = page.locator("#precios")
     await pricing.scrollIntoViewIfNeeded()
 
-    for (const [plan, price] of [["Essential", "$49"], ["Pro", "$99"], ["Elite", "$149"]] as const) {
+    for (const [plan, price] of [["Essential", "$39"], ["Pro", "$99"], ["Elite", "$199"]] as const) {
       await expect(pricing.getByRole("heading", { name: plan, exact: true })).toBeVisible()
-      await expect(pricing.getByText(price, { exact: true })).toBeVisible()
+      await expect(pricing.getByText(price, { exact: true }).first()).toBeVisible()
     }
   })
 
@@ -46,7 +46,7 @@ test.describe("Landing page", () => {
     const faq = page.locator("#faq")
     await faq.scrollIntoViewIfNeeded()
 
-    const firstQuestion = page.getByText("¿Qué es ClinicFlow RX?")
+    const firstQuestion = page.locator("#faq").getByText("¿Qué es ClinicFlow RX?")
     await firstQuestion.click()
 
     const answer = page.getByText("Es la integración de imagenología de ClinicFlow360")

@@ -9,7 +9,7 @@ export const heroCopy = {
   headingLead: "Tu clínica conectada.",
   headingAccent: "De recepción al sillón.",
   text: "Gestiona tu clínica, automatiza la recepción y trabaja desde el sillón con IA, voz e imagenología conectadas.",
-  pillars: ["Opera", "Automatiza", "Recupera", "Crece"],
+  growthText: "ClinicFlow también te ayuda a recuperar pacientes y convertir nuevas oportunidades en citas.",
   primaryCta: "Probar gratis 14 días",
   secondaryCta: "Ver ClinicFlow en acción",
   microcopy: ["Sin tarjeta", "Configuración guiada", "Cancela cuando quieras"],
@@ -26,9 +26,9 @@ export const ecosystemCopy = {
   heading: "Opera. Automatiza. Crece.",
   text: "Una plataforma para administrar tu clínica, automatizar el trabajo diario y convertir más conversaciones en citas.",
   stages: [
-    { title: "Opera", items: ["Agenda", "Pacientes", "Odontograma", "Finanzas"], href: "#producto" },
-    { title: "Automatiza", items: ["AI Receptionist", "Voice", "RX", "Seguimiento"], href: "#recepcion-ia" },
-    { title: "Crece", items: ["Reactivación", "Campañas", "Leads"], href: "#growth" },
+    { title: "Opera", plan: "Essential", items: ["Agenda", "Pacientes", "Odontograma", "Finanzas"], href: "#producto" },
+    { title: "Automatiza y retén", plan: "Pro", items: ["Dalia", "Voice", "RX", "Reactivación"], href: "#recepcion-ia" },
+    { title: "Capta y convierte", plan: "Elite", items: ["Lead CRM", "ClinicFlow Sites", "Dalia para prospectos"], href: "#adquisicion" },
   ],
   flowCaption: "La información fluye. Nadie repite trabajo.",
   steps: [
@@ -80,19 +80,19 @@ export const problemCopy = {
 } as const
 
 export const receptionistCopy = {
-  eyebrow: "ClinicFlow AI Receptionist",
+  eyebrow: "ClinicFlow AI · Dalia",
   heading: "Tu recepción no cierra cuando termina el horario.",
-  text: "ClinicFlow AI atiende WhatsApp 24/7, consulta tu agenda en tiempo real y puede agendar, reprogramar o cancelar citas directamente en ClinicFlow.",
+  text: "Dalia es tu recepcionista IA 24/7: atiende a tus pacientes y gestiona tu agenda por WhatsApp, incluso cuando tu recepción no está disponible.",
   flow: [
     { label: "WhatsApp", detail: "El paciente escribe" },
-    { label: "ClinicFlow AI", detail: "Entiende lo que necesita" },
+    { label: "Dalia", detail: "Entiende lo que necesita" },
     { label: "Agenda real", detail: "Consulta disponibilidad" },
     { label: "Cita creada", detail: "Queda en ClinicFlow" },
     { label: "Doctor notificado", detail: "Aviso en su app" },
   ],
   inbox: {
     src: "/landing/screenshots/desktop/bandeja-whatsapp.webp",
-    alt: "Bandeja de WhatsApp de ClinicFlow360 con las conversaciones de los pacientes, las respuestas del asistente y el momento en que el equipo toma la conversación",
+    alt: "Bandeja de WhatsApp de ClinicFlow360 con las conversaciones de los pacientes, las respuestas de Dalia y el momento en que el equipo toma la conversación",
     caption: "Tu equipo ve cada conversación en la bandeja y puede tomar el control cuando quiera.",
   },
   capabilities: [
@@ -107,7 +107,7 @@ export const receptionistCopy = {
   ],
   chat: {
     title: "WhatsApp de la clínica",
-    status: "En línea · ClinicFlow AI 24/7",
+    status: "En línea · Dalia, ClinicFlow AI 24/7",
     tag: "Fuera de horario",
     timestamp: "DOMINGO · 11:24 PM",
     patientFirst: "Hola, buenas noches. Me duele una muela. ¿Tienen cita para mañana a primera hora?",
@@ -130,7 +130,7 @@ export const voiceCopy = {
   text: "Actualiza el odontograma mientras trabajas. ClinicFlow entiende piezas, superficies, diagnósticos y contexto clínico para ejecutar cambios sin interrumpir la consulta.",
   support: "No dictas para escribir. Hablas para actuar.",
   supportText:
-    "ClinicFlow Voice interpreta el contexto clínico y ejecuta acciones directamente sobre el odontograma.",
+    "Hablas. El odontograma cambia. ClinicFlow Voice interpreta el contexto clínico y ejecuta acciones directamente sobre el odontograma.",
   badges: [
     "Reconoce piezas FDI",
     "Entiende superficies",
@@ -388,37 +388,37 @@ export const financeCopy = {
 } as const
 
 /**
- * Lead management (CRM, pipeline, classification) is not generally available yet.
- * While this label is set it is shown next to every lead feature; set it to null
- * once the feature ships.
+ * Patient acquisition (Lead CRM, ClinicFlow Sites, domain, business email, lead origin)
+ * is not generally available yet. While this label is set it is shown next to every
+ * acquisition feature; set it to null once the features ship.
  */
-export const leadsStatusLabel: string | null = "Próximamente"
+export const acquisitionStatusLabel: string | null = "Próximamente"
 
 export const growthCopy = {
   eyebrow: "ClinicFlow Growth",
-  heading: "Tu próxima cita puede estar en tu base de datos. O esperando tu respuesta.",
-  text: "Reactiva pacientes que dejaron de venir y convierte nuevos leads en citas con seguimiento inteligente.",
+  heading: "Dos motores de crecimiento.",
+  text: "Uno hace que tus pacientes regresen. El otro convierte nuevas oportunidades en pacientes.",
   demoLabel: "Demostración",
   reactivation: {
-    tag: "Pacientes que ya tienes",
-    plan: "Desde Pro",
+    tag: "Ya te conocen",
+    plan: "Disponible en Pro",
     title: "Haz que tus pacientes regresen.",
-    text: "ClinicFlow identifica oportunidades dentro de tu propia base de pacientes para ayudarte a recuperar citas y continuar tratamientos.",
+    text: "Segmenta, automatiza recordatorios y reactiva pacientes que dejaron de venir.",
     story: [
       {
         kind: "card",
-        eyebrow: "Oportunidad detectada",
+        eyebrow: "Paciente inactivo",
         title: "María López",
         lines: ["Última visita: hace 8 meses", "Sin cita futura"],
-        badge: "Paciente inactivo",
+        badge: "Reactivación",
         action: "Reactivar paciente",
       },
       { kind: "outbound", from: "WhatsApp", text: "Hola María 👋 Hace tiempo que no te vemos. ¿Te gustaría agendar tu revisión?" },
       { kind: "inbound", from: "María", text: "Sí, quisiera una cita esta semana." },
-      { kind: "system", text: "ClinicFlow AI consulta disponibilidad" },
-      { kind: "result", text: "Cita agendada" },
+      { kind: "system", text: "Dalia consulta disponibilidad" },
+      { kind: "result", text: "Nueva cita" },
     ],
-    footerTitle: "Oportunidades que puedes trabajar",
+    footerTitle: "Campañas que puedes enviar",
     categories: [
       "Pacientes inactivos",
       "Inasistencias",
@@ -430,32 +430,28 @@ export const growthCopy = {
     microcopy: "De paciente inactivo a paciente recuperado.",
   },
   leads: {
-    tag: "Personas que aún no son pacientes",
-    plan: "Elite",
-    title: "De lead a paciente.",
-    text: "Centraliza nuevas oportunidades, identifica cuáles requieren atención y continúa el seguimiento hasta convertir interés en una cita.",
+    tag: "Aún no son pacientes",
+    plan: "Disponible en Elite",
+    title: "Convierte nuevas oportunidades.",
+    text: "Dalia también atiende a tus prospectos: responde, consulta la agenda y los acompaña hasta la cita de valoración.",
     story: [
       {
         kind: "card",
-        eyebrow: "Nuevo lead",
+        eyebrow: "Nueva oportunidad",
         title: "Carlos Mendoza",
-        lines: ["Tratamiento: implante dental", "Origen: campaña digital"],
-        badge: "🔥 Lead caliente",
-        action: "Continuar conversación",
+        lines: ["Interés: implantes", "Origen: WhatsApp"],
+        badge: "Lead",
+        action: "Ver oportunidad",
       },
-      { kind: "outbound", from: "WhatsApp", text: "Hola Carlos, vi que estás interesado en una valoración para implante." },
-      { kind: "inbound", from: "Carlos", text: "Sí. ¿Tienen disponibilidad mañana?" },
-      { kind: "system", text: "ClinicFlow consulta la agenda y ofrece horarios" },
+      { kind: "inbound", from: "Carlos", text: "Hola, quisiera información sobre implantes." },
+      { kind: "outbound", from: "Dalia", text: "Hola Carlos. Podemos verte en una cita de valoración. ¿Te queda bien mañana?" },
+      { kind: "system", text: "Dalia consulta disponibilidad" },
       { kind: "result", text: "Cita de valoración" },
     ],
     conversion: ["Lead", "Cita", "Paciente"],
-    footerTitle: "Sabe dónde enfocar a tu equipo",
-    temperatures: [
-      { icon: "🔥", label: "Caliente", text: "Preguntó precio y disponibilidad. Respondió hace poco." },
-      { icon: "●", label: "Tibio", text: "Mostró interés, todavía sin fecha." },
-      { icon: "❄", label: "Frío", text: "Sin respuesta reciente." },
-    ],
-    microcopy: "Que una consulta no termine en un mensaje olvidado.",
+    footerTitle: "El recorrido de cada oportunidad",
+    stages: ["Nueva oportunidad", "Contactado", "Calificado", "Cita", "Paciente"],
+    microcopy: "De conversación a cita. De cita a paciente.",
   },
   campaigns: {
     title: "Comunícate con intención.",
@@ -466,12 +462,12 @@ export const growthCopy = {
     },
     text: "Segmenta pacientes, crea campañas personalizadas y da seguimiento desde ClinicFlow. Habla con el grupo correcto de pacientes en el momento correcto.",
     flow: [
-      { label: "Pacientes" },
-      { label: "Segmento" },
-      { label: "Campaña" },
+      { label: "Paciente inactivo" },
+      { label: "Reactivación" },
       { label: "WhatsApp" },
       { label: "Respuesta" },
-      { label: "Cita" },
+      { label: "Disponibilidad" },
+      { label: "Nueva cita" },
     ],
     points: [
       "Segmentos con reglas: última visita, citas futuras, cancelaciones, servicio o doctor",
@@ -480,8 +476,59 @@ export const growthCopy = {
       "Resultados por campaña",
     ],
   },
-  closing: "De oportunidad a cita. De cita a paciente.",
-  cta: "Ver qué incluye cada plan",
+} as const
+
+export const acquisitionCopy = {
+  eyebrow: "ClinicFlow Elite · Patient Acquisition",
+  heading: "Convierte oportunidades en nuevos pacientes.",
+  statusNote: "Estas funciones se están incorporando al plan Elite.",
+  text: "Captura nuevas oportunidades, organízalas en un solo lugar y acompáñalas desde el primer contacto hasta la cita.",
+  pipeline: {
+    label: "Lead CRM",
+    title: "Organiza nuevas oportunidades, dales seguimiento y conviértelas en citas.",
+    boardLabel: "Ejemplo del recorrido de las oportunidades en el Lead CRM",
+    columns: [
+      { stage: "Nueva oportunidad", leads: [{ name: "Carlos Mendoza", interest: "Implantes", origin: "WhatsApp" }, { name: "Laura Pineda", interest: "Ortodoncia", origin: "Sitio web" }] },
+      { stage: "Contactado", leads: [{ name: "Andrés Solís", interest: "Blanqueamiento", origin: "Referido" }] },
+      { stage: "Calificado", leads: [{ name: "Marta Reyes", interest: "Carillas", origin: "Sitio web" }] },
+      { stage: "Cita", leads: [{ name: "Diego Luna", interest: "Valoración", origin: "WhatsApp" }] },
+      { stage: "Paciente", leads: [{ name: "Elena Cruz", interest: "Implantes", origin: "Referido" }] },
+    ],
+  },
+  sites: {
+    label: "ClinicFlow Sites",
+    title: "Tu sitio no termina en un formulario.",
+    text: "Tu presencia digital conectada directamente con ClinicFlow: cada oportunidad entra al Lead CRM para que tu equipo pueda darle seguimiento y convertirla en una cita.",
+    domain: "clinicadentalmendoza.com",
+    siteName: "Clínica Dental Mendoza",
+    siteTagline: "Agenda tu valoración",
+    formFields: ["Nombre", "Teléfono", "Tratamiento de interés"],
+    formAction: "Solicitar cita",
+    flow: ["Visitante", "ClinicFlow Site", "Formulario", "Lead CRM", "Dalia / Recepción", "Cita", "Paciente"],
+  },
+  identity: [
+    {
+      title: "Dominio propio",
+      text: "Tu clínica con su propia dirección digital. El dominio pertenece a tu clínica.",
+      example: "clinicadentalmendoza.com",
+    },
+    {
+      title: "1 correo empresarial incluido",
+      text: "Comunícate con la identidad profesional de tu clínica. Cuentas adicionales disponibles como complemento.",
+      example: "citas@clinicadentalmendoza.com",
+    },
+    {
+      title: "¿Ya tienes página web?",
+      text: "Conéctala a ClinicFlow. ClinicFlow Sites no es requisito para captar oportunidades.",
+    },
+  ],
+  origins: {
+    title: "Conoce el origen de tus oportunidades.",
+    items: ["Sitio web", "WhatsApp", "Google", "Meta", "Referido", "Manual"],
+  },
+  disclaimer: "Elite te da la infraestructura para captar, organizar, atender y convertir. El presupuesto publicitario no está incluido.",
+  closing: "De conversación a cita. De cita a paciente.",
+  cta: "Ver planes",
 } as const
 
 export const dayCopy = {
@@ -494,7 +541,7 @@ export const dayCopy = {
       label: "Antes de abrir",
       steps: [
         { time: "07:12", event: "Paciente escribe por WhatsApp", detail: "«¿Tienen cita hoy después de las 3?»" },
-        { time: "07:12", event: "ClinicFlow AI consulta disponibilidad", detail: "Revisa la agenda real y ofrece horarios" },
+        { time: "07:12", event: "Dalia consulta disponibilidad", detail: "Revisa la agenda real y ofrece horarios" },
         { time: "07:13", event: "Cita creada automáticamente", detail: "Agenda actualizada" },
         { time: "07:13", event: "Doctor recibe push", detail: "Nueva cita a las 15:00" },
       ],
@@ -548,8 +595,14 @@ export const pricingCopy = {
   eyebrow: "Planes",
   heading: "Comienza hoy con 14 días gratis.",
   headingMuted: "Sin tarjeta.",
-  text: "Tres etapas de una clínica: operar, automatizar y recuperar pacientes, y captar nuevos.",
-  capacityLabel: "Más capacidad",
+  text: "Tres niveles de resultado: operar tu clínica, automatizarla y retener pacientes, y captar nuevos.",
+  doctorsLabel: (count: number) => `Hasta ${count} doctores incluidos`,
+  extraDoctorsTitle: "¿Tu equipo es más grande?",
+  extraDoctorsText: "Agrega doctores adicionales sin cambiar de plan.",
+  usageNote: "El uso de Dalia, ClinicFlow AI y ClinicFlow Voice está incluido según el plan.",
+  compareLabel: "Ver todas las funciones",
+  compareCaption: "Comparación de los planes Essential, Pro y Elite",
+  featureColumn: "Función",
   currency: "USD",
   period: "/mes",
   footnote: "Todos los planes incluyen la prueba gratis de 14 días. Sin contratos de permanencia.",

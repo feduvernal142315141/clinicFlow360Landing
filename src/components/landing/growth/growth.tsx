@@ -1,4 +1,4 @@
-import { growthCopy, leadsStatusLabel } from "@/data/home"
+import { growthCopy, acquisitionStatusLabel } from "@/data/home"
 import { SectionReveal } from "../section-reveal"
 import { SectionHeader } from "../shared/section-header"
 import { FlowSteps } from "../shared/flow-steps"
@@ -94,7 +94,7 @@ export function Growth() {
             <Track
               tag={leads.tag}
               plan={leads.plan}
-              status={leadsStatusLabel}
+              status={acquisitionStatusLabel}
               title={leads.title}
               text={leads.text}
               story={leads.story}
@@ -102,17 +102,16 @@ export function Growth() {
               microcopy={leads.microcopy}
             >
               <p className="text-[11px] font-bold uppercase tracking-[0.1em] text-slate-500">{leads.footerTitle}</p>
-              <dl className="mt-3 space-y-2">
-                {leads.temperatures.map((temperature) => (
-                  <div key={temperature.label} className="flex items-baseline gap-3 text-[13px]">
-                    <dt className="flex w-[92px] shrink-0 items-center gap-1.5 font-bold text-white">
-                      <span aria-hidden="true">{temperature.icon}</span>
-                      {temperature.label}
-                    </dt>
-                    <dd className="text-slate-400">{temperature.text}</dd>
-                  </div>
+              <ol className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-2 text-[12px] font-medium text-slate-300">
+                {leads.stages.map((stage, index) => (
+                  <li key={stage} className="flex items-center gap-2">
+                    {index > 0 && <span className="text-slate-600" aria-hidden="true">→</span>}
+                    <span className={`rounded-full border px-3 py-1.5 ${index === leads.stages.length - 1 ? "border-emerald-500/30 bg-emerald-950/40 text-emerald-300" : "border-white/[0.08] bg-white/[0.04]"}`}>
+                      {stage}
+                    </span>
+                  </li>
                 ))}
-              </dl>
+              </ol>
             </Track>
           </SectionReveal>
         </div>
@@ -144,17 +143,6 @@ export function Growth() {
           </div>
         </SectionReveal>
 
-        <SectionReveal>
-          <div className="mx-auto mt-14 max-w-3xl text-center">
-            <p className="text-balance text-[24px] font-black leading-tight tracking-tight text-white sm:text-[32px]">{growthCopy.closing}</p>
-            <a
-              href="#precios"
-              className="mt-7 inline-flex h-[50px] items-center justify-center rounded-full border border-white/15 bg-white/[0.06] px-6 text-[15px] font-semibold text-white transition hover:bg-white/10"
-            >
-              {growthCopy.cta}
-            </a>
-          </div>
-        </SectionReveal>
       </div>
     </section>
   )
