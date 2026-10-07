@@ -351,9 +351,9 @@ export const featurePages: FeaturePage[] = [
       "La app móvil de ClinicFlow360 es la herramienta del doctor cuando no está frente al escritorio: su agenda, sus pacientes y sus expedientes en el teléfono, con notificaciones cuando hay una cita nueva o algo cambia.",
     screenshot: {
       src: "/landing/screenshots/mobile/home.webp",
-      alt: "Pantalla de inicio de la app móvil de ClinicFlow360 con el resumen del día y las citas pendientes",
-      width: 1280,
-      height: 2856,
+      alt: "Pantalla de inicio de la app móvil de ClinicFlow360 con las citas del día, la consulta en curso y las próximas citas",
+      width: 1080,
+      height: 2400,
     },
     capabilities: [
       {

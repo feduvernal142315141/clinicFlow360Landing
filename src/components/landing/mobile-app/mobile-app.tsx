@@ -12,37 +12,44 @@ const screens = [
   {
     id: "home",
     label: "Tu día de un vistazo",
-    desc: "Resumen del día con tus citas y acciones rápidas al alcance.",
+    desc: "Citas del día, la consulta en curso y lo que sigue, con acceso directo al expediente.",
     src: "/landing/screenshots/mobile/home.webp",
-    alt: "Pantalla de inicio con resumen del día, citas pendientes y acciones rápidas",
+    alt: "Pantalla de inicio de la app con las citas del día, la consulta en curso y las próximas citas",
   },
   {
     id: "agenda",
     label: "Agenda en tiempo real",
-    desc: "Calendario semanal con vista por día y aviso cuando una cita cambia.",
+    desc: "Tu semana y el detalle de cada día: citas, estados y espacios libres.",
     src: "/landing/screenshots/mobile/agenda.webp",
-    alt: "Vista de agenda semanal con calendario y citas del día",
+    alt: "Agenda del doctor en la app con las citas del día, sus estados y los espacios libres",
+  },
+  {
+    id: "cita",
+    label: "Cada cita, con su contexto",
+    desc: "Estado de la cita, alergias y antecedentes del paciente, y contacto por WhatsApp o llamada.",
+    src: "/landing/screenshots/mobile/cita.webp",
+    alt: "Detalle de una cita en la app con su estado, alergias y antecedentes del paciente y botones de WhatsApp y llamada",
   },
   {
     id: "pacientes",
-    label: "Todo el expediente contigo",
-    desc: "Busca entre todos tus pacientes. Historial, contacto y evolución clínica al instante.",
+    label: "Tus pacientes contigo",
+    desc: "Busca entre todos tus pacientes y entra a su ficha en un toque.",
     src: "/landing/screenshots/mobile/pacientes.webp",
-    alt: "Lista de pacientes con búsqueda y datos de contacto",
+    alt: "Lista de pacientes en la app con buscador y datos de contacto",
   },
   {
     id: "ficha",
-    label: "Ficha clínica completa",
-    desc: "Próxima cita, visitas realizadas, imágenes y archivos del paciente en un solo lugar.",
+    label: "Ficha del paciente",
+    desc: "Alergias, antecedentes, próxima cita y plan de tratamiento en una sola pantalla.",
     src: "/landing/screenshots/mobile/paciente-detalle.webp",
-    alt: "Ficha de paciente con historial, citas e imágenes clínicas",
+    alt: "Ficha de un paciente en la app con alergias, antecedentes, próxima cita y plan de tratamiento",
   },
   {
     id: "perfil",
-    label: "Configuración del doctor",
-    desc: "Tu especialidad, horario de atención y preferencias de notificaciones.",
+    label: "Perfil y horario",
+    desc: "Tus datos, tu horario de atención y qué notificaciones quieres recibir.",
     src: "/landing/screenshots/mobile/perfil.webp",
-    alt: "Perfil del doctor con especialidad, contacto y ajustes",
+    alt: "Perfil del doctor en la app con sus datos de contacto, su horario y los ajustes de notificaciones",
   },
 ] as const
 
@@ -142,10 +149,10 @@ export function MobileApp() {
                         <Image
                           src={current.src}
                           alt={current.alt}
-                          width={1280}
-                          height={2856}
+                          width={1080}
+                          height={2400}
+                          sizes="290px"
                           className="w-full"
-                          priority
                         />
                       </motion.div>
                     </AnimatePresence>
