@@ -2,212 +2,147 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import { motion, AnimatePresence } from "motion/react"
+import { AnimatePresence, motion } from "motion/react"
 import { easeOutPremium } from "@/lib/motion/easings"
 import { mobileCopy } from "@/data/home"
 import { SectionReveal } from "../section-reveal"
+import { SectionHeader } from "../shared/section-header"
 
-/* ── screens ─────────────────────────────────────── */
-const screens = [
-  {
-    id: "home",
-    label: "Tu día de un vistazo",
-    desc: "Citas del día, la consulta en curso y lo que sigue, con acceso directo al expediente.",
-    src: "/landing/screenshots/mobile/home.webp",
-    alt: "Pantalla de inicio de la app con las citas del día, la consulta en curso y las próximas citas",
-  },
-  {
-    id: "agenda",
-    label: "Agenda en tiempo real",
-    desc: "Tu semana y el detalle de cada día: citas, estados y espacios libres.",
-    src: "/landing/screenshots/mobile/agenda.webp",
-    alt: "Agenda del doctor en la app con las citas del día, sus estados y los espacios libres",
-  },
-  {
-    id: "cita",
-    label: "Cada cita, con su contexto",
-    desc: "Estado de la cita, alergias y antecedentes del paciente, y contacto por WhatsApp o llamada.",
-    src: "/landing/screenshots/mobile/cita.webp",
-    alt: "Detalle de una cita en la app con su estado, alergias y antecedentes del paciente y botones de WhatsApp y llamada",
-  },
-  {
-    id: "pacientes",
-    label: "Tus pacientes contigo",
-    desc: "Busca entre todos tus pacientes y entra a su ficha en un toque.",
-    src: "/landing/screenshots/mobile/pacientes.webp",
-    alt: "Lista de pacientes en la app con buscador y datos de contacto",
-  },
-  {
-    id: "ficha",
-    label: "Ficha del paciente",
-    desc: "Alergias, antecedentes, próxima cita y plan de tratamiento en una sola pantalla.",
-    src: "/landing/screenshots/mobile/paciente-detalle.webp",
-    alt: "Ficha de un paciente en la app con alergias, antecedentes, próxima cita y plan de tratamiento",
-  },
-  {
-    id: "perfil",
-    label: "Perfil y horario",
-    desc: "Tus datos, tu horario de atención y qué notificaciones quieres recibir.",
-    src: "/landing/screenshots/mobile/perfil.webp",
-    alt: "Perfil del doctor en la app con sus datos de contacto, su horario y los ajustes de notificaciones",
-  },
-] as const
+const { screens } = mobileCopy
+type Screen = (typeof screens)[number]
 
-type ScreenId = (typeof screens)[number]["id"]
+/* ── Phone frame showing one capture; cross-fades when the capture changes ── */
+function Phone({ screen, sizes }: { screen: Screen; sizes: string }) {
+  return (
+    <div
+      className="relative overflow-hidden rounded-[13%/6%] border-[6px] border-[#1a1a1a] bg-black"
+      style={{
+        boxShadow: [
+          "0 0 0 1px rgba(255,255,255,0.08)",
+          "0 8px 16px rgba(0,0,0,0.2)",
+          "0 24px 48px rgba(0,0,0,0.25)",
+          "0 48px 96px rgba(0,0,0,0.3)",
+        ].join(","),
+      }}
+    >
+      <div className="relative aspect-[1080/2400]">
+        <AnimatePresence initial={false}>
+          <motion.div
+            key={screen.id}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.35, ease: easeOutPremium }}
+            className="absolute inset-0"
+          >
+            <Image src={screen.src} alt={screen.alt} fill sizes={sizes} className="object-cover" />
+          </motion.div>
+        </AnimatePresence>
+      </div>
+      {/* Glass reflection */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.02) 30%, transparent 60%)" }}
+        aria-hidden="true"
+      />
+    </div>
+  )
+}
 
-/* ── component ───────────────────────────────────── */
 export function MobileApp() {
-  const [active, setActive] = useState<ScreenId>("home")
-  const current = screens.find((s) => s.id === active)!
+  const [activeIndex, setActiveIndex] = useState(0)
+  const count = screens.length
+  const current = screens[activeIndex]!
+  const previousIndex = (activeIndex + count - 1) % count
+  const nextIndex = (activeIndex + 1) % count
 
   return (
     <section
       id="app-movil"
       className="relative overflow-hidden px-4 py-20 sm:px-6 lg:py-28"
-      style={{
-        background: "linear-gradient(180deg, #060d1b 0%, #0a1628 40%, #0d1f3c 100%)",
-      }}
+      style={{ background: "linear-gradient(180deg, #060d1b 0%, #0a1628 40%, #0d1f3c 100%)" }}
     >
-      {/* ── Ambient environment ── */}
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-        {/* Central glow that makes the phone "emit light" */}
-        <div
-          className="absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2"
-          style={{
-            background: "radial-gradient(circle, rgba(3,126,204,0.12) 0%, rgba(3,126,204,0.04) 40%, transparent 70%)",
-            filter: "blur(60px)",
-          }}
-        />
-        {/* Secondary accent glow */}
         <div
           className="absolute -bottom-20 right-[10%] h-96 w-96"
-          style={{
-            background: "radial-gradient(circle, rgba(45,212,191,0.08) 0%, transparent 70%)",
-            filter: "blur(80px)",
-          }}
+          style={{ background: "radial-gradient(circle, rgba(45,212,191,0.08) 0%, transparent 70%)", filter: "blur(80px)" }}
         />
-        {/* Noise texture */}
         <div className="absolute inset-0 bg-noise opacity-[0.03]" />
       </div>
 
       <div className="relative mx-auto max-w-6xl">
-        {/* ── Header ── */}
-        <SectionReveal>
-          <div className="mx-auto mb-14 max-w-3xl text-center lg:mb-20">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-brand-500/30 bg-brand-950/60 px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.1em] text-brand-300 backdrop-blur-sm">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.6)]" />
-              {mobileCopy.eyebrow}
-            </div>
-            <h2 className="text-balance text-[28px] font-black leading-[1.1] tracking-tight text-white sm:text-[36px] lg:text-[46px]">
-              {mobileCopy.heading}
-            </h2>
-            <p className="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-slate-400 sm:text-[16px]">
-              {mobileCopy.text}
-            </p>
-          </div>
-        </SectionReveal>
+        <SectionHeader eyebrow={mobileCopy.eyebrow} heading={mobileCopy.heading} text={mobileCopy.text} />
 
-        {/* ── Phone + features layout ── */}
-        <div className="flex flex-col items-center gap-12 lg:flex-row lg:items-start lg:gap-20">
-          {/* ── Phone ── */}
-          <SectionReveal>
-            <div className="relative shrink-0">
-              {/* Floating phone with 3D perspective */}
-              <motion.div
-                className="phone-device relative mx-auto"
-                initial={{ rotateX: 8, rotateY: -6 }}
-                whileHover={{ rotateX: 0, rotateY: 0, scale: 1.02 }}
-                transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-                style={{ perspective: 1200, transformStyle: "preserve-3d" }}
-              >
-                <div
-                  className="relative w-[260px] overflow-hidden rounded-[44px] border-[7px] border-[#1a1a1a] bg-black sm:w-[290px] sm:rounded-[48px] sm:border-[8px]"
-                  style={{
-                    boxShadow: [
-                      "0 0 0 1px rgba(255,255,255,0.08)",
-                      "0 2px 4px rgba(0,0,0,0.2)",
-                      "0 8px 16px rgba(0,0,0,0.2)",
-                      "0 24px 48px rgba(0,0,0,0.25)",
-                      "0 48px 96px rgba(0,0,0,0.3)",
-                      "inset 0 1px 1px rgba(255,255,255,0.06)",
-                    ].join(","),
-                  }}
-                >
-                  {/* Dynamic Island */}
-                  <div className="absolute left-1/2 top-[10px] z-20 h-[28px] w-[100px] -translate-x-1/2 rounded-full bg-black sm:top-[12px] sm:h-[32px] sm:w-[120px]" />
-
-                  {/* Screen with transitions */}
-                  <div className="relative overflow-hidden rounded-[37px] sm:rounded-[40px]">
-                    <AnimatePresence mode="wait">
-                      <motion.div
-                        key={active}
-                        initial={{ opacity: 0, x: 30 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -30 }}
-                        transition={{ duration: 0.35, ease: easeOutPremium }}
-                      >
-                        <Image
-                          src={current.src}
-                          alt={current.alt}
-                          width={1080}
-                          height={2400}
-                          sizes="290px"
-                          className="w-full"
-                        />
-                      </motion.div>
-                    </AnimatePresence>
-                  </div>
-
-                  {/* Glass reflection overlay */}
-                  <div
-                    className="pointer-events-none absolute inset-0 z-10 rounded-[37px] sm:rounded-[40px]"
-                    style={{
-                      background: "linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 30%, transparent 60%)",
-                    }}
-                  />
-                </div>
-              </motion.div>
-
-              {/* Glow behind phone */}
+        <div className="grid items-center gap-12 lg:grid-cols-[1fr_1.15fr] lg:gap-8">
+          {/* ── Phones: the active screen in front, its neighbours behind ── */}
+          <SectionReveal className="lg:order-2">
+            <div className="relative mx-auto flex h-[470px] max-w-[560px] items-center justify-center sm:h-[620px]">
+              {/* Glow behind the phones */}
               <div
-                className="pointer-events-none absolute -inset-16 -z-10"
-                style={{
-                  background: "radial-gradient(ellipse at center, rgba(3,126,204,0.15) 0%, transparent 70%)",
-                  filter: "blur(40px)",
-                }}
+                className="pointer-events-none absolute left-1/2 top-1/2 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 sm:h-[560px] sm:w-[560px]"
+                style={{ background: "radial-gradient(circle, rgba(3,126,204,0.22) 0%, rgba(3,126,204,0.06) 45%, transparent 70%)", filter: "blur(50px)" }}
                 aria-hidden="true"
               />
+
+              {[
+                { index: previousIndex, side: "left-0 -rotate-6 sm:left-2" },
+                { index: nextIndex, side: "right-0 rotate-6 sm:right-2" },
+              ].map(({ index, side }) => (
+                <button
+                  key={side}
+                  onClick={() => setActiveIndex(index)}
+                  aria-label={`${mobileCopy.showScreen} ${screens[index]!.label}`}
+                  className={`absolute top-1/2 w-[150px] -translate-y-1/2 cursor-pointer opacity-45 transition-opacity duration-300 hover:opacity-80 sm:w-[210px] ${side}`}
+                >
+                  <Phone screen={screens[index]!} sizes="210px" />
+                </button>
+              ))}
+
+              <div className="relative z-10 w-[205px] sm:w-[270px]">
+                <Phone screen={current} sizes="(min-width: 640px) 270px, 205px" />
+              </div>
+            </div>
+
+            {/* Position dots */}
+            <div role="tablist" aria-label={mobileCopy.screensLabel} className="mt-6 flex justify-center gap-1.5">
+              {screens.map((screen, index) => (
+                <button
+                  key={screen.id}
+                  role="tab"
+                  aria-selected={index === activeIndex}
+                  aria-label={screen.label}
+                  onClick={() => setActiveIndex(index)}
+                  className={`h-1.5 cursor-pointer rounded-full transition-all duration-300 ${
+                    index === activeIndex ? "w-6 bg-brand-400" : "w-1.5 bg-white/20 hover:bg-white/40"
+                  }`}
+                />
+              ))}
             </div>
           </SectionReveal>
 
-          {/* ── Feature list (scroll-drives phone screen) ── */}
-          <div className="flex w-full flex-col gap-3 lg:max-w-[380px] lg:gap-2 lg:py-4">
-            {screens.map((screen, i) => (
+          {/* ── Feature list (drives the phones) ── */}
+          <div className="flex w-full flex-col gap-1 lg:order-1 lg:max-w-[440px]">
+            {screens.map((screen, index) => (
               <FeatureRow
                 key={screen.id}
                 screen={screen}
-                index={i}
-                isActive={active === screen.id}
-                onActivate={() => setActive(screen.id)}
+                index={index}
+                isActive={index === activeIndex}
+                onActivate={() => setActiveIndex(index)}
               />
             ))}
           </div>
         </div>
 
-        {/* ── Bottom capability strip ── */}
+        {/* ── Capability strip ── */}
         <SectionReveal>
-          <div className="mx-auto mt-14 flex max-w-3xl flex-wrap items-center justify-center gap-x-6 gap-y-3 text-[13px] sm:mt-20">
-            {mobileCopy.capabilities.map((cap, i) => (
-              <span key={cap} className="flex items-center gap-2">
-                {i > 0 && <span className="hidden text-slate-700 sm:inline">·</span>}
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="shrink-0">
-                  <circle cx="7" cy="7" r="6" stroke="#2DD4BF" strokeWidth="1.5" />
-                  <path d="M4.5 7L6.5 9L9.5 5.5" stroke="#2DD4BF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                <span className="text-slate-400">{cap}</span>
-              </span>
+          <ul className="mx-auto mt-14 flex max-w-3xl flex-wrap items-center justify-center gap-2 sm:mt-16">
+            {mobileCopy.capabilities.map((capability) => (
+              <li key={capability} className="rounded-full border border-white/[0.08] bg-white/[0.04] px-3 py-1.5 text-[12px] font-medium text-slate-300">
+                {capability}
+              </li>
             ))}
-          </div>
+          </ul>
         </SectionReveal>
 
         {/* ── One platform, three contexts ── */}
@@ -231,14 +166,14 @@ export function MobileApp() {
   )
 }
 
-/* ── Feature row — highlights on view, drives phone screen ── */
+/* ── Feature row — selects which screen the phones show ── */
 function FeatureRow({
   screen,
   index,
   isActive,
   onActivate,
 }: {
-  screen: (typeof screens)[number]
+  screen: Screen
   index: number
   isActive: boolean
   onActivate: () => void
@@ -246,47 +181,35 @@ function FeatureRow({
   return (
     <button
       onClick={onActivate}
-      className="group relative w-full rounded-2xl px-5 py-5 text-left transition-all duration-300 sm:py-6"
-      style={{
-        background: isActive
-          ? "rgba(3,126,204,0.08)"
-          : "transparent",
-      }}
+      className="group relative w-full cursor-pointer rounded-2xl px-5 py-4 text-left transition-colors duration-300 sm:py-5"
+      style={{ background: isActive ? "rgba(3,126,204,0.08)" : "transparent" }}
     >
-      {/* Active left bar */}
       {isActive && (
         <motion.div
           layoutId="mobile-feature-bar"
-          className="absolute left-0 top-3 bottom-3 w-[3px] rounded-full bg-brand-400"
+          className="absolute bottom-3 left-0 top-3 w-[3px] rounded-full bg-brand-400"
           transition={{ duration: 0.3, ease: easeOutPremium }}
         />
       )}
 
-      {/* Step number */}
-      <span
-        className={`text-[12px] font-bold tabular-nums tracking-wider transition-colors duration-300 ${isActive ? "text-brand-400" : "text-slate-600"}`}
-      >
+      <span className={`text-[12px] font-bold tabular-nums tracking-wider transition-colors duration-300 ${isActive ? "text-brand-400" : "text-slate-600"}`}>
         0{index + 1}
       </span>
 
-      {/* Title */}
-      <h3
-        className={`mt-1.5 text-[17px] font-bold leading-snug transition-colors duration-300 sm:text-[19px] ${isActive ? "text-white" : "text-slate-400 group-hover:text-slate-200"}`}
-      >
+      <h3 className={`mt-1 text-[17px] font-bold leading-snug transition-colors duration-300 sm:text-[19px] ${isActive ? "text-white" : "text-slate-400 group-hover:text-slate-200"}`}>
         {screen.label}
       </h3>
 
-      {/* Description — only visible when active */}
-      <AnimatePresence>
+      <AnimatePresence initial={false}>
         {isActive && (
           <motion.p
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: easeOutPremium }}
-            className="mt-2 text-[14px] leading-relaxed text-slate-400"
+            className="overflow-hidden text-[14px] leading-relaxed text-slate-400"
           >
-            {screen.desc}
+            <span className="block pt-2">{screen.desc}</span>
           </motion.p>
         )}
       </AnimatePresence>
