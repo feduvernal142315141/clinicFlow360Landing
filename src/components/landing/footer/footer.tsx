@@ -1,101 +1,168 @@
 import Link from "next/link"
-import { featurePages, featurePath } from "@/data/feature-pages"
+import { siteConfig } from "@/lib/config"
+import { footerColumns, footerCopy, footerLegalLinks, type FooterLink } from "@/data/footer"
 import { BrandLogo } from "../shared/brand-logo"
+
+const linkClass =
+  "group inline-flex items-center gap-1.5 text-[13.5px] text-slate-400 transition-colors duration-150 hover:text-white"
+
+function FooterNavLink({ link }: { link: FooterLink }) {
+  const content = (
+    <>
+      <span>{link.label}</span>
+      <svg
+        width="10"
+        height="10"
+        viewBox="0 0 10 10"
+        fill="none"
+        aria-hidden="true"
+        className="-translate-x-1 text-brand-400 opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100"
+      >
+        <path d="M2 5h6M5.5 2.5 8 5 5.5 7.5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    </>
+  )
+
+  if (link.external) {
+    return (
+      <a href={link.href} className={linkClass}>
+        {content}
+      </a>
+    )
+  }
+
+  return (
+    <Link href={link.href} className={linkClass}>
+      {content}
+    </Link>
+  )
+}
 
 export function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="px-4 py-14 text-[12px] text-slate-400 sm:px-6 lg:py-16" style={{ background: "#060d1a" }}>
-      <div className="mx-auto max-w-6xl">
-        {/* Top divider */}
-        <div className="mb-12 h-px" style={{ background: "linear-gradient(to right, transparent, rgba(255,255,255,0.06), transparent)" }} />
+    <footer className="relative overflow-hidden text-slate-400" style={{ background: "#060d1a" }}>
+      {/* Top edge: hairline with a brand highlight and a soft glow under it */}
+      <div className="pointer-events-none absolute inset-x-0 top-0" aria-hidden="true">
+        <div className="h-px" style={{ background: "linear-gradient(to right, transparent, rgba(255,255,255,0.08) 20%, rgba(50,180,254,0.55) 50%, rgba(255,255,255,0.08) 80%, transparent)" }} />
+        <div
+          className="mx-auto h-[260px] max-w-3xl"
+          style={{ background: "radial-gradient(ellipse at top, rgba(7,156,251,0.13) 0%, transparent 65%)" }}
+        />
+      </div>
+      <div className="bg-grid pointer-events-none absolute inset-0 opacity-[0.25] [mask-image:linear-gradient(to_bottom,black,transparent_55%)]" aria-hidden="true" />
 
-        <div className="mb-14 grid grid-cols-2 gap-10 md:grid-cols-5 md:gap-8">
+      <div className="relative mx-auto max-w-6xl px-4 pt-16 sm:px-6 lg:pt-20">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,2fr)] lg:gap-16">
           {/* Brand */}
-          <div className="col-span-2 space-y-5">
-            <BrandLogo className="h-9" />
-            <p className="max-w-sm text-[13px] leading-relaxed text-slate-500">
-              La plataforma inteligente para clínicas dentales: recepción, agenda, odontograma, imágenes y administración en un solo flujo.
-            </p>
+          <div>
+            <Link href="/#hero" className="inline-flex">
+              <BrandLogo className="h-10" />
+            </Link>
+            <p className="mt-5 max-w-sm text-[14px] leading-relaxed text-slate-400">{footerCopy.tagline}</p>
 
-            {/* Social placeholder */}
-            <div className="flex items-center gap-3 pt-1">
-              {["twitter", "linkedin", "instagram"].map((social) => (
-                <a
-                  key={social}
-                  href="#"
-                  className="flex h-8 w-8 items-center justify-center rounded-lg border border-white/[0.06] bg-white/[0.02] text-slate-600 transition-colors hover:border-white/10 hover:text-slate-400"
-                  aria-label={social}
+            <div className="mt-7 max-w-sm rounded-2xl border border-white/[0.07] bg-white/[0.025] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] backdrop-blur-sm">
+              <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.1em] text-brand-300">
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.6)]" />
+                {footerCopy.trial.badge}
+              </div>
+              <div className="mt-3.5 flex flex-wrap items-center gap-x-4 gap-y-3">
+                <Link
+                  href={siteConfig.trialSignupPath}
+                  className="btn-primary inline-flex h-[42px] items-center gap-2 rounded-full px-5 text-[13.5px] font-semibold"
                 >
-                  {social === "twitter" && (
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
-                  )}
-                  {social === "linkedin" && (
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg>
-                  )}
-                  {social === "instagram" && (
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" /><circle cx="12" cy="12" r="5" /><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none" /></svg>
-                  )}
+                  {footerCopy.trial.cta}
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </Link>
+                <a href={siteConfig.loginUrl} className="text-[13.5px] font-semibold text-slate-300 transition-colors hover:text-white">
+                  {footerCopy.trial.login}
                 </a>
-              ))}
+              </div>
             </div>
+
+            <a
+              href={`mailto:${siteConfig.contactEmail}`}
+              className="group mt-6 inline-flex items-center gap-2.5 text-[13.5px] text-slate-400 transition-colors hover:text-white"
+            >
+              <span className="flex h-8 w-8 items-center justify-center rounded-lg border border-white/[0.07] bg-white/[0.03] text-slate-400 transition-colors group-hover:border-brand-500/40 group-hover:text-brand-300">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <rect x="3" y="5" width="18" height="14" rx="2.5" />
+                  <path d="m4 7 8 6 8-6" />
+                </svg>
+              </span>
+              <span>
+                <span className="sr-only">{footerCopy.contactLabel}: </span>
+                {siteConfig.contactEmail}
+              </span>
+            </a>
           </div>
 
-          {/* Producto */}
-          <div>
-            <div className="mb-4 text-[11px] font-bold uppercase tracking-[0.1em] text-slate-500">Producto</div>
-            <ul className="space-y-2.5">
-              {featurePages.map((page) => (
-                <li key={page.slug}>
-                  <Link href={featurePath(page.slug)} className="text-[13px] text-slate-500 transition-colors hover:text-white">{page.name}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Especialidades */}
-          <div>
-            <div className="mb-4 text-[11px] font-bold uppercase tracking-[0.1em] text-slate-500">Especialidades</div>
-            <ul className="space-y-2.5">
-              {["Ortodoncia", "Implantología", "Odontopediatría", "Endodoncia", "Clínicas Multisede"].map((item) => (
-                <li key={item}>
-                  <a href="#" className="text-[13px] text-slate-500 transition-colors hover:text-white">{item}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Legal */}
-          <div>
-            <div className="mb-4 text-[11px] font-bold uppercase tracking-[0.1em] text-slate-500">Seguridad &amp; Legal</div>
-            <ul className="space-y-2.5">
-              {[
-                { label: "Privacidad de Datos", href: "/privacy" },
-                { label: "Términos de Servicio", href: "/terms" },
-                { label: "Estado del Sistema", href: "#" },
-                { label: "Centro de Ayuda", href: "#" }
-              ].map((item) => (
-                <li key={item.label}>
-                  <a href={item.href} className="text-[13px] text-slate-500 transition-colors hover:text-white">{item.label}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Link columns */}
+          <nav aria-label={footerCopy.navLabel} className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3">
+            {footerColumns.map((column) => (
+              <div key={column.title}>
+                <h2 className="mb-4 text-[11px] font-bold uppercase tracking-[0.12em] text-slate-200">{column.title}</h2>
+                <ul className="space-y-3">
+                  {column.links.map((link) => (
+                    <li key={link.href}>
+                      <FooterNavLink link={link} />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </nav>
         </div>
 
         {/* Bottom bar */}
-        <div className="h-px" style={{ background: "linear-gradient(to right, transparent, rgba(255,255,255,0.04), transparent)" }} />
-        <div className="flex flex-col items-center justify-between gap-4 pt-8 text-[11px] text-slate-600 sm:flex-row">
-          <div className="flex flex-col items-center gap-2 sm:items-start">
-            <span>© {year} KodeWave Solutions. Todos los derechos reservados.</span>
-            <span className="text-[10px] text-slate-700">ClinicFlow360 es una plataforma SaaS desarrollada y operada por KodeWave Solutions.</span>
+        <div className="mt-14 h-px lg:mt-16" style={{ background: "linear-gradient(to right, transparent, rgba(255,255,255,0.08), transparent)" }} />
+        <div className="flex flex-col gap-5 py-7 text-[12px] text-slate-500 lg:flex-row lg:items-center lg:justify-between">
+          <div className="space-y-1.5">
+            <p className="text-slate-400">
+              © {year} {siteConfig.publisher}. {footerCopy.rights}
+            </p>
+            <p className="text-[11px] text-slate-500">{footerCopy.operatedBy}</p>
           </div>
-          <div className="flex flex-col items-center gap-4 sm:flex-row sm:gap-6">
-            <a href="/privacy" className="transition-colors hover:text-slate-400">Política de Privacidad</a>
-            <a href="/terms" className="transition-colors hover:text-slate-400">Condiciones del Servicio</a>
-            <a href="/data-deletion" className="transition-colors hover:text-slate-400">Eliminación de Datos</a>
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+            <nav aria-label={footerCopy.legalLabel} className="flex flex-wrap gap-x-6 gap-y-2">
+              {footerLegalLinks.map((link) => (
+                <Link key={link.href} href={link.href} className="transition-colors hover:text-white">
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+            <a
+              href="#top"
+              aria-label={footerCopy.backToTop}
+              title={footerCopy.backToTop}
+              className="flex h-8 w-8 items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.03] text-slate-400 transition-colors hover:border-brand-500/40 hover:text-brand-300"
+            >
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                <path d="M6 10V2M2.5 5.5 6 2l3.5 3.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </a>
           </div>
+        </div>
+      </div>
+
+      {/* Oversized wordmark, cropped by the bottom edge */}
+      <div className="pointer-events-none relative select-none overflow-hidden" aria-hidden="true">
+        <div
+          className="mx-auto -mb-[0.17em] whitespace-nowrap text-center font-heading leading-none"
+          style={{
+            fontSize: "clamp(44px, 13.6vw, 204px)",
+            fontWeight: 780,
+            letterSpacing: "-0.055em",
+            backgroundImage: "linear-gradient(180deg, rgba(121,205,255,0.26) 0%, rgba(50,180,254,0.1) 50%, rgba(6,13,26,0) 92%)",
+            WebkitBackgroundClip: "text",
+            backgroundClip: "text",
+            color: "transparent",
+          }}
+        >
+          {siteConfig.name}
         </div>
       </div>
     </footer>
